@@ -6,7 +6,8 @@ def translate(fromLanguage, toLanguagea, language):
 	'''you chose a word, then this programs will translate it to
 	language you want to translate'''
 	userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"
-	url = "http://zhidao.baidu.com/ihome/ask"
+	# url = "http://zhidao.baidu.com/ihome/ask"
+	url = "http://www.baidu.com/search"
 	headers = {'User-Agent':userAgent}
 	req = urllib2.Request(url, headers=headers)
 	try:
