@@ -2,16 +2,49 @@
 
 import urllib2
 import urllib
+import cookielib
+import re
+import BeautifulSoup
 
-postdata=urllib.urlencode({
-	'username':"pdmtestmail@163.com",
-	'password':"testtest"
-	})
-req = urllib2.Request(
-		url = "http://mail.163.com/",
-		data = postdata
-		)
-files = open("/cygdrive/d/test/test.txt", "w")
-result = urllib2.urlopen(req).read()
-files.write(result)
-files.close()
+class Email163:
+	header = None
+	opener=None
+	data=None
+	
+	# some function
+	def __init__(self, agent):
+		my_agent = agent
+		self.header = {'User-Agent':my_agent}
+		self.cookie = cookielib.CookieJar()
+		cookiehandler = urllib2.HTTPCookieProcessor(self.cookie)
+		urllib2.install_opener(urllib2.build_opener(cookiehandler))
+
+	def login(self, username, passwd):
+		'''
+			login
+		'''
+		postdata = urllib.urlencode({
+				'savelogin':0,
+				'url2':"http//mail.163.com/errorpage/error163.htm",
+				'username':username,
+				'password':passwd
+				})
+		req = urllib2.Request(
+					url = "https://mail.163.com/entry/cgi/ntesdoor?df=mail163_letter&from=web&funcid=loginone&iframe=1&language=-1&passtype=1&product=mail163&net=c&style=-1&race=58_72_223_gz&uid="+username,#pdmtestmail@163.com"
+					data=postdata,
+					headers=self.header)
+		#cookielib.CookieJar.add_cookie_header(req)
+		self.beforedata = urllib2.urlopen(req)
+		self.data = self.beforedata.read()
+
+if __name__ == "__main__":
+	agent="Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"
+	mail163=Email163(agent)
+	mail163.login('pdmtestmail@163.com', 'testtest')
+	htmlfile = open("mail.html", "w")
+	htmlfile.write(mail163.data)
+	
+	htmlfile.close()
+	print mail163.beforedata.geturl()
+	print mail163.beforedata.info()
+	print mail163.data
