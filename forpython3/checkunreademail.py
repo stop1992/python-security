@@ -33,11 +33,11 @@ for message_id, message in msgdict.items():
 	if maintype == 'multipart':
 		for part in mail.get_payload():
 			if part.get_content_maintype == 'text':
-				mailcontent = part.get_payload(decode=True).strip()
+				mailcontent = part.get_payload(decode=True)#.strip()
 				print (len(mailcontent))
 				input("Enter any key to continue...")
 	elif maintype == 'text':
-		maincontent = mail.get_payload(decode=True).strip()
+		maincontent = mail.get_payload(decode=True)#.strip()
 		print (len(mailcontent))
 		input("Enter any key to continue...")
 
