@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from bs4 import BeautifulSoup
+import re
 
-soup = BeautifulSoup(open("mail.html"))
-print soup.prettify()
+text = 'daitao"wangxi'
+print re.split('"', text)
