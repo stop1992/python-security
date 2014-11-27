@@ -3,6 +3,9 @@
 import email, imaplib
 from pprint import pprint
 import os
+import base64
+import chardet
+from email.parser import Parser
 
 # Clear screen
 os.system('printf "\033c"')
@@ -16,47 +19,68 @@ def connectimap():
 	imapins.login(username, passwd)
 	return imapins
 
+def showmail(data):
+	if data.is_multipart():
+		for part in data.get_payload():
+			showmail(part)
+	else:
+		typ = data.get_content_charset()
+		if typ == None:
+			print data.get_payload()
+		else:
+			try:
+				print unicode(data.get_payload('base64'), typ)
+			except UnicodeDecodeError:
+				print data
+
+def check_content_type(msg):
+	contenttype = msg.get_content_type()
+	maintype = msg.get_content_maintype()
+	subtype = msg.get_content_subtype()
+	print "content/type: ", contenttype
+	print "maintype: ", maintype
+	print "subtype: ", subtype
+	print "\n\n\n\n\n"
+
+def getfilenameboundary(msg):
+	filename = msg.get_filename()
+	boundary = msg.get_boundary()
+	print "filename: ", filename
+	print "boundary: " , boundary
+	print "\n\n\n\n"
+
+def get_charset(msg):
+	return msg.get_charset()
+
+def parsemail(msg):
+	p = Parser()
+	for part in msg.walk():
+		if part.is_multipart():
+			if part.get_content_type() == 'multipart/alternative':
+				content_html = part.get_payload(decode=True)
+				print "open html files"
+				html = open("mail.html", "w")
+				html.write(repr(content_html))
+				html.close()
+
 def readmail(con):
 	#typ, data = con.list()
 	#for dt in data:
 		#print dt
+
 	# data is numbers of message
 	typ, data = con.select(mailbox='INBOX', readonly=True)
 	#for num in data:
 	#	print num
-	#print type(data[0])
-	#print data[0]
+
 	# data is list number of message
 	typ, data = con.search(None, 'ALL')
-	#print type(data)
 	for msg_num in data[0].split():
-		#print type(num)
-		#print num[0]
-		#print "Message %s" % num
-		#print type(msg_num)
-		#print len(msg_num)
-		typ, dt = con.fetch(msg_num, '(BODY[HEADER] BODY[TEXT] BODY[MIME])')
-		print "---------------------------------"
-		print len(dt)
-		#print len(dt[0])
-		#print "---------------------------------\n"
-		#print dt[0][0]
-		#print "+++++++++++++++++++++++++++++++++\n"
-		#print dt[0][1]
-		#print "---------------------------------"
-		#print dt[1]
-		#print "\n\n\n\n\n" + dt[1]
-
-		#content = email.message_from_string(dt[0][1])
-		#content = content.get_payload(decode=True)
-		#print content
-		#print content['Content']
-		#print content['Subject']
-		#input ("enter any key to continue")
-		#print "Message %s" % msg_num
-		#print "Message content"
-		#pprint(dt)
-		#print "Message content: %s" % dt
+		typ, dt = con.fetch(msg_num, '(BODY[])')
+		msg = email.message_from_string(dt[0][1])
+		parsemail(msg)
+		raw_input("press any key to continue")
+		
 
 if __name__ == '__main__':
 	con = connectimap()
