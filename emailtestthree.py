@@ -12,26 +12,14 @@ os.system('printf "\033c"')
 
 def connectimap():
 	host = "imap.163.com"
-	username = "pdmtestmail@163.com"
-	passwd = "testtest"
+	#username = "pdmtestmail@163.com"
+	#passwd = "testtest"
+	username = "daitaomail@163.com"
+	passwd = "daitaoDAITAO68"
 
 	imapins = imaplib.IMAP4_SSL(host)
 	imapins.login(username, passwd)
 	return imapins
-
-def showmail(data):
-	if data.is_multipart():
-		for part in data.get_payload():
-			showmail(part)
-	else:
-		typ = data.get_content_charset()
-		if typ == None:
-			print data.get_payload()
-		else:
-			try:
-				print unicode(data.get_payload('base64'), typ)
-			except UnicodeDecodeError:
-				print data
 
 def check_content_type(msg):
 	contenttype = msg.get_content_type()
@@ -53,15 +41,28 @@ def get_charset(msg):
 	return msg.get_charset()
 
 def parsemail(msg):
-	p = Parser()
 	for part in msg.walk():
 		if part.is_multipart():
-			if part.get_content_type() == 'multipart/alternative':
+			print part.get_content_type()
+			continue
+		else:
+			typ = part.get_content_type()
+			if typ == 'text/html':
 				content_html = part.get_payload(decode=True)
-				print "open html files"
+				content_html = content_html.decode('utf-8', 'ignore').encode('gbk','ignore')
+				#print "content_html: "
+				#print content_html
 				html = open("mail.html", "w")
 				html.write(repr(content_html))
 				html.close()
+			if typ == 'text/plain':
+				content_txt = part.get_payload(decode=True)
+				content_txt = content_txt.decode('utf-8').encode('gbk','ignore')
+				print "content_txt:"
+				print content_txt
+				txt = open("mail.txt", "w")
+				txt.write(repr(content_txt))
+				txt.close()
 
 def readmail(con):
 	#typ, data = con.list()
