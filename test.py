@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
-print "\033c"
+#print "\033c"
 
-text = "abcdabcdabcd"
-index = text.find("cd")
-print "index: ", index
-while index != -1:
-	print index
-	tmpstr = text[0:index+1]
+text = "1447932441@qq.com"
+print "test"
+print text.find('gmail')
 
-	text = text[index+1:]
-	print text
-	print "tmpstr: ", tmpstr
-	index = text.find("d")
-	raw_input("Press any key to continue")
+if text.find('gmail') != -1:
+	print "gmail"
+else:
+	if text.find('qq') != -1:
+		print "qq mail"
+	else: 
+		print "no mail"
