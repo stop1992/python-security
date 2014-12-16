@@ -21,49 +21,63 @@ class Mail:
 		elif username.find('gmail') != -1:
 			print "please enter passwd for gmail"
 			self.username = username
-			self.passwd = getpass.getpass()
+			#self.passwd = getpass.getpass()
+			self.passwd = "daitaoDAITAO68"
 		else:
 			print "please enter passwd for 163 mail"
 			self.username = username
-			self.passwd = getpass.getpass()
+			#self.passwd = getpass.getpass()
+			self.passwd = "daitaoDAITAO68"
 
-	def outputunicode():
+	def outputunicode(self):
 		return sys.stdout.encoding
 
 	def login(self, host):
 		imapins = imaplib.IMAP4_SSL(host)
 		try:
+			print self.username, self.passwd
+			print host
 			imapins.login(self.username, self.passwd)
 		except imaplib.IMAP4.error:
 			print "login error"
-			sys.exit(1)
+			return None;
+		print "login success"
 		return imapins
 
-	def readmail(con):
-		#typ, data = con.list()
-		#for dt in data:
-		#	print dt
+	def readmail(self, con):
+		typ, data = con.list()
+		for dt in data:
+			print dt
 
 		# data is numbers of message
-		typ, data = con.select(mailbox='INBOX', readonly=True)
+		typ, data = con.select(mailbox='INBOX', readonly=False)
 
 		# data is list number of message
-		typ, data = con.search(None, 'UNSEEN')
+		typ, data = con.search(None, "ALL")
 		msgnum = 1
 		for msg_num in data[0].split():
 			print "Message %s" % (msgnum)
 			msgnum += 1
 			typ, dt = con.fetch(msg_num, '(BODY[])')
+			#typ2, dt2 = con.fetch(msg_num, '(FLAGS)')
+			typ3, dt3 = con.expunge()
+			#print dt2
+			print dt3
 			msg = email.message_from_string(dt[0][1])
-			getheaderinfo(msg)
-			parsemail(msg)
+			self.getheaderinfo(msg)
+			self.parsemail(msg)
+			isdelete = raw_input("delete yes/no(please enter y/n):")
+			print "isdelete: ", isdelete
+			if isdelete == "y":
+				print "deleting this message"
+				con.store(msg_num, '+FLAGS', r'\Deleted')
+				typ, response = con.expunge()
+				print response
 			print "\n"
 			#raw_input("press any key to continue")
 			
-	def getheaderinfo(msg):
-		mycode = outputunicode()
-
-		# parse subject
+	def getheaderinfo(self, msg):
+		mycode = self.outputunicode() # parse subject
 		sign = False # subject default is short
 		try:
 			sub = ''
@@ -124,11 +138,11 @@ class Mail:
 		print "To: ", msg['To']
 		print "Date: ", msg['Date']
 		
-	def logout(imapins):
+	def logout(self, imapins):
 		imapins.close()
 		imapins.logout()
 
-	def parsemail(msg):
+	def parsemail(self, msg):
 		for part in msg.walk():
 			if part.is_multipart():
 				#print part.get_content_type()
@@ -142,24 +156,26 @@ class Mail:
 					coding = chardet.detect(content_txt)
 					encoding = coding['encoding']
 					content_txt = unicode(content_txt, encoding, 'ignore')
-					print "email content text part:"
-					print "-----------------------------------------------------------------------"
-					print content_txt
-					print "-----------------------------------------------------------------------"
-
+					print "email content text part:" 
+					print "-----------------------------------------------------------------------" 
+					print content_txt 
+					print "-----------------------------------------------------------------------" 
 if __name__ == '__main__':
 	host_one = "imap.qq.com"
-	host_two = "imap.163.com"
-	host_three = "imap.gmail.com"
+	host_two = "imap.gmail.com"
+	host_three = "imap.163.com"
 
 	username_one = "1447932441@qq.com"
 	username_two = "daitaomail@gmail.com"
 	username_three = "daitaomail@163.com"
 
-	qqmail = Mail(username_one)
-	gmail = Mail(username_two)
-	mail163 = Mail(username_three)
+	#qqmail = Mail(username_one)
+	#mail163 = Mail(username_three)
+	#con_163 = mail163.login(host_three)
+	#mail163.readmail(con_163)
+	#mail163.logout()
 
-	qqmail.login(host_one)
-	gmail.login(host_two)
-	mail163.login(host_three)
+	gmail = Mail(username_two)
+	con_gmail = gmail.login(host_two)
+	gmail.readmail(con_gmail)
+	gmail.logout(con_gmail)
