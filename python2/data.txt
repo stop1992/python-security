@@ -1,0 +1,53 @@
+     gene            13747..15171
+                     /gene="dnaC"
+                     /locus_tag="lp_0014"
+                     /db_xref="GeneID:1061128"
+     CDS             13747..15171
+                     /gene="dnaC"
+                     /locus_tag="lp_0014"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="replicative DNA helicase DnaC"
+                     /protein_id="YP_004888105.1"
+                     /db_xref="GI:380031114"
+                     /db_xref="GOA:F9US44"
+                     /db_xref="InterPro:IPR007692"
+                     /db_xref="InterPro:IPR007693"
+                     /db_xref="InterPro:IPR007694"
+                     /db_xref="InterPro:IPR016136"
+                     /db_xref="UniProtKB/TrEMBL:F9US44"
+                     /db_xref="GeneID:1061128"
+                     /translation="MNNDVLDQTPPQNIEAEKAVLGAIFLNSDALVEAMEFVEAQDFY
+                     RRAHQIIFASMVTLNDRDEAIDAVTVSDLLTAQNQLDDVGGMSYIAELAGSVPTAANA
+                     GYYAKIVAQKATVRRLIKTATEITQKAYTENDDVTTLLDDAERDIMNVSEQRNQSGFK
+                     SISDVLNASIEEIDRLYQNDDDITGLPTGFAELDKMTAGLQPDNLIILAARPAVGKTA
+                     FVLNIAQNVATKTDTTVAIFSLEMGAESLVNRMLCAEGSIDAGHLRTGQLNEEEWEHL
+                     VVAMGSLSKASIFIDDTPGIKMSEIRAKSRRLAKEQGNLGLIVVDYLQLIEGSNTESR
+                     QQEVSEISRQMKKLAKELGVPVIALSQLSRGVEQRQDKRPVLSDIRESGSIEQDADIV
+                     AFLYREDYYDREGGDDDDGGNFGGGGDFNGGDPRDEDASEDVGEVEVIIEKNRAGARG
+                     TVKLLFVKPFNKFSSVSYAQDPQA"
+     gene            15393..16616
+                     /locus_tag="lp_0015"
+                     /db_xref="GeneID:1061283"
+     CDS             15393..16616
+                     /locus_tag="lp_0015"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="transport protein, major facilitator superfamily
+                     (MFS)"
+                     /protein_id="YP_004888106.1"
+                     /db_xref="GI:380031115"
+                     /db_xref="GOA:F9US45"
+                     /db_xref="InterPro:IPR011701"
+                     /db_xref="InterPro:IPR016196"
+                     /db_xref="InterPro:IPR020846"
+                     /db_xref="UniProtKB/TrEMBL:F9US45"
+                     /db_xref="GeneID:1061283"
+                     /translation="MAQKQLIKTPWLIAGQFMNNIGMSFIWPLTTIYMHNVLGKSLTE
+                     TGIVLMLNSVANVLASTIGGRIFDRGNPYHLLLMGITLNGLANFALIFFHGWPWYPML
+                     LVVTGFASGWLNTMFNALAASVPRDKVRRTFTLMYLAANLGVVFGTMLVGIVYSMGMA
+                     LLFSMTTSLFVIFLIIALFEYNVDSSNVTGVDPRQGQDVHLPRANFHIVWTFFISLFI
+                     IWLLYEQWVSNLSVYMTNLGMPLRNYSFLWTINAGLLVLIQSILSLLGNRIKNLYNQF
+                     FFGMLFVGLSFLSLVIAHDYPHFIFAMILLTIGEATWSPAMPTLVSQLSPVSAKGRYQ
+                     GLVQAFCALGRSLGPLFGGVIIDNWSYKVLFLLAFVVLLIVLAVNIGVVHFNLRKAVN
+                     YMKTDVQTDVSRETK"
