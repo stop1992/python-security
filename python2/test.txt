@@ -1,1 +1,3 @@
-test testtest test
+>dnaA
+tctcattaagttctctatggaacaagatctgtccaagatcacgtttcaa
+

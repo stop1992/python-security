@@ -6,12 +6,43 @@ import copy
 
 os.system('printf "\033c"')
 
-def test(f):
-	f.write('test test')
-if __name__ == "__main__":
-	f = open('test.txt', 'a+')
-	test(f)
-	f.close()
+while True:
+	length = raw_input("please enter length: ")
+	try:
+		length = float(length)
+	except:
+		print "input data error, input again"
+		continue
+	else:
+		break
+	
+print length
+#def run_time(func):
+#	def wrapper(*args, **kwargs):
+#		start = time.time()
+#		tmp = func()
+#		print time.time() - start
+#		return tmp
+#	return wrapper
+#
+#@run_time
+#def test():
+#	print 'just a test   ........'
+#
+#if __name__ == "__main__":
+#	test()
+	#print type(test)
+	#s = test()
+	#print type(s)
+	#print s
+	#try:
+	#	t = float('sldjflk')
+	#finally:
+	#	print 'arrive here'
+	#f = open('test.txt', 'a+')
+	#lines = [ line.strip() for line in f.readlines() ]
+	#f.close()
+	#print lines
 
 	#outFile = open('daitao.txt', 'w')
 	#s = 'daitao'
