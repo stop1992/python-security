@@ -90,7 +90,7 @@ def handleComplement(primarySeq):
 	while i < len(primarySeq):
 		handledSeq += translate[primarySeq[i]]
 		i += 1
-	return handledSeq[::-1]
+	return handledSeq#[::-1]
 
 def inputLengthDistance():
 	while True:
@@ -125,10 +125,13 @@ def extractSeq(i, name, outFile, length, distance, iscomplement):
 		# formular: end: s + d + l/2(ceil) 
 		end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
 	tmpSequence = ''.join(HandleSequence.sequence[start:end]) # translate list to str!!
+
+	#sign = False
 	if iscomplement: # if iscomplement is True, then handle complement sign
 		tmpSequence = handleComplement(tmpSequence)
-		tmpSequence = tmpSequence[::-1]
-	if HandleSequence.genes[i]['complement'] == True:
+		#sign = True
+		#tmpSequence = tmpSequence[::-1]
+	if HandleSequence.genes[i]['complement'] == True:# and sign == False:
 		tmpSequence = tmpSequence[::-1]
 	outFile.write(">" + name + '\n')
 	outFile.write(tmpSequence + '\n\n')
@@ -158,9 +161,9 @@ please input:
 1.origin sequence
 2.complementary sequence
 input: """)
-								print "originExtracted: ", originExtracted
+								#print "originExtracted: ", originExtracted
 								choice = int(originExtracted)
-								print 'choice: ', choice
+								#print 'choice: ', choice
 								if choice != 1 and choice != 2:
 									print 'input error!! input again!!'
 									continue
