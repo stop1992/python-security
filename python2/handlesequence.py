@@ -90,7 +90,7 @@ def handleComplement(primarySeq):
 	while i < len(primarySeq):
 		handledSeq += translate[primarySeq[i]]
 		i += 1
-	return handledSeq
+	return handledSeq[::-1]
 
 def inputLengthDistance():
 	while True:
@@ -114,16 +114,22 @@ def inputLengthDistance():
 	return length, distance
 
 def extractSeq(i, name, outFile, length, distance, iscomplement):
-	# formular: start: s + d - l/2(ceil) +1
-	start = HandleSequence.genes[i]['start'] + distance - int(math.ceil(float(length)/2.0)) + 1 				
-	# formular: end: s + d + l/2(ceil) 
-	end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
+	if HandleSequence.genes[i]['complement'] == True:
+		# formular: start: s + d - l/2(ceil) +1
+		start = HandleSequence.genes[i]['end'] + distance - int(math.ceil(float(length)/2.0))# + 1 				
+		# formular: end: s + d + l/2(ceil) 
+		end = HandleSequence.genes[i]['end'] + distance + int(math.ceil(float(length)/2.0))
+	else:
+		# formular: start: s + d - l/2(ceil) +1
+		start = HandleSequence.genes[i]['start'] + distance - int(math.ceil(float(length)/2.0))# + 1 				
+		# formular: end: s + d + l/2(ceil) 
+		end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
 	tmpSequence = ''.join(HandleSequence.sequence[start:end]) # translate list to str!!
 	if iscomplement: # if iscomplement is True, then handle complement sign
 		tmpSequence = handleComplement(tmpSequence)
-	#if HandleSequence.genes[i]['complement']:
-		#tmpSequence = handleComplement(tmpSequence)
-		#print type(tmpSequence)
+		tmpSequence = tmpSequence[::-1]
+	if HandleSequence.genes[i]['complement'] == True:
+		tmpSequence = tmpSequence[::-1]
 	outFile.write(">" + name + '\n')
 	outFile.write(tmpSequence + '\n\n')
 	print ">" + name
@@ -143,6 +149,7 @@ def handleGeneTag(nameJudge, outFile):
 				if name == HandleSequence.genes[i]['geneName']:
 					if HandleSequence.genes[i]['complement'] == True:
 						print '\n' + name + ' has "complement" sign!!'
+						distance = -distance
 						choice = -1
 						while True:
 							try:
