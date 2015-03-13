@@ -6,17 +6,29 @@ import copy
 
 os.system('printf "\033c"')
 
-while True:
-	length = raw_input("please enter length: ")
-	try:
-		length = float(length)
-	except:
-		print "input data error, input again"
-		continue
-	else:
-		break
-	
-print length
+class Base:
+	def __init__(self, arg1, arg2):
+		print 'this is Base __init__ func'
+
+class AddBase(Base):
+	def __init__(self, arg1, arg2, arg3):
+		Base.__init__(self, arg1, arg2)
+		print 'this is AddBase __init__ func'
+
+if __name__ == '__main__':
+	addbase = AddBase(1, 2, 3)
+
+#while True:
+#	length = raw_input("please enter length: ")
+#	try:
+#		length = float(length)
+#	except:
+#		print "input data error, input again"
+#		continue
+#	else:
+#		break
+#	
+#print length
 #def run_time(func):
 #	def wrapper(*args, **kwargs):
 #		start = time.time()

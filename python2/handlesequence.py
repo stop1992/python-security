@@ -92,7 +92,7 @@ def handleComplement(primarySeq):
 		i += 1
 	return handledSeq
 
-def extractSeq(i, name, outFile):
+def inputLengthDistance():
 	while True:
 		length = raw_input("please input the length of extracted segment \ninput: ")
 		try:
@@ -103,29 +103,34 @@ def extractSeq(i, name, outFile):
 		else:
 			break
 	while True:
-		positionD = raw_input("please input the distance between midpoint of extracted segment and starting point \ninput: ")
+		distance = raw_input("please input the distance between midpoint of extracted segment and starting point \ninput: ")
 		try:
-			positionD = int(positionD)
+			distance = int(distance)
 		except:
 			print 'input distance error!! please input again'
 			continue
 		else:
 			break
+	return length, distance
+
+def extractSeq(i, name, outFile, length, distance, iscomplement):
 	# formular: start: s + d - l/2(ceil) +1
-	start = HandleSequence.genes[i]['start'] + positionD - int(math.ceil(float(length)/2.0)) + 1 				
+	start = HandleSequence.genes[i]['start'] + distance - int(math.ceil(float(length)/2.0)) + 1 				
 	# formular: end: s + d + l/2(ceil) 
-	end = HandleSequence.genes[i]['start'] + positionD + int(math.ceil(float(length)/2.0))
+	end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
 	tmpSequence = ''.join(HandleSequence.sequence[start:end]) # translate list to str!!
-	if HandleSequence.genes[i]['complement']:
+	if iscomplement: # if iscomplement is True, then handle complement sign
 		tmpSequence = handleComplement(tmpSequence)
+	#if HandleSequence.genes[i]['complement']:
+		#tmpSequence = handleComplement(tmpSequence)
 		#print type(tmpSequence)
 	outFile.write(">" + name + '\n')
 	outFile.write(tmpSequence + '\n\n')
 	print ">" + name
 	print tmpSequence + '\n'
-		
 
 def handleGeneTag(nameJudge, outFile):
+	length, distance = inputLengthDistance()
 	while True:
 		i = 0
 		if nameJudge == 'gene': # using gene name to search
@@ -133,13 +138,38 @@ def handleGeneTag(nameJudge, outFile):
 			name.strip()
 			if name == 'exit':
 				break
-			hasGene = False
 			# judge whether geneName exists or not
 			while i < len(HandleSequence.genes):
 				if name == HandleSequence.genes[i]['geneName']:
-					hasGene = True
 					if HandleSequence.genes[i]['complement'] == True:
-						print name + ' has "complement" sign!!'
+						print '\n' + name + ' has "complement" sign!!'
+						choice = -1
+						while True:
+							try:
+								originExtracted = raw_input("""
+please input:
+1.origin sequence
+2.complementary sequence
+input: """)
+								print "originExtracted: ", originExtracted
+								choice = int(originExtracted)
+								print 'choice: ', choice
+								if choice != 1 and choice != 2:
+									print 'input error!! input again!!'
+									continue
+								else:
+									break
+							except:
+								print 'input error!! input again!!'
+								continue
+							else:
+								break
+						if choice == 1:
+							extractSeq(i, name, outFile, length, distance, False)
+						else:
+							extractSeq(i, name, outFile, length, distance, True)
+					else:
+						extractSeq(i, name, outFile, length, distance, False)
 					break
 				i += 1
 			else:
@@ -150,17 +180,41 @@ def handleGeneTag(nameJudge, outFile):
 			name.strip()
 			if name == 'exit':
 				break
-			hasTag = False
+			#hasTag = False
 			# judge whether tagName exists or not
 			while i < len(HandleSequence.genes):
 				if name == HandleSequence.genes[i]['tagName']:
-					hasTag = True
+					#hasTag = True
+					if HandleSequence.genes[i]['complement'] == True:
+						print name + ' has "complement" sign!!'
+						choice = -1
+						while True:
+							try:
+								originExtracted = raw_input("""please input:
+										1.origin sequence
+										2.complementary sequence""")
+								choice = int(originExtracted)
+								if choice != 1 and choice != 2:
+									print 'input error!! input again!!'
+									continue
+								else:
+									break
+							except:
+								print 'input error!! input again!!'
+								continue
+							else:
+								break
+						if choice == 1:
+							extractSeq(i, name, outFile, length, distance, False)
+						else:
+							extractSeq(i, name, outFile, length, distance, True)
+					else:
+						extractSeq(i, name, outFile, length, distance, False)
 					break
 				i += 1
 			else:
 				print "tag " + name + " not exists!"
 				continue
-		extractSeq(i, name, outFile)
 
 if __name__ == "__main__":
 	outFileName = raw_input('please input filename to save the result \ninput: ')
@@ -182,12 +236,16 @@ please choose input type:
   5.exit
 If you input 1 or 2, you will need to input gene names or tages
 input: """)
-		inputType = int(inputType)
+		try:
+			inputType = int(inputType)
+		except:
+			print 'you input type error!! input again'
+			continue
 		if inputType == 5:
 			outFile.close()
 			break
 		if inputType > 5 or inputType <1:
-			print "input number error!!"
+			print "input number error!! input again!!"
 			continue
 		if inputType == 1:
 			handleGeneTag('gene', outFile)
@@ -198,9 +256,10 @@ input: """)
 		# output all genes
 		if inputType == 3:
 			i = 0
+			length, distance = inputLengthDistance()
 			while i < len(HandleSequence.genes):
 				if type(HandleSequence.genes[i]['geneName']) != types.NoneType:
-					extractSeq(i, HandleSequence.genes[i]['geneName'], outFile)
+					extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance, False)
 					#tmpName = ">" + HandleSequence.genes[i]['geneName']
 					#tmpSequence = ''.join(HandleSequence.sequence[HandleSequence.genes[i]['start']:HandleSequence.genes[i]['end']])
 					#outFile.write(tmpName +'\n')
@@ -212,9 +271,10 @@ input: """)
 		# output all tags
 		if inputType == 4:
 			i = 0
+			length, distance = inputLengthDistance()
 			while i < len(HandleSequence.genes):
 				if type(HandleSequence.genes[i]['tagName']) != types.NoneType:
-					extracSeq(i, HandleSequence.genes[i]['tagName'], outFile)
+					extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance, False)
 					#tmpName = ">" +  HandleSequence.genes[i]['tagName']
 					#tmpSequence = ''.join(HandleSequence.sequence[HandleSequence.genes[i]['start']: HandleSequence.genes[i]['end']])
 					#outFile.write(tmpName + '\n')
