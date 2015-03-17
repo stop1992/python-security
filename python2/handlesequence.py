@@ -39,16 +39,6 @@ class HandleSequence:
 		countGene = 0
 		for i in range(40, len(HandleSequence.alllines)):
 			match = re.match(r'^gene', HandleSequence.alllines[i])
-			#matchCDS = re.match(r'^CDS', HandleSequence.alllines[i])
-
-			#if type(match) != types.NoneType:
-			#	print HandleSequence.alllines[i]
-			#	countGene += 1
-			#if type(matchCDS) != types.NoneType:
-			#	print HandleSequence.alllines[i]
-			#	countCDS += 1
-			#	raw_input()
-
 			if match:
 				# find the position, sequence start and end point
 				position = re.findall(r'(\d+)\.\.(\d+)', HandleSequence.alllines[i])
@@ -126,7 +116,8 @@ def extractSeq(i, name, outFile, length, distance):#, iscomplement):
 		end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
 	tmpSequence = ''.join(HandleSequence.sequence[start:end]) # translate list to str!!
 
-	#if iscomplement: # if iscomplement is True, then handle complement sign
+	#if iscomplement: 
+	# if iscomplement is True, then handle complement sign
 	if HandleSequence.genes[i]['complement'] == True:
 		tmpSequence = handleComplement(tmpSequence)
 		tmpSequence = tmpSequence[::-1]
@@ -156,8 +147,8 @@ def handleGeneTag(nameJudge, outFile):
 							try:
 								originExtracted = raw_input("""
 please input:
-1.origin sequence
-2.complementary sequence
+  1.origin sequence
+  2.reverse complement sequence
 input: """)
 								#print "originExtracted: ", originExtracted
 								choice = int(originExtracted)
@@ -191,20 +182,19 @@ input: """)
 			name.strip()
 			if name == 'exit':
 				break
-			#hasTag = False
 			# judge whether tagName exists or not
 			while i < len(HandleSequence.genes):
 				if name == HandleSequence.genes[i]['tagName']:
-					#hasTag = True
 					if HandleSequence.genes[i]['complement'] == True:
 						print '\n' + name + ' has "complement" sign!!'
 						distance = -distanceOrigin
 						choice = -1
 						while True:
 							try:
-								originExtracted = raw_input("""please input:
-1.origin sequence
-2.complementary sequence
+								originExtracted = raw_input("""
+please input:
+  1.origin sequence
+  2.reverse complement sequence
 input: """)
 								choice = int(originExtracted)
 								if choice != 1 and choice != 2:
