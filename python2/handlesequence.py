@@ -88,9 +88,9 @@ def handleComplement(primarySeq):
 	handledSeq = ''
 	translate = { 'a':'t', 't':'a', 'c':'g', 'g':'c' }
 	while i < len(primarySeq):
-		handledSeq += translate[primarySeq[i]]
+		handledSeq += translate[primarySeq[i]] # complement sequence
 		i += 1
-	return handledSeq#[::-1]
+	return handledSeq
 
 def inputLengthDistance():
 	while True:
@@ -98,7 +98,7 @@ def inputLengthDistance():
 		try:
 			length = float(length)
 		except:
-			print 'input length error!! please input again'
+			print '\033[2;31m' + 'input length error!! please input again' + '\033[1;m'
 			continue
 		else:
 			break
@@ -107,13 +107,13 @@ def inputLengthDistance():
 		try:
 			distance = int(distance)
 		except:
-			print 'input distance error!! please input again'
+			print '\033[2;31m' + 'input distance error!! please input again' + '\033[1;m'
 			continue
 		else:
 			break
 	return length, distance
 
-def extractSeq(i, name, outFile, length, distance, iscomplement):
+def extractSeq(i, name, outFile, length, distance):#, iscomplement):
 	if HandleSequence.genes[i]['complement'] == True:
 		# formular: start: s + d - l/2(ceil) +1
 		start = HandleSequence.genes[i]['end'] + distance - int(math.ceil(float(length)/2.0))# + 1 				
@@ -126,12 +126,9 @@ def extractSeq(i, name, outFile, length, distance, iscomplement):
 		end = HandleSequence.genes[i]['start'] + distance + int(math.ceil(float(length)/2.0))
 	tmpSequence = ''.join(HandleSequence.sequence[start:end]) # translate list to str!!
 
-	#sign = False
-	if iscomplement: # if iscomplement is True, then handle complement sign
+	#if iscomplement: # if iscomplement is True, then handle complement sign
+	if HandleSequence.genes[i]['complement'] == True:
 		tmpSequence = handleComplement(tmpSequence)
-		#sign = True
-		#tmpSequence = tmpSequence[::-1]
-	if HandleSequence.genes[i]['complement'] == True:# and sign == False:
 		tmpSequence = tmpSequence[::-1]
 	outFile.write(">" + name + '\n')
 	outFile.write(tmpSequence + '\n\n')
@@ -166,26 +163,28 @@ input: """)
 								choice = int(originExtracted)
 								#print 'choice: ', choice
 								if choice != 1 and choice != 2:
-									print 'input error!! input again!!'
+									print '\033[2;31m' + 'input error!! input again!!' + '\033[1;m'
 									continue
 								else:
 									break
 							except:
-								print 'input error!! input again!!'
+								print '\033[2;31m' + 'input error!! input again!!' + '\033[1;m'
 								continue
 							else:
 								break
 						if choice == 1:
-							extractSeq(i, name, outFile, length, distance, False)
+							extractSeq(i, name, outFile, length, distance)#, False)
 						else:
-							extractSeq(i, name, outFile, length, distance, True)
+							extractSeq(i, name, outFile, length, distance)#, True)
 					else:
 						distance = distanceOrigin
-						extractSeq(i, name, outFile, length, distance, False)
+						extractSeq(i, name, outFile, length, distance)#, False)
 					break
 				i += 1
 			else:
+				print '\033[2;31m'
 				print "gene " + name + " not exists!"
+				print '\033[1;m'
 				continue
 		else: # using tag name to search
 			name = raw_input("please input tag names(input exit to exit) \ninput: ")
@@ -198,7 +197,7 @@ input: """)
 				if name == HandleSequence.genes[i]['tagName']:
 					#hasTag = True
 					if HandleSequence.genes[i]['complement'] == True:
-						print name + ' has "complement" sign!!'
+						print '\n' + name + ' has "complement" sign!!'
 						distance = -distanceOrigin
 						choice = -1
 						while True:
@@ -209,26 +208,26 @@ input: """)
 input: """)
 								choice = int(originExtracted)
 								if choice != 1 and choice != 2:
-									print 'input error!! input again!!'
+									print '\033[2;31m' + 'input error!! input again!!' + '\033[1;m'
 									continue
 								else:
 									break
 							except:
-								print 'input error!! input again!!'
+								print '\033[2;31m' + 'input error!! input again!!' + '\033[1;m'
 								continue
 							else:
 								break
 						if choice == 1:
-							extractSeq(i, name, outFile, length, distance, False)
+							extractSeq(i, name, outFile, length, distance)#, False)
 						else:
-							extractSeq(i, name, outFile, length, distance, True)
+							extractSeq(i, name, outFile, length, distance)#, True)
 					else:
 						distance = distanceOrigin
-						extractSeq(i, name, outFile, length, distance, False)
+						extractSeq(i, name, outFile, length, distance)#, False)
 					break
 				i += 1
 			else:
-				print "tag " + name + " not exists!"
+				print '\033[2;31m' + "tag " + name + " not exists!" +'\033[1;m'
 				continue
 
 if __name__ == "__main__":
@@ -254,13 +253,13 @@ input: """)
 		try:
 			inputType = int(inputType)
 		except:
-			print 'you input type error!! input again'
+			print '\033[2;31m' + '\nyou input type error!! input again' + '\033[1;m'
 			continue
 		if inputType == 5:
 			outFile.close()
 			break
 		if inputType > 5 or inputType <1:
-			print "input number error!! input again!!"
+			print '\033[2;31m' + "\ninput number error!! input again!!" + '\033[1;m'
 			continue
 		if inputType == 1:
 			handleGeneTag('gene', outFile)
@@ -276,10 +275,10 @@ input: """)
 				if type(HandleSequence.genes[i]['geneName']) != types.NoneType:
 					if HandleSequence.genes[i]['complement'] == True:
 						distance = -distanceOrigin
-						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance, True)
+						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance)#, True)
 					else:
 						distance = distanceOrigin
-						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance, False)
+						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance)#), False)
 				i += 1
 
 		# output all tags
@@ -290,8 +289,8 @@ input: """)
 				if type(HandleSequence.genes[i]['tagName']) != types.NoneType:
 					if HandleSequence.genes[i]['complement'] == True:
 						distance = -distanceOrigin
-						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance, True)
+						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance)#, True)
 					else:
 						distance = distanceOrigin
-						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance, False)
+						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance)#, False)
 				i += 1
