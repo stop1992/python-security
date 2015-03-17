@@ -139,7 +139,7 @@ def extractSeq(i, name, outFile, length, distance, iscomplement):
 	print tmpSequence + '\n'
 
 def handleGeneTag(nameJudge, outFile):
-	length, distance = inputLengthDistance()
+	length, distanceOrigin = inputLengthDistance()
 	while True:
 		i = 0
 		if nameJudge == 'gene': # using gene name to search
@@ -152,7 +152,8 @@ def handleGeneTag(nameJudge, outFile):
 				if name == HandleSequence.genes[i]['geneName']:
 					if HandleSequence.genes[i]['complement'] == True:
 						print '\n' + name + ' has "complement" sign!!'
-						distance = -distance
+						distance = -distanceOrigin
+						#print 'distance: ', distance
 						choice = -1
 						while True:
 							try:
@@ -179,6 +180,7 @@ input: """)
 						else:
 							extractSeq(i, name, outFile, length, distance, True)
 					else:
+						distance = distanceOrigin
 						extractSeq(i, name, outFile, length, distance, False)
 					break
 				i += 1
@@ -197,6 +199,7 @@ input: """)
 					#hasTag = True
 					if HandleSequence.genes[i]['complement'] == True:
 						print name + ' has "complement" sign!!'
+						distance = -distanceOrigin
 						choice = -1
 						while True:
 							try:
@@ -220,6 +223,7 @@ input: """)
 						else:
 							extractSeq(i, name, outFile, length, distance, True)
 					else:
+						distance = distanceOrigin
 						extractSeq(i, name, outFile, length, distance, False)
 					break
 				i += 1
@@ -267,25 +271,27 @@ input: """)
 		# output all genes
 		if inputType == 3:
 			i = 0
-			length, distance = inputLengthDistance()
+			length, distanceOrigin = inputLengthDistance()
 			while i < len(HandleSequence.genes):
 				if type(HandleSequence.genes[i]['geneName']) != types.NoneType:
 					if HandleSequence.genes[i]['complement'] == True:
-						distance = -distance
+						distance = -distanceOrigin
 						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance, True)
 					else:
+						distance = distanceOrigin
 						extractSeq(i, HandleSequence.genes[i]['geneName'], outFile, length, distance, False)
 				i += 1
 
 		# output all tags
 		if inputType == 4:
 			i = 0
-			length, distance = inputLengthDistance()
+			length, distanceOrigin = inputLengthDistance()
 			while i < len(HandleSequence.genes):
 				if type(HandleSequence.genes[i]['tagName']) != types.NoneType:
 					if HandleSequence.genes[i]['complement'] == True:
-						distance = -distance
+						distance = -distanceOrigin
 						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance, True)
 					else:
+						distance = distanceOrigin
 						extractSeq(i, HandleSequence.genes[i]['tagName'], outFile, length, distance, False)
 				i += 1
