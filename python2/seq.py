@@ -7,7 +7,7 @@ import math
 
 os.system('printf "\033c"')
 
-class HandleSequence:
+class self:
 	f = open("file.gb", "r")
 	alllines = f.readlines()
 	sequence = [None] 
@@ -71,6 +71,7 @@ class HandleSequence:
 				tmpDict = { 'start':int(start), 'end':int(end) + 1, 'geneName':geneName, 'tagName':tagName, 'complement': hasComplement }
 				self.genes.append(tmpDict)
 		#print len(self.genes)
+		#print "CDS: ", countCDS, "gene: ", countGene
 
 def handleComplement(primarySeq):
 	i = 0

@@ -3,6 +3,7 @@
 import time
 import os
 import copy
+from random import choice
 
 os.system('printf "\033c"')
 
@@ -15,108 +16,113 @@ class AddBase(Base):
 		Base.__init__(self, arg1, arg2)
 		print 'this is AddBase __init__ func'
 
+class TestStaticMethod:
+	def foo():
+		print 'calling static method foo()'
+
+		foo = staticmethod(foo)
+
+class TestClassMethod:
+	def foo(cls):
+		print 'calling class method foo()'
+		print 'foo() is part of class:', cls.__name__
+
+class RoundFloatManual(object):
+	def __init__(self, val):
+		assert isinstance(val, float), \
+			"value must be float!"
+		self.value = round(val, 2)
+	def __str__(self):
+		return str(self.value)
+
+class Time60(object):
+	def __init__(self, hr, mini):
+		self.mini = mini
+		self.hr = hr
+		#print 'enter Time60 function'
+
+	def __str__(self):
+		return '%d:%d' % (self.hr, self.mini)
+
+	__repr__ = __str__
+
+	def __add__(self, other):
+		return self.__class__(self.hr + other.hr, self.mini +other.mini)
+	
+	def __iadd__(self, other):
+		self.hr += other.hr
+		self.mini += other.mini
+		return self
+
+class RandSeq(object):
+	def __init__ (self, seq):
+		self.data = seq
+	
+	def __iter__ (self):
+		return self
+	
+	def next(self):
+		return choice(self.data)
+
+class AnyIter(object):
+	def __init__ (self, data, safe=False):
+		self.safe = safe 
+		self.iter = iter(data)
+	
+	def __iter__ (self):
+		return self
+	
+	def next(self, howmany=1):
+		retval = []
+		for eachItem in range(howmany):
+			try:
+				retval.append(self.iter.next())
+			except StopIteration:
+				if self.safe:
+					break
+				else:
+					raise
+		return retval
+
+class WrapMe(object):
+	def __init__ (self, obj):
+		self.__data = obj
+	def get(self):
+		return self.__data
+	def __repr__ (self):
+		return self.__data
+	def __str__ (self):
+		return str(self.__data)
+	def __getattr__ (self, attr):
+		return getattr(self.__data, attr)
+
+class Descriptor(object):
+	def __get__(self, object, type):
+		print 'get', self, object, type
+	
+	def __set__(self, object, value):
+		print 'set', self, object, value
+
+class Demo(object):
+	desc = Descriptor()
+
+class Test:
+
+	@classmethod
+	def test(cls):
+		print 'this is class method'
+
+	@staticmethod
+	def static_method():
+		print 'this is a static method'
+
+	def instance_method(self):
+		print 'this is a instance method'
+
 if __name__ == '__main__':
-	addbase = AddBase(1, 2, 3)
+	os.system('printf "\033c"')
 
-#while True:
-#	length = raw_input("please enter length: ")
-#	try:
-#		length = float(length)
-#	except:
-#		print "input data error, input again"
-#		continue
-#	else:
-#		break
-#	
-#print length
-#def run_time(func):
-#	def wrapper(*args, **kwargs):
-#		start = time.time()
-#		tmp = func()
-#		print time.time() - start
-#		return tmp
-#	return wrapper
-#
-#@run_time
-#def test():
-#	print 'just a test   ........'
-#
-#if __name__ == "__main__":
-#	test()
-	#print type(test)
-	#s = test()
-	#print type(s)
-	#print s
-	#try:
-	#	t = float('sldjflk')
-	#finally:
-	#	print 'arrive here'
-	#f = open('test.txt', 'a+')
-	#lines = [ line.strip() for line in f.readlines() ]
-	#f.close()
-	#print lines
-
-	#outFile = open('daitao.txt', 'w')
-	#s = 'daitao'
-	#outFile.write(s + '\n')
-	#outFile.write('\n')
-	#outFile.close()
-#class Test:
-#    ch = 'daitao'
-#    def testone(self):
-#	    print Test.ch
-#
-#if __name__ == "__main__":
-#		test = Test()
-#		test.testone()
-#class Test:
-#    def daitao(self):
-#        pass
-#
-#    def wangxi(self):
-#        print 'this is a test'
-#
-#if __name__ == "__main__":
-#    print 'diatao'
-#inputdata = raw_input("please enter:")
-#print inputdata
-#def add(x, y):
-#	return x + y
-#def sub(x, y):
-#	return x - y
-#def mul(x, y):
-#	return x * y
-#operator = {"+":add, "-":sub, "*":mul}
-#print operator.get("*")(2,3)
-#indata = raw_input("enter any key to continue\
-#		 daitao wang \
-#		 xi")
-#indataw = raw_input("please enter next key")
-#for i in range(0, 10):
-#	i += 1
-#print i
-#for i in range(0, 10):
-#	i += 1
-#print i
-#f = open("file.gb", "r")
-#f2 = copy.deepcopy(f)
-#alllines = f.readlines()
-#print len(alllines)
-#alllines2 = f2.readlines()
-#print len(alllines2)
-#data = [None] * 40000000
-#print len(data)
-#for i in range(0, 10):
-	#print i
-#start = time.time()
-#s = 0
-#i = 0
-#fp = open("./file.gb", "r")
-#lenth = fp.readlines()
-#print len(lenth)
-#for eachline in lenth:
-#	#print eachline
-#	s += i
-#	#raw_input()
-#end = time.time()
-#print end - start
+	t = Test()
+	t.test()
+	t.static_method()
+	t.instance_method()

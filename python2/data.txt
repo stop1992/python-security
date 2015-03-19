@@ -1,53 +1,6 @@
-     gene            13747..15171
-                     /gene="dnaC"
-                     /locus_tag="lp_0014"
-                     /db_xref="GeneID:1061128"
-     CDS             13747..15171
-                     /gene="dnaC"
-                     /locus_tag="lp_0014"
-                     /codon_start=1
-                     /transl_table=11
-                     /product="replicative DNA helicase DnaC"
-                     /protein_id="YP_004888105.1"
-                     /db_xref="GI:380031114"
-                     /db_xref="GOA:F9US44"
-                     /db_xref="InterPro:IPR007692"
-                     /db_xref="InterPro:IPR007693"
-                     /db_xref="InterPro:IPR007694"
-                     /db_xref="InterPro:IPR016136"
-                     /db_xref="UniProtKB/TrEMBL:F9US44"
-                     /db_xref="GeneID:1061128"
-                     /translation="MNNDVLDQTPPQNIEAEKAVLGAIFLNSDALVEAMEFVEAQDFY
-                     RRAHQIIFASMVTLNDRDEAIDAVTVSDLLTAQNQLDDVGGMSYIAELAGSVPTAANA
-                     GYYAKIVAQKATVRRLIKTATEITQKAYTENDDVTTLLDDAERDIMNVSEQRNQSGFK
-                     SISDVLNASIEEIDRLYQNDDDITGLPTGFAELDKMTAGLQPDNLIILAARPAVGKTA
-                     FVLNIAQNVATKTDTTVAIFSLEMGAESLVNRMLCAEGSIDAGHLRTGQLNEEEWEHL
-                     VVAMGSLSKASIFIDDTPGIKMSEIRAKSRRLAKEQGNLGLIVVDYLQLIEGSNTESR
-                     QQEVSEISRQMKKLAKELGVPVIALSQLSRGVEQRQDKRPVLSDIRESGSIEQDADIV
-                     AFLYREDYYDREGGDDDDGGNFGGGGDFNGGDPRDEDASEDVGEVEVIIEKNRAGARG
-                     TVKLLFVKPFNKFSSVSYAQDPQA"
-     gene            15393..16616
-                     /locus_tag="lp_0015"
-                     /db_xref="GeneID:1061283"
-     CDS             15393..16616
-                     /locus_tag="lp_0015"
-                     /codon_start=1
-                     /transl_table=11
-                     /product="transport protein, major facilitator superfamily
-                     (MFS)"
-                     /protein_id="YP_004888106.1"
-                     /db_xref="GI:380031115"
-                     /db_xref="GOA:F9US45"
-                     /db_xref="InterPro:IPR011701"
-                     /db_xref="InterPro:IPR016196"
-                     /db_xref="InterPro:IPR020846"
-                     /db_xref="UniProtKB/TrEMBL:F9US45"
-                     /db_xref="GeneID:1061283"
-                     /translation="MAQKQLIKTPWLIAGQFMNNIGMSFIWPLTTIYMHNVLGKSLTE
-                     TGIVLMLNSVANVLASTIGGRIFDRGNPYHLLLMGITLNGLANFALIFFHGWPWYPML
-                     LVVTGFASGWLNTMFNALAASVPRDKVRRTFTLMYLAANLGVVFGTMLVGIVYSMGMA
-                     LLFSMTTSLFVIFLIIALFEYNVDSSNVTGVDPRQGQDVHLPRANFHIVWTFFISLFI
-                     IWLLYEQWVSNLSVYMTNLGMPLRNYSFLWTINAGLLVLIQSILSLLGNRIKNLYNQF
-                     FFGMLFVGLSFLSLVIAHDYPHFIFAMILLTIGEATWSPAMPTLVSQLSPVSAKGRYQ
-                     GLVQAFCALGRSLGPLFGGVIIDNWSYKVLFLLAFVVLLIVLAVNIGVVHFNLRKAVN
-                     YMKTDVQTDVSRETK"
+Fri Apr 23 16:38:05 0332::ztwzucr@nmkpcpuxzfon.com::388445825-2-22
+Mon Apr 24 13:37:05 2992::ztwzucr@nmkpcpuxzfon.gov::388445825-1-02
+Fri Apr 83 13:17:05 3982::daitaow@nmkpcpuxzfon.com::388445825-6-19
+Sun Apr 25 03:47:05 3912::ztwzucr@nmkpcpuxzfon.net::388445825-4-01
+Thu Apr 43 15:27:05 6930::slljinx@nmkpcpuxzfoh.net::388445825-3-11
+Sat Apr 63 14:57:05 9722::wangxii@nmkpcpuxzfon.org::388445825-5-18
