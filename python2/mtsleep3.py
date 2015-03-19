@@ -2,7 +2,7 @@
 
 import os
 import threading
-from time import sleep, time
+from time import sleep, ctime
 
 loops = [4,2]
 
@@ -14,7 +14,7 @@ class ThreadFunc(object):
 		self.args = args
 	
 	def __call__(self):
-		apply(self.func, self, args)
+		apply(self.func, self.args)
 	
 def loop(nloop, sec):
 	print 'start loop', nloop, 'at:', ctime()
@@ -31,10 +31,10 @@ def main():
 				target=ThreadFunc(loop, (i, loops[i]),loop.__name__))
 		threads.append(t)
 	
-	for i in nloop:
+	for i in nloops:
 		threads[i].start()
 
-	for i in nloop:
+	for i in nloops:
 		threads[i].join()
 
 	print 'all DONE at:', ctime()
