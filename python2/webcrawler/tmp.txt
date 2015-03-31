@@ -1,0 +1,3078 @@
+table 1
+<table align="center" border="0" cellpadding="1" cellspacing="1" width="681">
+ <tr>
+  <td align="center">
+   <object align="" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" height="78" id="title_new" width="681">
+    <param name="movie" value="images/title_new.swf">
+     <param name="quality" value="high">
+      <param name="scale" value="noborder">
+       <param name="bgcolor" value="#FFFFFF">
+        <embed align="" bgcolor="#FFFFFF" height="78" name="title_new" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" scale="noborder" src="images/title_new.swf" type="application/x-shockwave-flash" width="681">
+        </embed>
+       </param>
+      </param>
+     </param>
+    </param>
+   </object>
+  </td>
+ </tr>
+</table>
+
+
+
+table 2
+<table align="center" border="0" width="680">
+ <tr>
+  <td align="center" height="25">
+   <a href="/student.jsp">
+    返回学生页面 2014544007
+   </a>
+   <a href="/logout.jsp">
+    安全退出
+   </a>
+  </td>
+ </tr>
+</table>
+
+
+
+table 3
+<table bgcolor="#3A72FF" border="0" cellpadding="0" cellspacing="1" width="990">
+ <tr>
+  <td valign="top" width="12">
+  </td>
+  <td width="100%">
+   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+     <td bgcolor="#97CAFF" valign="top">
+      <table bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="1" width="100%">
+       <tr>
+        <td align="center" bgcolor="#F1EEE6">
+         <table bgcolor="#c4d2ff" width="100%">
+          <tr>
+           <td bgcolor="#FFFFE8" width="5%">
+            <td bgcolor="#FFFFCC" width="5%">
+             <td align="center" height="22" width="80%">
+              <font class="p3" color="#663300">
+               <b>
+                查看已选课程
+               </b>
+              </font>
+              <td bgcolor="#FFFFCC" width="5%">
+               <td bgcolor="#FFFFE8" width="5%">
+               </td>
+              </td>
+             </td>
+            </td>
+           </td>
+          </tr>
+         </table>
+         <table border="0" cellpadding="2" cellspacing="2" width="100%">
+         </table>
+         <table border="0" cellspacing="1" class="xy_tab_main" width="100%">
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            课程分类
+           </td>
+           <td align="center">
+            课程代码
+           </td>
+           <td align="center">
+            课程名称
+           </td>
+           <td align="center">
+            班级代码
+           </td>
+           <td align="center">
+            开课学年
+           </td>
+           <td align="center">
+            开课学期
+           </td>
+           <td align="center">
+            学时
+           </td>
+           <td align="center">
+            学分
+           </td>
+           <td align="center">
+            课程类型
+           </td>
+           <td align="center">
+            考核类型
+           </td>
+           <td align="center">
+            成绩
+           </td>
+           <td align="center">
+            退课
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            0001000001
+           </td>
+           <td align="center">
+            科学道德与学术规范
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            20
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146205" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            0121802001
+           </td>
+           <td align="center">
+            中国特色社会主义理论与实践研究
+           </td>
+           <td align="center">
+            硕士-中心11班（理）
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            公共
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            79
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2087315" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            0121802002
+           </td>
+           <td align="center">
+            自然辩证法概论
+           </td>
+           <td align="center">
+            硕士-中心11班（理）
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            18
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            公共
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            70
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2091682" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            0521801001
+           </td>
+           <td align="center">
+            硕士英语一外
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            100
+           </td>
+           <td align="center">
+            3
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            71
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146158" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            5402001200
+           </td>
+           <td align="center">
+            网络程序设计
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            40
+           </td>
+           <td align="center">
+            2.5
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146184" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            5402002200
+           </td>
+           <td align="center">
+            大型数据库设计与实现
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146193" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            5402003300
+           </td>
+           <td align="center">
+            面向对象建模技术
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            40
+           </td>
+           <td align="center">
+            2.5
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146213" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            5402004300
+           </td>
+           <td align="center">
+            软件复用和组件技术
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            40
+           </td>
+           <td align="center">
+            2.5
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146224" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            5402006300
+           </td>
+           <td align="center">
+            软件需求分析与规范
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            40
+           </td>
+           <td align="center">
+            2.5
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146235" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            MY00400900
+           </td>
+           <td align="center">
+            知识产权
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            20
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146484" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            必修课
+           </td>
+           <td align="center">
+            MY00401000
+           </td>
+           <td align="center">
+            信息检索
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            20
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            必修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146179" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402008400
+           </td>
+           <td align="center">
+            企业管理与ERP
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146365" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402021400
+           </td>
+           <td align="center">
+            程序分析
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146250" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402027400
+           </td>
+           <td align="center">
+            WEBSPHERE
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146312" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402042400
+           </td>
+           <td align="center">
+            数据仓库与数据挖掘
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            1
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146435" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402051400
+           </td>
+           <td align="center">
+            应用密码学
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146401" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+          <tr bgcolor="#ffffff" height="30">
+           <td align="center" height="30">
+            选修课
+           </td>
+           <td align="center">
+            5402052400
+           </td>
+           <td align="center">
+            信息安全实践
+           </td>
+           <td align="center">
+            0
+           </td>
+           <td align="center">
+            2014
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            36
+           </td>
+           <td align="center">
+            2
+           </td>
+           <td align="center">
+            选修
+           </td>
+           <td align="center">
+            考试
+           </td>
+           <td align="center">
+            未录入
+           </td>
+           <td align="center">
+            <a href="TuiKe.jsp?bh=2146289" onclick="return confirm('确认退课？');">
+             退课
+            </a>
+           </td>
+          </tr>
+         </table>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+
+
+
+table 4
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+  <td bgcolor="#97CAFF" valign="top">
+   <table bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="1" width="100%">
+    <tr>
+     <td align="center" bgcolor="#F1EEE6">
+      <table bgcolor="#c4d2ff" width="100%">
+       <tr>
+        <td bgcolor="#FFFFE8" width="5%">
+         <td bgcolor="#FFFFCC" width="5%">
+          <td align="center" height="22" width="80%">
+           <font class="p3" color="#663300">
+            <b>
+             查看已选课程
+            </b>
+           </font>
+           <td bgcolor="#FFFFCC" width="5%">
+            <td bgcolor="#FFFFE8" width="5%">
+            </td>
+           </td>
+          </td>
+         </td>
+        </td>
+       </tr>
+      </table>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+      </table>
+      <table border="0" cellspacing="1" class="xy_tab_main" width="100%">
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         课程分类
+        </td>
+        <td align="center">
+         课程代码
+        </td>
+        <td align="center">
+         课程名称
+        </td>
+        <td align="center">
+         班级代码
+        </td>
+        <td align="center">
+         开课学年
+        </td>
+        <td align="center">
+         开课学期
+        </td>
+        <td align="center">
+         学时
+        </td>
+        <td align="center">
+         学分
+        </td>
+        <td align="center">
+         课程类型
+        </td>
+        <td align="center">
+         考核类型
+        </td>
+        <td align="center">
+         成绩
+        </td>
+        <td align="center">
+         退课
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         0001000001
+        </td>
+        <td align="center">
+         科学道德与学术规范
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         20
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146205" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         0121802001
+        </td>
+        <td align="center">
+         中国特色社会主义理论与实践研究
+        </td>
+        <td align="center">
+         硕士-中心11班（理）
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         公共
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         79
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2087315" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         0121802002
+        </td>
+        <td align="center">
+         自然辩证法概论
+        </td>
+        <td align="center">
+         硕士-中心11班（理）
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         18
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         公共
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         70
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2091682" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         0521801001
+        </td>
+        <td align="center">
+         硕士英语一外
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         100
+        </td>
+        <td align="center">
+         3
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         71
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146158" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         5402001200
+        </td>
+        <td align="center">
+         网络程序设计
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         40
+        </td>
+        <td align="center">
+         2.5
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146184" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         5402002200
+        </td>
+        <td align="center">
+         大型数据库设计与实现
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146193" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         5402003300
+        </td>
+        <td align="center">
+         面向对象建模技术
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         40
+        </td>
+        <td align="center">
+         2.5
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146213" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         5402004300
+        </td>
+        <td align="center">
+         软件复用和组件技术
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         40
+        </td>
+        <td align="center">
+         2.5
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146224" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         5402006300
+        </td>
+        <td align="center">
+         软件需求分析与规范
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         40
+        </td>
+        <td align="center">
+         2.5
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146235" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         MY00400900
+        </td>
+        <td align="center">
+         知识产权
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         20
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146484" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         必修课
+        </td>
+        <td align="center">
+         MY00401000
+        </td>
+        <td align="center">
+         信息检索
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         20
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         必修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146179" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402008400
+        </td>
+        <td align="center">
+         企业管理与ERP
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146365" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402021400
+        </td>
+        <td align="center">
+         程序分析
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146250" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402027400
+        </td>
+        <td align="center">
+         WEBSPHERE
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146312" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402042400
+        </td>
+        <td align="center">
+         数据仓库与数据挖掘
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         1
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146435" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402051400
+        </td>
+        <td align="center">
+         应用密码学
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146401" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+       <tr bgcolor="#ffffff" height="30">
+        <td align="center" height="30">
+         选修课
+        </td>
+        <td align="center">
+         5402052400
+        </td>
+        <td align="center">
+         信息安全实践
+        </td>
+        <td align="center">
+         0
+        </td>
+        <td align="center">
+         2014
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         36
+        </td>
+        <td align="center">
+         2
+        </td>
+        <td align="center">
+         选修
+        </td>
+        <td align="center">
+         考试
+        </td>
+        <td align="center">
+         未录入
+        </td>
+        <td align="center">
+         <a href="TuiKe.jsp?bh=2146289" onclick="return confirm('确认退课？');">
+          退课
+         </a>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+
+
+table 5
+<table bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="1" width="100%">
+ <tr>
+  <td align="center" bgcolor="#F1EEE6">
+   <table bgcolor="#c4d2ff" width="100%">
+    <tr>
+     <td bgcolor="#FFFFE8" width="5%">
+      <td bgcolor="#FFFFCC" width="5%">
+       <td align="center" height="22" width="80%">
+        <font class="p3" color="#663300">
+         <b>
+          查看已选课程
+         </b>
+        </font>
+        <td bgcolor="#FFFFCC" width="5%">
+         <td bgcolor="#FFFFE8" width="5%">
+         </td>
+        </td>
+       </td>
+      </td>
+     </td>
+    </tr>
+   </table>
+   <table border="0" cellpadding="2" cellspacing="2" width="100%">
+   </table>
+   <table border="0" cellspacing="1" class="xy_tab_main" width="100%">
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      课程分类
+     </td>
+     <td align="center">
+      课程代码
+     </td>
+     <td align="center">
+      课程名称
+     </td>
+     <td align="center">
+      班级代码
+     </td>
+     <td align="center">
+      开课学年
+     </td>
+     <td align="center">
+      开课学期
+     </td>
+     <td align="center">
+      学时
+     </td>
+     <td align="center">
+      学分
+     </td>
+     <td align="center">
+      课程类型
+     </td>
+     <td align="center">
+      考核类型
+     </td>
+     <td align="center">
+      成绩
+     </td>
+     <td align="center">
+      退课
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      0001000001
+     </td>
+     <td align="center">
+      科学道德与学术规范
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      20
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146205" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      0121802001
+     </td>
+     <td align="center">
+      中国特色社会主义理论与实践研究
+     </td>
+     <td align="center">
+      硕士-中心11班（理）
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      公共
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      79
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2087315" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      0121802002
+     </td>
+     <td align="center">
+      自然辩证法概论
+     </td>
+     <td align="center">
+      硕士-中心11班（理）
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      18
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      公共
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      70
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2091682" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      0521801001
+     </td>
+     <td align="center">
+      硕士英语一外
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      100
+     </td>
+     <td align="center">
+      3
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      71
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146158" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      5402001200
+     </td>
+     <td align="center">
+      网络程序设计
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      40
+     </td>
+     <td align="center">
+      2.5
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146184" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      5402002200
+     </td>
+     <td align="center">
+      大型数据库设计与实现
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146193" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      5402003300
+     </td>
+     <td align="center">
+      面向对象建模技术
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      40
+     </td>
+     <td align="center">
+      2.5
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146213" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      5402004300
+     </td>
+     <td align="center">
+      软件复用和组件技术
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      40
+     </td>
+     <td align="center">
+      2.5
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146224" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      5402006300
+     </td>
+     <td align="center">
+      软件需求分析与规范
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      40
+     </td>
+     <td align="center">
+      2.5
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146235" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      MY00400900
+     </td>
+     <td align="center">
+      知识产权
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      20
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146484" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      必修课
+     </td>
+     <td align="center">
+      MY00401000
+     </td>
+     <td align="center">
+      信息检索
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      20
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      必修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146179" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402008400
+     </td>
+     <td align="center">
+      企业管理与ERP
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146365" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402021400
+     </td>
+     <td align="center">
+      程序分析
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146250" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402027400
+     </td>
+     <td align="center">
+      WEBSPHERE
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146312" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402042400
+     </td>
+     <td align="center">
+      数据仓库与数据挖掘
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      1
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146435" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402051400
+     </td>
+     <td align="center">
+      应用密码学
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146401" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+    <tr bgcolor="#ffffff" height="30">
+     <td align="center" height="30">
+      选修课
+     </td>
+     <td align="center">
+      5402052400
+     </td>
+     <td align="center">
+      信息安全实践
+     </td>
+     <td align="center">
+      0
+     </td>
+     <td align="center">
+      2014
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      36
+     </td>
+     <td align="center">
+      2
+     </td>
+     <td align="center">
+      选修
+     </td>
+     <td align="center">
+      考试
+     </td>
+     <td align="center">
+      未录入
+     </td>
+     <td align="center">
+      <a href="TuiKe.jsp?bh=2146289" onclick="return confirm('确认退课？');">
+       退课
+      </a>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+
+
+table 6
+<table bgcolor="#c4d2ff" width="100%">
+ <tr>
+  <td bgcolor="#FFFFE8" width="5%">
+   <td bgcolor="#FFFFCC" width="5%">
+    <td align="center" height="22" width="80%">
+     <font class="p3" color="#663300">
+      <b>
+       查看已选课程
+      </b>
+     </font>
+     <td bgcolor="#FFFFCC" width="5%">
+      <td bgcolor="#FFFFE8" width="5%">
+      </td>
+     </td>
+    </td>
+   </td>
+  </td>
+ </tr>
+</table>
+
+
+
+table 7
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+</table>
+
+
+
+table 8
+<table border="0" cellspacing="1" class="xy_tab_main" width="100%">
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   课程分类
+  </td>
+  <td align="center">
+   课程代码
+  </td>
+  <td align="center">
+   课程名称
+  </td>
+  <td align="center">
+   班级代码
+  </td>
+  <td align="center">
+   开课学年
+  </td>
+  <td align="center">
+   开课学期
+  </td>
+  <td align="center">
+   学时
+  </td>
+  <td align="center">
+   学分
+  </td>
+  <td align="center">
+   课程类型
+  </td>
+  <td align="center">
+   考核类型
+  </td>
+  <td align="center">
+   成绩
+  </td>
+  <td align="center">
+   退课
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   0001000001
+  </td>
+  <td align="center">
+   科学道德与学术规范
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   20
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146205" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   0121802001
+  </td>
+  <td align="center">
+   中国特色社会主义理论与实践研究
+  </td>
+  <td align="center">
+   硕士-中心11班（理）
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   公共
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   79
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2087315" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   0121802002
+  </td>
+  <td align="center">
+   自然辩证法概论
+  </td>
+  <td align="center">
+   硕士-中心11班（理）
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   18
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   公共
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   70
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2091682" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   0521801001
+  </td>
+  <td align="center">
+   硕士英语一外
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   100
+  </td>
+  <td align="center">
+   3
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   71
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146158" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   5402001200
+  </td>
+  <td align="center">
+   网络程序设计
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   40
+  </td>
+  <td align="center">
+   2.5
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146184" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   5402002200
+  </td>
+  <td align="center">
+   大型数据库设计与实现
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146193" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   5402003300
+  </td>
+  <td align="center">
+   面向对象建模技术
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   40
+  </td>
+  <td align="center">
+   2.5
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146213" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   5402004300
+  </td>
+  <td align="center">
+   软件复用和组件技术
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   40
+  </td>
+  <td align="center">
+   2.5
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146224" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   5402006300
+  </td>
+  <td align="center">
+   软件需求分析与规范
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   40
+  </td>
+  <td align="center">
+   2.5
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146235" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   MY00400900
+  </td>
+  <td align="center">
+   知识产权
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   20
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146484" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   必修课
+  </td>
+  <td align="center">
+   MY00401000
+  </td>
+  <td align="center">
+   信息检索
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   20
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   必修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146179" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402008400
+  </td>
+  <td align="center">
+   企业管理与ERP
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146365" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402021400
+  </td>
+  <td align="center">
+   程序分析
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146250" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402027400
+  </td>
+  <td align="center">
+   WEBSPHERE
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146312" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402042400
+  </td>
+  <td align="center">
+   数据仓库与数据挖掘
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   1
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146435" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402051400
+  </td>
+  <td align="center">
+   应用密码学
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146401" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+ <tr bgcolor="#ffffff" height="30">
+  <td align="center" height="30">
+   选修课
+  </td>
+  <td align="center">
+   5402052400
+  </td>
+  <td align="center">
+   信息安全实践
+  </td>
+  <td align="center">
+   0
+  </td>
+  <td align="center">
+   2014
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   36
+  </td>
+  <td align="center">
+   2
+  </td>
+  <td align="center">
+   选修
+  </td>
+  <td align="center">
+   考试
+  </td>
+  <td align="center">
+   未录入
+  </td>
+  <td align="center">
+   <a href="TuiKe.jsp?bh=2146289" onclick="return confirm('确认退课？');">
+    退课
+   </a>
+  </td>
+ </tr>
+</table>
+
+
+table 9
+<table align="center" border="0">
+ <tr>
+  <td>
+   <hr align="center" color="#000080" size="1" width="760">
+    <br>
+     <center class="b">
+      系统维护：吉林大学研究生院　技术支持：吉林大学网络中心
+     </center>
+    </br>
+   </hr>
+  </td>
+ </tr>
+</table>
+
+
+

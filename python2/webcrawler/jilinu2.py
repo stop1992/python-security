@@ -12,12 +12,24 @@ import requests
 
 import mythread
 
+class JiLinU:
+	def __init__(self, urls, data):
+		self.urls = urls
+		self.data = data
+	def get_data(self):
+		session = requests.Session()
+		response = session.post(self.urls[0], data=self.data)
+		score = session.get(self.urls[1])
+
+def get_urls():
+	urls = []
+	urls.append('http://gim.jlu.edu.cn/check.jsp')
+	urls.append('http://gim.jlu.edu.cn/pyc/menu_stu.jsp?menu=xuanke_check')
+	return urls
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
 	data = {'username':'2014544007', 'password':'709860'}
-	session = requests.Session()
-	response = session.post('http://gim.jlu.edu.cn/check.jsp', data=data)
-	score = session.get('http://gim.jlu.edu.cn/pyc/menu_stu.jsp?menu=xuanke_check')
-	print res.text
+	urls = get_urls()
+	jilinu = JiLinU(urls, data)

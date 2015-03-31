@@ -3,12 +3,16 @@
 
 import urllib2
 import os
-import cookielib
+#import cookielib
 import urllib
-import re
-import types
-import time
+#import re
+#import types
+#import time
 import requests
+import bs4
+import codecs
+import json
+import chardet
 
 import mythread
 
@@ -20,8 +24,58 @@ if __name__ == '__main__':
 	session = requests.Session()
 	response = session.post('http://gim.jlu.edu.cn/check.jsp', data=data)
 	score = session.get('http://gim.jlu.edu.cn/pyc/menu_stu.jsp?menu=xuanke_check')
-	print res.text
-	#print response.encoding
+	soup = bs4.BeautifulSoup(score.text)
+	tables = soup.find_all('table')
+	#print tables[7].tr.children
+	#for i in tables[7].descendants:
+		#print i
+	#print type(tables[7].stripped_strings)
+	rows = 0
+	cols = 0
+	max_len = 0
+	out_format = {}
+	tmp_list = []
+	for i in tables[7].stripped_strings:
+		cols += 1
+		i.strip()
+		tmp_list.append(i)
+		if cols % 12 == 0:
+			out_format[rows] = tmp_list
+			tmp_list = []
+			rows += 1
+	rows_list = range(len(out_format))
+	cols_list = range(len(out_format[0]) - 1)
+	for i in rows_list:
+		for j in cols_list:
+			if j == 2:
+				print '%s' % (out_format[i][j]) + ' ' * (15 - len(out_format[i][j]) + 30 - len(out_format[i][j])), type(out_format[i][j]),
+			else:
+				if j == 1:
+					print '%s' % (out_format[i][j]),
+				else:
+					print '%s' % (out_format[i][j]),
+		print '\n'
+
+	#print len(tables[2].tr.contents)
+	#fp = codecs.open('tables.txt', 'w', 'utf-8')
+	#for i in range(len(tables)):
+		#fp.write('table ' + str(i + 1) + '\n')
+		#fp.write(tables[i].prettify() + '\n\n\n')
+	#fp.write(tables[2].tr.contents[0].prettify()+'\n\n\n\n')
+	#fp.write(tables[2].tr.contents[1].prettify())
+	#print len(tables[2].tr.contents[1].prettify())
+	#fp.close()
+	#raw_input('press any key to continue....')
+	#for i in range(len(tables)):
+	#	if tables[i].has_attr('class'):
+	#		first_line =  tables[i].tr.contents
+	#line = []
+	#for i in range(len(first_line)):
+	#	line.append(first_line[i].string.strip() + ' ')
+	#print ''.join(line)
+
+	#if soup.table.has_attr('class') and soup.table['class'] == u'xy_tab_main':
+		#print soup.table
 	#response.encoding = 'utf-8'
 	#print response.encoding
 	#content = response.text
@@ -44,8 +98,8 @@ if __name__ == '__main__':
 	#loops_len = range(len(loops))
 	#url = u'http://www.baidu.com'
 	#for i in loops_len:
-	#	tmp_threads = mythread.MyThread(func=loop, args=(url,))
-	#	threads.append(tmp_threads)
+	#	tables_threads = mythread.MyThread(func=loop, args=(url,))
+	#	threads.append(tables_threads)
 
 	#for i in loops_len:
 	#	threads[i].start()
