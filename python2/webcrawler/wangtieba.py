@@ -13,7 +13,8 @@ import mythread
 class OnePieceTieba:
 	def __init__(self, url):
 		self.url = url
-	
+
+	@profile
 	def get_html_data(self):
 		response = urllib2.urlopen(self.url)
 		self.content = response.read()
@@ -38,8 +39,8 @@ class OnePieceTieba:
 def get_urls():
 	urls = []
 	urls.append(u'http://tieba.baidu.com/f?ie=utf-8&kw=%E6%B5%B7%E8%B4%BC%E7%8E%8B&fr=search')
-	urls.append(u'http://tieba.baidu.com/f?kw=%E9%B8%A1%E6%AF%9B&fr=wwwt')
-	urls.append(u'http://tieba.baidu.com/f?kw=%E8%83%A1%E6%AD%8C&fr=wwwt')
+	#urls.append(u'http://tieba.baidu.com/f?kw=%E9%B8%A1%E6%AF%9B&fr=wwwt')
+	#urls.append(u'http://tieba.baidu.com/f?kw=%E8%83%A1%E6%AD%8C&fr=wwwt')
 	return urls
 
 def handle_data(url):
@@ -68,6 +69,6 @@ def main():
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	print 'starting time at:', time.ctime()
+	#print 'starting time at:', time.ctime()
 	main()
-	print 'ending time at:', time.ctime()
+	#print 'ending time at:', time.ctime()
