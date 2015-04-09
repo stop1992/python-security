@@ -9,57 +9,65 @@ import threading
 from Queue import Queue
 #import codecs
 
+max_threads = 10
+
 class GeneSearch(threading.Thread):
-	def __init__(self, gene_name, num):
+	def __init__(self, num):
 		threading.Thread.__init__(self)
 		self.base_url = 'http://www.ncbi.nlm.nih.gov/gene'
-		self.gene_name = gene_name
 		self.num = num
 
 	#def get_data(self):
 	def run(self):
-		data = {'term':self.gene_name}
-		response = requests.get(self.base_url, params=data)
-		global queue
-		queue.put(response.text)
-		print 'thread', self.num, 'over'
-		#fp = codecs.open('html.txt', 'w', 'utf-8')
-		#fp.write(response.text)
-		#fp.close()
-		#print response.text
-		#raw_input('press any key to continue')
-		#print response.encoding
-		
-
+		global gene_queue
+		while True:
+			gene_name = gene_queue.get()
+			print gene_name
+			if gene_name == 'stop':
+				print 'thread', self.num, 'over'
+				break
+			else:
+				data = {'term': gene_name}
+				response = requests.get(self.base_url, params=data)
+				global html_queue
+				html_queue.put(response.text)
 
 def get_data_from_excel():
 	data = xlrd.open_workbook('mRNAdata.xls')
 	table = data.sheets()[0]
 	col_values = table.col_values(7)
-	gene_names = []
+	global gene_queue
 	for i in xrange(11, table.nrows):
-		gene_names.append(col_values[i])
-		#tmp_set.add(col_values[i])
-	return gene_names
+		gene_queue.put(col_values[i])
+
+def stop_free_thread_pool():
+	global gene_queue
+	for i in xrange(max_threads):
+		gene_queue.put('stop')
 
 class ParseGeneData:
 	def __init__(self):
 		pass
 
-queue = Queue()
+gene_queue = Queue() # store gene names 
+html_queue = Queue() # store html data 
+
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	gene_names = get_data_from_excel()
-	gene_len = len(gene_names)
-	#print gene_len
-	#for i in xrange(gene_len):
-	for i in xrange(60):
-		genesearch = GeneSearch(gene_names[i], i)
+	get_data_from_excel()
+	print gene_queue.qsize()
+	#raw_input('press')
+	gene_threads_pool = []
+	for i in xrange(max_threads):
+		genesearch = GeneSearch(i)
+		genesearch.setDaemon(True)
+		gene_threads_pool.append(genesearch)
 		genesearch.start()
-		#genesearch.get_data()
-	#for i in xrange(gene_name):
-	for i in xrange(60):
-		genesearch.join()
 
-	print queue.qsize()
+	stop_free_thread_pool()
+
+	for i in xrange(max_threads):
+		gene_threads_pool[i].join()
+
+	print html_queue.qsize()
