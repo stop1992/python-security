@@ -9,7 +9,7 @@ import threading
 from Queue import Queue
 #import codecs
 
-max_threads = 10
+max_threads = 50
 
 class GeneSearch(threading.Thread):
 	def __init__(self, num):
@@ -17,20 +17,21 @@ class GeneSearch(threading.Thread):
 		self.base_url = 'http://www.ncbi.nlm.nih.gov/gene'
 		self.num = num
 
-	#def get_data(self):
 	def run(self):
 		global gene_queue
 		while True:
-			gene_name = gene_queue.get()
-			print gene_name
-			if gene_name == 'stop':
-				print 'thread', self.num, 'over'
-				break
-			else:
+			try:
+				gene_name = gene_queue.get(block=False)
 				data = {'term': gene_name}
 				response = requests.get(self.base_url, params=data)
 				global html_queue
 				html_queue.put(response.text)
+			except Queue.Empty:
+				print 'gene queue is empty'
+				break
+			except Exception, e:
+				print e.message
+				break
 
 def get_data_from_excel():
 	data = xlrd.open_workbook('mRNAdata.xls')
@@ -39,11 +40,6 @@ def get_data_from_excel():
 	global gene_queue
 	for i in xrange(11, table.nrows):
 		gene_queue.put(col_values[i])
-
-def stop_free_thread_pool():
-	global gene_queue
-	for i in xrange(max_threads):
-		gene_queue.put('stop')
 
 class ParseGeneData:
 	def __init__(self):
@@ -64,8 +60,6 @@ if __name__ == '__main__':
 		genesearch.setDaemon(True)
 		gene_threads_pool.append(genesearch)
 		genesearch.start()
-
-	stop_free_thread_pool()
 
 	for i in xrange(max_threads):
 		gene_threads_pool[i].join()
