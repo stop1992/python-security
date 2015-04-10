@@ -26,23 +26,12 @@ class ThreadManager:
 			self.work_queue.put((get_html_data, Gene_queue.get()))
 
 	def __init_thread_pool(self, thread_pool_size):
-		#print 'thread_pool_size: ', thread_pool_size
-		#self.event_list = []
-		#for i in xrange(thread_pool_size):
-			#self.event_list.append(threading.Event())
-
 		for i in xrange(thread_pool_size):
-			thread = Thread(self.work_queue)#, self.event_list[i])
+			thread = Thread(self.work_queue)
 			self.thread_pool.append(thread)
-			#thread.start()
 
 	def wait_all_threads_done(self):
 		tmp_len = len(self.thread_pool)
-		#print 'work_size: ', self.work_queue.qsize()
-		#print 'Finised queue:', Finished_thread_queue.qsize()
-		#for i in xrange(tmp_len):
-			#self.event_list[i].set()
-
 		for i in xrange(tmp_len):
 			if self.thread_pool[i].is_alive():
 				print 'wait', self.thread_pool[i].name, 'terminate'
@@ -52,10 +41,9 @@ class ThreadManager:
 				print self.thread_pool[i].name, 'is not a live process'
 		
 class Thread(threading.Thread):
-	def __init__(self, work_queue):#, event):
+	def __init__(self, work_queue):
 		threading.Thread.__init__(self)
 		self.work_queue = work_queue
-		#self.event = event
 		self.setDaemon(True)
 		self.start()
 	
@@ -64,12 +52,8 @@ class Thread(threading.Thread):
 			try:
 				func, args = self.work_queue.get(block=False)
 				func(args)
-				#print 'thread ', self.name, 'start', self.work_queue.qsize()
-				#self.work_queue.task_done()
 			except Queue.Empty:
 				print 'thread', self.name, 'cause empty'
-				#Finished_thread_queue.put(self)
-				#self.event.wait()
 				break
 			except Exception, e:
 				print 'thread start error'
