@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-import smtplib, sys, getpass
+import smtplib
+import sys
+import getpass
 from email.message import Message
+
 
 smtpserver = "smtp.163.com"
 user = "pdmtestmail@163.com"
@@ -14,7 +17,7 @@ I am the pdmtestmail@163.com
 This mail is a test to test some libs
 				--dt"""
 
-#try:
+# try:
 server = smtplib.SMTP_SSL(smtpserver)
 #except smtplib.ConnectionRefusedError:
 #	print "connect server error"
@@ -27,12 +30,12 @@ msg['To'] = "1447932441@qq.com"
 msg.set_payload(text)
 
 try:
-	server.login(user, passwd)
+    server.login(user, passwd)
 except smtp.SMTPAuthenticationError:
-	print ("smpt Authentication error")
-	sys.exit(1)
+    print ("smpt Authentication error")
+    sys.exit(1)
 else:
-	#server.sendmail(user, toAddr, msg)
-	server.send_message(msg, user, toAddr) #new in python 3.2
+    #server.sendmail(user, toAddr, msg)
+    server.send_message(msg, user, toAddr)  #new in python 3.2
 finally:
-	server.quit()
+    server.quit()

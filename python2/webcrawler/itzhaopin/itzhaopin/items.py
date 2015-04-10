@@ -5,7 +5,7 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-#import scrapy
+# import scrapy
 #
 #
 #class ItzhaopinItem(scrapy.Item):
@@ -15,10 +15,11 @@
 
 from scrapy import Item, Field
 
+
 class TencentItem(Item):
-	name = Field()				
-	catalog = Field()
-	work_location= Field()
-	recruit_number = Field()
-	detail_link = Field()
-	publish_time= Field()
+    name = Field()
+    catalog = Field()
+    work_location = Field()
+    recruit_number = Field()
+    detail_link = Field()
+    publish_time = Field()

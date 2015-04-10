@@ -4,6 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import getpass
 import smtplib
+
 filename = "sendmailone.py"
 f = file("sendmailone.py", "rb")
 from_add = "daitaomail@gmail.com"
@@ -21,7 +22,7 @@ msg['To'] = to_add
 # handle attachment info
 attachment = MIMEText(f.read())
 attachment['Content-Type'] = 'application/octet-stream'
-attachment['Content-Disposition'] =  "attachment; filename=sendmailone.py"
+attachment['Content-Disposition'] = "attachment; filename=sendmailone.py"
 msg.attach(attachment)
 
 mail = smtplib.SMTP("smtp.gmail.com", 587)

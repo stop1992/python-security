@@ -64,7 +64,10 @@ ImportError exception, it is silently ignored.
 """
 
 import sys
+
 import os
+
+
 try:
     import __builtin__ as builtins
 except ImportError:
@@ -83,25 +86,27 @@ ENABLE_USER_SITE = None
 USER_SITE = None
 USER_BASE = None
 
-_is_64bit = (getattr(sys, 'maxsize', None) or getattr(sys, 'maxint')) > 2**32
+_is_64bit = (getattr(sys, 'maxsize', None) or getattr(sys, 'maxint')) > 2 ** 32
 _is_pypy = hasattr(sys, 'pypy_version_info')
 _is_jython = sys.platform[:4] == 'java'
 if _is_jython:
     ModuleType = type(os)
 
+
 def makepath(*paths):
     dir = os.path.join(*paths)
     if _is_jython and (dir == '__classpath__' or
-                       dir.startswith('__pyclasspath__')):
+                           dir.startswith('__pyclasspath__')):
         return dir, dir
     dir = os.path.abspath(dir)
     return dir, os.path.normcase(dir)
+
 
 def abs__file__():
     """Set all module' __file__ attribute to an absolute path"""
     for m in sys.modules.values():
         if ((_is_jython and not isinstance(m, ModuleType)) or
-            hasattr(m, '__loader__')):
+                hasattr(m, '__loader__')):
             # only modules need the abspath in Jython. and don't mess
             # with a PEP 302-supplied __file__
             continue
@@ -109,6 +114,7 @@ def abs__file__():
         if f is None:
             continue
         m.__file__ = os.path.abspath(f)
+
 
 def removeduppaths():
     """ Remove duplicate entries from sys.path along with making them
@@ -128,17 +134,20 @@ def removeduppaths():
     sys.path[:] = L
     return known_paths
 
+
 # XXX This should not be part of site.py, since it is needed even when
 # using the -S option for Python.  See http://www.python.org/sf/586680
 def addbuilddir():
     """Append ./build/lib.<platform> in case we're running in the build dir
     (especially for Guido :-)"""
     from distutils.util import get_platform
+
     s = "build/lib.%s-%.3s" % (get_platform(), sys.version)
     if hasattr(sys, 'gettotalrefcount'):
         s += '-pydebug'
     s = os.path.join(os.path.dirname(sys.path[-1]), s)
     sys.path.append(s)
+
 
 def _init_pathinfo():
     """Return a set containing all existing directory entries from sys.path"""
@@ -151,6 +160,7 @@ def _init_pathinfo():
         except TypeError:
             continue
     return d
+
 
 def addpackage(sitedir, name, known_paths):
     """Add a new path to known_paths by combining sitedir and 'name' or execute
@@ -170,7 +180,7 @@ def addpackage(sitedir, name, known_paths):
             if line.startswith("#"):
                 continue
             if line.startswith("import"):
-                exec(line)
+                exec (line)
                 continue
             line = line.rstrip()
             dir, dircase = makepath(sitedir, line)
@@ -183,6 +193,7 @@ def addpackage(sitedir, name, known_paths):
         known_paths = None
     return known_paths
 
+
 def addsitedir(sitedir, known_paths=None):
     """Add 'sitedir' argument to sys.path if missing and handle .pth files in
     'sitedir'"""
@@ -193,7 +204,7 @@ def addsitedir(sitedir, known_paths=None):
         reset = 0
     sitedir, sitedircase = makepath(sitedir)
     if not sitedircase in known_paths:
-        sys.path.append(sitedir)        # Add path component
+        sys.path.append(sitedir)  # Add path component
     try:
         names = os.listdir(sitedir)
     except os.error:
@@ -205,6 +216,7 @@ def addsitedir(sitedir, known_paths=None):
     if reset:
         known_paths = None
     return known_paths
+
 
 def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_prefix):
     """Add site-packages (and possibly site-python) to sys.path"""
@@ -220,12 +232,12 @@ def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_pre
                 sitedirs = [os.path.join(prefix, 'site-packages')]
             elif sys.platform == 'darwin' and prefix == sys_prefix:
 
-                if prefix.startswith("/System/Library/Frameworks/"): # Apple's Python
+                if prefix.startswith("/System/Library/Frameworks/"):  # Apple's Python
 
                     sitedirs = [os.path.join("/Library/Python", sys.version[:3], "site-packages"),
                                 os.path.join(prefix, "Extras", "lib", "python")]
 
-                else: # any other Python distros on OSX work this way
+                else:  # any other Python distros on OSX work this way
                     sitedirs = [os.path.join(prefix, "lib",
                                              "python" + sys.version[:3], "site-packages")]
 
@@ -238,7 +250,7 @@ def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_pre
                             os.path.join(prefix, "python" + sys.version[:3], "lib-dynload")]
                 lib64_dir = os.path.join(prefix, "lib64", "python" + sys.version[:3], "site-packages")
                 if (os.path.exists(lib64_dir) and
-                    os.path.realpath(lib64_dir) not in [os.path.realpath(p) for p in sitedirs]):
+                            os.path.realpath(lib64_dir) not in [os.path.realpath(p) for p in sitedirs]):
                     if _is_64bit:
                         sitedirs.insert(0, lib64_dir)
                     else:
@@ -282,6 +294,7 @@ def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_pre
                     addsitedir(sitedir, known_paths)
     return None
 
+
 def check_enableusersite():
     """Check if user site directory is safe for inclusion
 
@@ -306,6 +319,7 @@ def check_enableusersite():
 
     return True
 
+
 def addusersitepackages(known_paths):
     """Add a per user site-package to sys.path
 
@@ -324,7 +338,7 @@ def addusersitepackages(known_paths):
     def joinuser(*args):
         return os.path.expanduser(os.path.join(*args))
 
-    #if sys.platform in ('os2emx', 'riscos'):
+    # if sys.platform in ('os2emx', 'riscos'):
     #    # Don't know what to put here
     #    USER_BASE = ''
     #    USER_SITE = ''
@@ -356,7 +370,6 @@ def addusersitepackages(known_paths):
             if os.path.isdir(user_site):
                 addsitedir(user_site, known_paths)
     return known_paths
-
 
 
 def setBEGINLIBPATH():
@@ -391,8 +404,10 @@ def setquit():
     class Quitter(object):
         def __init__(self, name):
             self.name = name
+
         def __repr__(self):
             return 'Use %s() or %s to exit' % (self.name, eof)
+
         def __call__(self, code=None):
             # Shells like IDLE catch the SystemExit, but listen when their
             # stdin wrapper is closed.
@@ -401,6 +416,7 @@ def setquit():
             except:
                 pass
             raise SystemExit(code)
+
     builtins.quit = Quitter('quit')
     builtins.exit = Quitter('exit')
 
@@ -444,7 +460,7 @@ class _Printer(object):
         if len(self.__lines) <= self.MAXLINES:
             return "\n".join(self.__lines)
         else:
-            return "Type %s() to see the full %s text" % ((self.__name,)*2)
+            return "Type %s() to see the full %s text" % ((self.__name,) * 2)
 
     def __call__(self):
         self.__setup()
@@ -468,6 +484,7 @@ class _Printer(object):
                         key = None
                 if key == 'q':
                     break
+
 
 def setcopyright():
     """Set 'copyright' and 'credits' in __builtin__"""
@@ -500,12 +517,16 @@ class _Helper(object):
     def __repr__(self):
         return "Type help() for interactive help, " \
                "or help(object) for help about object."
+
     def __call__(self, *args, **kwds):
         import pydoc
+
         return pydoc.help(*args, **kwds)
+
 
 def sethelper():
     builtins.help = _Helper()
+
 
 def aliasmbcs():
     """On Windows, some default encodings are not provided by Python,
@@ -513,23 +534,27 @@ def aliasmbcs():
     them usable by aliasing to "mbcs" in such a case."""
     if sys.platform == 'win32':
         import locale, codecs
+
         enc = locale.getdefaultlocale()[1]
-        if enc.startswith('cp'):            # "cp***" ?
+        if enc.startswith('cp'):  # "cp***" ?
             try:
                 codecs.lookup(enc)
             except LookupError:
                 import encodings
+
                 encodings._cache[enc] = encodings._unknown
                 encodings.aliases.aliases[enc] = 'mbcs'
+
 
 def setencoding():
     """Set the string encoding used by the Unicode implementation.  The
     default is 'ascii', but if you're willing to experiment, you can
     change this."""
-    encoding = "ascii" # Default value set by _PyUnicode_Init()
+    encoding = "ascii"  # Default value set by _PyUnicode_Init()
     if 0:
         # Enable to support locale aware default string encodings.
         import locale
+
         loc = locale.getdefaultlocale()
         if loc[1]:
             encoding = loc[1]
@@ -539,7 +564,7 @@ def setencoding():
         encoding = "undefined"
     if encoding != "ascii":
         # On Non-Unicode builds this will raise an AttributeError...
-        sys.setdefaultencoding(encoding) # Needs Python Unicode build !
+        sys.setdefaultencoding(encoding)  # Needs Python Unicode build !
 
 
 def execsitecustomize():
@@ -548,6 +573,7 @@ def execsitecustomize():
         import sitecustomize
     except ImportError:
         pass
+
 
 def virtual_install_main_packages():
     f = open(os.path.join(os.path.dirname(__file__), 'orig-prefix.txt'))
@@ -571,7 +597,7 @@ def virtual_install_main_packages():
         if sys.pypy_version_info < (1, 9):
             paths.insert(1, os.path.join(sys.real_prefix,
                                          'lib-python', 'modified-%s' % cpyver))
-        hardcoded_relative_dirs = paths[:] # for the special 'darwin' case below
+        hardcoded_relative_dirs = paths[:]  # for the special 'darwin' case below
         #
         # This is hardcoded in the Python executable, but relative to sys.prefix:
         for path in paths[:]:
@@ -581,9 +607,9 @@ def virtual_install_main_packages():
     elif sys.platform == 'win32':
         paths = [os.path.join(sys.real_prefix, 'Lib'), os.path.join(sys.real_prefix, 'DLLs')]
     else:
-        paths = [os.path.join(sys.real_prefix, 'lib', 'python'+sys.version[:3])]
-        hardcoded_relative_dirs = paths[:] # for the special 'darwin' case below
-        lib64_path = os.path.join(sys.real_prefix, 'lib64', 'python'+sys.version[:3])
+        paths = [os.path.join(sys.real_prefix, 'lib', 'python' + sys.version[:3])]
+        hardcoded_relative_dirs = paths[:]  # for the special 'darwin' case below
+        lib64_path = os.path.join(sys.real_prefix, 'lib64', 'python' + sys.version[:3])
         if os.path.exists(lib64_path):
             if _is_64bit:
                 paths.insert(0, lib64_path)
@@ -600,7 +626,7 @@ def virtual_install_main_packages():
             # This is a non-multiarch aware Python.  Fallback to the old way.
             arch = sys.platform
         plat_path = os.path.join(sys.real_prefix, 'lib',
-                                 'python'+sys.version[:3],
+                                 'python' + sys.version[:3],
                                  'plat-%s' % arch)
         if os.path.exists(plat_path):
             paths.append(plat_path)
@@ -624,6 +650,7 @@ def virtual_install_main_packages():
 
     sys.path.extend(paths)
 
+
 def force_global_eggs_after_local_site_packages():
     """
     Force easy_installed eggs in the global environment to get placed
@@ -639,9 +666,11 @@ def force_global_eggs_after_local_site_packages():
             egginsert = i
     sys.__egginsert = egginsert + 1
 
+
 def virtual_addsitepackages(known_paths):
     force_global_eggs_after_local_site_packages()
     return addsitepackages(known_paths, sys_prefix=sys.real_prefix)
+
 
 def fixclasspath():
     """Adjust the special classpath sys.path entries for Jython. These
@@ -657,6 +686,7 @@ def fixclasspath():
     sys.path = paths
     sys.path.extend(classpaths)
 
+
 def execusercustomize():
     """Run custom user specific code, if available."""
     try:
@@ -671,7 +701,7 @@ def main():
     abs__file__()
     paths_in_sys = removeduppaths()
     if (os.name == "posix" and sys.path and
-        os.path.basename(sys.path[-1]) == "Modules"):
+                os.path.basename(sys.path[-1]) == "Modules"):
         addbuilddir()
     if _is_jython:
         fixclasspath()
@@ -700,7 +730,9 @@ def main():
     if hasattr(sys, "setdefaultencoding"):
         del sys.setdefaultencoding
 
+
 main()
+
 
 def _script():
     help = """\
@@ -723,14 +755,16 @@ def _script():
         for dir in sys.path:
             print("    %r," % (dir,))
         print("]")
+
         def exists(path):
             if os.path.isdir(path):
                 return "exists"
             else:
                 return "doesn't exist"
+
         print("USER_BASE: %r (%s)" % (USER_BASE, exists(USER_BASE)))
         print("USER_SITE: %r (%s)" % (USER_SITE, exists(USER_BASE)))
-        print("ENABLE_USER_SITE: %r" %  ENABLE_USER_SITE)
+        print("ENABLE_USER_SITE: %r" % ENABLE_USER_SITE)
         sys.exit(0)
 
     buffer = []
@@ -751,8 +785,10 @@ def _script():
             sys.exit(3)
     else:
         import textwrap
+
         print(textwrap.dedent(help % (sys.argv[0], os.pathsep)))
         sys.exit(10)
+
 
 if __name__ == '__main__':
     _script()

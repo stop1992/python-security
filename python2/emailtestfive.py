@@ -1,16 +1,17 @@
 #!/usr/bin/env python
-#-*- encoding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 #author : rayment
 #CreateDate : 2013-01-24
 
 import imaplib
 import email
-#ÉèÖÃÃüÁî´°¿ÚÊä³öÊ¹ÓÃÖÐÎÄ±àÂë
+#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î´°ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
 import sys
+
 reload(sys)
 sys.setdefaultencoding('gbk')
 
-#±£´æÎÄ¼þ·½·¨£¨¶¼ÊÇ±£´æÔÚÖ¸¶¨µÄ¸ùÄ¿Â¼ÏÂ£©
+#ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ä¸ï¿½Ä¿Â¼ï¿½Â£ï¿½
 def savefile(filename, data, path):
     try:
         filepath = path + filename
@@ -21,31 +22,34 @@ def savefile(filename, data, path):
         f.close()
     f.write(data)
     f.close()
-   
-#×Ö·û±àÂë×ª»»·½·¨
+
+
+#ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 def my_unicode(s, encoding):
     if encoding:
         return unicode(s, encoding)
     else:
         return unicode(s)
 
-#»ñµÃ×Ö·û±àÂë·½·¨
+
+#ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ë·½ï¿½ï¿½
 def get_charset(message, default="ascii"):
     #Get the message charset
     return message.get_charset()
     return default
 
-#½âÎöÓÊ¼þ·½·¨£¨Çø·Ö³öÕýÎÄÓë¸½¼þ£©
+
+#ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¸½ï¿½ï¿½ï¿½ï¿½
 def parseEmail(msg, mypath):
     mailContent = None
     contenttype = None
-    suffix =None
+    suffix = None
     for part in msg.walk():
         if not part.is_multipart():
-            contenttype = part.get_content_type()   
+            contenttype = part.get_content_type()
             filename = part.get_filename()
             charset = get_charset(part)
-            #ÊÇ·ñÓÐ¸½¼þ
+            #ï¿½Ç·ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½
             if filename:
                 h = email.Header.Header(filename)
                 dh = email.Header.decode_header(h)
@@ -58,9 +62,9 @@ def parseEmail(msg, mypath):
                         fname = fname.decode(encodeStr, charset)
                 data = part.get_payload(decode=True)
                 print('Attachment : ' + fname)
-                #±£´æ¸½¼þ
+                #ï¿½ï¿½ï¿½æ¸½ï¿½ï¿½
                 if fname != None or fname != '':
-                    savefile(fname, data, mypath)            
+                    savefile(fname, data, mypath)
             else:
                 if contenttype in ['text/plain']:
                     suffix = '.txt'
@@ -69,55 +73,56 @@ def parseEmail(msg, mypath):
                 if charset == None:
                     mailContent = part.get_payload(decode=True)
                 else:
-                    mailContent = part.get_payload(decode=True).decode(charset)         
-    return  (mailContent, suffix)
+                    mailContent = part.get_payload(decode=True).decode(charset)
+    return (mailContent, suffix)
 
-#»ñÈ¡ÓÊ¼þ·½·¨
-def getMail(mailhost, account, password, diskroot, port = 993, ssl = 1):
+
+#ï¿½ï¿½È¡ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+def getMail(mailhost, account, password, diskroot, port=993, ssl=1):
     mypath = diskroot + ':\\'
-    #ÊÇ·ñ²ÉÓÃssl
+    #ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ssl
     if ssl == 1:
         imapServer = imaplib.IMAP4_SSL(mailhost, port)
     else:
         imapServer = imaplib.IMAP4(mailhost, port)
     imapServer.login(account, password)
     imapServer.select()
-    #ÓÊ¼þ×´Ì¬ÉèÖÃ£¬ÐÂÓÊ¼þÎªUnseen
+    #ï¿½Ê¼ï¿½×´Ì¬ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ÎªUnseen
     #Message statues = 'All,Unseen,Seen,Recent,Answered, Flagged'
     resp, items = imapServer.search(None, "Unseen")
     number = 1
     for i in items[0].split():
-       #get information of email
-       resp, mailData = imapServer.fetch(i, "(RFC822)")   
-       mailText = mailData[0][1]
-       msg = email.message_from_string(mailText)
-       ls = msg["From"].split(' ')
-       strfrom = ''
-       if(len(ls) == 2):
-           fromname = email.Header.decode_header((ls[0]).strip('\"'))
-           strfrom = 'From : ' + my_unicode(fromname[0][0], fromname[0][1]) + ls[1]
-       else:
-           strfrom = 'From : ' + msg["From"]
-       strdate = 'Date : ' + msg["Date"]
-       subject = email.Header.decode_header(msg["Subject"])
-       sub = my_unicode(subject[0][0], subject[0][1])
-       strsub = 'Subject : ' + sub
-             
-       mailContent, suffix = parseEmail(msg, mypath)
-       #ÃüÁî´°ÌåÊä³öÓÊ¼þ»ù±¾ÐÅÏ¢
-       print '\n'
-       print 'No : ' + str(number)
-       print strfrom
-       print strdate
-       print strsub
-       '''
-       print 'Content:'
-       print mailContent
-       '''
-       #±£´æÓÊ¼þÕýÎÄ
-       if (suffix != None and suffix != '') and (mailContent != None and mailContent != ''):
-           savefile(str(number) + suffix, mailContent, mypath)
-           number = number + 1
-           
+        #get information of email
+        resp, mailData = imapServer.fetch(i, "(RFC822)")
+        mailText = mailData[0][1]
+        msg = email.message_from_string(mailText)
+        ls = msg["From"].split(' ')
+        strfrom = ''
+        if (len(ls) == 2):
+            fromname = email.Header.decode_header((ls[0]).strip('\"'))
+            strfrom = 'From : ' + my_unicode(fromname[0][0], fromname[0][1]) + ls[1]
+        else:
+            strfrom = 'From : ' + msg["From"]
+        strdate = 'Date : ' + msg["Date"]
+        subject = email.Header.decode_header(msg["Subject"])
+        sub = my_unicode(subject[0][0], subject[0][1])
+        strsub = 'Subject : ' + sub
+
+        mailContent, suffix = parseEmail(msg, mypath)
+        #ï¿½ï¿½ï¿½î´°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+        print '\n'
+        print 'No : ' + str(number)
+        print strfrom
+        print strdate
+        print strsub
+        '''
+        print 'Content:'
+        print mailContent
+        '''
+        #ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (suffix != None and suffix != '') and (mailContent != None and mailContent != ''):
+            savefile(str(number) + suffix, mailContent, mypath)
+            number = number + 1
+
     imapServer.close()
     imapServer.logout()

@@ -1,5 +1,6 @@
 import threading
 
+
 class WorkerTask(object):
     """A task to be performed by the ThreadPool."""
 
@@ -50,13 +51,14 @@ class WorkerThread(threading.Thread):
                 self._event.clear()
             self._event.wait()
 
+
 class ThreadPool(object):
     """Executes queued tasks in the background."""
 
     def __init__(self, max_pool_size=10):
         self.max_pool_size = max_pool_size
         self._threads = []
-        self._tasks = [] 
+        self._tasks = []
 
     def _addTask(self, task):
         self._tasks.append(task)
@@ -76,6 +78,7 @@ class ThreadPool(object):
 
     def addTask(self, function, args=(), kwargs={}):
         self._addTask(WorkerTask(function, args, kwargs))
+
 
 class GlobalThreadPool(object):
     """ThreadPool Singleton class."""

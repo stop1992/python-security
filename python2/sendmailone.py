@@ -4,7 +4,7 @@ import time
 import getpass
 
 sender = "daitaomail@gmail.com"
-receiver ="daitaomail@163.com"
+receiver = "daitaomail@163.com"
 msg = """this mail is a test mail
 		"""
 host = "smtp.gmail.com"
@@ -18,8 +18,8 @@ smtpserver.ehlo()
 smtpserver.login(sender, getpass.getpass())
 print "connect server success"
 while 1:
-	print "sending mail..."
-	smtpserver.set_debuglevel(1)
-	smtpserver.sendmail(sender, receiver, msg)
-	print "mail send success"
-	time.sleep(10)
+    print "sending mail..."
+    smtpserver.set_debuglevel(1)
+    smtpserver.sendmail(sender, receiver, msg)
+    print "mail send success"
+    time.sleep(10)
