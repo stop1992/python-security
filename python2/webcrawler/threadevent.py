@@ -4,6 +4,7 @@
 import os
 import threading
 import time
+import Queue
 
 class ThreadEvent(threading.Thread):
 	def __init__(self, event):
@@ -18,12 +19,18 @@ class ThreadEvent(threading.Thread):
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	event = threading.Event()
-	for i in xrange(3):
-		thread = ThreadEvent(event)
+	#event = threading.Event()
+	#event_queue = Queue.Queue()
+	event_list = []
+	for i in xrange(30):
+		event = threading.Event()
+		event_list.append(event)
+
+	for i in xrange(30):
+		thread = ThreadEvent(event_list[i])
 		thread.start()
-		#thread.join()
 	
 	print 'main thread sleep 3 secondes'
 	time.sleep(3)
-	event.set()
+	for i in xrange(20):
+		event_list[i].set()
