@@ -1,16 +1,16 @@
-#-*- coding:utf-8 -*-
-#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# !/usr/bin/env python
 
 import os
 import threading
 import Queue
-#import xlrd
+# import xlrd
 import requests
 
 # global variable
 Gene_queue = Queue.Queue()
 Html_queue = Queue.Queue()
-#Finished_thread_queue = Queue.Queue()
+# Finished_thread_queue = Queue.Queue()
 
 
 class ThreadManager:
@@ -60,25 +60,25 @@ class Thread(threading.Thread):
 				print e.message
 				break
 
-
 def get_data_from_excel():
-	url = 'http://www.baidu.com'
-	global Gene_queue
-	for i in xrange(100):
-		Gene_queue.put(url)
+    url = 'http://www.baidu.com'
+    global Gene_queue
+    for i in xrange(100):
+        Gene_queue.put(url)
+
 
 def get_html_data(gene_name):
-	response = requests.get(gene_name)
-	global Html_queue
-	Html_queue.put(response.text)
+    response = requests.get(gene_name)
+    global Html_queue
+    Html_queue.put(response.text)
 
 
 if __name__ == '__main__':
-	os.system('printf "\033c"')
+    os.system('printf "\033c"')
 
-	get_data_from_excel()
-	print Gene_queue.qsize()
-	thread_manager = ThreadManager(Gene_queue.qsize(), 20)
-	thread_manager.wait_all_threads_done()
+    get_data_from_excel()
+    print Gene_queue.qsize()
+    thread_manager = ThreadManager(Gene_queue.qsize(), 20)
+    thread_manager.wait_all_threads_done()
 
-	print 'Html_queue size:', Html_queue.qsize()
+    print 'Html_queue size:', Html_queue.qsize()
