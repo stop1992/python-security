@@ -3,35 +3,45 @@
 
 import os
 import threading
-from Queue import Queue
+import Queue
 import xlrd
 import requests
 
 class ThreadManager:
 	def __init__(self, work_queue_size, thread_pool_size):
-		self.work_queue = Queue()
+		self.work_queue = Queue.Queue()
 		self.thread_pool = []
 		self.__init_work_queue(work_queue_size)
 		self.__init_thread_pool(thread_pool_size)
 
 	def __init_work_queue(self, work_queue_size):
+		print 'work_queue_size: ', work_queue_size
 		for i in xrange(work_queue_size):
 			self.work_queue.put((get_html_data, Gene_queue.get()))
 
 	def __init_thread_pool(self, thread_pool_size):
+		print 'thread_pool_size: ', thread_pool_size
 		for i in xrange(thread_pool_size):
-			self.thread_pool.append(Thread(self.work_queue))
+			thread = Thread(self.work_queue)
+			print thread.name, 'start'
+			self.thread_pool.append(thread)
 
 	def wait_all_threads_done(self):
-		for i in xrange(len(self.thread_pool)):
-			if self.thread_pool[i].isAlive():
+		tmp_len = len(self.thread_pool)
+		print 'work_size: ', self.work_queue.qsize()
+		for i in xrange(tmp_len):
+			if self.thread_pool[i].is_alive():
+				#print 'wait', self.thread_pool[i].name, 'terminate'
 				self.thread_pool[i].join()
+				#print self.thread_pool[i].name, 'is terminated'
+			else:
+				print self.thread_pool[i].name, 'is not a live process'
 
 class Thread(threading.Thread):
 	def __init__(self, work_queue):
-		#super(Thread, self).__init__(self)
 		threading.Thread.__init__(self)
 		self.work_queue = work_queue
+		self.setDaemon(True)
 		self.start()
 	
 	def run(self):
@@ -39,8 +49,11 @@ class Thread(threading.Thread):
 			try:
 				func, args = self.work_queue.get(block=False)
 				func(args)
-				print 'thread over'
+				#print 'thread ', self.name, 'start', self.work_queue.qsize()
 				#self.work_queue.task_done()
+			except Queue.Empty:
+				print 'thread', self.name, 'cause empty'
+				break
 			except Exception, e:
 				print 'thread start error'
 				print e.message
@@ -48,23 +61,19 @@ class Thread(threading.Thread):
 
 
 def get_data_from_excel():
-	data = xlrd.open_workbook('mRNAdata.xls')
-	table = data.sheets()[0]
-	col_values = table.col_values(7)
-	global gene_queue
-	for i in xrange(11, table.nrows):
-		Gene_queue.put(col_values[i])
+	url = 'http://www.baidu.com'
+	global Gene_queue
+	for i in xrange(500):
+		Gene_queue.put(url)
 
 def get_html_data(gene_name):
-	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
-	data = {'term': gene_name}
-	response = requests.get(base_url, params=data)
+	response = requests.get(gene_name)
 	global Html_queue
 	Html_queue.put(response.text)
 
 # global variable
-Gene_queue = Queue()
-Html_queue = Queue()
+Gene_queue = Queue.Queue()
+Html_queue = Queue.Queue()
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
@@ -73,4 +82,5 @@ if __name__ == '__main__':
 	print Gene_queue.qsize()
 	thread_manager = ThreadManager(Gene_queue.qsize(), 30)
 	thread_manager.wait_all_threads_done()
-	print Html_queue.qsize()
+
+	print 'Html_queue size:', Html_queue.qsize()

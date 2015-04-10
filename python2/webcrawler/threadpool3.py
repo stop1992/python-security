@@ -3,13 +3,14 @@
 
 import os
 import threading
-from Queue import Queue
+import Queue
 import xlrd
 import requests
+import urllib2
 
 class ThreadManager:
 	def __init__(self, work_queue_size, thread_pool_size):
-		self.work_queue = Queue()
+		self.work_queue = Queue.Queue()
 		self.thread_pool = []
 		self.__init_work_queue(work_queue_size)
 		self.__init_thread_pool(thread_pool_size)
@@ -41,30 +42,40 @@ class Thread(threading.Thread):
 				func(args)
 				print 'thread over'
 				#self.work_queue.task_done()
+			except Queue.Empty:
+				print 'queue is empty'
+				break
 			except Exception, e:
 				print 'thread start error'
 				print e.message
+				print e
 				break
 
 
 def get_data_from_excel():
-	data = xlrd.open_workbook('mRNAdata.xls')
-	table = data.sheets()[0]
-	col_values = table.col_values(7)
-	global gene_queue
-	for i in xrange(11, table.nrows):
-		Gene_queue.put(col_values[i])
+	#data = xlrd.open_workbook('mRNAdata.xls')
+	#table = data.sheets()[0]
+	#col_values = table.col_values(7)
+	url = 'http://www.baidu.com'
+	global Gene_queue
+	#for i in xrange(11, table.nrows):
+	for i in xrange(11, 300):
+		Gene_queue.put(url)
 
 def get_html_data(gene_name):
-	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
-	data = {'term': gene_name}
-	response = requests.get(base_url, params=data)
+	#base_url = 'http://www.ncbi.nlm.nih.gov/gene'
+	#data = {'term': gene_name}
+	#response = requests.get(base_url, params=data)
+	#response = requests.get(gene_name)
+	res = urllib2.urlopen(gene_name)
+	text = res.read()
 	global Html_queue
-	Html_queue.put(response.text)
+	#Html_queue.put(response.text)
+	Html_queue.put(text)
 
 # global variable
-Gene_queue = Queue()
-Html_queue = Queue()
+Gene_queue = Queue.Queue()
+Html_queue = Queue.Queue()
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')

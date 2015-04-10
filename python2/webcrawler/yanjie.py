@@ -7,7 +7,6 @@ import requests
 from bs4 import BeautifulSoup
 import threading
 from Queue import Queue
-#import codecs
 
 max_threads = 50
 
