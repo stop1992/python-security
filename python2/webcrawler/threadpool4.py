@@ -34,11 +34,11 @@ class ThreadManager:
         for i in xrange(thread_pool_size):
             thread = Thread(self.work_queue)  # self.event_list[i])
             self.thread_pool.append(thread)
-        # thread.start()
+            # thread.start()
 
     def wait_all_threads_done(self):
         tmp_len = len(self.thread_pool)
-        #print 'work_size: ', self.work_queue.qsize()
+        # print 'work_size: ', self.work_queue.qsize()
         #print 'Finised queue:', Finished_thread_queue.qsize()
         #for i in xrange(tmp_len):
         #self.event_list[i].set()
