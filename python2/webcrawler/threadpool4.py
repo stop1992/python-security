@@ -4,14 +4,14 @@
 import os
 import threading
 import Queue
-# import xlrd
 import requests
+import time
+# import traceback
 
 # global variable
 Gene_queue = Queue.Queue()
 Html_queue = Queue.Queue()
 # Finished_thread_queue = Queue.Queue()
-
 
 class ThreadManager:
     def __init__(self, work_queue_size, thread_pool_size):
@@ -31,14 +31,14 @@ class ThreadManager:
             self.thread_pool.append(thread)
 
     def wait_all_threads_done(self):
-        tmp_len = len(self.thread_pool)
+        # tmp_len = len(self.thread_pool)
         for i in xrange(tmp_len):
             if self.thread_pool[i].is_alive():
-                print 'wait', self.thread_pool[i].name, 'terminate'
+                # print 'wait', self.thread_pool[i].name, 'terminate'
                 self.thread_pool[i].join()
-                print self.thread_pool[i].name, 'is terminated'
-            else:
-                print self.thread_pool[i].name, 'is not a live process'
+                # print self.thread_pool[i].name, 'is terminated'
+            # else:
+                # print self.thread_pool[i].name, 'is not a live process'
 
 
 class Thread(threading.Thread):
@@ -54,18 +54,26 @@ class Thread(threading.Thread):
                 func, args = self.work_queue.get(block=False)
                 func(args)
             except Queue.Empty:
-                print 'thread', self.name, 'cause empty'
+                # print 'thread', self.name, 'cause empty'
                 break
-            except Exception, e:
-                print 'thread start error'
-                print e.message
-                break
+            except requests.ConnectionError as ex:
+                # print traceback.print_exc()
+                # handle connection error, util requests get success
+                while True:
+                    time.sleep(0.5)
+                    try:
+                        func(args)
+                    except requests.ConnectionError as ex:
+                        continue
+                    else:
+                        break
+                    continue
 
 
 def get_data_from_excel():
     url = 'http://www.baidu.com'
     global Gene_queue
-    for i in xrange(100):
+    for i in xrange(2000):
         Gene_queue.put(url)
 
 

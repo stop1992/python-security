@@ -2,340 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53acb6ca-1129-4f6c-acbb-7f67a9bb4ef8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip-1.5.6.dist-info/DESCRIPTION.rst" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip-1.5.6.dist-info/DESCRIPTION.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip-1.5.6.dist-info/DESCRIPTION.rst" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip-1.5.6.dist-info/DESCRIPTION.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/UserDict.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/UserDict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/UserDict.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/UserDict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/distutils/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/distutils/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/_markerlib/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/_markerlib/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/backwardcompat/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/backwardcompat/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/__init__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/distutils/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/distutils/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/_markerlib/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/_markerlib/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/backwardcompat/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/backwardcompat/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/__init__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/__main__.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/__main__.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/_abcoll.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/_abcoll.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/_abcoll.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/_abcoll.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/abc.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/abc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/abc.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/abc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/activate_this.py" afterPath="$PROJECT_DIR$/python2/bin/activate_this.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/activate_this.py" afterPath="$PROJECT_DIR$/python3/bin/activate_this.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/alias.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/alias.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/alias.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/alias.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/ansi.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/ansi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/ansitowin32.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/ansitowin32.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/applytest.py" afterPath="$PROJECT_DIR$/python2/applytest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/archive_util.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/archive_util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/archive_util.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/archive_util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/basecommand.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/basecommand.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/basecommand.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/basecommand.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/baseparser.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/baseparser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/baseparser.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/baseparser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/bazaar.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/bazaar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/bazaar.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/bazaar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_egg.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_egg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_egg.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_egg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_rpm.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_rpm.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_rpm.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_rpm.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_wininst.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/bdist_wininst.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_wininst.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/bdist_wininst.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/build_ext.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/build_ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/build_ext.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/build_ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/build_py.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/build_py.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/build_py.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/build_py.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/bundle.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/bundle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/bundle.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/bundle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/checkunreademail.py" afterPath="$PROJECT_DIR$/python3/checkunreademail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/cmdoptions.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/cmdoptions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/cmdoptions.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/cmdoptions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/codecs.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/codecs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/codecs.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/codecs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/codingproblems.py" afterPath="$PROJECT_DIR$/python2/codingproblems.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/compat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/completion.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/completion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/completion.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/completion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/constants.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/copy_reg.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/copy_reg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/copy_reg.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/copy_reg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/database.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/decorator1.py" afterPath="$PROJECT_DIR$/python2/decorator1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/decorator2.py" afterPath="$PROJECT_DIR$/python2/decorator2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/decorator3.py" afterPath="$PROJECT_DIR$/python2/decorator3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/depends.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/depends.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/depends.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/depends.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/develop.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/develop.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/develop.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/develop.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/dist.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/dist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/dist.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/dist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/spiders/dmoz_spider.py" afterPath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/spiders/dmoz_spider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/doctest.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/doctest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/doctest.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/doctest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/download.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/download.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/download.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/download.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/easy_install-2.6" afterPath="$PROJECT_DIR$/python2/bin/easy_install-2.6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/easy_install-2.6" afterPath="$PROJECT_DIR$/python3/bin/easy_install-2.6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/easy_install.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/easy_install.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/easy_install.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/easy_install.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/easy_install" afterPath="$PROJECT_DIR$/python2/bin/easy_install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/easy_install" afterPath="$PROJECT_DIR$/python3/bin/easy_install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/egg_info.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/egg_info.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/emailtestfive.py" afterPath="$PROJECT_DIR$/python2/emailtestfive.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/environment.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/environment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/environment.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/environment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/extension.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/extension.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/extension.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/extension.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/fnmatch.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/fnmatch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/fnmatch.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/fnmatch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/freeze.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/freeze.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/freeze.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/freeze.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/gendata.py" afterPath="$PROJECT_DIR$/python2/gendata.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/genericpath.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/genericpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/genericpath.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/genericpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/git.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/git.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/git.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/git.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/handlesequence.py" afterPath="$PROJECT_DIR$/python2/handlesequence.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/html5parser.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/html5parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/huxiu.py" afterPath="$PROJECT_DIR$/python2/webcrawler/huxiu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/ihatexml.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/ihatexml.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/index.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/index.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/index.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/initialise.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/initialise.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/install.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/install.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_egg_info.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_egg_info.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_lib.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_lib.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_lib.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_lib.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_scripts.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/install_scripts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_scripts.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/install_scripts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/spiders/items.json" afterPath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/spiders/items.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/itzhaopin/itzhaopin/items.py" afterPath="$PROJECT_DIR$/python2/webcrawler/itzhaopin/itzhaopin/items.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/items.py" afterPath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/items.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/jilin2.py" afterPath="$PROJECT_DIR$/python2/webcrawler/jilin2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/launcher manifest.xml" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/launcher manifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/launcher manifest.xml" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/launcher manifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/lib2to3_ex.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/lib2to3_ex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/lib2to3_ex.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/lib2to3_ex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/linecache.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/linecache.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/linecache.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/linecache.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/list.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/list.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/locale.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/locale.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/locale.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/locale.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/locations.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/locations.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/locations.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/locations.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/locators.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/locators.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/log.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/log.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/log.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/log.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/login163mail.py" afterPath="$PROJECT_DIR$/python2/login163mail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/manifest.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/manifest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/_markerlib/markers.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/_markerlib/markers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/markers.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/markers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/_markerlib/markers.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/_markerlib/markers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/mercurial.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/mercurial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/mercurial.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/mercurial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip-1.5.6.dist-info/metadata.json" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip-1.5.6.dist-info/metadata.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip-1.5.6.dist-info/metadata.json" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip-1.5.6.dist-info/metadata.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/metadata.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/metadata.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/mtfacfib.py" afterPath="$PROJECT_DIR$/python2/mtfacfib.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/mtsleep1.py" afterPath="$PROJECT_DIR$/python2/mtsleep1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/mtsleep2.py" afterPath="$PROJECT_DIR$/python2/mtsleep2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/mtsleep3.py" afterPath="$PROJECT_DIR$/python2/mtsleep3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/myThread.py" afterPath="$PROJECT_DIR$/python2/myThread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/mythread.py" afterPath="$PROJECT_DIR$/python2/webcrawler/mythread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/ntpath.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/ntpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/ntpath.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/ntpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/onethr.py" afterPath="$PROJECT_DIR$/python2/onethr.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/os.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/os.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/os.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/os.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/package_index.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/package_index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/package_index.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/package_index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/pep425tags.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/pep425tags.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/pep425tags.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/pep425tags.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/pip2.6" afterPath="$PROJECT_DIR$/python2/bin/pip2.6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/pip2.6" afterPath="$PROJECT_DIR$/python3/bin/pip2.6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/pip2" afterPath="$PROJECT_DIR$/python2/bin/pip2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/pip2" afterPath="$PROJECT_DIR$/python3/bin/pip2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/bin/pip" afterPath="$PROJECT_DIR$/python2/bin/pip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/bin/pip" afterPath="$PROJECT_DIR$/python3/bin/pip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pkg_resources.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pkg_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/pkg_resources.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/pkg_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pkg_resources.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pkg_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/pkg_resources.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/pkg_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/posixpath.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/posixpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/posixpath.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/posixpath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py26compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py26compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/py26compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/py26compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py26compat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py26compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/py26compat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/py26compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py27compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py27compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py27compat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py27compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py31compat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/py31compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py31compat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/py31compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools-3.6.dist-info/pydist.json" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools-3.6.dist-info/pydist.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools-3.6.dist-info/pydist.json" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools-3.6.dist-info/pydist.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/qiushibaike.py" afterPath="$PROJECT_DIR$/python2/webcrawler/qiushibaike.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/re-vendor.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/re-vendor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/re-vendor.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/re-vendor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/re.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/re.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/re.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/re.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/receivemail.py" afterPath="$PROJECT_DIR$/python2/receivemail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/register.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/register.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/register.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/register.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/req.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/req.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/req.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/req.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/resources.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/retest.py" afterPath="$PROJECT_DIR$/python2/retest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/retestone.py" afterPath="$PROJECT_DIR$/python2/retestone.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/rewho.py" afterPath="$PROJECT_DIR$/python2/rewho.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/rotate.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/rotate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/rotate.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/rotate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/runner.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/runner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/runner.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/runner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/sandbox.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/sandbox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/sandbox.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/sandbox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/sanitizer.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/sanitizer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/saveopts.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/saveopts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/saveopts.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/saveopts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/script template (dev).py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/script template (dev).py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/script template (dev).py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/script template (dev).py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/script template.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/script template.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/script template.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/script template.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/scripts.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/scripts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/sdist.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/sdist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/sdist.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/sdist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/search.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/search.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/search.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/search.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/sendmail.py" afterPath="$PROJECT_DIR$/python3/sendmail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/sendmailone.py" afterPath="$PROJECT_DIR$/python2/sendmailone.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/sendmailwithattachment.py" afterPath="$PROJECT_DIR$/python2/sendmailwithattachment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/seq.py" afterPath="$PROJECT_DIR$/python2/seq.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/server.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/server.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/setopt.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/setopt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/setopt.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/setopt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/itzhaopin/itzhaopin/settings.py" afterPath="$PROJECT_DIR$/python2/webcrawler/itzhaopin/itzhaopin/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/settings.py" afterPath="$PROJECT_DIR$/python2/webcrawler/tutorial/tutorial/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/show.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/show.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/show.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/show.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/site-patch.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/site-patch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/site-patch.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/site-patch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/six.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/six.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/six.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/_vendor/six.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/sre.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/sre.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/sre.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/sre.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/sre_compile.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/sre_compile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/sre_compile.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/sre_compile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/sre_constants.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/sre_constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/sre_constants.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/sre_constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/sre_parse.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/sre_parse.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/sre_parse.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/sre_parse.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/ssl_support.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/ssl_support.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/ssl_support.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/ssl_support.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/stat.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/stat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/stat.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/stat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/subversion.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/vcs/subversion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/subversion.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/vcs/subversion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/svn_utils.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/svn_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/svn_utils.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/svn_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/template.py" afterPath="$PROJECT_DIR$/python2/template.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/test.py" afterPath="$PROJECT_DIR$/python2/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/test.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/test.py" afterPath="$PROJECT_DIR$/python2/webcrawler/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/test.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_bdist_egg.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_bdist_egg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_bdist_egg.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_bdist_egg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_build_ext.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_build_ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_build_ext.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_build_ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_develop.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_develop.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_develop.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_develop.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_dist_info.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_dist_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_dist_info.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_dist_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_easy_install.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_easy_install.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_easy_install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_egg_info.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_egg_info.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_egg_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_find_packages.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_find_packages.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_find_packages.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_find_packages.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_markerlib.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_markerlib.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_markerlib.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_markerlib.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_packageindex.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_packageindex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_packageindex.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_packageindex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_resources.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_resources.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_sandbox.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_sandbox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_sandbox.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_sandbox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_sdist.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_sdist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_sdist.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_sdist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_svn.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_svn.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_svn.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_svn.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_test.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_test.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_upload_docs.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/tests/test_upload_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_upload_docs.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/tests/test_upload_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/testthread.py" afterPath="$PROJECT_DIR$/python2/testthread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/testthread2.py" afterPath="$PROJECT_DIR$/python2/testthread2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadcondition.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadcondition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadevent.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadevent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadpool1.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadpool1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadpool2.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadpool2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadpool3.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadpool3.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadpool4.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadpool4.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/threadpool5.py" afterPath="$PROJECT_DIR$/python2/webcrawler/threadpool5.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/timer.py" afterPath="$PROJECT_DIR$/python2/webcrawler/timer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/tmp_jilinu.py" afterPath="$PROJECT_DIR$/python2/webcrawler/tmp_jilinu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/tokenizer.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/tokenizer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/types.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/types.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/types.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/types.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/uninstall.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/uninstall.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/uninstall.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/uninstall.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/upload_docs.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/setuptools/command/upload_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/upload_docs.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/setuptools/command/upload_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/util.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/util.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/util.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/utils.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/html5lib/utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/version.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/version.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/wangman.py" afterPath="$PROJECT_DIR$/python2/wangman.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/wangtieba.py" afterPath="$PROJECT_DIR$/python2/webcrawler/wangtieba.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/warnings.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/warnings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/warnings.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/warnings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/wheel.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/wheel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/wheel.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/distlib/wheel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/wheel.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/wheel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/wheel.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/wheel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/wheel.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/wheel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/win32.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/win32.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/winterm.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/_vendor/colorama/winterm.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/webcrawler/yanjie.py" afterPath="$PROJECT_DIR$/python2/webcrawler/yanjie.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/zip.py" afterPath="$PROJECT_DIR$/python2/lib/python2.6/site-packages/pip/commands/zip.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/zip.py" afterPath="$PROJECT_DIR$/python3/lib/python2.6/site-packages/pip/commands/zip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="python.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -344,6 +17,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/python$threadpool4.coverage" NAME="threadpool4 Coverage Results" MODIFIED="1428743553324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python2/webcrawler" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -354,8 +30,29 @@
   <component name="FavoritesManager">
     <favorites_list name="python" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="threadpool4.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python2/webcrawler/threadpool4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.84751207" vertical-offset="288" max-vertical-offset="2400">
+              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/python2/webcrawler/threadpool4.py" />
+      </list>
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -373,7 +70,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -408,22 +105,275 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webcrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="E:/" />
-    <property name="options.lastSelected" value="reference.settings.ide.settings.file-colors" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="LayoutCode.rearrangeEntries" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="recentsLimit" value="5" />
   </component>
-  <component name="RunManager">
-    <list size="0" />
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings sdk-home="D:\software\python2.7.8\python.exe">
+        <option name="mySdkHome" value="D:\software\python2.7.8\python.exe" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.threadpool4">
+    <configuration default="false" name="threadpool4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python2/webcrawler" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python2/webcrawler/threadpool4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.threadpool4" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.threadpool4" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="53acb6ca-1129-4f6c-acbb-7f67a9bb4ef8" name="Default" comment="" />
@@ -437,26 +387,26 @@
     <frame x="81" y="-9" width="1848" height="1098" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.7823344" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="124" y="177" width="1762" height="726" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32889345" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -478,5 +428,57 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/python2/applytest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="944">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/decorator2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="944">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/emailtestfive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3216">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/gendata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="944">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/retestone.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="944">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/sendmailwithattachment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python2/webcrawler/threadpool4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84751207" vertical-offset="288" max-vertical-offset="2400">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
