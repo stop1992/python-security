@@ -15,7 +15,7 @@ class OnePieceTieba:
     def __init__(self, url):
         self.url = url
 
-    @profile
+    #@profile
     def get_html_data(self):
         response = urllib2.urlopen(self.url)
         self.content = response.read()
