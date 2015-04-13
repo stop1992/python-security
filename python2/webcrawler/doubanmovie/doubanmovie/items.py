@@ -12,6 +12,7 @@ from scrapy import Field, Item
 class DoubanmovieItem(Item):
 	movie_name = Field()
 	movie_director = Field()
-	movie_starts = Field()
+	movie_writer = Field()
+	movie_stars = Field()
 	movie_rating = Field()
 	movie_quote = Field

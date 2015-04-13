@@ -13,8 +13,15 @@ BOT_NAME = 'doubanmovie'
 SPIDER_MODULES = ['doubanmovie.spiders']
 NEWSPIDER_MODULE = 'doubanmovie.spiders'
 
+COOKIES_ENABLED = False
+
 ITEM_PIPELINES = {
 	'doubanmovie.pipelines.DoubanmoviePipeline':300
+}
+
+DOWNLOADER_MIDDLEWARES = {
+	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware':None,
+	'doubanmovie.spiders.poll_useragent.PollUserAgentMiddleware':400
 }
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'doubanmovie (+http://www.yourdomain.com)'
