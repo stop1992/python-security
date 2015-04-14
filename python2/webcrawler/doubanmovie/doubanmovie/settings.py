@@ -21,7 +21,10 @@ ITEM_PIPELINES = {
 
 DOWNLOADER_MIDDLEWARES = {
 	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware':None,
-	'doubanmovie.spiders.poll_useragent.PollUserAgentMiddleware':400
+	'doubanmovie.spiders.poll_useragent.PollUserAgentMiddleware':300
 }
+
+#LOG_LEVEL = 'ERROR'
+#LOG_LEVEL = 'CRITICAL'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'doubanmovie (+http://www.yourdomain.com)'

@@ -26,8 +26,8 @@ user_agent_list = [
 ]
 
 class PollUserAgentMiddleware(UserAgentMiddleware):
-	def __init__(self, user_agent=''):
-		self.user_agent = user_agent
+	#def __init__(self, user_agent=''):
+		#self.user_agent = user_agent
 		
 	def process_request(self, request, spider):
 		ua = random.choice(user_agent_list)
