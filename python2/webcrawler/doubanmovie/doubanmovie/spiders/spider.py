@@ -1,112 +1,54 @@
 # -*- encoding:utf-8 -*-
 
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
-from scrapy.selector import Selector
+from scrapy.spider import Spider
+#from srapy.selector import Selector
 from scrapy.http import Request
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
+import re
 import traceback
+import types
 
-from doubanmovie.items import DoubanmovieItem
+#from doubanmovie.items import DoubanmovieItem
 
-class DoubanmovieSpider(CrawlSpider):
-	""" scrapy douban movie infomation """
-	name = 'doubanmovie'
-	allow_doumains = ['movie.douban.com']
-	start_urls = [ 'http://movie.douban.com/top250' ]
-	#download_delay = 2
-	rules = [
-	# request next page site
-	Rule(LxmlLinkExtractor(allow=(r'http://movie\.douban\.com/subject/\d+/$')),
-		 callback='parse_item1',
-		 follow=True
-		),
-	Rule(LxmlLinkExtractor(allow=(r'\?start=\d+&filter=&type=')),
-		 callback='parse_next_site',
-		 follow=True
-		)
-	]
+class DoubanmovieSpider(Spider):
 
-	def parse_next_site(self, response):
+	name = 'moviespider'
+	allow_domain = ['movie.douban.com']
+	start_urls = ['http://movie.douban.com/top250']
+	download_delay = 3
 
-		#if response.status == 200:
-			#Request
+	def parse(self, response):
+
 		print response.url
-		raw_input('press any key to continue')
+		pattern = re.compile(r'<a href="(http://movie.douban.com/subject/\d+/)" class="">')
+		subjects = pattern.findall(response.body)
 
+		for url in subjects:
+			yield Request(url, callback=self.parse_subjects)
 
-	def parse_item1(self, response):
-		if response.status == 403:
-			yield Request(response.url, callback='parse_item1')
-
-		sel = Selector(response)
-		item = DoubanmovieItem()
-
+		pattern = re.compile(r'<a href="\?start=(\d+)&amp;filter=&amp;type=" >后页&gt;</a>')
+		next_page = pattern.search(response.body)
+		#if next_page == types.NoneType:
+			#return None
+			#yield None
+		#print len(next_page)
 		try:
-			item['movie_name'] = sel.xpath('//div[@id="content"]/h1/span[1]/text()').extract()[0]
-			soup = BeautifulSoup(response.body)
-			spans = soup.find_all('span', class_='attrs')
-
-			if len(spans) == 3:
-				item['movie_director'] = spans[0].get_text()
-				item['movie_writer'] = spans[1].get_text()
-				item['movie_stars'] = spans[2].get_text()
-			elif len(spans) == 2:
-				item['movie_director'] = spans[0].get_text()
-				item['movie_stars'] = spans[1].get_text()
-				item['movie_writer'] = None
-
+			if next_page.group(1):
+				next_page_url = 'http://movie.douban.com/top250?start='\
+					+str(next_page.group(1))+'&filter=&type='
+				yield Request(url=next_page_url, callback=self.parse)
 		except Exception:
-			print '\n\n\n---------------------------------error------------------------'
-			print traceback.print_exc()
+			print '\n\n\n##########################################################'
+			traceback.print_exc()
 			print response.url
-			print '---------------------------------error------------------------'
+			print '###############################################################\n\n'
 			raw_input('press any key to continue')
 
-		#return item
-		yield item
-
-	def parse_item2(self, response):
-		if response.status == 403:
-			print '\n\n---------------------------'
-			print response.headers
-			print response.request.headers
-			print '-----------------------------'
-			raw_input('press any key to continue')
-		sel = Selector(response)
-		item = DoubanmovieItem()
-
-		try:
-			item['movie_name'] = sel.xpath('//div[@id="content"]/h1/span[1]/text()').extract()[0]
-			soup = BeautifulSoup(response.body)
-			spans = soup.find_all('span', class_='attrs')
-			if len(spans) == 3:
-				item['movie_director'] = spans[0].get_text().replace(' ', '')
-				item['movie_writer'] = spans[1].get_text().replace(' ', '') 
-				item['movie_stars'] = spans[2].get_text().replace(' ', '') 
-			elif len(spans) == 2:
-				item['movie_director'] = spans[0].get_text().replace(' ', '')
-				item['movie_writer'] = spans[1].get_text().replace(' ', '') 
-		except Exception as ex:
-			print '\n\n\n---------------------------------error------------------------'
-			print traceback.print_exc()
-			print ex.message
-			print response.url
-			print '---------------------------------error------------------------'
-			raw_input('press any key to continue')
-		
-		yield item
-
-		next_page_url = sel.xpath('//div[@id="content"]/div/div[1]/div[2]/span[3]/link/@href').extract()
-		print '-----------------------------------------------'
-		print len(next_page_url)
-		for url in next_page_url:
-			print url
-		print '-----------------------------------------------'
-
-		try:
-			next_page_url = 'http://movie.douban.com/top250' + next_page_url
-			yield Request(next_page_url, callback='parse_item2')
-		except Exception as ex:
-			print ex.message
+	def parse_subjects(self, response):
+		print '\n\n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+		print response.url
+		print '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+		#raw_input('press any key to continue')
+		return None
+		#yield 'test'
 

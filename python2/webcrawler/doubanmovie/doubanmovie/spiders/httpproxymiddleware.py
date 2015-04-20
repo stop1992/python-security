@@ -25,7 +25,8 @@ class GetProxyIP:
 
 class ProxyMiddleware(object):
 	def process_request(self, request, spider):
-		url = "http://pachong.org/area/short/name/cn/type/high.html"
+		#url = "http://pachong.org/area/short/name/cn/type/high.html"
+		url = 'http://pachong.org/'
 		proxyip = GetProxyIP(url)
 		proxyip.get_data()
 		fp = open('proxyip.txt', 'r')

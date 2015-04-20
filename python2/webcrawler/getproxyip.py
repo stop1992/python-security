@@ -29,6 +29,7 @@ class GetProxyIP:
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 	
-	url = "http://pachong.org/area/short/name/cn/type/high.html"
+	#url = "http://pachong.org/area/short/name/cn/type/high.html"
+	url = 'http://pachong.org/'
 	proxyip = GetProxyIP(url)
 	proxyip.get_data()
