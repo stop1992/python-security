@@ -8,8 +8,6 @@ import types
 import copy
 
 class Handle(object):
-	#def __init__(self):
-		#pass
 
 	def get_mrna_data(self):
 		fp = open('mRNA.txt', 'r')
@@ -26,9 +24,9 @@ class Handle(object):
 			self.mrna_1[i].append(rna_data[i])
 			self.mrna_1[i].append(0)
 			del m
-		#print self.mrna_1
 		self.mrna_2 = copy.deepcopy(self.mrna_1)
 		self.mrna_3 = copy.deepcopy(self.mrna_1)
+		self.mrna_4 = copy.deepcopy(self.mrna_1)
 
 
 	def handle_first_gene(self):
@@ -43,8 +41,7 @@ class Handle(object):
 					end = int(result.group(2))
 					for i in xrange(start, end):
 						self.mrna_1[i][1] += 1
-			#print self.mrna
-			#raw_input('press any key to continue')
+						self.mrna_4[i][1] += 1
 		first_xlsl_file = xlwt.Workbook()
 		table = first_xlsl_file.add_sheet('sheet1')
 		for i in xrange(self.len_rna):
@@ -64,6 +61,7 @@ class Handle(object):
 					end = int(result.group(2))
 					for i in xrange(start, end):
 						self.mrna_2[i][1] += 1
+						self.mrna_4[i][1] += 1
 		second_xlsl_file = xlwt.Workbook()
 		table = second_xlsl_file.add_sheet('sheet1')
 		for i in xrange(self.len_rna):
@@ -83,12 +81,22 @@ class Handle(object):
 					end = int(result.group(2))
 					for i in xrange(start, end):
 						self.mrna_3[i][1] += 1
+						self.mrna_4[i][1] += 1
 		second_xlsl_file = xlwt.Workbook()
 		table = second_xlsl_file.add_sheet('sheet1')
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_3[i][0])
 			table.write(i, 1, self.mrna_3[i][1])
 		second_xlsl_file.save('AK055074.xls')
+
+	def total(self):
+		forth_xlsl_file = xlwt.Workbook()
+		table = forth_xlsl_file.add_sheet('sheet1')
+		for i in xrange(self.len_rna):
+			table.write(i, 0, self.mrna_4[i][0])
+			table.write(i, 1, self.mrna_4[i][1])
+		forth_xlsl_file.save('total.xls')
+
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
@@ -98,3 +106,4 @@ if __name__ == '__main__':
 	handle.handle_first_gene()
 	handle.handle_second_gene()
 	handle.handle_third_gene()
+	handle.total()
