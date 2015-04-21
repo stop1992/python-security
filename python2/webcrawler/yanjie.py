@@ -1,60 +1,87 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 #!/usr/bin/env python
 
 import os
+import threading
+import Queue
 import xlrd
 import requests
 from bs4 import BeautifulSoup
-import threading
-from Queue import Queue
-#import codecs
 
-max_threads = 10
+# global variable
+max_threads = 50
+Gene_queue = Queue.Queue()  # store gene names
+Html_queue = Queue.Queue()  # store html data
 
-class GeneSearch(threading.Thread):
-	def __init__(self, num):
+class WorkManager:
+    def __init__(self, work_queue_size, thread_pool_size):
+		self.work_queue = Queue.Queue()
+		self.thread_pool = [] # initiate, no have a thread
+		self.work_queue_size = work_queue_size
+		self.thread_pool_size = thread_pool_size
+		self.__init_work_queue()
+		self.__init_thread_pool()
+
+    def __init_work_queue(self):
+		for i in xrange(self.work_queue_size):
+			self.work_queue.put((get_html_data, Gene_queue.get()))
+
+    def __init_thread_pool(self):
+		for i in xrange(self.thread_pool_size):
+			self.thread_pool.append(WorkThread(self.work_queue))
+	
+    def finish_all_threads(self):
+		for i in xrange(self.thread_pool_size):
+			if self.thread_pool[i].is_alive():
+				self.thread_pool[i].join()
+
+
+class WorkThread(threading.Thread):
+	def __init__(self, work_queue):
 		threading.Thread.__init__(self)
-		self.base_url = 'http://www.ncbi.nlm.nih.gov/gene'
-		self.num = num
+		self.work_queue = work_queue
+		self.start()
 
-	#def get_data(self):
 	def run(self):
-		global gene_queue
 		while True:
-			gene_name = gene_queue.get()
-			print gene_name
-			if gene_name == 'stop':
-				print 'thread', self.num, 'over'
+			try:
+				func, args = self.work_queue.get(block=False)
+				func(args)
+			except Queue.Empty:
 				break
-			else:
-				data = {'term': gene_name}
-				response = requests.get(self.base_url, params=data)
-				global html_queue
-				html_queue.put(response.text)
+			except requests.ConnectionError:
+				while True:
+					try:
+						func(args)
+					except requests.ConnectionError:
+						continue
+				continue
+	
+
+def get_html_data(gene_name):
+	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
+	data = {'term':gene_name}
+	html_data = requests.get(base_url, params=data)
+	global Html_queue
+	Html_queue.put(html_data.text)
+	
 
 def get_data_from_excel():
-	data = xlrd.open_workbook('mRNAdata.xls')
-	table = data.sheets()[0]
-	col_values = table.col_values(7)
-	global gene_queue
-	for i in xrange(11, table.nrows):
-		gene_queue.put(col_values[i])
+    data = xlrd.open_workbook('mRNAdata.xls')
+    table = data.sheets()[0]
+    col_values = table.col_values(7)
+    global Gene_queue
+    for i in xrange(11, table.nrows):
+        Gene_queue.put(col_values[i])
 
-def stop_free_thread_pool():
-	global gene_queue
-	for i in xrange(max_threads):
-		gene_queue.put('stop')
 
 class ParseGeneData:
-	def __init__(self):
-		pass
+    def __init__(self):
+        pass
 
-gene_queue = Queue() # store gene names 
-html_queue = Queue() # store html data 
 
-if __name__ == '__main__':
-	os.system('printf "\033c"')
 
+<<<<<<< HEAD
 	get_data_from_excel()
 	#print gene_queue.qsize()
 	#raw_input('press')
@@ -66,8 +93,14 @@ if __name__ == '__main__':
 		genesearch.start()
 
 	stop_free_thread_pool()
+=======
+if __name__ == '__main__':
+    os.system('printf "\033c"')
+>>>>>>> d9626fb669fc8d43c17223e8e416746ad6122a15
 
-	for i in xrange(max_threads):
-		gene_threads_pool[i].join()
+    get_data_from_excel()
+    print Gene_queue.qsize()
+    work_manager = WorkManager(Gene_queue.qsize(), max_threads)
+    work_manager.finish_all_threads()
 
-	print html_queue.qsize()
+    print Html_queue.qsize()
