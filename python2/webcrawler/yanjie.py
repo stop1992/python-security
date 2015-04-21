@@ -56,7 +56,7 @@ if __name__ == '__main__':
 	os.system('printf "\033c"')
 
 	get_data_from_excel()
-	print gene_queue.qsize()
+	#print gene_queue.qsize()
 	#raw_input('press')
 	gene_threads_pool = []
 	for i in xrange(max_threads):
