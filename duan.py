@@ -13,6 +13,7 @@ class Handle(object):
 		fp = open('mRNA.txt', 'r')
 		# just get first line data 
 		firstline = fp.readline()
+		self.dotbrackets = fp.readline()
 		rna_data  = firstline.split('>')[1]
 		self.len_rna = len(rna_data)
 		# data formar: 
@@ -27,12 +28,13 @@ class Handle(object):
 		self.mrna_2 = copy.deepcopy(self.mrna_1)
 		self.mrna_3 = copy.deepcopy(self.mrna_1)
 		self.mrna_4 = copy.deepcopy(self.mrna_1)
+# print self.dotbrackets
 
 
 	def handle_first_gene(self):
 		dir_name = './testone/'
 		for file_name in os.listdir(dir_name):
-			print file_name
+			# print file_name
 			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
 			for line in open(dir_name+file_name, 'r'):
 				result = pattern.match(line)
@@ -47,12 +49,13 @@ class Handle(object):
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_1[i][0])
 			table.write(i, 1, self.mrna_1[i][1])
+			table.write(i, 2, self.mrna_1[i][1])
 		first_xlsl_file.save('ENST00000449361.xls')
 
 	def handle_second_gene(self):
 		dir_name = './testtwo/'
 		for file_name in os.listdir(dir_name):
-			print file_name
+			# print file_name
 			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
 			for line in open(dir_name+file_name, 'r'):
 				result = pattern.match(line)
@@ -72,7 +75,7 @@ class Handle(object):
 	def handle_third_gene(self):
 		dir_name = './testthree/'
 		for file_name in os.listdir(dir_name):
-			print file_name
+			# print file_name
 			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
 			for line in open(dir_name+file_name, 'r'):
 				result = pattern.match(line)
@@ -87,6 +90,7 @@ class Handle(object):
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_3[i][0])
 			table.write(i, 1, self.mrna_3[i][1])
+			table.write(i, 2, self.dotbrackets[i])
 		second_xlsl_file.save('AK055074.xls')
 
 	def total(self):
@@ -95,6 +99,7 @@ class Handle(object):
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_4[i][0])
 			table.write(i, 1, self.mrna_4[i][1])
+			table.write(i, 2, self.dotbrackets[i])
 		forth_xlsl_file.save('total.xls')
 
 
