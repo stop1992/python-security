@@ -80,7 +80,7 @@ class ParseGeneData:
         pass
 
 
-
+"""
 <<<<<<< HEAD
 	get_data_from_excel()
 	#print gene_queue.qsize()
@@ -94,9 +94,10 @@ class ParseGeneData:
 
 	stop_free_thread_pool()
 =======
+"""
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
->>>>>>> d9626fb669fc8d43c17223e8e416746ad6122a15
 
     get_data_from_excel()
     print Gene_queue.qsize()
