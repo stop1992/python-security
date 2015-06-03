@@ -9,12 +9,12 @@ import requests
 from bs4 import BeautifulSoup
 
 # global variable
-max_threads = 50
+max_threads = 1
 Gene_queue = Queue.Queue()  # store gene names
 Html_queue = Queue.Queue()  # store html data
 
 class WorkManager:
-    def __init__(self, work_queue_size, thread_pool_size):
+    def __init__(self, work_queue_size=1, thread_pool_size=1):
 		self.work_queue = Queue.Queue()
 		self.thread_pool = [] # initiate, no have a thread
 		self.work_queue_size = work_queue_size
@@ -61,6 +61,8 @@ class WorkThread(threading.Thread):
 def get_html_data(gene_name):
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
 	data = {'term':gene_name}
+	print base_url + '?term=' + gene_name
+	raw_input('enter any key.....')
 	html_data = requests.get(base_url, params=data)
 	global Html_queue
 	Html_queue.put(html_data.text)
@@ -101,7 +103,13 @@ if __name__ == '__main__':
 
     get_data_from_excel()
     print Gene_queue.qsize()
-    work_manager = WorkManager(Gene_queue.qsize(), max_threads)
+    # work_manager = WorkManager(Gene_queue.qsize(), max_threads)
+    work_manager = WorkManager()
     work_manager.finish_all_threads()
 
     print Html_queue.qsize()
+    for item in xrange(Html_queue.qsize()):
+		data = Html_queue.get()
+		# print type(data)
+		print data
+

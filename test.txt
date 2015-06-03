@@ -1,0 +1,1 @@
+//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[1]/td[2]/em

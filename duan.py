@@ -49,7 +49,7 @@ class Handle(object):
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_1[i][0])
 			table.write(i, 1, self.mrna_1[i][1])
-			table.write(i, 2, self.mrna_1[i][1])
+			table.write(i, 2, self.dotbrackets[i])
 		first_xlsl_file.save('ENST00000449361.xls')
 
 	def handle_second_gene(self):
@@ -70,6 +70,7 @@ class Handle(object):
 		for i in xrange(self.len_rna):
 			table.write(i, 0, self.mrna_2[i][0])
 			table.write(i, 1, self.mrna_2[i][1])
+			table.write(i, 2, self.dotbrackets[i])
 		second_xlsl_file.save('uc003ukl.xls')
 
 	def handle_third_gene(self):
