@@ -18,7 +18,8 @@ ITEM_PIPELINES = {
 	}
 
 SCHEDULER = 'guba.scrapy_redis.scheduler.Scheduler'
-SCHEDULER_PERSIST = True
+# SCHEDULER_PERSIST = True
+SCHEDULER_PERSIST = False
 SCHEDULER_QUEUE_CLASS = 'guba.scrapy_redis.queue.SpiderPriorityQueue'
 
 REDIS_HOST = '192.168.1.108'
