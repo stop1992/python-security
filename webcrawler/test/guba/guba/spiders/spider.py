@@ -46,10 +46,20 @@ class GubaSpider(BaseSpider):
 	def parse_detail(self, response):
 		item = GubaItem()
 
+		key_words = []
 		asktime = response.xpath(u'//*[@id="zwconttb"]/div[2]/text()').extract()
 		if asktime:
 			item['ask_time'] = asktime[0].split()[1]
 			item['stock_num'] = response.url.split(',')[1]
+			# compute key_words occur times in response.body
+			for item in key_words:
+				# print item
+				pattern = re.compile(item)
+				result = pattern.findall(response.body_as_unicode())
+					if result:
+						for i in result:
+							print i, 'in b'
+
 		else:
 			item['asktime'] =  'null'
 			item['stock_num'] = 'null'
