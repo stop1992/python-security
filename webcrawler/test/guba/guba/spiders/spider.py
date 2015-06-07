@@ -46,21 +46,29 @@ class GubaSpider(BaseSpider):
 	def parse_detail(self, response):
 		item = GubaItem()
 
-		key_words = []
+		# key_words to store key words, last element to count post amounts
+		key_words = [, 'post_amounts']
+		# key words occur times amounts
+		key_words_times = dict.fromkeys(key_words, 0)
 		asktime = response.xpath(u'//*[@id="zwconttb"]/div[2]/text()').extract()
 		if asktime:
+			# from asktime get ask_time
 			item['ask_time'] = asktime[0].split()[1]
+			# from url get stock_num
 			item['stock_num'] = response.url.split(',')[1]
 			# compute key_words occur times in response.body
 			for item in key_words:
 				# print item
 				pattern = re.compile(item)
 				result = pattern.findall(response.body_as_unicode())
-					if result:
-						for i in result:
-							print i, 'in b'
-
-		else:
-			item['asktime'] =  'null'
-			item['stock_num'] = 'null'
+				if result:
+					# every item occur times in response.body
+					key_word_times = len(result)
+					# sum up every key word
+					key_words_times[item] += key_word_times
+			key_words_times['key_word_times'] = 1 # represent post one time
+			item['key_words'] = key_words_times
+		# else:
+			# item['asktime'] =  'null'
+			# item['stock_num'] = 'null'
 		yield item
