@@ -2,15 +2,15 @@
 
 import re
 import requests
-import time
+# import time
 import os
 import threading
 import Queue
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 import xlrd
 
 # global variable
-max_threads = 15
+max_threads = 5
 Stock_queue = Queue.Queue()  # store gene names
 Html_queue = Queue.Queue()  # store html data
 
@@ -51,7 +51,7 @@ class WorkThread(threading.Thread):
 			except Queue.Empty:
 				break
 			except requests.ConnectionError:
-				print 'connection error'
+				print 'connection error:', requests.ConnectionError.message, requests.ConnectionError.errno
 				# while True:
 					# try:
 						# func(args)
