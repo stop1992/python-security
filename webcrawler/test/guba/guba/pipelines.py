@@ -8,6 +8,14 @@
 import json
 import codecs
 
+def dict_plus(dict_one, dict_two):
+	for key, value in dict_one.items():
+		if key in dict_two.keys():
+			dict_two[key] += dict_one[key]
+		else:
+			dict_two[key] = dict_one[key]
+	return dict_two
+
 class GubaPipeline(object):
 	MONGODB_SERVER = '192.168.1.108'
 	MONGODB_PORT = 27018
@@ -20,8 +28,6 @@ class GubaPipeline(object):
 		except Exception, e:
 			print str(e)
 			traceback.print_exc()
-		
-		# self.file = codecs.open('guba.json', mode='w', encoding='utf-8')
 
 	@classmethod
 	def from_crawler(cls, crawler):
@@ -33,8 +39,17 @@ class GubaPipeline(object):
 		return pipe
     
 	def process_item(self, item, spider):
-		line = json.dumps(dict(item)) + '\n'
-		self.file.write(line.decode('unicode-escape'))
-		# self.file.close()
-		print item
+		# use stock_num as collection
+		post = self.db[item['stock_num']]
+		# first get key words, then plus them ,then store
+		all_document = post.find_one({'ask_time':item['ask_time']})
+	
+		if all_document: # exist ask_time data
+			key_words = all_document['key_words']
+			# compute every day key words occur times
+			key_words = dict_plus(item['key_words'],key_words)
+			# find key words, then update
+			post.find_one_and_update({'ask_time':item['ask_time'], {'$set':{'key_words':key_words}}})
+		else:	# not exist ask_time data
+			post.insert({'ask_time':item['ask_time'], 'key_words':item['key_words'})
 		return item
