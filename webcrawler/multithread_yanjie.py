@@ -6,10 +6,11 @@ import time
 import os
 import threading
 import Queue
-from bs4 import BeautifulSoup
 import codecs
 from selenium import webdriver
 import xlrd
+import types
+import traceback
 
 # global variable
 MAX_THREADS = 5
@@ -50,6 +51,8 @@ class WorkThread(threading.Thread):
 		while True:
 			try:
 				func, args = self.work_queue.get(block=False)
+				if type(args) == types.FloatType:
+					continue
 				func(args, self.driver)
 				# func(args, 'test')
 			except Queue.Empty:
@@ -71,17 +74,54 @@ def get_data():
     for i in xrange(11, col_len):
 		INPUT_QUEUE.put(col_values[i])
 
-def handle_data(gene_name, driver):
-	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
-	url = base_url + gene_name
-	# driver = webdriver.PhantomJS()
-	driver.get(url)
+def handle_full_report(driver, gene_name, sign):
+	try:
+		gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
+	except:
+		print '\n' + sign + 'error url:', driver.current_url  + '\t' + gene_name + '\t' + 'Get gene_type error' + '\n'
+		return 
+	try:
+		exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')
+	except:
+		print '\nerror url:', driver.current_url  + '\t' + gene_name + 'get exon_count erro' + '\n'
+		return 
 
 	try:
+ 		relate_articles = driver.find_elements_by_class_name('generef-link')
+		# relate_articles = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[4]/div[2]/div[1]/div/ol')
+	except Exception, e:
+		print 'get relate_articles error'
+		print str(e)
+
+	try:
+		if relate_articles[0]:
+			relate_articles_nums = unicode(len(relate_articles[0].find_elements_by_tag_name('li')))
+	except Exception, e:
+		print 'get relate_article_len error'
+		print str(e)
+
+	pattern = re.compile(ur'See all (\d+) citations in')
+	result = pattern.search(driver.page_source)
+	if result:
+		relate_articles_nums = result.group(1)
+
+	print 'gene_type:', gene_type.text + '\t' +  'exon_count:' + exon_count.text + '\t' + 'article_nums:', relate_articles_nums
+	OUTPUT_QUEUE.put(gene_name + ' ' + gene_type.text + ' ' + exon_count.text + ' ' + relate_articles_nums)
+
+def handle_data(gene_name, driver):
+	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
+	first_url = base_url + gene_name
+	driver.get(first_url)
+
+	if len(re.findall(ur'Full Report', driver.page_source)) > 0:
+		handle_full_report(driver, gene_name, 'first')
+		return
+		
+	try:
 		result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
-	except:
-		print 'no result' 
-		return 
+	except Exception, e:
+		print str(e)
+		print traceback.print_exc()
 
 	line_numbers = 20
 	if len(result_element.text) < 15:
@@ -96,31 +136,18 @@ def handle_data(gene_name, driver):
 		if exists_homo_sapiens.text == 'Homo sapiens':
 			xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[1]/div[2]/a'
 			get_gene_href = driver.find_element_by_xpath(xpath)
-			url = get_gene_href.get_attribute('href')
-			# driver.close()
-			# driver.quit()
-			# print '\n', url, '\n'
-			# driver = webdriver.PhantomJS()
-			driver.get(url)
-			try:
-				gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
-				exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')
-			except:
-				print '\n\nerror url:', driver.current_url, '\n\n\n'
-				break
-
-			print 'gene_type: ', gene_type.text
-			print 'exon_count: ', exon_count.text
-			OUTPUT_QUEUE.put(gene_type.text + ' ' + exon_count.text)
-			# driver.close()
-			# driver.quit()
+			second_url = get_gene_href.get_attribute('href')
+			if second_url:
+				driver.get(second_url)
+				handle_full_report(driver, gene_name, 'second')
+			else:
+				print 'second url none'
 			break
-	# driver.close()
-	# driver.quit()
 
 if __name__ == "__main__":
 	os.system('printf "\033c"')
 
+	start = time.time()
 	get_data()
 	print INPUT_QUEUE.qsize()
 	work_manager = WorkManager(INPUT_QUEUE.qsize(), MAX_THREADS)
@@ -128,3 +155,10 @@ if __name__ == "__main__":
 
 	print OUTPUT_QUEUE.qsize()
 
+	fp = codecs.open('result.txt', mode='w', encoding='utf-8')
+	# fp.write('gene_name'
+	while OUTPUT_QUEUE.qsize() > 0:
+		element = OUTPUT_QUEUE.get()
+		fp.write(element+'\n')
+	fp.close()
+	print 'use time:', time.time() - start

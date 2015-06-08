@@ -2,11 +2,9 @@
 
 import re
 import requests
-# import time
 import os
 import threading
 import Queue
-# from bs4 import BeautifulSoup
 import xlrd
 
 # global variable
@@ -35,7 +33,6 @@ class WorkManager:
 		for i in xrange(self.thread_pool_size):
 			if self.thread_pool[i].is_alive():
 				self.thread_pool[i].join()
-
 
 class WorkThread(threading.Thread):
 	def __init__(self, work_queue):
