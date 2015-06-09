@@ -89,8 +89,26 @@ def test_gene_type():
 			break
 
 
+def test2():
+	url = 'http://www.ncbi.nlm.nih.gov/gene/2811'
+	response = requests.get(url)
+	result = re.findall(ur'Full Report', response.text)
+	if result:
+		print result
+
+def test3():
+	url = 'http://www.ncbi.nlm.nih.gov/pubmed/?term=FXN'
+	# response = requests.get(url)
+	driver = webdriver.PhantomJS()
+	driver.get(url)
+	# print response.text
+	result = re.findall(ur'articles about FXN gene function', driver.page_source)
+	if result:
+		print result
+
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	test_gene_type()
+	test3()
+	# test_gene_type()
 	# os.system('kill 9 `pgrep phantomjs`')

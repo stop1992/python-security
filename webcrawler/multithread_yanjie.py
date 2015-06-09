@@ -13,7 +13,7 @@ import types
 import traceback
 
 # global variable
-MAX_THREADS = 5
+MAX_THREADS = 10
 OUTPUT_QUEUE = Queue.Queue()  # store gene names
 INPUT_QUEUE = Queue.Queue()  # store html data
 
@@ -74,11 +74,12 @@ def get_data():
     for i in xrange(11, col_len):
 		INPUT_QUEUE.put(col_values[i])
 
-def handle_full_report(driver, gene_name, sign):
+def handle_full_report(driver, gene_name, sign, url):
+	driver.get(url)
 	try:
 		gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
 	except:
-		print '\n' + sign + 'error url:', driver.current_url  + '\t' + gene_name + '\t' + 'Get gene_type error' + '\n'
+		print '\n' + sign + ' error url:', driver.current_url  + ' ' + gene_name + ' ' + 'Get gene_type error' +  ' ' + url + '\n'
 		return 
 	try:
 		exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')
@@ -93,6 +94,7 @@ def handle_full_report(driver, gene_name, sign):
 		print 'get relate_articles error'
 		print str(e)
 
+	relate_articles_nums = 0
 	try:
 		if relate_articles[0]:
 			relate_articles_nums = unicode(len(relate_articles[0].find_elements_by_tag_name('li')))
@@ -105,33 +107,48 @@ def handle_full_report(driver, gene_name, sign):
 	if result:
 		relate_articles_nums = result.group(1)
 
-	print 'gene_type:', gene_type.text + '\t' +  'exon_count:' + exon_count.text + '\t' + 'article_nums:', relate_articles_nums
-	OUTPUT_QUEUE.put(gene_name + ' ' + gene_type.text + ' ' + exon_count.text + ' ' + relate_articles_nums)
+	try:
+		print 'gene_type:', gene_type.text + '\t' +  'exon_count:' + exon_count.text + '\t' + 'article_nums:', relate_articles_nums
+		OUTPUT_QUEUE.put(gene_name + ' ' + gene_type.text + ' ' + exon_count.text + ' ' + relate_articles_nums)
+	except Exception, e:
+		print str(e)
+		print driver.current_url
 
 def handle_data(gene_name, driver):
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
 	first_url = base_url + gene_name
-	driver.get(first_url)
 
-	if len(re.findall(ur'Full Report', driver.page_source)) > 0:
-		handle_full_report(driver, gene_name, 'first')
+	response = requests.get(first_url)
+	if len(re.findall(ur'Full Report', response.text)) > 0:
+		handle_full_report(driver, gene_name, 'first', first_url)
+		print 'excute handle_full_report'
 		return
 		
+	driver.get(first_url)
 	try:
 		result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
 	except Exception, e:
 		print str(e)
-		print traceback.print_exc()
+		print 'get result_element error, error url:', driver.current_url
+		# print traceback.print_exc()
 
 	line_numbers = 20
-	if len(result_element.text) < 15:
-		tmp_text = result_element.text.split()
-		line_numbers = int(tmp_text[1])
+	try:
+		if len(result_element.text) < 15:
+			tmp_text = result_element.text.split()
+			line_numbers = int(tmp_text[1])
+	except Exception, e:
+		print str(e)
+		print driver.current_url
 
 	for line in xrange(line_numbers):
 		line += 1
 		xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[2]/em'
-		exists_homo_sapiens = driver.find_element_by_xpath(xpath)
+		try:
+			exists_homo_sapiens = driver.find_element_by_xpath(xpath)
+		except Exception, e:
+			continue
+			# print
 
 		if exists_homo_sapiens.text == 'Homo sapiens':
 			xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[1]/div[2]/a'
@@ -139,7 +156,7 @@ def handle_data(gene_name, driver):
 			second_url = get_gene_href.get_attribute('href')
 			if second_url:
 				driver.get(second_url)
-				handle_full_report(driver, gene_name, 'second')
+				handle_full_report(driver, gene_name, 'second', second_url)
 			else:
 				print 'second url none'
 			break
