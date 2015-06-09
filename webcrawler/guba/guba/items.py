@@ -13,4 +13,6 @@ class GubaItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     # pass
-	asktime = Field()
+	ask_time = Field()
+	stock_num = Field()
+	emotion_times = Field()

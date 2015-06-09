@@ -19,20 +19,18 @@ if __name__ == "__main__":
 
 	genes_name = get_data_from_excel()
 	genes_name.reverse()
-	# l = len(genes_name)
-	# print 'len:', l
 	for i in xrange(11):
 		genes_name.pop()
 
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
 
-	if os.path.exists('result.txt'):
-		os.remove('result.txt')
+	# if os.path.exists('result.txt'):
+		# os.remove('result.txt')
 
 	# genes_name = []
 	# genes_name.append('CFH')
 
-	fp = open('result.txt', 'a')
+	# fp = open('result.txt', 'a')
 
 	while len(genes_name) > 0:
 		gene_name = genes_name.pop()
@@ -45,7 +43,7 @@ if __name__ == "__main__":
 			result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
 		except:
 			print 'no result' 
-			fp.write('no result' + '\n')
+			# fp.write('no result' + '\n')
 			continue
 
 		line_numbers = 20
@@ -82,9 +80,9 @@ if __name__ == "__main__":
 					break
 
 				print 'gene_type: ', gene_type.text
-				fp.write('gene_type:' + gene_type.text + '\n')
+				# fp.write('gene_type:' + gene_type.text + '\n')
 				print 'exon_count: ', exon_count.text
-				fp.write('exon_count:' + gene_type.text + '\n')
+				# fp.write('exon_count:' + gene_type.text + '\n')
 				driver.quit()
 				os.system('kill 2 `pgrep phantomjs`')
 				break
