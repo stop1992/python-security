@@ -4,8 +4,7 @@ The people in the center cover a range of expertises including computational bio
 
 
 http://evol.bio.lmu.de/_statgen/software/phyloqfold/
-PhyloQFold is a program for Bayesian sampling of evolutionarily conserved RNA secondary structures with pseudoknots. It is freely available under the terms of the GNU General Public License (GPL). 
-PhyloQFold is en enhancement of McQFold.
+PhyloQFold is a program for Bayesian sampling of evolutionarily conserved RNA secondary structures with pseudoknots. It is freely available under the terms of the GNU General Public License (GPL).  PhyloQFold is en enhancement of McQFold.
 G. Doose, D. Metzler (2012) "Bayesian Sampling of evolutionarily conserved RNA secondary structures with pseudoknots" Bioinformatics, to appear.
 Please report all bugs in PhyloQFold to the developers of the program, Gero Doose and Dirk Metzler (e-mail addresses are given in the README accompanying the program).
 The R file McQFold_param.R shows how Approximate Bayesian Computation (ABC) can be applied to fit the paramters of the SCFG used in McQFold and PhyloQFold to given RNA secondary structures with pseudo-knots. It is assumed that secondary structures used as input for the estimation procedure are independent realizations of the stochastic model. This means that from each class of homologous RNA sequences you should select one representative our a consensus structure. (In our R file we show examples with simulated data.) If you want to apply the ABC method given in our R file (also if you have real data), you first need to compile the C++ program qsimul.cc (e.g. with g++ -o qsimul qsimul.cc -O2), which simulates RNA secondary structures with pseudo-knots according to the grammar model, and you need to have the abc package installed in R.
