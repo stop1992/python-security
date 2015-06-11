@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-7 -*-  
 
 import os
 from pymongo import MongoClient

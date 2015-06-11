@@ -13,7 +13,7 @@ import types
 import traceback
 
 # global variable
-MAX_THREADS = 10
+MAX_THREADS = 5
 OUTPUT_QUEUE = Queue.Queue()  # store gene names
 INPUT_QUEUE = Queue.Queue()  # store html data
 
