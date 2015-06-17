@@ -20,10 +20,23 @@ def test1():
 		raw_input('press any key')
 	print len(result)
 
+def test2():
+	fp = open('mRNA.txt', 'r')
+	line = fp.readline()
+	print len(line)
+	print line
+	for i in xrange(len(line) - 1):
+		if line[i]:
+			print '\n---------'
+			print i, line[i]
+			print '---------'
+		else:
+			print 'this is null'
+			raw_input('press any key')
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	test1()
+	test2()
 
 

@@ -109,9 +109,13 @@ def test3():
 	if result:
 		print result
 
+def test4():
+	driver = webdriver.PhantomJS()
+	driver.get('http://www.baidu.com')
+	driver.close()
+	driver.get('http://www.taobao.com')
+	
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	test3()
-	# test_gene_type()
-	# os.system('kill 9 `pgrep phantomjs`')
+	test4()

@@ -13,7 +13,7 @@ import types
 import traceback
 
 # global variable
-MAX_THREADS = 5
+MAX_THREADS = 10
 OUTPUT_QUEUE = Queue.Queue()  # store gene names
 INPUT_QUEUE = Queue.Queue()  # store html data
 
@@ -75,7 +75,11 @@ def get_data():
 		INPUT_QUEUE.put(col_values[i])
 
 def handle_full_report(driver, gene_name, sign, url):
-	driver.get(url)
+	try:
+		driver.get(url)
+	except httplib.BadStatusLine:
+		print 'request full report url error'
+		return
 	try:
 		gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
 	except:
@@ -113,6 +117,7 @@ def handle_full_report(driver, gene_name, sign, url):
 	except Exception, e:
 		print str(e)
 		print driver.current_url
+	return 
 
 def handle_data(gene_name, driver):
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
@@ -129,7 +134,7 @@ def handle_data(gene_name, driver):
 		result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
 	except Exception, e:
 		print str(e)
-		print 'get result_element error, error url:', driver.current_url
+		print 'get result_element error, gene_name:', gene_name ,  ' error url:', driver.current_url
 		# print traceback.print_exc()
 
 	line_numbers = 20
@@ -155,7 +160,7 @@ def handle_data(gene_name, driver):
 			get_gene_href = driver.find_element_by_xpath(xpath)
 			second_url = get_gene_href.get_attribute('href')
 			if second_url:
-				driver.get(second_url)
+				# driver.get(second_url)
 				handle_full_report(driver, gene_name, 'second', second_url)
 			else:
 				print 'second url none'
