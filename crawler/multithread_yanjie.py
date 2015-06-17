@@ -11,6 +11,7 @@ from selenium import webdriver
 import xlrd
 import types
 import traceback
+import httplib
 
 # global variable
 MAX_THREADS = 10
@@ -130,13 +131,13 @@ def handle_data(gene_name, driver):
 		return
 		
 	driver.get(first_url)
+	"""
 	try:
 		result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
 	except Exception, e:
 		print str(e)
 		print 'get result_element error, gene_name:', gene_name ,  ' error url:', driver.current_url
 		# print traceback.print_exc()
-
 	line_numbers = 20
 	try:
 		if len(result_element.text) < 15:
@@ -146,6 +147,8 @@ def handle_data(gene_name, driver):
 		print str(e)
 		print driver.current_url
 
+	"""
+	line_numbers = 20
 	for line in xrange(line_numbers):
 		line += 1
 		xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[2]/em'

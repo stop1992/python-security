@@ -23,6 +23,7 @@ def get_data():
 		# print type(col_values[i])
 		if type(col_values[i]) == types.FloatType:
 			sum_float += 1
+			print i, 'is float'
     print sum_float
     print col_len - 17
 
@@ -118,4 +119,5 @@ def test4():
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	test4()
+	get_data()
+	# test4()
