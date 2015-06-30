@@ -67,11 +67,15 @@ class Handle(object):
 				continu_times += 1
 				for j in xrange(start, end+1):
 					self.continu_result[j] = continu_times
-				continu_count = 0
-				start = 0
-				end = 0
-
+			continu_count = 0
+			start = 0
+			end = 0
 			save_excel_sheet = save_excel.add_sheet(sheet.name, cell_overwrite_ok=True)
+			max_count = -1
+			min_count = 10000000
+			a = [0] * 20
+			max_len_a = -1
+
 			for i in xrange(self.mrna_len):
 				# write sequence num to excel
 				save_excel_sheet.write(i, 0, i)
@@ -79,14 +83,58 @@ class Handle(object):
 				save_excel_sheet.write(i, 1, self.mrna_seq[i])
 				# write count to excel
 				save_excel_sheet.write(i, 2, self.mrna_count[i])
+				# get min and max
+				if min_count > self.mrna_count[i]:
+					min_count = self.mrna_count[i]
+				if max_count < self.mrna_count[i]:
+					max_count = self.mrna_count[i]
+				a[self.mrna_count[i] / 100] += 1
+				if self.mrna_count[i] / 100 > max_len_a:
+					max_len_a = self.mrna_count[i] / 100
+
 				# write continuous times result
 				save_excel_sheet.write(i, 3, self.continu_result[i])
+
+			# print test result
+			print '\n------------------------------------------------'
+			print sheet.name
+			print 'min_count:', min_count
+			print 'max_count:' , max_count
+			start = 0
+			end = 99
+			for i in xrange(max_len_a + 1):
+				print start, '-', end, ':', a[i]	
+				start += 100
+				end += 100
+			# raw_input('press enter')
+			print '-------------------------------------------------\n'
+
+			# write total continus times
 			save_excel_sheet.write(self.mrna_len, 0, 'pieces:'+str(continu_times))
-			print 'pieces:', continu_times
+			tmp_count = 2
+			# write total min and max
+			save_excel_sheet.write(self.mrna_len + tmp_count, 0, 'min') 
+			save_excel_sheet.write(self.mrna_len + tmp_count, 1, min_count) 
+			tmp_count += 1
+			save_excel_sheet.write(self.mrna_len + tmp_count, 0, 'max') 
+			save_excel_sheet.write(self.mrna_len + tmp_count, 1, max_count) 
+			tmp_count += 2
+
+			start = 0
+			end = 99
+			for i in xrange(max_len_a + 1):
+				save_excel_sheet.write(self.mrna_len + tmp_count, 0, str(start) + '-' + str(end)) 
+				save_excel_sheet.write(self.mrna_len + tmp_count, 1, a[i]) 
+				tmp_count += 1
+				start += 100
+				end += 100
+
+			# print 'pieces:', continu_times
 		save_excel.save('result.xls')	
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
+	os.system('rm -rf result.xls')
 
 	handle = Handle()
 	handle.get_mrna_len()

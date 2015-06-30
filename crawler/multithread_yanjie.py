@@ -83,8 +83,11 @@ def handle_full_report(driver, gene_name, sign, url):
 		return
 	try:
 		gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
-	except:
+	except Exception, e:
 		print '\n' + sign + ' error url:', driver.current_url  + ' ' + gene_name + ' ' + 'Get gene_type error' +  ' ' + url + '\n'
+		print 'erro message:', str(e)
+		print traceback.print_exc()
+		print '\n\n'
 		return 
 	try:
 		exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')

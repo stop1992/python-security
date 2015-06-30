@@ -18,10 +18,25 @@ def test1():
 	for i in xrange(len(sys.argv)):
 		print i, sys.argv[i]
 
+def test2():
+	for i in xrange(10):
+		tmp = i
+	print tmp
+
+def test3():
+	a = 1
+	for i in xrange(10):
+		a *= 9
+	a *= 100
+	print a
+	for i in xrange(a):
+		if i % 100000000 == 0:
+			print i
+
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 
-	test1()
+	test3()
 	
 	# client = MongoClient('192.168.1.108', 27018)
 	# db = client['web']
