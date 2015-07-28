@@ -29,7 +29,7 @@ class WorkManager:
     def __init_thread_pool(self):
 		for i in xrange(self.thread_pool_size):
 			self.thread_pool.append(WorkThread(self.work_queue))
-	
+
     def finish_all_threads(self):
 		for i in xrange(self.thread_pool_size):
 			if self.thread_pool[i].is_alive():
@@ -56,7 +56,7 @@ class WorkThread(threading.Thread):
 					except requests.ConnectionError:
 						continue
 				continue
-	
+
 
 def get_html_data(gene_name):
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
@@ -66,7 +66,7 @@ def get_html_data(gene_name):
 	html_data = requests.get(base_url, params=data)
 	global Html_queue
 	Html_queue.put(html_data.text)
-	
+
 
 def get_data_from_excel():
     data = xlrd.open_workbook('mRNAdata.xls')

@@ -10,7 +10,6 @@ def test1():
 	(options, args) = parser.parse_args()
 	print options.url, args
 
-
 if __name__ == '__main__':
 	os.system('printf "\033c"')
 

@@ -1,2 +1,4 @@
 *.swp
 *.log
+match.txt
+match_value.txt
