@@ -1,4 +1,4 @@
-# -*- encoding:utf-8 -*- 
+# -*- encoding:utf-8 -*-
 
 import xlrd
 import os
@@ -74,3 +74,4 @@ if __name__ == '__main__':
 	handlestock.get_stkcd_data()
 	handlestock.handle_data()
 	print 'data handle finished'
+
