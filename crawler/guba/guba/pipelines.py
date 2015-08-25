@@ -11,9 +11,9 @@ import codecs
 def dict_plus(dict_one, dict_two):
     for key, value in dict_one.items():
         if key in dict_two.keys():
-                dict_two[key] += dict_one[key]
+            dict_two[key] += dict_one[key]
         else:
-                dict_two[key] = dict_one[key]
+            dict_two[key] = dict_one[key]
     return dict_two
 
 class GubaPipeline(object):

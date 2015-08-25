@@ -11,7 +11,7 @@ import requests
 import bs4
 
 # import chardet
-import mythread
+# import mythread
 
 
 # judge char is chinese or not
@@ -20,7 +20,6 @@ def is_chinese(unchar):
         return True
     else:
         return False
-
 
 #align output, if unichar is str ,then add space, else add chinese space
 def align_out(unichar, length):
