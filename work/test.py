@@ -120,8 +120,28 @@ class testclass(object):
         TEST += 1
         print TEST
 
+def test8():
+    a = [[2, 3], [3, 4]]
+    fp = open('test.txt', 'a')
+    b = str(a)
+    fp.write(b)
+    fp.write('\n')
+    fp.close()
+
+def test9():
+
+    for line in open('path.txt', 'r'):
+        print line
+        raw_input('please')
+
+def test10():
+    for i in xrange(100):
+        if i == 50:
+            sys.exit()
+        else:
+            print i, 'test.......'
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    t = testclass()
-    t.one()
+    test10()

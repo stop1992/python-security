@@ -10,7 +10,7 @@ import json
 import requests
 import bs4
 
-import chardet
+# import chardet
 import mythread
 
 

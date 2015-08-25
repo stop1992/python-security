@@ -11,6 +11,8 @@ import re
 from redis import Redis
 from pymongo import MongoClient
 import time
+import threading
+import Queue
 
 def get_data():
     data = xlrd.open_workbook('mRNAdata.xls')
@@ -40,7 +42,7 @@ def test():
 	except Exception, e:
 		print 'get relate_articles error'
 		print str(e)
-	
+
 	# print type(a)
 	try:
 		if relate_articles[0]:
@@ -127,12 +129,12 @@ def handle_full_report(driver, gene_name, sign, url):
 		gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
 	except:
 		print '\n' + sign + ' error url:', driver.current_url  + ' ' + gene_name + ' ' + 'Get gene_type error' +  ' ' + url + '\n'
-		return 
+		return
 	try:
 		exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')
 	except:
 		print '\nerror url:', driver.current_url  + '\t' + gene_name + 'get exon_count erro' + '\n'
-		return 
+		return
 
 	try:
  		relate_articles = driver.find_elements_by_class_name('generef-link')
@@ -160,7 +162,7 @@ def handle_full_report(driver, gene_name, sign, url):
 	except Exception, e:
 		print str(e)
 		print driver.current_url
-	return 
+	return
 
 def handle_data(gene_name, driver):
 	base_url = 'http://www.ncbi.nlm.nih.gov/gene/?term='
@@ -171,7 +173,7 @@ def handle_data(gene_name, driver):
 		handle_full_report(driver, gene_name, 'first', first_url)
 		print 'excute handle_full_report'
 		return
-		
+
 	driver.get(first_url)
 	"""
 	try:
@@ -211,6 +213,34 @@ def handle_data(gene_name, driver):
 				print 'second url none'
 			break
 
+def test5():
+    stock_num = '000001'
+    url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
+    print url
+    print 'start request....'
+    response = requests.get(url)
+    print 'end request....'
+    pattern = re.compile(ur'共有帖子数 (\d+) 篇')
+    result = pattern.search(response.text)
+    num = 0
+    if result:
+        num = int(result.group(1))
+    print 'stock_num:', stock_num, ' posts_num:', num
+    # print i, result.group(1)
+
+def test6():
+    url = 'http://guba.eastmoney.com/list,700001,f_5.html'
+    response = requests.get(url)
+    print response
+
+def test7():
+    queue = Queue.Queue()
+    queue.put('test')
+    print queue.qsize()
+    print queue.get()
+    print queue.qsize()
+
+
 
 if __name__ == '__main__':
 	os.system('printf "\033c"')
@@ -218,7 +248,7 @@ if __name__ == '__main__':
 	# get_data()
 	# url = 'http://www.ncbi.nlm.nih.gov/gene/51207'
 	# url = 'http://www.ncbi.nlm.nih.gov/gene/1738'
-	url = 'http://www.ncbi.nlm.nih.gov/gene/963'
-	driver = webdriver.PhantomJS()
-	handle_full_report(driver, 'test', 'test', url)
-	# test4()
+	# url = 'http://www.ncbi.nlm.nih.gov/gene/963'
+	# driver = webdriver.PhantomJS()
+	# handle_full_report(driver, 'test', 'test', url)
+        test6()
