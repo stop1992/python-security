@@ -7,6 +7,7 @@ import os
 import threading
 import Queue
 from bs4 import BeautifulSoup
+import xlrd
 
 # global variable
 max_threads = 15
@@ -79,19 +80,28 @@ def get_html_data(stock_num):
 
 
 def get_stock_num():
-    top_stock = 610000
-    for i in xrange(1, top_stock):
-        stock_num = str(i)
-        stock_len = len(stock_num)
-        for j in xrange(6-stock_len):
-            stock_num = '0' + stock_num
+
+    data = xlrd.open_workbook('stocknum.xlsx')
+    sheet = data.sheets()[3]
+    nrows =  sheet.nrows
+    for i in xrange(nrows):
+         stock = sheet.cell(i, 0).value
+         tmp_split = stock.split('.')
+         if tmp_split:
+             stock_num = tmp_split[0]
+             Stock_queue.put(stock_num)
+    # print Stock_queue.qsize()
+    # top_stock = 610000
+    # for i in xrange(1, top_stock):
+        # stock_num = str(i)
+        # stock_len = len(stock_num)
+        # for j in xrange(6-stock_len):
+            # stock_num = '0' + stock_num
         # print stock_num
         # raw_input('please enter')
-        Stock_queue.put(stock_num)
 
-if __name__ == '__main__':
-    os.system('printf "\033c"')
 
+def main():
     get_stock_num()
     # print Stock_queue.qsize()
     # work_manager = WorkManager()
@@ -106,3 +116,8 @@ if __name__ == '__main__':
     # for item in xrange(stock_nums):
         # total_nums += item
     print 'total posts:', total_nums
+
+if __name__ == '__main__':
+    os.system('printf "\033c"')
+
+    main()

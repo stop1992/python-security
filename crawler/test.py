@@ -254,10 +254,4 @@ def test8():
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    # get_data()
-    # url = 'http://www.ncbi.nlm.nih.gov/gene/51207'
-    # url = 'http://www.ncbi.nlm.nih.gov/gene/1738'
-    # url = 'http://www.ncbi.nlm.nih.gov/gene/963'
-    # driver = webdriver.PhantomJS()
-    # handle_full_report(driver, 'test', 'test', url)
     test6()

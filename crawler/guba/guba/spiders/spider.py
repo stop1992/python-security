@@ -15,9 +15,12 @@ class GubaSpider(BaseSpider):
     # start_urls = ('http://guba.eastmoney.com/list,' + server.spop('stock_num') + ',f_1.html',)
 
     def start_requests(self):
-        while server.scard('stock_num') > 0:
-            start = 'http://guba.eastmoney.com/list,' + server.spop('stock_num') + ',f_1.html'
-                yield Request(url=start, callback=self.parse)
+        # while server.scard('stock_num') > 0:
+            # start = 'http://guba.eastmoney.com/list,' + server.spop('stock_num') + ',f_1.html'
+            # yield Request(url=start, callback=self.parse)
+        stock_num = '000002'
+        start = 'http://guba.eastmoney.com/list,' + 'stock_num' + ',f_1.html'
+        yield Request(url=start, callback=self.parse)
 
     def parse(self, response):
         pattern = re.compile(ur'共有帖子数 (\d+) 篇')
