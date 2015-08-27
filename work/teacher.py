@@ -11,12 +11,12 @@ class Handle(object):
 
 	def get_mrna_data(self):
 		fp = open('mRNA.txt', 'r')
-		# just get first line data 
+		# just get first line data
 		firstline = fp.readline()
 		self.dotbrackets = fp.readline()
 		rna_data  = firstline.split('>')[1]
 		self.len_rna = len(rna_data)
-		# data formar: 
+		# data formar:
 		# [ ['char', count], ['char', count], ...]
 		self.mrna_1 = []
 		for i in xrange(self.len_rna):
@@ -68,40 +68,40 @@ class Handle(object):
 		second_xlsl_file = xlwt.Workbook()
 		table = second_xlsl_file.add_sheet('sheet1')
 		for i in xrange(self.len_rna):
-			table.write(i, 0, self.mrna_2[i][0])
-			table.write(i, 1, self.mrna_2[i][1])
-			table.write(i, 2, self.dotbrackets[i])
+                    table.write(i, 0, self.mrna_2[i][0])
+                    table.write(i, 1, self.mrna_2[i][1])
+                    table.write(i, 2, self.dotbrackets[i])
 		second_xlsl_file.save('uc003ukl.xls')
 
 	def handle_third_gene(self):
-		dir_name = './testthree/'
-		for file_name in os.listdir(dir_name):
-			# print file_name
-			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
-			for line in open(dir_name+file_name, 'r'):
-				result = pattern.match(line)
-				if result != None:
-					start = int(result.group(1)) - 1
-					end = int(result.group(2))
-					for i in xrange(start, end):
-						self.mrna_3[i][1] += 1
-						self.mrna_4[i][1] += 1
-		second_xlsl_file = xlwt.Workbook()
-		table = second_xlsl_file.add_sheet('sheet1')
-		for i in xrange(self.len_rna):
-			table.write(i, 0, self.mrna_3[i][0])
-			table.write(i, 1, self.mrna_3[i][1])
-			table.write(i, 2, self.dotbrackets[i])
-		second_xlsl_file.save('AK055074.xls')
+            dir_name = './testthree/'
+            for file_name in os.listdir(dir_name):
+                # print file_name
+                pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
+                for line in open(dir_name+file_name, 'r'):
+                    result = pattern.match(line)
+                    if result != None:
+                        start = int(result.group(1)) - 1
+                        end = int(result.group(2))
+                        for i in xrange(start, end):
+                            self.mrna_3[i][1] += 1
+                            self.mrna_4[i][1] += 1
+            second_xlsl_file = xlwt.Workbook()
+            table = second_xlsl_file.add_sheet('sheet1')
+            for i in xrange(self.len_rna):
+                table.write(i, 0, self.mrna_3[i][0])
+                table.write(i, 1, self.mrna_3[i][1])
+                table.write(i, 2, self.dotbrackets[i])
+            second_xlsl_file.save('AK055074.xls')
 
 	def total(self):
-		forth_xlsl_file = xlwt.Workbook()
-		table = forth_xlsl_file.add_sheet('sheet1')
-		for i in xrange(self.len_rna):
-			table.write(i, 0, self.mrna_4[i][0])
-			table.write(i, 1, self.mrna_4[i][1])
-			table.write(i, 2, self.dotbrackets[i])
-		forth_xlsl_file.save('total.xls')
+            forth_xlsl_file = xlwt.Workbook()
+            table = forth_xlsl_file.add_sheet('sheet1')
+            for i in xrange(self.len_rna):
+                table.write(i, 0, self.mrna_4[i][0])
+                table.write(i, 1, self.mrna_4[i][1])
+                table.write(i, 2, self.dotbrackets[i])
+            forth_xlsl_file.save('total.xls')
 
 
 if __name__ == '__main__':

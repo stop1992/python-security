@@ -5,17 +5,21 @@ import time
 import Queue
 import sys
 import copy
+import xlwt
+import xlsxwriter
 
-sys.setrecursionlimit(50000)
+# sys.setrecursionlimit(50000)
 
 COUNT_PATH = 0
 LAST_POS_PATH = []
 COUNT_TIMES = 1
+WRITE_ROW_NUM = 1
 
 class LM_RNA(object):
 
     def get_data(self):
-        lncfile = open('tmp_lncrna.txt', 'r')
+        lncfile = open('NR_026902.txt', 'r')
+        self.lncfilename, self.fileext = os.path.splitext(lncfile.name)
         lncdata = lncfile.readlines()
         lnclen = len(lncdata)
         self.lncrna = ''
@@ -25,7 +29,8 @@ class LM_RNA(object):
         lncfile.close()
         # print lncrna
 
-        mfile = open('mrna.txt', 'r')
+        mfile = open('NM_000927.txt', 'r')
+        self.mrnafilename, self.fileext = os.path.splitext(mfile.name)
         mdata = mfile.readlines()
         self.mrna = mdata[0].strip().upper().replace('T', 'U')
         self.mrna_structure = mdata[1].strip()
@@ -68,110 +73,72 @@ class LM_RNA(object):
         # fp_match.close()
         fp_match_value.close()
 
-    def first_seven_match(self, i, j):
-        first_seven_match_len = 0
-        sign = False
-        match_len = 0
-        for k in xrange(6):
-            if self.matrix_match[i][j] == True:
-                self.pos_path[match_len] = [i, j]
-                self.matrix_match[i][j] = False
-                match_len += 1
-                i += 1
-                j += 1
-            else:
-                sign = True
-                break
-        if not sign:
-            self.next_match(i, j, match_len)
+    def write_result2excel(self):
+        # excel = xlwt.Workbook()
+        excel = xlsxwriter.Workbook('lnc_mrna_match.xlsx')
+        table = excel.add_worksheet('lna_mrna_match')
+        # excel.save('lnc_mrna_match.xlsx')
+        for line in open('tmp.txt', 'r'):
+            mrna_start, mrna_end, lncrna_start, lncrna_end = [int(i) for i in line.split(',')]
+            global WRITE_ROW_NUM
+            table.write(WRITE_ROW_NUM    , 0, 'mRNA: ' + self.lncfilename + ': ' + str(mrna_start) + '~' + str(mrna_end))
+            table.write(WRITE_ROW_NUM + 1, 0, self.mrna[mrna_start:mrna_end+1])
+            table.write(WRITE_ROW_NUM + 2, 0, 'lncRNA: '+self.mrnafilename+': '+ str(lncrna_start) +'~' + str(lncrna_end))
+            table.write(WRITE_ROW_NUM + 3, 0, self.lncrna[lncrna_start:lncrna_end+1])
+            WRITE_ROW_NUM += 6
+        excel.close()
+        # excel.save('lnc_mrna_match.xlsx')
+        # raw_input('please enter')
 
-    def next_match(self, i, j, match_len):
-        if self.matrix_match[i][j] == True:
-            self.matrix_match[i][j] = False
-            self.pos_path[match_len] = [i, j]
-            match_len += 1
-            self.matrix_match[i][j] = False
-            # count jump postions
-            jump_steps = 0
-            jump_count = 0
-            tmp_i = i + 1
-            tmp_j = j + 1
-            # print 'before while: i, j: ', tmp_i, tmp_j
-            while tmp_i < self.mrna_len and tmp_j < self.lncrna_len:
-                if self.matrix_match[tmp_i][tmp_j] == True:
-                    self.pos_path[match_len] = [tmp_i, tmp_j]
-                    self.matrix_match[tmp_i][tmp_j] == False
-                    match_len += 1
-                    tmp_i += 1
-                    tmp_j += 1
-                else:
-                    jump_count = 1
-                    break
-            self.handle(self.pos_path, match_len, jump_steps, tmp_i, tmp_j, jump_count)
+    def write_result2txt(self, match_len):
+        fp = open('tmp.txt', 'a')
+        mrna_start = str(self.pos_path[0][0])
+        mrna_end = str(self.pos_path[match_len-1][0])
+        lnc_start = str(self.pos_path[0][1])
+        lnc_end = str(self.pos_path[match_len-1][1])
+        fp.write(mrna_start + ',' + mrna_end + ',' + lnc_start + ',' + lnc_end + '\n')
+        fp.close()
+        self.write_result2excel()
+
+    def get_continus_match(self, i, j):
+        match_len = 0
+        self.matrix_match[i][j] = False
+        self.pos_path[match_len] = [i, j]
+        match_len += 1
+        # count jump postions
+        tmp_i = i + 1
+        tmp_j = j + 1
+        # print 'before while: i, j: ', tmp_i, tmp_j
+        while tmp_i < self.mrna_len and tmp_j < self.lncrna_len:
+            if self.matrix_match[tmp_i][tmp_j] == True:
+                self.pos_path[match_len] = [tmp_i, tmp_j]
+                self.matrix_match[tmp_i][tmp_j] == False
+                match_len += 1
+                tmp_i += 1
+                tmp_j += 1
+            else:
+                break
+        if match_len >= 7:
+            global COUNT_PATH
+            COUNT_PATH += 1
+            self.write_result2txt(match_len)
+
+    def pre_ready(self):
+        if os.path.isfile('/home/xinali/python/work/lnc_mrna_match.xlsx'):
+            print 'exsit file, deleting'
+            os.remove('/home/xinali/python/work/lnc_mrna_match.xlsx')
+            print 'delete successfully'
+        fp = open('tmp.txt', 'w')
+        fp.close()
+        # raw_input('please enter')
 
     def get_result(self):
-        # use this list to record match path
-        fp = open('path.txt', 'w')
-        fp.close()
+        self.pre_ready()
         self.pos_path = [[]] * (self.mrna_len + self.lncrna_len + 10)
         for i in xrange(self.mrna_len-6):
             for j in xrange(self.lncrna_len-6):
                 if self.matrix_match[i][j] == True:
-                    self.first_seven_match(i, j)
-
-    def handle(self, pos_path, match_len_in, jump_steps, row, column, jump_count):
-        # need to handle 4*4 grid
-        for i in xrange(row, row+4):
-            for j in xrange(column, column+4):
-                if i >= self.mrna_len or j >= self.lncrna_len:
-                    break
-                if i < self.mrna_len and j < self.lncrna_len and self.matrix_match[i][j] == True:
-                    match_len = match_len_in
-                    pos_path[match_len] = [i, j]
-                    match_len += 1
-                    self.matrix_match[i][j] = False
-
-                    tmp_i = i + 1
-                    tmp_j = j + 1
-                    not_recursive = False
-                    while tmp_i < self.mrna_len and tmp_j < self.lncrna_len:
-                        if self.matrix_match[tmp_i][tmp_j] == True:
-                            pos_path[match_len] = [tmp_i, tmp_j]
-                            self.matrix_match[tmp_i][tmp_j] == False
-                            match_len += 1
-                            tmp_i += 1
-                            tmp_j += 1
-                        else:
-                            jump_count += 1
-                            if jump_count > 2:
-                                not_recursive = True
-                                # return
-                            break
-                    if not not_recursive:
-                        self.handle(pos_path, match_len, jump_steps, tmp_i, tmp_j, jump_count)
-
-                    # if match, then jump count is 0
-                    if jump_steps <= 3:
-
-                        global COUNT_PATH
-                        COUNT_PATH += 1
-                        # print 'i: ', i, 'j: ', j
-                        # print 'row: ', row, 'column: ', column
-                        fp = open('path.txt', 'a')
-                        # print 'PATH: ',  COUNT_PATH
-                        fp.write('PATH:' + str(COUNT_PATH) + '\n')
-                        for k in xrange(match_len):
-                            fp.write(str(pos_path[k]) + ' ')
-                            # print pos_path[k], ' ',
-                        fp.write('\n')
-                        fp.close()
-                        if COUNT_PATH == 100:
-                            sys.exit()
-                        # print '\n'
-                        # raw_input('please enter')
-                        jump_steps = 0
-                else:
-                    jump_steps = max(i - row, j - column) + 1
+                    self.get_continus_match(i, j)
 
 
 if __name__ == '__main__':
