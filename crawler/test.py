@@ -202,16 +202,16 @@ def handle_data(gene_name, driver):
                 continue
                 # print
 
-            if exists_homo_sapiens.text == 'Homo sapiens':
-                xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[1]/div[2]/a'
-                get_gene_href = driver.find_element_by_xpath(xpath)
-                second_url = get_gene_href.get_attribute('href')
-                if second_url:
-                        # driver.get(second_url)
-                        handle_full_report(driver, gene_name, 'second', second_url)
-                else:
-                        print 'second url none'
-                break
+        if exists_homo_sapiens.text == 'Homo sapiens':
+            xpath = '//*[@id="gene-tabular-docsum"]/div[2]/table/tbody/tr[' + str(line) + ']/td[1]/div[2]/a'
+            get_gene_href = driver.find_element_by_xpath(xpath)
+            second_url = get_gene_href.get_attribute('href')
+            if second_url:
+                    # driver.get(second_url)
+                    handle_full_report(driver, gene_name, 'second', second_url)
+            else:
+                    print 'second url none'
+            break
 
 def test5():
     stock_num = '000001'
@@ -251,7 +251,38 @@ def test8():
             for i in result:
                 print i, 'in b'
 
+def test9():
+    response = requests.get('http://guba.eastmoney.com/news,000002,198611273.html')
+    # key_words to store key words, last element to count post amounts
+    # key_words = [, 'post_amounts']
+    # key words occur times amounts
+    # key_words_times = dict.fromkeys(key_words, 0)
+    asktime = response.xpath(u'//*[@id="zwconttb"]/div[2]/text()').extract()
+    if asktime:
+        # from asktime get ask_time
+        ask_time = asktime[0].split()[1]
+        # from url get stock_num
+        stock_num = response.url.split(',')[1]
+        print ask_time
+        print stock_num
+        # compute key_words occur times in response.body
+        # for item in key_words:
+            # print item
+            # pattern = re.compile(item)
+            # result = pattern.findall(response.body_as_unicode())
+            # if result:
+                # every item occur times in response.body
+                # key_word_times = len(result)
+                # sum up every key word
+                # key_words_times[item] += key_word_times
+        # key_words_times['key_word_times'] = 1 # represent post one time
+        # item['key_words'] = key_words_times
+    # else:
+            # item['asktime'] =  'null'
+            # item['stock_num'] = 'null'
+    # yield item
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test6()
+    test9()

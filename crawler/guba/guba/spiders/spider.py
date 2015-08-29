@@ -11,15 +11,15 @@ server = Redis(host='192.168.1.108')
 
 class GubaSpider(BaseSpider):
     name = 'guba'
-    # start_urls = ('http://guba.eastmoney.com/list,000002,f_1.html',)
-    # start_urls = ('http://guba.eastmoney.com/list,' + server.spop('stock_num') + ',f_1.html',)
 
     def start_requests(self):
         # while server.scard('stock_num') > 0:
             # start = 'http://guba.eastmoney.com/list,' + server.spop('stock_num') + ',f_1.html'
             # yield Request(url=start, callback=self.parse)
-        stock_num = '000002'
-        start = 'http://guba.eastmoney.com/list,' + 'stock_num' + ',f_1.html'
+        # stock_num = '000004'
+        # stock_num = '000552'
+        stock_num = '000005'
+        start = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
         yield Request(url=start, callback=self.parse)
 
     def parse(self, response):
@@ -51,28 +51,31 @@ class GubaSpider(BaseSpider):
         item = GubaItem()
 
         # key_words to store key words, last element to count post amounts
-        key_words = [, 'post_amounts']
+        # key_words = [, 'post_amounts']
+        key_words = [ key.strip() for key in open('/home/xinali/python/crawler/guba/guba/spiders/keywords.txt', 'r').readlines() ]
         # key words occur times amounts
-        key_words_times = dict.fromkeys(key_words, 0)
+        # key_words_times = dict.fromkeys(key_words, 0)
+        key_words_times = [] # key words occur in order
         asktime = response.xpath(u'//*[@id="zwconttb"]/div[2]/text()').extract()
         if asktime:
-            # from asktime get ask_time
-            item['ask_time'] = asktime[0].split()[1]
-            # from url get stock_num
-            item['stock_num'] = response.url.split(',')[1]
-            # compute key_words occur times in response.body
-            for item in key_words:
-                # print item
-                pattern = re.compile(item)
-                result = pattern.findall(response.body_as_unicode())
-                if result:
+            tmp_ask_year = int(asktime[0].split()[1].split('-')[0])
+            if tmp_ask_year >= 2013 and tmp_ask_year <= 2014:
+                # from asktime get ask_time
+                item['ask_time'] = asktime[0].split()[1]
+                # from url get stock_num
+                item['stock_num'] = 'db' + response.url.split(',')[1]
+                # item['stock_num'] = 'db' +  self.stock_num
+                # compute key_words occur times in response.body
+                for key in key_words:
+                    pattern = re.compile(key)
+                    result = pattern.findall(response.body_as_unicode())
+                    if result:
                         # every item occur times in response.body
-                        key_word_times = len(result)
-                        # sum up every key word
-                        key_words_times[item] += key_word_times
-            key_words_times['key_word_times'] = 1 # represent post one time
-            item['key_words'] = key_words_times
-        # else:
-                # item['asktime'] =  'null'
-                # item['stock_num'] = 'null'
+                        key_words_times.append(len(result))
+                    else:
+                        key_words_times.append(0)
+                item['key_words'] = key_words_times
+                item['post_times'] = 1
+            else:
+                item = None
         yield item

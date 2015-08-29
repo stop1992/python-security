@@ -74,7 +74,9 @@ def get_html_data(stock_num):
     num = 0
     if result:
         num = int(result.group(1))
-    # print 'stock_num:', stock_num, ' posts_num:', num
+    print 'stock_num:', stock_num, ' posts_num:', num
+    if num < 2000:
+        raw_input('please enter')
     Html_queue.put(num)
     # print i, result.group(1)
 
@@ -90,16 +92,13 @@ def get_stock_num():
          if tmp_split:
              stock_num = tmp_split[0]
              Stock_queue.put(stock_num)
-    # print Stock_queue.qsize()
-    # top_stock = 610000
-    # for i in xrange(1, top_stock):
-        # stock_num = str(i)
-        # stock_len = len(stock_num)
-        # for j in xrange(6-stock_len):
-            # stock_num = '0' + stock_num
-        # print stock_num
-        # raw_input('please enter')
 
+def print_data():
+
+    get_stock_num()
+    while Stock_queue.qsize() > 0:
+        stock_num = Stock_queue.get()
+        get_html_data(stock_num)
 
 def main():
     get_stock_num()
@@ -120,4 +119,5 @@ def main():
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    main()
+    # main()
+    print_data()
