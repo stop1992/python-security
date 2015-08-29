@@ -18,7 +18,8 @@ class GubaSpider(BaseSpider):
             # yield Request(url=start, callback=self.parse)
         # stock_num = '000004'
         # stock_num = '000552'
-        stock_num = '000005'
+        # stock_num = '000005'
+        stock_num = '000003'
         start = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
         yield Request(url=start, callback=self.parse)
 
@@ -47,11 +48,22 @@ class GubaSpider(BaseSpider):
                 # print '\033[2;31m yield detail link \033[1;m'
                 yield Request(url=base_url+detail_link, callback=self.parse_detail)
 
+    def count_len(self, data, pattern):
+        if data:
+            data = data.extract()
+            for text in data:
+                tmp_count = pattern.findall(text)
+                if tmp_count:
+                    return len(tmp_count)
+                else:
+                    return 0
+        else:
+            return 0
+
     def parse_detail(self, response):
         item = GubaItem()
 
         # key_words to store key words, last element to count post amounts
-        # key_words = [, 'post_amounts']
         key_words = [ key.strip() for key in open('/home/xinali/python/crawler/guba/guba/spiders/keywords.txt', 'r').readlines() ]
         # key words occur times amounts
         # key_words_times = dict.fromkeys(key_words, 0)
@@ -67,13 +79,15 @@ class GubaSpider(BaseSpider):
                 # item['stock_num'] = 'db' +  self.stock_num
                 # compute key_words occur times in response.body
                 for key in key_words:
+                    key = unicode(key, 'utf-8')
                     pattern = re.compile(key)
-                    result = pattern.findall(response.body_as_unicode())
-                    if result:
-                        # every item occur times in response.body
-                        key_words_times.append(len(result))
-                    else:
-                        key_words_times.append(0)
+                    key_find_count = 0
+                    xpath = ['//*[@id="zwconttbt"]', '//*[@id="zwconbody"]/div', '//div[@class="zwlitext stockcodec"]']
+                    for path in xpath:
+                        data = response.xpath(path)
+                        key_find_count += self.count_len(data, pattern)
+                    key_words_times.append(key_find_count)
+
                 item['key_words'] = key_words_times
                 item['post_times'] = 1
             else:
