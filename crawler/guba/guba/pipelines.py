@@ -61,5 +61,5 @@ class GubaPipeline(object):
                 # find key words, then update
                 post.find_one_and_update({'ask_time':item['ask_time']}, {'$set':{'key_words':key_words, 'post_times':post_times+1}})
             else:	# not exist ask_time data
-                post.insert({'ask_time':item['ask_time'], 'key_words':item['key_words'], 'post_times':1})
+                post.insert({'ask_time':item['ask_time'], 'post_times':1, 'key_words':item['key_words']})
             # return item

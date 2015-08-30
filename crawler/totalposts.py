@@ -74,15 +74,17 @@ def get_html_data(stock_num):
     num = 0
     if result:
         num = int(result.group(1))
-    print 'stock_num:', stock_num, ' posts_num:', num
-    if num < 2000:
-        raw_input('please enter')
+    # print 'stock_num:', stock_num, ' posts_num:', num
+    if num <= 500 and num >= 300:
+        print 'stock_num:', stock_num, ' posts_num:', num
+        # raw_input('please enter')
     Html_queue.put(num)
     # print i, result.group(1)
 
 
 def get_stock_num():
 
+    """
     data = xlrd.open_workbook('stocknum.xlsx')
     sheet = data.sheets()[3]
     nrows =  sheet.nrows
@@ -92,6 +94,16 @@ def get_stock_num():
          if tmp_split:
              stock_num = tmp_split[0]
              Stock_queue.put(stock_num)
+    """
+
+    for i in xrange(1, 100000):
+        i_len = len(str(i))
+        # stock_num = str(i)
+        stock_num = ''
+        for j in xrange(1, 6 - i_len + 1):
+            stock_num += '0'
+        stock_num += str(i)
+        Stock_queue.put(stock_num)
 
 def print_data():
 

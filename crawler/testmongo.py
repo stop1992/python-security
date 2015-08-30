@@ -45,16 +45,27 @@ class Mongo:
                 # if len(day) != 2:
                     # day = '0' + day
                 self.days[y].append(day)
-        print 'year: ', self.years
-        print 'month: ', self.months
-        print 'dary: ', self.days
+        # print 'year: ', self.years
+        # print 'month: ', self.months
+        # print 'dary: ', self.days
+
+    def list_plus(self, list_one, list_two):
+        list_three = []
+        list_length = len(list_one)
+        for i in xrange(list_length):
+            list_three.append(list_one[i] + list_two[i])
+        return list_three
 
     def test2(self):
 
         self.prepare()
         client = pymongo.MongoClient("localhost", 27017)
         db = client.guba_data
-        table = db.db000003
+        # table = db.db000003
+        table = db.db000866
+        list_length = len(open('keywords.txt', 'r').readlines())
+        key_words_sum = [0] * list_length
+        post_sum = 0
         for year in self.years:
             # date = year
             for month in self.months:
@@ -66,10 +77,15 @@ class Mongo:
                     date = year + '-'  + month + '-' + day
                     result = table.find_one({'ask_time':date})
                     if result:
-                        print 'data in ', date , result['key_words'][0]
-                    else:
-                        print 'There is no data in ', date
-                    raw_input('please enter....')
+                        # print 'data in ', date , result['key_words'][1]
+                        # print type(result['key_words'][1])
+                        key_words_sum = self.list_plus(key_words_sum, result['key_words'])
+                        post_sum += result['post_times']
+        print 'key_words_sum: ', key_words_sum
+        print 'post sum: ', post_sum
+        fp = open('keys.txt', 'w')
+        fp.write(str(key_words_sum))
+        fp.close()
 
 
 if __name__ == "__main__":
