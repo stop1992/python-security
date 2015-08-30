@@ -19,7 +19,8 @@ class GubaSpider(BaseSpider):
         # stock_num = '000004'
         # stock_num = '000552'
         # stock_num = '000005'
-        stock_num = '000003'
+        # stock_num = '000003'
+        stock_num = '000866'
         start = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
         yield Request(url=start, callback=self.parse)
 
