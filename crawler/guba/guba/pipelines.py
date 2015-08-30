@@ -47,18 +47,19 @@ class GubaPipeline(object):
         return pipe
 
     def process_item(self, item, spider):
-        # use stock_num as collection
-        post = self.db[item['stock_num']]
-        # first get key words, then plus them ,then store
-        all_document = post.find_one({'ask_time':item['ask_time']})
+        if item:
+            # use stock_num as collection
+            post = self.db[item['stock_num']]
+            # first get key words, then plus them ,then store
+            all_document = post.find_one({'ask_time':item['ask_time']})
 
-        if all_document: # exist ask_time data
-            key_words = all_document['key_words']
-            post_times = all_document['post_times']
-            # compute every day key words occur times
-            key_words = list_plus(item['key_words'], key_words)
-            # find key words, then update
-            post.find_one_and_update({'ask_time':item['ask_time']}, {'$set':{'key_words':key_words, 'post_times':post_times+1}})
-        else:	# not exist ask_time data
-            post.insert({'ask_time':item['ask_time'], 'key_words':item['key_words'], 'post_times':1})
-        # return item
+            if all_document: # exist ask_time data
+                key_words = all_document['key_words']
+                post_times = all_document['post_times']
+                # compute every day key words occur times
+                key_words = list_plus(item['key_words'], key_words)
+                # find key words, then update
+                post.find_one_and_update({'ask_time':item['ask_time']}, {'$set':{'key_words':key_words, 'post_times':post_times+1}})
+            else:	# not exist ask_time data
+                post.insert({'ask_time':item['ask_time'], 'key_words':item['key_words'], 'post_times':1})
+            # return item

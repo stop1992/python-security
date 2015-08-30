@@ -280,9 +280,16 @@ def test9():
     # else:
             # item['asktime'] =  'null'
             # item['stock_num'] = 'null'
-    # yield item
+
+# yield item
+
+def test10(tmp):
+
+    print type(tmp)
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test9()
+    a = [23, 333, 78]
+    a = 123
+    test10(a)

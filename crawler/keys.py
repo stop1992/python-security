@@ -12,8 +12,10 @@ def test():
 
     for word in words:
         print word.strip()
+        word = unicode(word, 'utf-8')
+        print 'transform successfully....'
         # print len(word)
-        raw_input('please enter.....')
+        # raw_input('please enter.....')
 
 if __name__ == '__main__':
     os.system('printf "\033c"')

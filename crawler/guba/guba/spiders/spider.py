@@ -92,4 +92,6 @@ class GubaSpider(BaseSpider):
                 item['post_times'] = 1
             else:
                 item = None
+        else:
+            item = None
         yield item
