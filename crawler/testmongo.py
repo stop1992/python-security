@@ -54,7 +54,8 @@ class Mongo:
         self.prepare()
         client = pymongo.MongoClient("localhost", 27017)
         db = client.guba_data
-        table = db.db000003
+        # table = db.db000003
+        table = db.db000866
         for year in self.years:
             # date = year
             for month in self.months:
