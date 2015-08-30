@@ -63,9 +63,12 @@ class Mongo:
         db = client.guba_data
         # table = db.db000003
         table = db.db000866
+<<<<<<< HEAD
         list_length = len(open('keywords.txt', 'r').readlines())
         key_words_sum = [0] * list_length
         post_sum = 0
+=======
+>>>>>>> 17e0353872d16d5bccf83a1dc0b1974320982ab0
         for year in self.years:
             # date = year
             for month in self.months:
