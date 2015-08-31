@@ -287,6 +287,9 @@ def test10(tmp):
 
     print 'this is dtpc-1 branch'
     print 'this is dtpc-1 branch'
+    print 'this is dtpc-1 branch'
+    print 'this is dtpc-1 branch'
+    print 'this is dtpc-1 branch'
     print type(tmp)
 
 if __name__ == '__main__':
