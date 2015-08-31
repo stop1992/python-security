@@ -286,6 +286,8 @@ def test9():
 def test10(tmp):
 
     print type(tmp)
+    'jsldjflsd'
+    'ljsldkfjlsdkfj'
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
