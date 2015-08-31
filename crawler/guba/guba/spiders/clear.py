@@ -6,7 +6,8 @@ from pymongo import MongoClient
 import os
 
 def clear_mongodb():
-    mongo_server = '192.168.1.108'
+    # mongo_server = '192.168.1.108'
+    mongo_server = 'localhost'
     mongo_port = 27017
     client = MongoClient(mongo_server, mongo_port)
     db = client.guba_data

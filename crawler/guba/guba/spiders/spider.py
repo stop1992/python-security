@@ -45,7 +45,7 @@ class GubaSpider(BaseSpider):
 
         base_url = 'http://guba.eastmoney.com'
         for detail_link in response.xpath(u'//*[@id="articlelistnew"]/div/span[3]/a/@href').extract():
-            if detail_link:
+            if detail_link and '/' in detail_link:
                 # print '\033[2;31m yield detail link \033[1;m'
                 yield Request(url=base_url+detail_link, callback=self.parse_detail)
 
