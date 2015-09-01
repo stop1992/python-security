@@ -36,7 +36,7 @@ class GubaPipeline(object):
         except Exception, e:
             print str(e)
             traceback.print_exc()
-
+    """
     @classmethod
     def from_crawler(cls, crawler):
         cls.MONGODB_SERVER = crawler.settings.get('MONGO_SERVER', 'localhost')
@@ -45,7 +45,7 @@ class GubaPipeline(object):
         pipe = cls()
         pipe.crawler = crawler
         return pipe
-
+    """
     def process_item(self, item, spider):
         if item:
             # use stock_num as collection
