@@ -20,14 +20,14 @@ def clear_mongodb():
 
 def clear_redis():
     client = redis.Redis(host='localhost', port=6379)
-    request = client.get('guba:requests')
+    request = client.exists('guba:requests')
     if request == None:
         print 'guba:requests not exist...'
     else:
         client.delete('guba:requests')
         print 'delete guba:request successfully....'
 
-    dupefilter = client.get('guba:dupefilter')
+    dupefilter = client.exists('guba:dupefilter')
     if dupefilter:
         client.delete('guba:dupefilter')
         print 'delete guba:request successfully...'
