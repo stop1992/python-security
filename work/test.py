@@ -8,6 +8,7 @@ import xlrd
 import xlwt
 import time
 import Queue
+import xlsxwriter
 
 def test1():
     fp = open('data.txt', 'r')
@@ -141,7 +142,19 @@ def test10():
         else:
             print i, 'test.......'
 
+def test11():
+
+    workbook = xlsxwriter.Workbook('demo.xlsx')
+    worksheet = workbook.add_worksheet('test')
+
+    line = 0
+    for i in xrange(1000, 100000):
+        worksheet.write(line, 0, i)
+        line += 1
+
+    workbook.close()
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test10()
+    test11()

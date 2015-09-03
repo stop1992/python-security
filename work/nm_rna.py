@@ -78,17 +78,19 @@ class LM_RNA(object):
         excel = xlsxwriter.Workbook('lnc_mrna_match.xlsx')
         table = excel.add_worksheet('lna_mrna_match')
         # excel.save('lnc_mrna_match.xlsx')
+        j = 1
         for line in open('tmp.txt', 'r'):
             mrna_start, mrna_end, lncrna_start, lncrna_end = [int(i) for i in line.split(',')]
+            # print mrna_start, mrna_end, lncrna_start, lncrna_end
             global WRITE_ROW_NUM
+            # print WRITE_ROW_NUM
+            # raw_input('please......')
             table.write(WRITE_ROW_NUM    , 0, 'mRNA: ' + self.lncfilename + ': ' + str(mrna_start) + '~' + str(mrna_end))
             table.write(WRITE_ROW_NUM + 1, 0, self.mrna[mrna_start:mrna_end+1])
             table.write(WRITE_ROW_NUM + 2, 0, 'lncRNA: '+self.mrnafilename+': '+ str(lncrna_start) +'~' + str(lncrna_end))
             table.write(WRITE_ROW_NUM + 3, 0, self.lncrna[lncrna_start:lncrna_end+1])
             WRITE_ROW_NUM += 6
         excel.close()
-        # excel.save('lnc_mrna_match.xlsx')
-        # raw_input('please enter')
 
     def write_result2txt(self, match_len):
         fp = open('tmp.txt', 'a')
@@ -98,7 +100,6 @@ class LM_RNA(object):
         lnc_end = str(self.pos_path[match_len-1][1])
         fp.write(mrna_start + ',' + mrna_end + ',' + lnc_start + ',' + lnc_end + '\n')
         fp.close()
-        self.write_result2excel()
 
     def get_continus_match(self, i, j):
         match_len = 0
@@ -108,7 +109,6 @@ class LM_RNA(object):
         # count jump postions
         tmp_i = i + 1
         tmp_j = j + 1
-        # print 'before while: i, j: ', tmp_i, tmp_j
         while tmp_i < self.mrna_len and tmp_j < self.lncrna_len:
             if self.matrix_match[tmp_i][tmp_j] == True:
                 self.pos_path[match_len] = [tmp_i, tmp_j]
@@ -139,10 +139,9 @@ class LM_RNA(object):
             for j in xrange(self.lncrna_len-6):
                 if self.matrix_match[i][j] == True:
                     self.get_continus_match(i, j)
+        self.write_result2excel()
 
-
-if __name__ == '__main__':
-    os.system('printf "\033c"')
+def main():
 
     start = time.time()
     lmrna = LM_RNA()
@@ -150,7 +149,13 @@ if __name__ == '__main__':
     lmrna.write_matrix_file()
     lmrna.get_result()
     end = time.time()
-    print '\n\n--------------------------------------------'
+    print '\n\n############################################'
     print COUNT_PATH
-    print 'used time: ', end-start
-    print '----------------------------------------------'
+    print 'used time: ', (end - start) / 60, 's'
+    print '##############################################'
+
+if __name__ == '__main__':
+    os.system('printf "\033c"')
+
+    main()
+

@@ -1,4 +1,4 @@
-# -*- coding: utf-7 -*-  
+# -*- coding: utf-7 -*-
 
 import os
 from pymongo import MongoClient
@@ -33,22 +33,18 @@ def test3():
 		if i % 100000000 == 0:
 			print i
 
-if __name__ == '__main__':
-	os.system('printf "\033c"')
+def add(x, y):
+    return x + y
 
-	test3()
-	
-	# client = MongoClient('192.168.1.108', 27018)
-	# db = client['web']
-	# teacher = db['teacher']
-	# teacher = db['student']
-	# tmp = teacher.find()
-	# print tmp
-	# result = teacher.find_one_and_update({'name':'daitao'}, {'$set':{'age':66}})
-	# result = teacher.find_one({'name':'daitao'})
-	# print result
-	# print result['age']
-	# a = {'test':3, 'daitao':5, 'wangxi':9}
-	# b = {'test':5, 'daitao':9, 'wangxi':2, 'bruce':8}
-	# c = dict_plus(a, b)
-	# print c
+def test4():
+    # a = [1, 2, 3]
+    # b = [1, 3, 4]
+    print a
+    print b
+    c = map(plus, range(8), range(8))
+    print c
+
+if __name__ == '__main__':
+    os.system('printf "\033c"')
+
+    test4()

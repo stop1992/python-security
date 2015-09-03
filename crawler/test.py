@@ -299,11 +299,21 @@ def test12(**power):
     # for i in power.items:
         # print i
 
+class Test12:
+
+    @classmethod
+    def class_foo(cls):
+        cls.data = 'test'
+
+    def test(self):
+        print self.data
+
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    # print test11(2, 3, 4)
-    # print test11(2, 10)
-    # test10(['test', 'daitao'])
-    # test12(2, 3, 3, 5, 6, 7)
-    test12(one=1, two=2)
+    tt = Test12()
+    tt.class_foo()
+    tt.test()
+    # print dir(tt)
+    print tt.data
