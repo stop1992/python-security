@@ -4,7 +4,7 @@ import random
 from scrapy.contrib.downloadermiddleware.useragent import UserAgentMiddleware
 
 user_agent_list = [
-		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36", 
+		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
         "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
         "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
@@ -26,11 +26,9 @@ user_agent_list = [
 ]
 
 class PollUserAgentMiddleware(UserAgentMiddleware):
-	#def __init__(self, user_agent=''):
-		#self.user_agent = user_agent
-		
-	def process_request(self, request, spider):
-		ua = random.choice(user_agent_list)
-		if ua:
-			print 'user-agent', ua
-			request.headers.setdefault('User-Agent', ua)
+
+    def process_request(self, request, spider):
+        ua = random.choice(user_agent_list)
+        if ua:
+            print 'user-agent', ua
+            request.headers.setdefault('User-Agent', ua)
