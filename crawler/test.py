@@ -12,7 +12,7 @@ from redis import Redis
 from pymongo import MongoClient
 import time
 import threading
-import Queue
+from Queue import Queue
 
 def get_data():
     data = xlrd.open_workbook('mRNAdata.xls')
@@ -228,10 +228,6 @@ def test5():
     print 'stock_num:', stock_num, ' posts_num:', num
     # print i, result.group(1)
 
-def test6():
-    url = 'http://guba.eastmoney.com/list,700001,f_5.html'
-    response = requests.get(url)
-    print response
 
 def test7():
     queue = Queue.Queue()
@@ -299,21 +295,17 @@ def test12(**power):
     # for i in power.items:
         # print i
 
-class Test12:
 
-    @classmethod
-    def class_foo(cls):
-        cls.data = 'test'
+def test14():
+    queue = Queue()
+    for i in xrange(5):
+        queue.put('this is a test' + '\n')
 
-    def test(self):
-        print self.data
-
+    while queue.qsize() > 0:
+        print queue.get()
+    print 'all done....'
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    tt = Test12()
-    tt.class_foo()
-    tt.test()
-    # print dir(tt)
-    print tt.data
+    test14()
