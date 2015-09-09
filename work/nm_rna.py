@@ -42,7 +42,6 @@ class LM_RNA(object):
             self.get_result()
             print COUNT_PATH
             print 'handled',  i
-            # raw_input('please ......')
 
 
     def get_data(self, lnc_files):
@@ -112,12 +111,11 @@ class LM_RNA(object):
         table = excel.add_worksheet(self.lncfilename + '_mrna_match')
         # excel.save('lnc_mrna_match.xlsx')
         j = 1
+        global WRITE_ROW_NUM
+        WRITE_ROW_NUM = 0
+
         for line in open('tmp.txt', 'r'):
             mrna_start, mrna_end, lncrna_start, lncrna_end = [int(i) for i in line.split(',')]
-            # print mrna_start, mrna_end, lncrna_start, lncrna_end
-            global WRITE_ROW_NUM
-            # print WRITE_ROW_NUM
-            # raw_input('please......')
             table.write(WRITE_ROW_NUM    , 0, 'mRNA: ' + self.lncfilename + ': ' + str(mrna_start) + '~' + str(mrna_end))
             table.write(WRITE_ROW_NUM + 1, 0, self.mrna[mrna_start:mrna_end+1])
             table.write(WRITE_ROW_NUM + 2, 0, 'lncRNA: '+self.mrnafilename+': '+ str(lncrna_start) +'~' + str(lncrna_end))

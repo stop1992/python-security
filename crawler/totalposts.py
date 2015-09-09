@@ -14,7 +14,7 @@ import xlrd
 import traceback
 
 # global variable
-max_threads = 11
+max_threads = 5
 Stock_queue = Queue()  # store gene names
 stock_post_num = multiprocessing.Queue()
 
@@ -40,17 +40,6 @@ class WorkManager:
             if self.thread_pool[i].is_alive():
                 self.thread_pool[i].join()
 
-def get_html_data(stock_num):
-        url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
-        response = requests.get(url)
-        pattern = re.compile(ur'共有帖子数 (\d+) 篇')
-        result = pattern.search(response.text)
-        num = 0
-        if result:
-            num = int(result.group(1))
-        print 'stock_num:', stock_num, ' posts_num:', num
-        stock_post_num.put('stock_num: ' + str(stock_num) + ' posts_num: ' + str(num))
-
 class WorkThread(threading.Thread):
     def __init__(self, work_queue):
         threading.Thread.__init__(self)
@@ -64,6 +53,18 @@ class WorkThread(threading.Thread):
                 func(args)
             except Queue_Queue.Empty:
                 print 'work_queue is empty...'
+
+def get_html_data(stock_num):
+        url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
+        response = requests.get(url)
+        pattern = re.compile(ur'共有帖子数 (\d+) 篇')
+        result = pattern.search(response.text)
+        num = 0
+        if result:
+            num = int(result.group(1))
+        print 'stock_num:', stock_num, ' posts_num:', num
+        stock_post_num.put(num)
+        # stock_post_num.put('stock_num: ' + str(stock_num) + ' posts_num: ' + str(num))
 
 
 def get_stock_num():
@@ -91,8 +92,12 @@ def get_stock_num_from_file():
     # while Stock_queue.qsize() > 0:
         # fp.write(Stock_queue.get() + '\n')
     # fp.close()
-    for i in xrange(2450):
-        Stock_queue.get()
+    # for i in xrange(2450):
+        # Stock_queue.get()
+
+def get_stock_num_from_txt():
+    for stock_num in open('num.txt'):
+        Stock_queue.put(stock_num.strip())
 
 def handle(process_name):
     print process_name, 'is running...'
@@ -102,7 +107,7 @@ def handle(process_name):
 
 def main():
 
-    get_stock_num_from_file()
+    get_stock_num_from_txt()
     pools = multiprocessing.Pool()
     for i in xrange(3):
         # pools.apply_async(get_html_data, args=('process_'+str(i),))
@@ -110,8 +115,10 @@ def main():
     pools.close()
     pools.join()
     print '----------------------------------------'
+    total = 0
     while stock_post_num.qsize() > 0:
-        print stock_post_num.get()
+        total += stock_post_num.get()
+    print 'total:', total
 
 
 def write2txt():
