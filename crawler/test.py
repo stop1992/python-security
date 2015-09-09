@@ -305,7 +305,24 @@ def test14():
         print queue.get()
     print 'all done....'
 
+def test15():
+    total = 0
+    for stock_num in open('num.txt'):
+        # print stock_num
+        # raw_input('please')
+        url = 'http://guba.eastmoney.com/list,' + stock_num.strip() + ',f_1.html'
+        response = requests.get(url)
+        pattern = re.compile(ur'共有帖子数 (\d+) 篇')
+        result = pattern.search(response.text)
+        num = 0
+        if result:
+            num = int(result.group(1))
+            total += num
+        # print num
+    print 'total: ', total
+
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test14()
+    test15()

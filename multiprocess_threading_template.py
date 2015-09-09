@@ -1,15 +1,21 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+# this is a template for using multiprocessing and threading
+# first, create a pools(including some process), then under every
+# process, create some thread to handle something.
+# warning: processes don't share memory, but threads do.
+
 import os
 import threading
-from Queue import Queue
-from multiprocessing import Process, Pool
+import multiprocessing
+import Queue as Queue_Queue
+from multiprocessing import Queue, Pool
+import traceback
 
 # global variable
 max_threads = 11
-Stock_queue = Queue()
-COUNT = 0
+initial_data_queue = Queue()
 
 class WorkManager:
     def __init__(self, work_queue_size=1, thread_pool_size=1):
@@ -22,7 +28,7 @@ class WorkManager:
 
     def __init_work_queue(self):
         for i in xrange(self.work_queue_size):
-            self.work_queue.put((func_test, Stock_queue.get()))
+            self.work_queue.put((handle_func, initial_data_queue.get()))
 
     def __init_thread_pool(self):
         for i in xrange(self.thread_pool_size):
@@ -44,32 +50,33 @@ class WorkThread(threading.Thread):
             try:
                 func, args = self.work_queue.get(block=False)
                 func(args)
-            # except Queue.Empty:
-                # print 'queue is empty....'
+            except Queue_Queue.Empty:
+                print 'work_queue is empty...'
+
+
+def handle_func(data_from_initial_data_queue):
+    pass
+
+
+def initial_queue():
+    pass
+
 def handle(process_name):
+    """
+    warning: the accouts of work_queue must be the same as initial_data_queue
+    """
     print process_name, 'is running...'
-    work_manager = WorkManager(Stock_queue.qsize()/3, max_threads)
+    work_manager = WorkManager(initial_data_queue.qsize()/3, max_threads)
     work_manager.finish_all_threads()
-
-def func_test(num):
-    global COUNT
-    COUNT += num
-
-def prepare():
-    for i in xrange(50):
-        Stock_queue.put(i)
 
 def main():
 
-    prepare()
-    pools = Pool()
+    initial_queue()
+    pools = multiprocessing.Pool()
     for i in xrange(3):
         pools.apply_async(handle, args=('process_'+str(i),))
     pools.close()
     pools.join()
-
-    global COUNT
-    print 'COUNT: ', COUNT
 
 
 if __name__ == '__main__':

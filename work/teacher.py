@@ -32,46 +32,46 @@ class Handle(object):
 
 
 	def handle_first_gene(self):
-		dir_name = './testone/'
-		for file_name in os.listdir(dir_name):
-			# print file_name
-			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
-			for line in open(dir_name+file_name, 'r'):
-				result = pattern.match(line)
-				if result != None:
-					start = int(result.group(1)) - 1
-					end = int(result.group(2))
-					for i in xrange(start, end):
-						self.mrna_1[i][1] += 1
-						self.mrna_4[i][1] += 1
-		first_xlsl_file = xlwt.Workbook()
-		table = first_xlsl_file.add_sheet('sheet1')
-		for i in xrange(self.len_rna):
-			table.write(i, 0, self.mrna_1[i][0])
-			table.write(i, 1, self.mrna_1[i][1])
-			table.write(i, 2, self.dotbrackets[i])
-		first_xlsl_file.save('ENST00000449361.xls')
+            dir_name = './testone/'
+            for file_name in os.listdir(dir_name):
+                # print file_name
+                pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
+                for line in open(dir_name+file_name, 'r'):
+                    result = pattern.match(line)
+                    if result != None:
+                        start = int(result.group(1)) - 1
+                        end = int(result.group(2))
+                        for i in xrange(start, end):
+                            self.mrna_1[i][1] += 1
+                            self.mrna_4[i][1] += 1
+            first_xlsl_file = xlwt.Workbook()
+            table = first_xlsl_file.add_sheet('sheet1')
+            for i in xrange(self.len_rna):
+                table.write(i, 0, self.mrna_1[i][0])
+                table.write(i, 1, self.mrna_1[i][1])
+                table.write(i, 2, self.dotbrackets[i])
+            first_xlsl_file.save('ENST00000449361.xls')
 
 	def handle_second_gene(self):
-		dir_name = './testtwo/'
-		for file_name in os.listdir(dir_name):
-			# print file_name
-			pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
-			for line in open(dir_name+file_name, 'r'):
-				result = pattern.match(line)
-				if result != None:
-					start = int(result.group(1)) - 1
-					end = int(result.group(2))
-					for i in xrange(start, end):
-						self.mrna_2[i][1] += 1
-						self.mrna_4[i][1] += 1
-		second_xlsl_file = xlwt.Workbook()
-		table = second_xlsl_file.add_sheet('sheet1')
-		for i in xrange(self.len_rna):
-                    table.write(i, 0, self.mrna_2[i][0])
-                    table.write(i, 1, self.mrna_2[i][1])
-                    table.write(i, 2, self.dotbrackets[i])
-		second_xlsl_file.save('uc003ukl.xls')
+            dir_name = './testtwo/'
+            for file_name in os.listdir(dir_name):
+                # print file_name
+                pattern = re.compile(r'mRNA: NM_000927:  (\d+)~(\d+)')
+                for line in open(dir_name+file_name, 'r'):
+                    result = pattern.match(line)
+                    if result != None:
+                        start = int(result.group(1)) - 1
+                        end = int(result.group(2))
+                        for i in xrange(start, end):
+                            self.mrna_2[i][1] += 1
+                            self.mrna_4[i][1] += 1
+            second_xlsl_file = xlwt.Workbook()
+            table = second_xlsl_file.add_sheet('sheet1')
+            for i in xrange(self.len_rna):
+                table.write(i, 0, self.mrna_2[i][0])
+                table.write(i, 1, self.mrna_2[i][1])
+                table.write(i, 2, self.dotbrackets[i])
+            second_xlsl_file.save('uc003ukl.xls')
 
 	def handle_third_gene(self):
             dir_name = './testthree/'
@@ -105,11 +105,11 @@ class Handle(object):
 
 
 if __name__ == '__main__':
-	os.system('printf "\033c"')
+    os.system('printf "\033c"')
 
-	handle = Handle()
-	handle.get_mrna_data()
-	handle.handle_first_gene()
-	handle.handle_second_gene()
-	handle.handle_third_gene()
-	handle.total()
+    handle = Handle()
+    handle.get_mrna_data()
+    handle.handle_first_gene()
+    handle.handle_second_gene()
+    handle.handle_third_gene()
+    handle.total()

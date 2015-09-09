@@ -154,7 +154,24 @@ def test11():
 
     workbook.close()
 
+def test12():
+
+    directory =  'lncrna'
+    files = os.listdir(directory)
+    for i in files:
+        f = os.path.join(directory, i)
+        fp = open(f, 'r')
+        data = fp.readlines()
+        print '-----------------------------------------'
+        print os.path.basename(f).split('.')[0]
+        # print os.path.splitext(f)
+        # for j in data:
+            # print j
+        # print '\n'
+        # raw_input('please.... ')
+    # print direc
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test11()
+    test12()

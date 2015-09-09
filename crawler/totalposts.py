@@ -6,16 +6,16 @@ import requests
 import time
 import os
 import threading
-from Queue import Queue
 import multiprocessing
-# from multiprocessing import Process, Pool
+import Queue as Queue_Queue
+from multiprocessing import Queue, Pool
 from bs4 import BeautifulSoup
 import xlrd
+import traceback
 
 # global variable
 max_threads = 11
 Stock_queue = Queue()  # store gene names
-Html_queue = Queue()  # store html data
 stock_post_num = multiprocessing.Queue()
 
 class WorkManager:
@@ -29,7 +29,7 @@ class WorkManager:
 
     def __init_work_queue(self):
         for i in xrange(self.work_queue_size):
-            self.work_queue.put((self.get_html_data, Stock_queue.get()))
+            self.work_queue.put((get_html_data, Stock_queue.get()))
 
     def __init_thread_pool(self):
         for i in xrange(self.thread_pool_size):
@@ -40,7 +40,7 @@ class WorkManager:
             if self.thread_pool[i].is_alive():
                 self.thread_pool[i].join()
 
-    def get_html_data(self, stock_num):
+def get_html_data(stock_num):
         url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
         response = requests.get(url)
         pattern = re.compile(ur'共有帖子数 (\d+) 篇')
@@ -50,8 +50,6 @@ class WorkManager:
             num = int(result.group(1))
         print 'stock_num:', stock_num, ' posts_num:', num
         stock_post_num.put('stock_num: ' + str(stock_num) + ' posts_num: ' + str(num))
-        # global stock_post_num
-        # stock_post_num.put('this is a test')
 
 class WorkThread(threading.Thread):
     def __init__(self, work_queue):
@@ -64,22 +62,8 @@ class WorkThread(threading.Thread):
             try:
                 func, args = self.work_queue.get(block=False)
                 func(args)
-            except Queue.Empty:
-                print 'queue is empty....'
-
-def get_html_data_23(stock_num):
-    url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
-    response = requests.get(url)
-    pattern = re.compile(ur'共有帖子数 (\d+) 篇')
-    result = pattern.search(response.text)
-    num = 0
-    if result:
-        num = int(result.group(1))
-    print 'stock_num:', stock_num, ' posts_num:', num
-    stock_post_num.put('stock_num: ' + str(stock_num) + ' posts_num: ' + str(num))
-    # global stock_post_num
-    # stock_post_num.put('this is a test')
-    # print 'this is a test....'
+            except Queue_Queue.Empty:
+                print 'work_queue is empty...'
 
 
 def get_stock_num():
@@ -103,10 +87,10 @@ def get_stock_num_from_file():
          if tmp_split:
              stock_num = tmp_split[0]
              Stock_queue.put(stock_num)
-    fp = open('stocknum.txt', 'w')
-    while Stock_queue.qsize() > 0:
-        fp.write(Stock_queue.get() + '\n')
-    fp.close()
+    # fp = open('stocknum.txt', 'w')
+    # while Stock_queue.qsize() > 0:
+        # fp.write(Stock_queue.get() + '\n')
+    # fp.close()
     for i in xrange(2450):
         Stock_queue.get()
 
@@ -116,7 +100,7 @@ def handle(process_name):
     work_manager.finish_all_threads()
 
 
-def print_data():
+def main():
 
     get_stock_num_from_file()
     pools = multiprocessing.Pool()
@@ -125,6 +109,12 @@ def print_data():
         pools.apply_async(handle, args=('process_'+str(i),))
     pools.close()
     pools.join()
+    print '----------------------------------------'
+    while stock_post_num.qsize() > 0:
+        print stock_post_num.get()
+
+
+def write2txt():
 
     fp = open('stocknum.txt', 'w')
     global stock_post_num
@@ -135,21 +125,7 @@ def print_data():
     fp.close()
 
 
-def main():
-    get_stock_num_from_file()
-    work_manager = WorkManager(Stock_queue.qsize(), max_threads)
-    work_manager.finish_all_threads()
-
-    # print Html_queue.qsize()
-    # stock_nums = Html_queue.qsize()
-    # total_nums = 0
-    # while not Html_queue.empty():
-        # total_nums += Html_queue.get()
-    # print 'total posts:', total_nums
-
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    # main()
-    get_stock_num_from_file()
-    # print_data()
+    main()

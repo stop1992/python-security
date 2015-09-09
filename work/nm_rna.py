@@ -8,7 +8,6 @@ import copy
 import xlwt
 import xlsxwriter
 
-# sys.setrecursionlimit(50000)
 
 COUNT_PATH = 0
 LAST_POS_PATH = []
@@ -17,9 +16,43 @@ WRITE_ROW_NUM = 1
 
 class LM_RNA(object):
 
-    def get_data(self):
-        lncfile = open('NR_026902.txt', 'r')
+    def pre_ready(self, file_name):
+        # print file_name
+        # raw_input('please .....')
+        if os.path.isfile('/home/xinali/python/work/' + file_name + '_mrna_match.xlsx'):
+            print 'exsit file, deleting....'
+            os.remove('/home/xinali/python/work/' + file_name + '_mrna_match.xlsx')
+            print 'delete successfully'
+        fp = open('tmp.txt', 'w')
+        fp.close()
+
+    def handle(self):
+
+        directory =  'lncrna'
+        files = os.listdir(directory)
+        for i in files:
+            global COUNT_PATH
+            COUNT_PATH = 0
+            print '\n############################################'
+            print 'handling ', i
+            f = os.path.join(directory, i)
+            self.pre_ready(i.split('.')[0])
+            self.get_data(f)
+            self.write_matrix_file()
+            self.get_result()
+            print COUNT_PATH
+            print 'handled',  i
+            # raw_input('please ......')
+
+
+    def get_data(self, lnc_files):
+
+        # lncfile = open('NR_026902.txt', 'r')
+        lncfile = open(lnc_files, 'r')
         self.lncfilename, self.fileext = os.path.splitext(lncfile.name)
+        self.lncfilename = self.lncfilename.split('/')[1]
+        # print self.lncfilename, self.fileext
+        # raw_input('please .......')
         lncdata = lncfile.readlines()
         lnclen = len(lncdata)
         self.lncrna = ''
@@ -75,8 +108,8 @@ class LM_RNA(object):
 
     def write_result2excel(self):
         # excel = xlwt.Workbook()
-        excel = xlsxwriter.Workbook('lnc_mrna_match.xlsx')
-        table = excel.add_worksheet('lna_mrna_match')
+        excel = xlsxwriter.Workbook(self.lncfilename + '_mrna_match.xlsx')
+        table = excel.add_worksheet(self.lncfilename + '_mrna_match')
         # excel.save('lnc_mrna_match.xlsx')
         j = 1
         for line in open('tmp.txt', 'r'):
@@ -89,7 +122,8 @@ class LM_RNA(object):
             table.write(WRITE_ROW_NUM + 1, 0, self.mrna[mrna_start:mrna_end+1])
             table.write(WRITE_ROW_NUM + 2, 0, 'lncRNA: '+self.mrnafilename+': '+ str(lncrna_start) +'~' + str(lncrna_end))
             table.write(WRITE_ROW_NUM + 3, 0, self.lncrna[lncrna_start:lncrna_end+1])
-            WRITE_ROW_NUM += 6
+            table.write(WRITE_ROW_NUM + 4, 0, 'length: ' + str(mrna_end - mrna_start + 1))
+            WRITE_ROW_NUM += 7
         excel.close()
 
     def write_result2txt(self, match_len):
@@ -123,17 +157,7 @@ class LM_RNA(object):
             COUNT_PATH += 1
             self.write_result2txt(match_len)
 
-    def pre_ready(self):
-        if os.path.isfile('/home/xinali/python/work/lnc_mrna_match.xlsx'):
-            print 'exsit file, deleting'
-            os.remove('/home/xinali/python/work/lnc_mrna_match.xlsx')
-            print 'delete successfully'
-        fp = open('tmp.txt', 'w')
-        fp.close()
-        # raw_input('please enter')
-
     def get_result(self):
-        self.pre_ready()
         self.pos_path = [[]] * (self.mrna_len + self.lncrna_len + 10)
         for i in xrange(self.mrna_len-6):
             for j in xrange(self.lncrna_len-6):
@@ -144,18 +168,14 @@ class LM_RNA(object):
 def main():
 
     start = time.time()
+
     lmrna = LM_RNA()
-    lmrna.get_data()
-    lmrna.write_matrix_file()
-    lmrna.get_result()
+    lmrna.handle()
+
     end = time.time()
-    print '\n\n############################################'
-    print COUNT_PATH
     print 'used time: ', (end - start) / 60, 's'
-    print '##############################################'
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
     main()
-
