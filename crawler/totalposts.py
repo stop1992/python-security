@@ -14,7 +14,7 @@ import xlrd
 import traceback
 
 # global variable
-max_threads = 5
+max_threads = 10
 Stock_queue = Queue()  # store gene names
 stock_post_num = multiprocessing.Queue()
 
@@ -79,6 +79,7 @@ def get_stock_num():
 
 def get_stock_num_from_file():
 
+    """
     data = xlrd.open_workbook('stocknum.xlsx')
     sheet = data.sheets()[3]
     nrows =  sheet.nrows
@@ -88,6 +89,7 @@ def get_stock_num_from_file():
          if tmp_split:
              stock_num = tmp_split[0]
              Stock_queue.put(stock_num)
+    """
     # fp = open('stocknum.txt', 'w')
     # while Stock_queue.qsize() > 0:
         # fp.write(Stock_queue.get() + '\n')
@@ -96,26 +98,34 @@ def get_stock_num_from_file():
         # Stock_queue.get()
 
 def get_stock_num_from_txt():
-    for stock_num in open('num.txt'):
+    for stock_num in open('stocknums.txt'):
         Stock_queue.put(stock_num.strip())
 
-def handle(process_name):
+def handle(process_name, work_size):
     print process_name, 'is running...'
-    work_manager = WorkManager(Stock_queue.qsize()/3, max_threads)
+    work_manager = WorkManager(work_size, max_threads)
     work_manager.finish_all_threads()
 
 
 def main():
 
     get_stock_num_from_txt()
+    work_size = []
+    for i in xrange(3):
+        work_size.append(Stock_queue.qsize() / 3)
+    work_size[2] += Stock_queue.qsize() % 3
+    print work_size
+    # raw_input('please enter....')
     pools = multiprocessing.Pool()
+
     for i in xrange(3):
         # pools.apply_async(get_html_data, args=('process_'+str(i),))
-        pools.apply_async(handle, args=('process_'+str(i),))
+        pools.apply_async(handle, args=('process_'+str(i), work_size[i]))
     pools.close()
     pools.join()
     print '----------------------------------------'
     total = 0
+    print stock_post_num.qsize()
     while stock_post_num.qsize() > 0:
         total += stock_post_num.get()
     print 'total:', total
