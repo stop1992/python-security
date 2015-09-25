@@ -52,7 +52,8 @@ class WorkThread(threading.Thread):
                 func, args = self.work_queue.get(block=False)
                 func(args)
             except Queue_Queue.Empty:
-                print 'work_queue is empty...'
+                pass
+                # print 'work_queue is empty...'
 
 def get_html_data(stock_num):
         url = 'http://guba.eastmoney.com/list,' + stock_num + ',f_1.html'
@@ -62,14 +63,14 @@ def get_html_data(stock_num):
         num = 0
         if result:
             num = int(result.group(1))
-        print 'stock_num:', stock_num, ' posts_num:', num
-        stock_post_num.put(num)
+        # print 'stock_num:', stock_num, ' posts_num:', num
+        stock_post_num.put(stock_num + ' ' + str(num))
         # stock_post_num.put('stock_num: ' + str(stock_num) + ' posts_num: ' + str(num))
 
 
-def get_stock_num():
+def get_stock_num_from_num():
 
-    for i in xrange(1, 100000):
+    for i in xrange(1, 1000):
         i_len = len(str(i))
         stock_num = ''
         for j in xrange(1, 6 - i_len + 1):
@@ -109,7 +110,8 @@ def handle(process_name, work_size):
 
 def main():
 
-    get_stock_num_from_txt()
+    # get_stock_num_from_txt()
+    get_stock_num_from_num()
     work_size = []
     for i in xrange(3):
         work_size.append(Stock_queue.qsize() / 3)
@@ -127,8 +129,11 @@ def main():
     total = 0
     print stock_post_num.qsize()
     while stock_post_num.qsize() > 0:
-        total += stock_post_num.get()
-    print 'total:', total
+        stock, num = stock_post_num.get().split()
+        if int(num) > 0:
+            print stock, num
+        # total += stock_post_num.get()
+    # print 'total:', total
 
 
 def write2txt():
