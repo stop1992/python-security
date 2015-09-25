@@ -8,7 +8,7 @@ def get_stock_num():
     Stock_queue = Queue.Queue()
 
     server = Redis(host='192.168.1.108')
-    server.delete('stocks')
+    # server.delete('stocks')
     for stock_num in open('stocknum_04.txt', 'r'):
         stocknum = stock_num.strip()
         server.sadd('stocks', stocknum)

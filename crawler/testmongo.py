@@ -45,9 +45,6 @@ class Mongo:
                 # if len(day) != 2:
                     # day = '0' + day
                 self.days[y].append(day)
-        # print 'year: ', self.years
-        # print 'month: ', self.months
-        # print 'dary: ', self.days
 
     def list_plus(self, list_one, list_two):
         list_three = []
