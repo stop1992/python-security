@@ -14,7 +14,7 @@ from multiprocessing import Queue, Pool
 import traceback
 
 # global variable
-max_threads = 11
+max_threads = 5
 initial_data_queue = Queue()
 
 class WorkManager:
