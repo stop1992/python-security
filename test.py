@@ -7,24 +7,14 @@ import requests
 import sys
 
 
-def test6():
-    direc = 'mail'
-    # print type(direc)
-    a = os.listdir(direc)
-    for name in a:
-        # print direc + name
-        print type(direc)
-        print type(name)
-        t = direc + name
-        print t
-        raw_input('please ...')
-        # fp = open(direc + "/" + i, 'r')
-        # print fp.name
-
 def test1():
-    print 'this is a cron test line'
+    for i in xrange(10):
+        print 'this is a cron test line'
+        print 'this is a cron test line'
+        print 'this is a cron test line'
+        print 'this is a cron test line'
 
 if __name__ == '__main__':
-    # os.system('printf "\033c"')
+    os.system('printf "\033c"')
 
     test1()
