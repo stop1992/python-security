@@ -7,6 +7,7 @@ import sys
 import copy
 import xlwt
 import xlsxwriter
+import re
 
 
 COUNT_PATH = 0
@@ -28,20 +29,32 @@ class LM_RNA(object):
 
     def handle(self):
 
-        directory =  'lncrna'
+        directory =  'lncrna_xian'
         files = os.listdir(directory)
         for i in files:
             global COUNT_PATH
             COUNT_PATH = 0
-            print '\n############################################'
-            print 'handling ', i
-            f = os.path.join(directory, i)
-            self.pre_ready(i.split('.')[0])
-            self.get_data(f)
-            self.write_matrix_file()
-            self.get_result()
-            print COUNT_PATH
-            print 'handled',  i
+            pattern = re.compile('AB')
+            # sole AB*
+            if pattern.search(i):
+                print 'need to handle...'
+                print i
+                # continue
+            # else:
+                # continue
+
+                print '\n############################################'
+                print 'handling ', i
+                # print type(i)
+                # print len(files)
+                # raw_input('print enter....')
+                f = os.path.join(directory, i)
+                self.pre_ready(i.split('.')[0])
+                self.get_data(f)
+                self.write_matrix_file()
+                self.get_result()
+                print COUNT_PATH
+                print 'handled',  i
 
 
     def get_data(self, lnc_files):

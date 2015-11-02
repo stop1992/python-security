@@ -15,57 +15,57 @@ Html_queue = Queue.Queue()  # store html data
 
 class WorkManager:
     def __init__(self, work_queue_size=1, thread_pool_size=1):
-		self.work_queue = Queue.Queue()
-		self.thread_pool = [] # initiate, no have a thread
-		self.work_queue_size = work_queue_size
-		self.thread_pool_size = thread_pool_size
-		self.__init_work_queue()
-		self.__init_thread_pool()
+        self.work_queue = Queue.Queue()
+        self.thread_pool = [] # initiate, no have a thread
+        self.work_queue_size = work_queue_size
+        self.thread_pool_size = thread_pool_size
+        self.__init_work_queue()
+        self.__init_thread_pool()
 
     def __init_work_queue(self):
-		for i in xrange(self.work_queue_size):
-			self.work_queue.put((get_html_data, Gene_queue.get()))
+        for i in xrange(self.work_queue_size):
+            self.work_queue.put((get_html_data, Gene_queue.get()))
 
     def __init_thread_pool(self):
-		for i in xrange(self.thread_pool_size):
-			self.thread_pool.append(WorkThread(self.work_queue))
+        for i in xrange(self.thread_pool_size):
+            self.thread_pool.append(WorkThread(self.work_queue))
 
     def finish_all_threads(self):
-		for i in xrange(self.thread_pool_size):
-			if self.thread_pool[i].is_alive():
-				self.thread_pool[i].join()
+        for i in xrange(self.thread_pool_size):
+            if self.thread_pool[i].is_alive():
+                self.thread_pool[i].join()
 
 
 class WorkThread(threading.Thread):
-	def __init__(self, work_queue):
-		threading.Thread.__init__(self)
-		self.work_queue = work_queue
-		self.start()
+    def __init__(self, work_queue):
+        threading.Thread.__init__(self)
+        self.work_queue = work_queue
+        self.start()
 
-	def run(self):
-		while True:
-			try:
-				func, args = self.work_queue.get(block=False)
-				func(args)
-			except Queue.Empty:
-				break
-			except requests.ConnectionError:
-				while True:
-					try:
-						func(args)
-					except requests.ConnectionError:
-						continue
-				continue
+    def run(self):
+        while True:
+            try:
+                func, args = self.work_queue.get(block=False)
+                func(args)
+            except Queue.Empty:
+                break
+            except requests.ConnectionError:
+                while True:
+                    try:
+                        func(args)
+                    except requests.ConnectionError:
+                        continue
+                    continue
 
 
 def get_html_data(gene_name):
-	base_url = 'http://www.ncbi.nlm.nih.gov/gene'
-	data = {'term':gene_name}
-	print base_url + '?term=' + gene_name
-	raw_input('enter any key.....')
-	html_data = requests.get(base_url, params=data)
-	global Html_queue
-	Html_queue.put(html_data.text)
+    base_url = 'http://www.ncbi.nlm.nih.gov/gene'
+    data = {'term':gene_name}
+    print base_url + '?term=' + gene_name
+    raw_input('enter any key.....')
+    html_data = requests.get(base_url, params=data)
+    global Html_queue
+    Html_queue.put(html_data.text)
 
 
 def get_data_from_excel():
@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
     print Html_queue.qsize()
     for item in xrange(Html_queue.qsize()):
-		data = Html_queue.get()
-		# print type(data)
-		print data
+        data = Html_queue.get()
+        # print type(data)
+        print data
 
