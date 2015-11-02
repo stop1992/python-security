@@ -74,6 +74,9 @@ def get_data_from_excel():
     col_values = table.col_values(7)
     global Gene_queue
     for i in xrange(11, table.nrows):
+        # print col_values[i]
+        # print type(col_values[i])
+        print str(col_values[i])
         Gene_queue.put(col_values[i])
 
 
@@ -98,10 +101,11 @@ class ParseGeneData:
 =======
 """
 
-if __name__ == '__main__':
-    os.system('printf "\033c"')
+def main():
 
     get_data_from_excel()
+
+def test():
     print Gene_queue.qsize()
     # work_manager = WorkManager(Gene_queue.qsize(), max_threads)
     work_manager = WorkManager()
@@ -112,4 +116,10 @@ if __name__ == '__main__':
         data = Html_queue.get()
         # print type(data)
         print data
+
+if __name__ == '__main__':
+    os.system('printf "\033c"')
+
+    main()
+
 
