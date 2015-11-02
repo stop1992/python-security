@@ -14,9 +14,11 @@ import traceback
 import httplib
 
 # global variable
-MAX_THREADS = 10
+MAX_THREADS = 20
 OUTPUT_QUEUE = Queue.Queue()  # store gene names
 INPUT_QUEUE = Queue.Queue()  # store html data
+log_file = open('log.txt', 'w')
+lock = threading.Lock()
 
 class WorkManager:
     def __init__(self, work_queue_size=1, thread_pool_size=1):
@@ -61,65 +63,54 @@ class WorkThread(threading.Thread):
             except requests.ConnectionError:
                 print 'connection error'
                 # while True:
-                        # try:
-                                # func(args)
-                        # except requests.ConnectionError:
-                                # continue
+                    # try:
+                        # func(args)
+                    # except requests.ConnectionError:
+                        # continue
                 continue
 
 def get_data():
     data = xlrd.open_workbook('mRNAdata.xls')
     table = data.sheets()[0]
-    col_values = table.col_values(7)
+    col_values = table.col_values(2)
     col_len = len(col_values)
-    for i in xrange(11, col_len):
+    # print col_len
+    for i in xrange(1, col_len):
         INPUT_QUEUE.put(col_values[i])
+        # if i == col_len - 1:
+            # print col_values[i]
 
 def handle_full_report(driver, gene_name, sign, url):
+    global lock, log_file
     try:
         driver.get(url)
+        # log_file.write('current url: ' +  driver.current_url  + ' ' + gene_name + '\n')
     except httplib.BadStatusLine:
         print 'request full report url error'
         return
     try:
         gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
     except Exception, e:
-        print '\n' + sign + ' error url:', driver.current_url  + ' ' + gene_name + ' ' + 'Get gene_type error' +  ' ' + url + '\n'
-        print 'erro message:', str(e)
-        print traceback.print_exc()
-        print '\n\n'
-        return
-
-def remain_func():
-    try:
-        exon_count = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[2]/div[2]/div/dl/dd')
-    except:
-        print '\nerror url:', driver.current_url  + '\t' + gene_name + 'get exon_count erro' + '\n'
-        return
-
-    try:
-        relate_articles = driver.find_elements_by_class_name('generef-link')
-        # relate_articles = driver.find_element_by_xpath('//*[@id="padded_content"]/div[5]/div[2]/div[4]/div[2]/div[1]/div/ol')
-    except Exception, e:
-        print 'get relate_articles error'
-        print str(e)
-
-    relate_articles_nums = 0
-    try:
-        if relate_articles[0]:
-            relate_articles_nums = unicode(len(relate_articles[0].find_elements_by_tag_name('li')))
-    except Exception, e:
-        print 'get relate_article_len error'
-        print str(e)
-
-    pattern = re.compile(ur'See all (\d+) citations in')
-    result = pattern.search(driver.page_source)
-    if result:
-            relate_articles_nums = result.group(1)
+        # print 'error!! current url: ', driver.current_url  + ' ' + gene_name + ' ' + 'Get gene_type error' +  ' ' + url + '\n'
+        # lock.acquire()
+        log_file.write('\n---------------------------------------------------\n')
+        log_file.write('error!! current url: ' + driver.current_url  + ' ' + gene_name  + ' Get gene_type error ' + url + '\n')
+        try:
+            driver.get(url)
+            gene_type = driver.find_element_by_xpath('//*[@id="summaryDl"]/dd[5]')
+        except Exception, e:
+            print 'meet a error, in second get url.....'
+            print 'erro message:', str(e)
+            driver.get_screenshot_as_file('./' + gene_name + '.png')
+            return
+            # log_file.write('changed current url: ' + driver.current_url  + ' ' + gene_name  + ' Get gene_type error ' + url + '\n')
+            # print traceback.print_exc()
+        # lock.release()
+    # lock.release()
 
     try:
-        print 'gene_type:', gene_type.text + '\t' +  'exon_count:' + exon_count.text + '\t' + 'article_nums:', relate_articles_nums
-        OUTPUT_QUEUE.put(gene_name + ' ' + gene_type.text + ' ' + exon_count.text + ' ' + relate_articles_nums)
+        print 'gene_name:', gene_name, 'gene_type:', gene_type.text
+        OUTPUT_QUEUE.put(gene_name + ' ' + gene_type.text)
     except Exception, e:
         print str(e)
         print driver.current_url
@@ -136,23 +127,7 @@ def handle_data(gene_name, driver):
         return
 
     driver.get(first_url)
-    """
-    try:
-            result_element = driver.find_element_by_xpath('//*[@id="padded_content"]/div[4]/div/h2')
-    except Exception, e:
-            print str(e)
-            print 'get result_element error, gene_name:', gene_name ,  ' error url:', driver.current_url
-            # print traceback.print_exc()
-    line_numbers = 20
-    try:
-            if len(result_element.text) < 15:
-                    tmp_text = result_element.text.split()
-                    line_numbers = int(tmp_text[1])
-    except Exception, e:
-            print str(e)
-            print driver.current_url
 
-    """
     line_numbers = 20
     for line in xrange(line_numbers):
         line += 1
@@ -184,17 +159,18 @@ def main():
     print OUTPUT_QUEUE.qsize()
 
     fp = codecs.open('result.txt', mode='w', encoding='utf-8')
-    # fp.write('gene_name'
     while OUTPUT_QUEUE.qsize() > 0:
-            element = OUTPUT_QUEUE.get()
-            fp.write(element+'\n')
+        element = OUTPUT_QUEUE.get()
+        fp.write(element+'\n')
     fp.close()
     print 'use time:', time.time() - start
 
+def test():
+    get_data()
 
 if __name__ == "__main__":
     os.system('printf "\033c"')
+    os.system('rm -rf *.png')
 
+    # test()
     main()
-
-
