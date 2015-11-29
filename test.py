@@ -28,9 +28,18 @@ def char_replace():
     print b
 
 
+def test_while():
+    a = 1
+    while a < 10:
+        print 'this is ', a
+        a += 1
+    else:
+        print 'this stops'
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test_pytesseract()
+    test_while()
+    # test_pytesseract()
 
     # char_replace()
