@@ -7,7 +7,6 @@ import Queue
 import xlrd
 import requests
 from bs4 import BeautifulSoup
-
 # global variable
 max_threads = 1
 Gene_queue = Queue.Queue()  # store gene names

@@ -29,17 +29,22 @@ def char_replace():
 
 
 def test_while():
-    a = 1
     while a < 10:
         print 'this is ', a
         a += 1
     else:
         print 'this stops'
 
+def get_formhash():
+    url = 'http://www.binvul.org'
+    response = requests.get(url)
+    fp = codecs.open('content.txt', 'w', 'utf-8')
+    fp.write(response.content)
+    fp.close()
+
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test_while()
+    get_formhash()
+    # test_while()
     # test_pytesseract()
-
-    # char_replace()

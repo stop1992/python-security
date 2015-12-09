@@ -65,40 +65,20 @@ def test16():
         print type(i)
         # raw_input('please')
 
-def test17():
-    work = xlwt.Workbook()
-    sheet = work.add_sheet('test')
-    for i in xrange(300):
-        sheet.write(0, i, 'test')
-    work.save('test.xls')
 
-
-log_file = open('test_log.txt', 'w')
-lock = threading.Lock()
-
-def test1(i):
-    print 'this is thread_' , i
-    global lock, log_file
-    lock.acquire()
-    # tmp = 0
-    # for j in xrange(100000):
-        # tmp += j
-    log_file.write('\n-----------------------------------------------\n')
-    log_file.write('this is thread_' + i + ' is running....' + '\n')
-    log_file.write('this is thread_' + i + ' is running....' + '\n')
-    log_file.write('this is thread_' + i + ' is running....' + '\n')
-    log_file.write('this is thread_' + i + ' is running....' + '\n')
-    log_file.write('this is thread_' + i + ' is running....' + '\n')
-    log_file.write('-----------------------------------------------\n')
-    lock.release()
-
-def test2():
-    for i in xrange(1000):
-        new_thread = threading.Thread(target=test1, args=(str(i),))
-        new_thread.start()
-
+def add_small():
+    tmp_txt = open('result.txt', 'r').readlines()
+    fp = open('tmp.txt', 'w')
+    start = 0
+    for i in xrange(0, len(tmp_txt)):
+        if i % 2 == 0:
+            fp.write('>' + tmp_txt[i])
+        else:
+            fp.write(tmp_txt[i])
+    fp.close()
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test2()
+    add_small()
+
