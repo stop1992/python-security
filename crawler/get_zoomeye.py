@@ -91,7 +91,7 @@ class ZoomEye(object):
             search_dork = 'https://www.zoomeye.org/search?q=app%3Adiscuz%20php%3A%225.5.7%22&p=' + str(page) + '&t=web'
             self.driver.get(search_dork)
             self.write_results2file()
-            time.sleep(3)
+            time.sleep(30)
 
         driver.quit()
 
