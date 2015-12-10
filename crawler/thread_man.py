@@ -2,9 +2,87 @@
 
 from selenium import webdriver
 import os
-from gevent.pool import Pool
-from gevent.monkey
-gevent.monkey.patch_socket()
+# from gevent.pool import Pool
+# from gevent.monkey
+# gevent.monkey.patch_socket()
+import threading
+import Queue
+
+
+
+# URL ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
+MAX_THREADS = 20
+OUTPUT_QUEUE = Queue.Queue()  # store gene names
+INPUT_QUEUE = Queue.Queue()  # store html data
+# log_file = open('log.txt', 'w')
+# lock = threading.Lock()
+
+class WorkManager(object):
+    # def __init__(self, work_queue_size=1, thread_pool_size=1):
+    def __init__(self, thread_pool_size=1):
+        # self.work_queue = Queue.Queue()
+        self.thread_pool = [] # initiate, no have a thread
+        # self.work_queue_size = work_queue_size
+        self.thread_pool_size = thread_pool_size
+        # self.__init_work_queue()
+        self.__init_thread_pool()
+
+    # def __init_work_queue(self):
+        # for i in xrange(self.work_queue_size):
+            # self.work_queue.put((handle_data, INPUT_QUEUE.get()))
+
+    def __init_thread_pool(self):
+        # print 'initial threads....'
+        for i in xrange(self.thread_pool_size):
+            # self.thread_pool.append(WorkThread(self.work_queue))
+            self.thread_pool.append(WorkThread())
+
+    def finish_all_threads(self):
+        for i in xrange(self.thread_pool_size):
+            if self.thread_pool[i].is_alive():
+                self.thread_pool[i].join()
+
+
+class WorkThread(threading.Thread):
+    #  def __init__(self, work_queue):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        # self.work_queue = work_queue
+        # self.driver = webdriver.PhantomJS()
+        # print 'starting threads....'
+        self.man = Man()
+        # print 'starting threads....'
+        self.start()
+
+    def run(self):
+        while True:
+            try:
+                print 'starting handling....'
+                self.man.handle(INPUT_QUEUE.get())
+                # func, args = self.work_queue.get(block=False)
+                # if type(args) == types.FloatType:
+                        # continue
+                # func(args, self.driver)
+                # func(args, 'test')
+            except Queue.Empty:
+                break
+            # except requests.ConnectionError:
+            except Exception, e:
+                print e
+                # print 'occurs error....'
+                # print 'connection error'
+                # while True:
+                    # try:
+                        # func(args)
+                    # except requests.ConnectionError:
+                        # continue
+                continue
+
+def get_gene_name():
+
+    for gene in open('geneName.txt', 'r'):
+        INPUT_QUEUE.put(gene.strip())
+
 
 class Man(object):
 
@@ -12,10 +90,6 @@ class Man(object):
 
         self.url ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
         # self.loc_url = 'http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s#localization'
-
-    def get_gene_name(self):
-
-        self.gene_names = map(self.ch_strip, open('geneName.txt', 'r').readlines())
 
     def ch_strip(self, ch):
 
@@ -105,7 +179,7 @@ class Man(object):
         print compartment, confidence, goid, goterm, new_gene
 
 
-    def handle(self):
+    def handle(self, gene):
 
         # use http proxy
         service_args = [
@@ -115,32 +189,36 @@ class Man(object):
 
         self.driver = webdriver.PhantomJS(service_args=service_args)
 
-        self.get_gene_name()
-        for gene in self.gene_names:
-            print '-' * 100
-            print 'handling %s ....' % gene
+        # self.get_gene_name()
+        # for gene in self.gene_names:
+        print '-' * 100
+        print 'handling %s ....' % gene
 
-            self.driver.get(self.url % gene)
-            self.driver.refresh()
+        # self.driver.get(self.url % gene)
+        self.driver.get(self.url % gene)
+        self.driver.refresh()
 
-            new_gene = self.driver.current_url.split('=')[1].strip()
-            if new_gene == gene:
-                new_gene = 'same'
-            else:
-                new_gene = 'diff'
+        new_gene = self.driver.current_url.split('=')[1].strip()
+        if new_gene == gene:
+            new_gene = 'same'
+        else:
+            new_gene = 'diff'
 
-            self.get_summaries(gene, new_gene)
-            self.get_localization(gene, new_gene)
-            raw_input('stop here.....')
+        self.get_summaries(gene, new_gene)
+        self.get_localization(gene, new_gene)
+        # raw_input('stop here.....')
 
-        self.driver.quit()
+        # self.driver.quit()
 
 def main():
 
-    pool = Pool(30)
-    pool.join(timeout=30)
-    man = Man()
-    man.handle()
+    # pool = Pool(30)
+    # pool.join(timeout=30)
+    # man = Man()
+    # man.handle()
+    get_gene_name()
+    workmanager = WorkManager(10)
+    workmanager.finish_all_threads()
 
 
 if __name__ == '__main__':
