@@ -10,41 +10,57 @@ import string
 from PIL import Image
 import pytesseract
 
+from multiprocessing import Queue
+from multiprocessing import Pool
 
-def test_pytesseract():
-    image = Image.open('a.jpg')
-    code = pytesseract.image_to_string(image)
-    print code
+import gevent
+from gevent import monkey
+monkey.patch_socket()
+from gevent.pool import Pool
 
-def test_lambda():
-    rand_str = lambda length: ''.join(random.sample(string.letters, length))
-    test_str = rand_str(100)
-    print test_str
+queue = Queue()
 
-def char_replace():
-    # a = "test a a "
-    a = "String.fromCharCode(104, 116, 116,112,58,47,47,49,57,50,46,49,54,56,46,49,46,49,48,54,47,119,111,114,100,112,114,101,115,115,47,101,120,112,108,111,105,116,46,106,11"
-    b = a.replace(" ", "")
-    print b
+def add_ch():
+    for i in xrange(10000):
+        queue.put(i)
+
+def handle(name):
+    while queue.qsize() > 0:
+        print name
+        queue.get()
+        print queue.qsize()
+    return
+
+def main():
+
+    add_ch()
+    print 'qsize:', queue.qsize()
+
+    pools = Pool()
+    for i in xrange(3):
+        pools.apply_async(handle, args=('processing '+str(i), ))
+
+    pools.close()
+    pools.join()
+
+    print 'done'
+    print 'done'
+    print 'done'
+
+def handle2(i):
+
+    print i
+
+    for i in xrange(10):
+        requests.get('http://www.zhihu.com')
 
 
-def test_while():
-    while a < 10:
-        print 'this is ', a
-        a += 1
-    else:
-        print 'this stops'
+def main2():
 
-def get_formhash():
-    url = 'http://www.binvul.org'
-    response = requests.get(url)
-    fp = codecs.open('content.txt', 'w', 'utf-8')
-    fp.write(response.content)
-    fp.close()
+    pools = Pool(20)
+    pools.map(handle2, xrange(100))
 
 if __name__ == '__main__':
-    os.system('printf "\033c"')
+    os.system('clear')
 
-    get_formhash()
-    # test_while()
-    # test_pytesseract()
+    main2()

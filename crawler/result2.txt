@@ -1,0 +1,20 @@
+A1CF	empty	empty	empty	empty	same
+AADAC	empty	empty	empty	empty	same
+A2ML1	empty	empty	empty	empty	same
+A4GNT	empty	empty	empty	empty	same
+AAMP	empty	empty	empty	empty	same
+A2LD1	empty	empty	empty	empty	same
+AACS	empty	empty	empty	empty	same
+AADACL2	empty	empty	empty	empty	same
+A1BG	empty	empty	empty	empty	same
+AAGAB	empty	empty	empty	empty	same
+AAAS	nucleus	5	GO:0005634	nucleus	same
+AADAT	mitochondrion	4	GO:0005739	mitochondrion	same
+A4GALT	golgi apparatus	5	GO:0016020	membrane	same
+AAA1	empty	empty	empty	empty	same
+AADACL3	endoplasmic reticulum	1	empty	empty	same
+AAK1	plasma membrane	5	GO:0005905	coated pit	same
+AACSL	empty	empty	empty	empty	diff
+A2M	extracellular	5	GO:0005576	extracellular region	same
+AARSD1	nucleus	3	GO:0005575	cellular_component	same
+AADACL4	golgi apparatus	1	GO:0016021	integral component of membrane	same

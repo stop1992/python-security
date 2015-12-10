@@ -2,39 +2,24 @@
 
 from selenium import webdriver
 import os
-# from gevent.pool import Pool
-# from gevent.monkey
-# gevent.monkey.patch_socket()
 import threading
 import Queue
+from multiprocessing import Queue, Pool
 
 
-
-# URL ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
 MAX_THREADS = 20
-OUTPUT_QUEUE = Queue.Queue()  # store gene names
-INPUT_QUEUE = Queue.Queue()  # store html data
-# log_file = open('log.txt', 'w')
-# lock = threading.Lock()
+# OUTPUT_QUEUE = Queue.Queue()  # store gene names
+# INPUT_QUEUE = Queue.Queue()  # store html data
+INPUT_QUEUE = Queue()  # store html data
 
 class WorkManager(object):
-    # def __init__(self, work_queue_size=1, thread_pool_size=1):
     def __init__(self, thread_pool_size=1):
-        # self.work_queue = Queue.Queue()
         self.thread_pool = [] # initiate, no have a thread
-        # self.work_queue_size = work_queue_size
         self.thread_pool_size = thread_pool_size
-        # self.__init_work_queue()
         self.__init_thread_pool()
 
-    # def __init_work_queue(self):
-        # for i in xrange(self.work_queue_size):
-            # self.work_queue.put((handle_data, INPUT_QUEUE.get()))
-
     def __init_thread_pool(self):
-        # print 'initial threads....'
         for i in xrange(self.thread_pool_size):
-            # self.thread_pool.append(WorkThread(self.work_queue))
             self.thread_pool.append(WorkThread())
 
     def finish_all_threads(self):
@@ -44,38 +29,20 @@ class WorkManager(object):
 
 
 class WorkThread(threading.Thread):
-    #  def __init__(self, work_queue):
     def __init__(self):
         threading.Thread.__init__(self)
-        # self.work_queue = work_queue
-        # self.driver = webdriver.PhantomJS()
-        # print 'starting threads....'
         self.man = Man()
-        # print 'starting threads....'
         self.start()
 
     def run(self):
         while True:
             try:
-                print 'starting handling....'
                 self.man.handle(INPUT_QUEUE.get())
-                # func, args = self.work_queue.get(block=False)
-                # if type(args) == types.FloatType:
-                        # continue
-                # func(args, self.driver)
-                # func(args, 'test')
+                self.man.driver.quit()
             except Queue.Empty:
                 break
-            # except requests.ConnectionError:
             except Exception, e:
                 print e
-                # print 'occurs error....'
-                # print 'connection error'
-                # while True:
-                    # try:
-                        # func(args)
-                    # except requests.ConnectionError:
-                        # continue
                 continue
 
 def get_gene_name():
@@ -89,7 +56,6 @@ class Man(object):
     def __init__(self):
 
         self.url ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
-        # self.loc_url = 'http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s#localization'
 
     def ch_strip(self, ch):
 
@@ -206,20 +172,22 @@ class Man(object):
 
         self.get_summaries(gene, new_gene)
         self.get_localization(gene, new_gene)
-        # raw_input('stop here.....')
 
-        # self.driver.quit()
+def start_threads(name):
+
+    print name
+    workmanager = WorkManager(5)
+    workmanager.finish_all_threads()
 
 def main():
 
-    # pool = Pool(30)
-    # pool.join(timeout=30)
-    # man = Man()
-    # man.handle()
     get_gene_name()
-    workmanager = WorkManager(10)
-    workmanager.finish_all_threads()
+    pools = Pool()
+    for i in xrange(4):
+        pools.apply_async(start_threads, args=('prossing '+str(i), ))
 
+    pools.close()
+    pools.join()
 
 if __name__ == '__main__':
     os.system('clear')
