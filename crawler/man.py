@@ -2,9 +2,7 @@
 
 from selenium import webdriver
 import os
-from gevent.pool import Pool
-from gevent.monkey
-gevent.monkey.patch_socket()
+from gevent.pool import Pool from gevent.monkey gevent.monkey.patch_socket()
 
 class Man(object):
 

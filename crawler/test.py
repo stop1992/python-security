@@ -15,15 +15,18 @@ import threading
 import Queue
 import pdb
 import xlwt
+import sys
 
 def add_ch(ch):
     return ch+'abc'
 
 def test():
-    ch = ['a\r\n', 'b\n\r']
-    t = map(strip, ch)
-
-    print t
+    a = 'test'
+    if a == 'test':
+        print 'so quit'
+        sys.exit()
+    else:
+        print 'not exit'
 
 
 
@@ -31,3 +34,4 @@ if __name__ == '__main__':
     os.system('printf "\033c"')
 
     test()
+    print 'after quit'

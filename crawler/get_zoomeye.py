@@ -1,15 +1,17 @@
 # encoding:utf-8
 
-import requests
+# import requests
 import os
-import re
-from bs4 import BeautifulSoup
-import urllib
-import urllib2
-import cookielib
+# import re
+# from bs4 import BeautifulSoup
+# import urllib
+# import urllib2
+# import cookielib
 from selenium import webdriver
 import time
-import pdb
+# import pdb
+from selenium.webdriver.common.by import By
+import sys
 
 try:
     import cPickle as pickle
@@ -18,28 +20,9 @@ except:
 
 class ZoomEye(object):
     def __init__(self):
+        pass
 
-        Host = 'www.zoomeye.org'
-        User_Agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0'
-        Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-        Accept_Language = 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'
-        Accept_Encoding = 'gzip, deflate'
-        DNT= 1
-        Connection= 'keep-alive'
-
-        self.headers = {
-                'Host':Host,
-                'User-Agent':User_Agent,
-                'Accept':Accept,
-                'Accept-Language':Accept_Language,
-                'Accept-Encoding': Accept_Encoding,
-                'DNT':1,
-                'Connection':Connection
-                }
-        self.fp = open('relative_sites.txt', 'w')
-        self.fp.close()
-
-    def get_site(self):
+    def login(self):
 
         service_args = [
             '--proxy=139.196.108.68:80'
@@ -49,9 +32,20 @@ class ZoomEye(object):
         self.driver = webdriver.PhantomJS(service_args=service_args)
 
         # fist step, get cookie by request url
-        url = 'https://www.zoomeye.org'
+        # url = 'https://www.zoomeye.org'
+        url = 'https://www.zoomeye.org/accounts/login/?next=/'
         self.driver.get(url)
         self.driver.refresh()
+        self.driver.find_element(By.ID, 'id_username').send_keys('testone')
+        self.driver.find_element(By.ID, 'id_password').send_keys('testone')
+        # self.driver.get_screenshot_as_file('frist.png')
+        self.driver.get_screenshot_as_file('login.png')
+        # raw_input('get first screenshot....')
+        captcha = raw_input('captcha:')
+        self.driver.find_element(By.ID, 'id_captcha_1').send_keys(captcha)
+        self.driver.find_element(By.CSS_SELECTOR, '.btn.btn-info').click()
+        self.driver.set_window_size(height=1000, width=1000)
+        self.driver.get_screenshot_as_file('loged.png')
 
     def write_results2file(self):
 
@@ -70,9 +64,21 @@ class ZoomEye(object):
 
     def get_result(self):
 
-        self.get_site()
+        self.login()
+
+        # if u'退出登录' in self.driver.page_source:
+        if '/accounts/my/profile/' in self.driver.page_source:
+            print 'login success'
+        else:
+            print 'not login, so login again....'
+            self.login()
+            # self.driver.quit()
+            # sys.exit()
+
+        # raw_input('so wait .....')
 
         print '-' * 80
+
         print 'getting page 1....'
         search_dork = 'https://www.zoomeye.org/search?q=app%3Adiscuz%20php%3A%225.5.7%22&p=1&t=web'
         self.driver.get(search_dork)
