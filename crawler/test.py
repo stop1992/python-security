@@ -16,22 +16,14 @@ import Queue
 import pdb
 import xlwt
 import sys
-
-def add_ch(ch):
-    return ch+'abc'
-
-def test():
-    a = 'test'
-    if a == 'test':
-        print 'so quit'
-        sys.exit()
-    else:
-        print 'not exit'
+from gevent.pool import Pool
 
 
+def test(i):
+   print i
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    test()
-    print 'after quit'
+    pools = Pool(3)
+    pools.map(test, xrange(1000))

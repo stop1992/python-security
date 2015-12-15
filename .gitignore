@@ -1,5 +1,6 @@
 *.swp
 *.log
+*.pyc
 match.txt
 match_value.txt
 path.txt
