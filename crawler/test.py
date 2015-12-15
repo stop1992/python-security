@@ -17,13 +17,21 @@ import pdb
 import xlwt
 import sys
 from gevent.pool import Pool
+import codecs
 
 
 def test(i):
-   print i
+    fp = codecs.open('200.txt', 'a+', 'utf-8')
+    for i in xrange(10):
+        fp.write('this is a test')
+        print 'done'
+    fp.close()
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
+    # test()
+
     pools = Pool(3)
     pools.map(test, xrange(1000))
+    print codecs.open('200.txt', 'r', 'utf-8').readlines()

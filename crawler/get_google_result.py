@@ -108,8 +108,8 @@ def main():
     except KeyboardInterrupt:
         print 'press keyboardinterrupt, so quit....'
         google.driver.quit()
-        # testresult = TestResult()
-        # testresult.test_visit('google_results.txt')
+        testresult = TestResult()
+        testresult.test_visit('google_results.txt')
         sys.exit()
 
 
