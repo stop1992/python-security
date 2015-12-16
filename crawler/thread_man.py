@@ -3,7 +3,7 @@
 from selenium import webdriver
 import os
 import threading
-import Queue
+# import Queue
 from multiprocessing import Queue, Pool
 
 
@@ -39,8 +39,8 @@ class WorkThread(threading.Thread):
             try:
                 self.man.handle(INPUT_QUEUE.get())
                 self.man.driver.quit()
-            except Queue.Empty:
-                break
+            # except Queue.Empty:
+                # break
             except Exception, e:
                 print e
                 continue
@@ -56,10 +56,6 @@ class Man(object):
     def __init__(self):
 
         self.url ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
-
-    def ch_strip(self, ch):
-
-        return ch.strip()
 
 
     def get_summaries(self, gene, new_gene):
@@ -108,12 +104,12 @@ class Man(object):
                         pass
                         # print e
 
-        print 'entrez_element: ', entrez_element
-        print '#' * 20
-        print 'gene_element: ', gene_element
-        print '#' * 20
-        print 'uniprot_element: ', uniprot_element
-        print '#' * 50
+        # print 'entrez_element: ', entrez_element
+        # print '#' * 20
+        # print 'gene_element: ', gene_element
+        # print '#' * 20
+        # print 'uniprot_element: ', uniprot_element
+        # print '#' * 50
 
 
     def get_localization(self, gene, new_gene):
@@ -135,14 +131,11 @@ class Man(object):
 
         try:
             goterm = self.driver.find_element_by_xpath('//*[@id="_localization"]/div[3]/div[2]/div/table/tbody/tr[1]/td[2]').text
-            # if 'extracellular' in goterm:
             goid = self.driver.find_element_by_xpath('//*[@id="_localization"]/div[3]/div[2]/div/table/tbody/tr[1]/td[1]/a').text
-            # else:
-                # goterm = 'empty'
         except Exception, e:
             pass
             # print e
-        print compartment, confidence, goid, goterm, new_gene
+        # print compartment, confidence, goid, goterm, new_gene
 
 
     def handle(self, gene):
@@ -153,18 +146,23 @@ class Man(object):
             '--proxy-type=http'
             ]
 
-        self.driver = webdriver.PhantomJS(service_args=service_args)
+        # self.driver = webdriver.PhantomJS(service_args=service_args)
+        self.driver = webdriver.PhantomJS()
 
-        # self.get_gene_name()
-        # for gene in self.gene_names:
-        print '-' * 100
         print 'handling %s ....' % gene
 
-        # self.driver.get(self.url % gene)
-        self.driver.get(self.url % gene)
+        url = self.url % gene
+
+        self.driver.get(url)
         self.driver.refresh()
 
-        new_gene = self.driver.current_url.split('=')[1].strip()
+        new_gene = 'same'
+        try:
+            new_gene = self.driver.current_url.split('=')[1].strip()
+        except Exception, e:
+            print e
+            print self.driver.current_url, gene, url
+            print '---------------------'
         if new_gene == gene:
             new_gene = 'same'
         else:
