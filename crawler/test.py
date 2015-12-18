@@ -19,19 +19,29 @@ import sys
 from gevent.pool import Pool
 import codecs
 
+complete = [False] * 10
 
-def test(i):
-    fp = codecs.open('200.txt', 'a+', 'utf-8')
-    for i in xrange(10):
-        fp.write('this is a test')
-        print 'done'
-    fp.close()
+def test():
+
+    complete[1] = True
+    complete[2] = True
+    complete[3] = True
+
+    for i in complete:
+        print i
+
+def test2():
+
+    print '*' * 100
+
+    print complete
 
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    # test()
+    test()
+    test2()
 
-    pools = Pool(3)
-    pools.map(test, xrange(1000))
-    print codecs.open('200.txt', 'r', 'utf-8').readlines()
+    # pools = Pool(3)
+    # pools.map(test, xrange(1000))
+    # print codecs.open('200.txt', 'r', 'utf-8').readlines()

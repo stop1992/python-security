@@ -2,64 +2,90 @@
 
 
 import os
-from multiprocessing import Pool, Queue, Process
+from multiprocessing import Pool, Queue, Process, Lock
+from gevent.pool import Pool as ge_pool
+from gevent.queue import Queue as ge_queue
+from Queue import Queue as q_Queue
+import time
 
 # from file_lock import FileLock
 
-# queue = Queue()
+queue = Queue()
+result = Queue()
+# queue = ge_queue()
+# queue = q_Queue()
 
 # fp = open('test.txt', 'w')
 # flock = FileLock(fp)
 
+NUMS = 5
+# complete = [False] * NUMS
 
 # def handle(slogan, queue):
-def handle(queue):
+# lock = Lock()
+# fp = open('test.txt', 'w')
+
+def handle(i):
 
     # print 'test'
+    # print i
 
     # for i in xrange(1000000):
-    for i in xrange(1000000):
-        queue.put('test')
+    for j in xrange(10000000):
+        queue.put('test\n')
+        # print 'put...'
         # queue.put(slogan)
+    # queue.put('DONE')
+    # global complete
+    # complete[i] = True
+    # print i, complete[i]
+    result.put('DONE')
     print 'put done'
+    # queue.put(-1)
+    # queue.cancle_join_thread()
+    # print queue.qsize()
 
+    # for i in xrange(10000):
+        # queue.get()
+        # lock.acquire()
+        # fp.write(queue.get())
+        # lock.release()
+
+def check():
+
+    while True:
+
+
+        if result.qsize() == NUMS:
+            break
+        else:
+            time.sleep(2)
+        # data = queue.get()
+
+        # if data == 'DONE':
+        # if queue.qsize() == 1001:
+            # break
+        # else:
+            # print 'wait 1s'
+            # time.sleep(1)
+
+    print 'put all done'
 
 def main():
 
-    queue = Queue()
-
-    p1 = Process(target=handle, args=(queue,))
-    p2 = Process(target=handle, args=(queue,))
-    p1.start()
-    p2.start()
-
-    print 'before: ' , queue.qsize()
-
-    while queue.qsize() > 0:
-        queue.get()
-
-    print 'after: ', queue.qsize()
-
-    p1.join(timeout=5)
-    p2.join(timeout=4)
-    print 'all done...'
-
-    print queue.qsize()
-    print 'done'
-
-def test():
-
     pools = Pool(2)
-    for i in xrange(3):
+    # pools = ge_pool(2)
+    # pools.map(handle, xrange(0, 3))
+    for i in xrange(NUMS):
         # pools.apply_async(handle, args=(str(i)*5+'\n', queue))
-        result = pools.apply_async(handle, args=(queue,))
+        pools.apply_async(handle, args=(i,))
 
-    pools.close()
-    pools.join()
-
-    print 'all put done'
+    check()
+    # print 'all put done'
 
     print queue.qsize()
+    # p.join()
+    # fp.close()
 
     # fp = open('text.txt', 'w')
     # while queue.qsize() > 0:

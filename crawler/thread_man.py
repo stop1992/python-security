@@ -5,12 +5,19 @@ import os
 import threading
 # import Queue
 from multiprocessing import Queue, Pool
+import time
 
 
 MAX_THREADS = 20
 # OUTPUT_QUEUE = Queue.Queue()  # store gene names
 # INPUT_QUEUE = Queue.Queue()  # store html data
 INPUT_QUEUE = Queue()  # store html data
+
+complete = Queue()
+result1 = Queue()
+result2 = Queue()
+
+NUMS = 4
 
 class WorkManager(object):
     def __init__(self, thread_pool_size=1):
@@ -24,12 +31,12 @@ class WorkManager(object):
 
     def finish_all_threads(self):
         for i in xrange(self.thread_pool_size):
-            if self.thread_pool[i].is_alive():
-                self.thread_pool[i].join()
+            self.thread_pool[i].join()
 
 
 class WorkThread(threading.Thread):
     def __init__(self):
+
         threading.Thread.__init__(self)
         self.man = Man()
         self.start()
@@ -38,9 +45,9 @@ class WorkThread(threading.Thread):
         while True:
             try:
                 self.man.handle(INPUT_QUEUE.get())
-                self.man.driver.quit()
-            # except Queue.Empty:
-                # break
+                if INPUT_QUEUE.empty():
+                    self.man.driver.quit()
+                    break
             except Exception, e:
                 print e
                 continue
@@ -110,6 +117,7 @@ class Man(object):
         # print '#' * 20
         # print 'uniprot_element: ', uniprot_element
         # print '#' * 50
+        result1.put(gene+'##'+entrez_element+'##'+gene_element+'##'+uniprot_element+'##'+new_gene+'\n')
 
 
     def get_localization(self, gene, new_gene):
@@ -136,6 +144,7 @@ class Man(object):
             pass
             # print e
         # print compartment, confidence, goid, goterm, new_gene
+        result2.put(gene+'##'+compartment+'##'+confidence+'##'+goid+'##'+new_gene+'\n')
 
 
     def handle(self, gene):
@@ -156,7 +165,8 @@ class Man(object):
         self.driver.get(url)
         self.driver.refresh()
 
-        new_gene = 'same'
+        sign = 'same'
+        # new_gene = 'same'
         try:
             new_gene = self.driver.current_url.split('=')[1].strip()
         except Exception, e:
@@ -164,28 +174,46 @@ class Man(object):
             print self.driver.current_url, gene, url
             print '---------------------'
         if new_gene == gene:
-            new_gene = 'same'
+            sign = 'same'
         else:
-            new_gene = 'diff'
+            sign = 'diff'
 
-        self.get_summaries(gene, new_gene)
-        self.get_localization(gene, new_gene)
+        self.get_summaries(gene, sign)
+        self.get_localization(gene, sign)
 
 def start_threads(name):
 
     print name
-    workmanager = WorkManager(5)
+    workmanager = WorkManager(10)
     workmanager.finish_all_threads()
+
+    complete.put('DONE')
+
+
+
+def check_pools_complete():
+
+    while True:
+
+        if complete.qsize() == NUMS:
+            print 'complete.....'
+            break
+        else:
+            time.sleep(5)
+            # print 'not complete...'
+
 
 def main():
 
     get_gene_name()
-    pools = Pool()
-    for i in xrange(4):
+    pools = Pool(NUMS)
+    for i in xrange(NUMS):
         pools.apply_async(start_threads, args=('prossing '+str(i), ))
 
-    pools.close()
-    pools.join()
+    check_pools_complete()
+
+    # pools.close()
+    # pools.join()
 
 if __name__ == '__main__':
     os.system('clear')

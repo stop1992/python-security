@@ -12,7 +12,8 @@ from gevent.coros import BoundedSemaphore
 from gevent.fileobject import FileObjectThread
 
 
-INPUT_QUEUE = []
+# INPUT_QUEUE = []
+INPUT_QUEUE = Queue()
 
 # open('result1.txt', 'w').close()
 # open('result2.txt', 'w').close()
@@ -21,8 +22,10 @@ INPUT_QUEUE = []
 
 def get_gene_name():
 
-    for gene in open('geneName.txt', 'r'):
-        INPUT_QUEUE.append(gene.strip())
+    # for gene in open('geneName.txt', 'r'):
+    for gene in open('gene_100.txt', 'r'):
+        # INPUT_QUEUE.append(gene.strip())
+        INPUT_QUEUE.put(gene.strip())
 
     open('result1.txt', 'w').close()
     open('result2.txt', 'w').close()
@@ -32,6 +35,7 @@ class Man(object):
     def __init__(self):
 
         self.url ='http://www.genecards.org/cgi-bin/carddisp.pl?gene=%s'
+        self.driver = webdriver.PhantomJS()
 
     def ch_strip(self, ch):
 
@@ -130,45 +134,41 @@ class Man(object):
             ]
 
         # self.driver = webdriver.PhantomJS(service_args=service_args)
-        self.driver = webdriver.PhantomJS()
 
         print 'handling %s ....' % gene
 
         self.driver.get(self.url % gene)
-        # self.driver.refresh()
+        self.driver.refresh()
 
-        new_gene = 'same'
+        sign = 'same'
         try:
             new_gene = self.driver.current_url.split('=')[1].strip()
         except Exception, e:
             print self.driver.current_url
 
         if new_gene == gene:
-            new_gene = 'same'
+            sign = 'same'
         else:
-            new_gene = 'diff'
+            sign = 'diff'
+        # print gene, new_gene, sign, self.driver.current_url
 
-        self.get_summaries(gene, new_gene)
-        self.get_localization(gene, new_gene)
+        self.get_summaries(gene, sign)
+        self.get_localization(gene, sign)
 
 
-def start_gevent(gene):
+def start_gevent(i):
 
-    gene = gene.strip()
     man = Man()
-    man.handle(gene)
-    # man.driver.quit()
-
-# as a semaphore
-# sem1 = BoundedSemaphore()
-# sem2 = BoundedSemaphore()
+    while INPUT_QUEUE.qsize():
+        man.handle(INPUT_QUEUE.get())
+    man.driver.quit()
 
 def main():
 
     get_gene_name()
 
-    pools = Pool(20)
-    pools.map(start_gevent, INPUT_QUEUE)
+    pools = Pool(10)
+    pools.map(start_gevent, xrange(0, 20))
 
 
 if __name__ == '__main__':

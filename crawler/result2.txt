@@ -1,25 +1,11 @@
-A2BP1##empty##empty##empty##empty##same
-AAAS##empty##empty##empty##empty##same
-A2LD1##empty##empty##empty##empty##same
-AADACL4##empty##empty##empty##empty##same
-AADACL3##empty##empty##empty##empty##same
-AADAT##empty##empty##empty##empty##same
-AADAC##empty##empty##empty##empty##same
-A4GNT##empty##empty##empty##empty##same
+A2ML1##extracellular##5##GO:0005576##extracellular region##same
+A4GALT##golgi apparatus##5##GO:0016020##membrane##same
+AAAS##nucleus##5##GO:0005634##nucleus##same
+A2M##extracellular##5##GO:0005576##extracellular region##same
 AAA1##empty##empty##empty##empty##same
-AADACL2##empty##empty##empty##empty##same
-AACS##empty##empty##empty##empty##same
-AAGAB##empty##empty##empty##empty##same
-A2M##empty##empty##empty##empty##same
-AAK1##empty##empty##empty##empty##same
-AASDHPPT##empty##empty##empty##empty##same
-AASDH##empty##empty##empty##empty##same
-ABCA12##empty##empty##empty##empty##same
-ABAT##empty##empty##empty##empty##same
-ABCA10##empty##empty##empty##empty##same
-AANAT##empty##empty##empty##empty##same
-AATF##empty##empty##empty##empty##same
-ABCA11P##empty##empty##empty##empty##same
-AARS2##empty##empty##empty##empty##same
-A1BG##empty##empty##empty##empty##same
-ABCA1##empty##empty##empty##empty##same
+A4GNT##golgi apparatus##5##GO:0000139##Golgi membrane##same
+A1CF##nucleus##5##GO:0005634##nucleus##same
+AACSL##empty##empty##empty##empty##diff
+A2BP1##nucleus##3##GO:0005634##nucleus##diff
+AADAT##empty##empty##GO:0005739##mitochondrion##same
+AACS##cytosol##2##GO:0005737##cytoplasm##same
