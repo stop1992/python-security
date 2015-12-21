@@ -2,6 +2,7 @@
 
 from selenium import webdriver
 import os
+import codecs
 
 import gevent
 from gevent.queue import Queue
@@ -10,6 +11,7 @@ from gevent import monkey
 monkey.patch_all()
 from gevent.coros import BoundedSemaphore
 from gevent.fileobject import FileObjectThread
+import time
 
 
 # INPUT_QUEUE = []
@@ -22,13 +24,14 @@ INPUT_QUEUE = Queue()
 
 def get_gene_name():
 
-    # for gene in open('geneName.txt', 'r'):
-    for gene in open('gene_100.txt', 'r'):
+    for gene in open('geneName.txt', 'r'):
+    # for gene in open('gene_100.txt', 'r'):
         # INPUT_QUEUE.append(gene.strip())
         INPUT_QUEUE.put(gene.strip())
 
-    open('result1.txt', 'w').close()
-    open('result2.txt', 'w').close()
+    codecs.open('result1.txt', 'w', 'utf-8').close()
+    codecs.open('result2.txt', 'w', 'utf-8').close()
+
 
 class Man(object):
 
@@ -83,7 +86,7 @@ class Man(object):
                     except Exception, e:
                         pass
         # sem1.acquire()
-        fp = open('result1.txt', 'a+')
+        fp = codecs.open('result1.txt', 'a+', 'utf-8')
         f = FileObjectThread(fp)
         f.write(gene+'##'+entrez_element+'##'+gene_element+'##'+uniprot_element+'##'+new_gene+'\n')
         f.close()
@@ -116,7 +119,7 @@ class Man(object):
         except Exception, e:
             pass
 
-        fp = open('result2.txt', 'a+')
+        fp = codecs.open('result2.txt', 'a+', 'utf-8')
         f = FileObjectThread(fp)
         # sem2.acquire()
         f.write(gene+'##'+compartment+'##'+confidence+'##'+goid+'##'+goterm+'##'+new_gene+'\n')
@@ -165,10 +168,16 @@ def start_gevent(i):
 
 def main():
 
+    start = time.time()
+
     get_gene_name()
 
     pools = Pool(10)
     pools.map(start_gevent, xrange(0, 20))
+
+    end = time.time()
+
+    print 'used time:', (end-start)/60
 
 
 if __name__ == '__main__':

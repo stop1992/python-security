@@ -18,41 +18,18 @@ from gevent import monkey
 monkey.patch_socket()
 from gevent.pool import Pool
 
-queue = Queue()
-
-def add_ch():
-    for i in xrange(10000):
-        queue.put(i)
-
-def handle(name):
-    while queue.qsize() > 0:
-        print name
-        queue.get()
-        print queue.qsize()
-    return
 
 def main():
 
-    add_ch()
-    print 'qsize:', queue.qsize()
+    a = 0
 
-    pools = Pool()
-    for i in xrange(3):
-        pools.apply_async(handle, args=('processing '+str(i), ))
+    while True:
 
-    pools.close()
-    pools.join()
+        if a < 0:
+            break
 
-    print 'done'
-    print 'done'
-    print 'done'
 
-def handle2(i):
 
-    print i
-
-    for i in xrange(10):
-        requests.get('http://www.zhihu.com')
 
 
 def main2():
