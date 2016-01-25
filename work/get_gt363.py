@@ -1,7 +1,6 @@
 # encoding:utf-8
 
 import os
-import re
 
 class Dong(object):
 
@@ -19,6 +18,7 @@ class Dong(object):
                 break
             else:
                 print '[*] get input file fail...'
+
 
     def get_output_path(self):
 
@@ -38,6 +38,7 @@ class Dong(object):
             return True
         else:
             return False
+
 
     def judge_ORF_condition(self):
 
@@ -61,6 +62,7 @@ class Dong(object):
                 return True
         return False
 
+
     def get_index(self, termination, start):
 
         try:
@@ -71,18 +73,17 @@ class Dong(object):
         return tmp_index
 
 
-
     def handle_data(self):
 
-        # self.get_input_file()
-        # self.get_output_path()
+        self.get_input_file()
+        self.get_output_path()
 
-        # output_file = self.output_path + 'result.fas'
-        # result_fp = open(output_file, 'w')
+        output_file = self.output_path + 'final_result.fas'
+        result_fp = open(output_file, 'w')
 
 
-        self.fp = open('result.fas', 'r')
-        result_fp = open('final_result.fas', 'w')
+        # self.fp = open('result.fas', 'r')
+        # result_fp = open('final_result.fas', 'w')
 
         print '[*] handling all data of', self.fp.name
 
@@ -120,8 +121,7 @@ class Dong(object):
                     result_fp.write(title)
                     result_fp.write(no_strip_body)
         result_fp.close()
-        print 'get successfully...'
-        # print '[*] Save all result to %s successfully...' % (output_file)
+        print '[*] Save all result to %s successfully...' % (output_file)
 
 
 def main():
@@ -130,6 +130,5 @@ def main():
     dong.handle_data()
 
 if __name__ == '__main__':
-    os.system('color 02')
 
     main()
