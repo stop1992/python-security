@@ -1,8 +1,0 @@
-__pycache__/
-*.egg-info
-*.py[cod]
-*.swp
-.coverage
-.svn
-.tox
-.DS_Store
