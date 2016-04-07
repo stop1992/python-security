@@ -33,7 +33,6 @@ def main():
     # for i in open('log.txt', 'r'):
         # print i
 
-
 if __name__ == '__main__':
 
     os.system('clear')

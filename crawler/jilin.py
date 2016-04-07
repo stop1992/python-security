@@ -40,7 +40,7 @@ def align_out(unichar, length):
 if __name__ == '__main__':
     os.system('printf "\033c"')
 
-    data = {'username': '2014544007', 'password': '709860'}
+    # data = {'username': '2014544007', 'password': ''}
     session = requests.Session()
     response = session.post('http://gim.jlu.edu.cn/check.jsp', data=data)
     score = session.get('http://gim.jlu.edu.cn/pyc/menu_stu.jsp?menu=xuanke_check')

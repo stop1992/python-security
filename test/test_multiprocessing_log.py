@@ -9,7 +9,6 @@ import sys
 import threading
 import traceback
 
-
 __version__ = '0.2.1'
 
 
