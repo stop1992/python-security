@@ -212,8 +212,6 @@ def main():
 
     check_pools_complete()
 
-    # pools.close()
-    # pools.join()
 
 if __name__ == '__main__':
     os.system('clear')

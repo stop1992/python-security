@@ -14,13 +14,8 @@ from gevent.fileobject import FileObjectThread
 import time
 
 
-# INPUT_QUEUE = []
 INPUT_QUEUE = Queue()
 
-# open('result1.txt', 'w').close()
-# open('result2.txt', 'w').close()
-# fp1 = open('result1.txt', 'a+')
-# fp2 = open('result2.txt', 'a+')
 
 def get_gene_name():
 
@@ -85,19 +80,11 @@ class Man(object):
                         uniprot_element = self.driver.find_element_by_xpath('//*[@id="_summaries"]/div[2]/ul/li/p').text.strip()
                     except Exception, e:
                         pass
-        # sem1.acquire()
+
         fp = codecs.open('result1.txt', 'a+', 'utf-8')
         f = FileObjectThread(fp)
         f.write(gene+'##'+entrez_element+'##'+gene_element+'##'+uniprot_element+'##'+new_gene+'\n')
         f.close()
-        # sem1.release()
-
-        # print 'entrez_element: ', entrez_element
-        # print '#' * 20
-        # print 'gene_element: ', gene_element
-        # print '#' * 20
-        # print 'uniprot_element: ', uniprot_element
-        # print '#' * 50
 
 
     def get_localization(self, gene, new_gene):
@@ -121,11 +108,8 @@ class Man(object):
 
         fp = codecs.open('result2.txt', 'a+', 'utf-8')
         f = FileObjectThread(fp)
-        # sem2.acquire()
         f.write(gene+'##'+compartment+'##'+confidence+'##'+goid+'##'+goterm+'##'+new_gene+'\n')
         f.close()
-        # sem2.release()
-        # print compartment, confidence, goid, goterm, new_gene
 
 
     def handle(self, gene):

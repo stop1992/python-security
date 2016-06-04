@@ -30,11 +30,7 @@ def microtime(get_as_float = False) :
     if get_as_float:
         return time.time()
     else:
-        return '%.8f %d' % math.modf(time.time())
-
-def get_authcode(string, key = ''):
-
-    ckey_length = 4
+        return '%.8f %d' % math.modf(time.time()) def get_authcode(string, key = ''): ckey_length = 4
     key = hashlib.md5(key).hexdigest()
     keya = hashlib.md5(key[0:16]).hexdigest()
     keyb = hashlib.md5(key[16:32]).hexdigest()
