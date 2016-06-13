@@ -20,7 +20,8 @@ class Sites(object):
 
         # get top 500
         for i in xrange(20):
-            url = 'http://www.alexa.com/topsites/countries;%s/US' % str(i)
+            # url = 'http://www.alexa.com/topsites/countries;%s/US' % str(i)
+            url = 'http://www.alexa.com/topsites/countries;%s/CN' % str(i)
             print 'getting %s' % url
             self.get_top_sites(url)
             time.sleep(5)
