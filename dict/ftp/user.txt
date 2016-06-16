@@ -1,0 +1,8 @@
+anonymous
+user
+ftp
+aaa
+111
+000
+123
+root
