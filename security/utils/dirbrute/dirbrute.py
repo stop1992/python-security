@@ -105,7 +105,7 @@ def main():
     parser.add_option("-d", "--domain",
                       dest="domain",
                       type="string",
-                      help="Bruting domain")
+                      help="Bruting domain, it should like http://example.com")
 
     options, args = parser.parse_args()
 

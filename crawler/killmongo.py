@@ -31,7 +31,7 @@ if __name__ == '__main__':
 	hosts.append('192.168.1.110')
 	hosts.append('192.168.1.112')
 	cmd = 'kill 9 `pgrep mongo`'
-	
+
 	length = len(hosts)
 	for i in xrange(length):
 		ssh_command(user, hosts[i], cmd)
