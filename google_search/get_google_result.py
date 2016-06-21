@@ -9,6 +9,7 @@ import time
 import sys
 from bs4 import BeautifulSoup
 import codecs
+import urlparse
 
 from test_result import TestResult
 
@@ -19,23 +20,17 @@ class Google(object):
 
     def __init__(self):
 
-        # self.url = 'https://www.google.com/search?q=test'
-        # self.url = 'https://www.google.com/search?q=Powered+by+discuz&oq=Powered+by+discuz&aqs=chrome..69i57j69i60l3.7843j0j7&sourceid=chrome&es_sm=122&ie=UTF-8'
-        # self.url = 'https://www.google.com.hk/search?newwindow=1&safe=strict&biw=1055&bih=538&q=intitle%3A%22%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E5%8D%87%E7%BA%A7%22+inurl%3Aconvert&oq=intitle%3A%22%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E5%8D%87%E7%BA%A7%22+inurl%3Aconvert&gs_l=serp.12...0.0.0.5808.0.0.0.0.0.0.0.0..0.0....0...1c..64.serp..0.0.0.owDUtoo3ZZY'
-        self.url = 'https://www.google.com/search?q=inurl:faq.php%3Faction%3Dgrouppermission&newwindow=1&safe=active&biw=1055&bih=568&ei=BtiVVtWGA9i0jwOclJygDA&sa=N'
-        # self.url = 'https://www.google.com/search?q=inurl:/viewthread.php?tid='
-        # self.url = 'https://www.google.com/search?q=inurl:login.php?id='
+        # self.url = 'https://www.google.com.hk/search?newwindow=1&safe=strict&q=site%3Abaidu.com+intitle%3Apowered+by+discuz&oq=site%3Abaidu.com+intitle%3Apowered+by+discuz&gs_l=serp.3...20457758.20475642.0.20475787.51.41.2.0.0.0.760.7740.2-11j7j2j1j1.22.0....0...1c.1j4.64.serp..27.1.307.0..0.zppyv6hSSsI'
+        self.url = 'https://www.google.com.hk/search?q=site%3Aqq.com+intitle%3Apowered+by+discuz&oq=site%3Aqq.com+&aqs=chrome.0.69i59j69i57j69i58j69i60.5382j0j1&{google:bookmarkBarPinned}sourceid=chrome&{google:omniboxStartMarginParameter}ie=UTF-8'
         self.user_agent = 'mozilla/5.0 (windows nt 6.1; wow64) applewebkit/537.36 (khtml, like gecko) chrome/47.0.2526.80 safari/537.36'
         codecs.open('google_results.txt', 'w', 'utf-8')
+        self.sites = ''
 
     def handle_captchar_limit(self, url):
 
         first = True
-
         while True:
-
             if 'https://ipv4.google.com/sorry/' in url:
-
                 if first:
                     print 'need captcha....'
                 else:
@@ -52,7 +47,6 @@ class Google(object):
 
         if 'repeat the search with the omitted results included' in self.driver.page_source:
             print '\n\n' + '#' * 100
-            # raw_input('meet stop....')
             self.driver.get_screenshot_as_file('stop.png')
             handle_result()
 
@@ -61,14 +55,10 @@ class Google(object):
         print 'getting result....'
 
         fp = codecs.open('google_results.txt', 'a+', 'utf-8')
-
         a_elements = self.driver.find_elements_by_css_selector('h3>a')
-        # self.driver.get_screenshot_as_file('page.png')
-
         length = len(a_elements)
 
         for i in xrange(0, length):
-
             try:
                 href = a_elements[i].get_attribute('href')
                 site = re.search(u'/url\?q=(.*)&sa', href)
@@ -76,9 +66,13 @@ class Google(object):
                     site = site.groups()[0]
                     fp.write(site + '\n')
 
-                    global site_total
-                    site_total += 1
-                    print site_total, site
+                    netloc = urlparse.urlparse(site).netloc
+                    # print site_total, site
+                    if netloc not in self.sites:
+                        global site_total
+                        site_total += 1
+                        self.sites += netloc + ' '
+                        print site_total, netloc
 
             except Exception, e:
                 print e
@@ -92,34 +86,25 @@ class Google(object):
         dcap = dict(DesiredCapabilities.PHANTOMJS)
         dcap["phantomjs.page.settings.useragent"] = (self.user_agent)
         self.driver = webdriver.PhantomJS(desired_capabilities=dcap)
-
-        # webdriver.desiredcapabilities.phantomjs['phantomjs.page.customheaders.useragent'] = self.user_agent
-        # self.driver = webdriver.Firefox()
-        # self.driver = webdriver.Chrome('./chromedriver')
-
         self.driver.get(self.url)
         self.handle_captchar_limit(self.driver.current_url)
         self.get_result()
 
-        # total_result = int(self.driver.find_element_by_id('resultStats').text.split()[1].replace(',',''))
         # pages = total_result / 10
         pages = 100
 
         for i in xrange(1, pages+1):
-
             print '-' * 80
             print 'getting page ', i+1
             start = i * 10
             url = self.url + '&start=' + str(start)
             self.driver.get(url)
-
             self.handle_captchar_limit(self.driver.current_url)
-
             self.get_result()
-
-            time.sleep(20)
+            time.sleep(10)
 
         driver.quit()
+
 
 def handle_result():
 
@@ -135,7 +120,6 @@ def main():
     try:
         google = Google()
         google.search()
-        handle_result()
 
     except KeyboardInterrupt:
         print 'press keyboardinterrupt, so quit....'
