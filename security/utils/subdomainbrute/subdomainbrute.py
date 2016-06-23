@@ -4,6 +4,7 @@
 import dns.resolver
 import os
 import sys
+sys.path.append('../')
 from optparse import OptionParser
 from Queue import Queue
 import threading
