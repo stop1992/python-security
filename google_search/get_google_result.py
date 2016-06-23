@@ -21,7 +21,8 @@ class Google(object):
     def __init__(self):
 
         # self.url = 'https://www.google.com.hk/search?newwindow=1&safe=strict&q=site%3Abaidu.com+intitle%3Apowered+by+discuz&oq=site%3Abaidu.com+intitle%3Apowered+by+discuz&gs_l=serp.3...20457758.20475642.0.20475787.51.41.2.0.0.0.760.7740.2-11j7j2j1j1.22.0....0...1c.1j4.64.serp..27.1.307.0..0.zppyv6hSSsI'
-        self.url = 'https://www.google.com.hk/search?q=site%3Aqq.com+intitle%3Apowered+by+discuz&oq=site%3Aqq.com+&aqs=chrome.0.69i59j69i57j69i58j69i60.5382j0j1&{google:bookmarkBarPinned}sourceid=chrome&{google:omniboxStartMarginParameter}ie=UTF-8'
+        # self.url = 'https://www.google.com.hk/search?q=site%3Aqq.com+intitle%3Apowered+by+discuz&oq=site%3Aqq.com+&aqs=chrome.0.69i59j69i57j69i58j69i60.5382j0j1&{google:bookmarkBarPinned}sourceid=chrome&{google:omniboxStartMarginParameter}ie=UTF-8'
+        self.url = 'https://www.google.com.hk/search?q=intitle:%22powered+by+discuz!%22&newwindow=1&safe=strict&biw=1231&bih=664&ei=kAlpV87pDYns0ASO4qCABA&start=90&sa=N'
         self.user_agent = 'mozilla/5.0 (windows nt 6.1; wow64) applewebkit/537.36 (khtml, like gecko) chrome/47.0.2526.80 safari/537.36'
         codecs.open('google_results.txt', 'w', 'utf-8')
         self.sites = ''
@@ -64,15 +65,16 @@ class Google(object):
                 site = re.search(u'/url\?q=(.*)&sa', href)
                 if site:
                     site = site.groups()[0]
-                    fp.write(site + '\n')
+                    # fp.write(site + '\n')
 
                     netloc = urlparse.urlparse(site).netloc
                     # print site_total, site
                     if netloc not in self.sites:
                         global site_total
                         site_total += 1
-                        self.sites += netloc + ' '
+                        self.sites += netloc + '\n'
                         print site_total, netloc
+                        fp.write(netloc + '\n')
 
             except Exception, e:
                 print e
