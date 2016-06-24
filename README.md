@@ -10,10 +10,8 @@ security        安全相关
 
 security目录
 ```
-security/dict   各种爆破字典
-security/utils/subdomainbrute  子域名爆破subdomainbrute
-security/utils/dirbrute 目录爆破
-security/sql_injection  sql注入相关脚本
+security/dict				各种爆破字典
+security/subdomainbrute		子域名爆破subdomainbrute
+security/dirbrute			目录爆破
+security/sql_injection		sql注入相关脚本
 ```
-
-
