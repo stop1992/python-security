@@ -141,7 +141,7 @@ class Struts2(object):
             print response.content
         else:
             print exp_1, ' exploit failed...'
-
+#
 
 
 
