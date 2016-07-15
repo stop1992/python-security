@@ -10,7 +10,7 @@ from scrapy import Item, Field
 
 
 class CsdnblogItem(Item):
-	blog_name = Field()
-	blog_url = Field()
-	#article_name = Field()
-	#article_url = Field()
+    blog_name = Field()
+    blog_url = Field()
+    #article_name = Field()
+    #article_url = Field()
