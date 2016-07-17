@@ -6,7 +6,7 @@ Copyright (c) 2014-2016 penework developers (https://seebug.org)
 See the file 'docs/COPYING' for copying permission
 """
 
-from penework.lib.core.datatype import AttribDict
+from lib.core.datatype import AttribDict
 
 defaults = {
     "threads": 1,

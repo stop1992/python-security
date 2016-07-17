@@ -7,17 +7,17 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import collections
-from penework.lib.core.data import conf
-from penework.thirdparty import requests
-from penework.thirdparty.requests.hooks import default_hooks
-from penework.thirdparty.requests.models import DEFAULT_REDIRECT_LIMIT
-from penework.thirdparty.requests.models import REDIRECT_STATI
-from penework.thirdparty.requests.cookies import cookiejar_from_dict
-from penework.thirdparty.requests.compat import OrderedDict
-from penework.thirdparty.requests.adapters import HTTPAdapter
-from penework.thirdparty.requests.structures import CaseInsensitiveDict
-from penework.thirdparty.requests.utils import default_headers
-from penework.thirdparty.requests.packages.urllib3._collections import RecentlyUsedContainer
+from lib.core.data import conf
+from thirdparty import requests
+from thirdparty.requests.hooks import default_hooks
+from thirdparty.requests.models import DEFAULT_REDIRECT_LIMIT
+from thirdparty.requests.models import REDIRECT_STATI
+from thirdparty.requests.cookies import cookiejar_from_dict
+from thirdparty.requests.compat import OrderedDict
+from thirdparty.requests.adapters import HTTPAdapter
+from thirdparty.requests.structures import CaseInsensitiveDict
+from thirdparty.requests.utils import default_headers
+from thirdparty.requests.packages.urllib3._collections import RecentlyUsedContainer
 
 
 def requestsPatch():

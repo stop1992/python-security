@@ -11,27 +11,27 @@ import time
 import shutil
 import tempfile
 from textwrap import dedent
-from penework.lib.core.settings import REPORT_HTMLBASE
-from penework.lib.core.settings import REPORT_TABLEBASE
-from penework.lib.core.data import paths
-from penework.lib.core.exception import PocsuiteSystemException
-from penework.lib.core.exception import PocsuiteMissingPrivileges
-from penework.lib.core.common import getUnicode
-from penework.lib.core.common import reIndent
-from penework.lib.core.common import normalizeUnicode
-from penework.lib.core.data import logger
-from penework.lib.core.data import conf
-from penework.lib.core.data import kb
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.handlejson import execReq
-from penework.lib.core.threads import runThreads
-from penework.thirdparty.prettytable.prettytable import PrettyTable
+from lib.core.settings import REPORT_HTMLBASE
+from lib.core.settings import REPORT_TABLEBASE
+from lib.core.data import paths
+from lib.core.exception import PocsuiteSystemException
+from lib.core.exception import PocsuiteMissingPrivileges
+from lib.core.common import getUnicode
+from lib.core.common import reIndent
+from lib.core.common import normalizeUnicode
+from lib.core.data import logger
+from lib.core.data import conf
+from lib.core.data import kb
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.handlejson import execReq
+from lib.core.threads import runThreads
+from thirdparty.prettytable.prettytable import PrettyTable
 
 
 def cleanTrash():
     nowTime = time.time()
-    for _ in os.listdir(paths.POCSUITE_TMP_PATH):
-        tempFile = '%s/%s' % (paths.POCSUITE_TMP_PATH, _)
+    for _ in os.listdir(paths.PENEWORK_TMP_PATH):
+        tempFile = '%s/%s' % (paths.PENEWORK_TMP_PATH, _)
         if tempFile != '.keep' and (nowTime - os.stat(tempFile).st_mtime) / 3600 / 24 > 3:
             if os.path.isfile(tempFile):
                 os.remove(tempFile)
@@ -104,11 +104,11 @@ def _createTargetDirs():
     """
     Create the output directory.
     """
-    if not os.path.isdir(paths.POCSUITE_OUTPUT_PATH):
+    if not os.path.isdir(paths.PENEWORK_OUTPUT_PATH):
         try:
-            if not os.path.isdir(paths.POCSUITE_OUTPUT_PATH):
-                os.makedirs(paths.POCSUITE_OUTPUT_PATH, 0755)
-            warnMsg = "using '%s' as the output directory" % paths.POCSUITE_OUTPUT_PATH
+            if not os.path.isdir(paths.PENEWORK_OUTPUT_PATH):
+                os.makedirs(paths.PENEWORK_OUTPUT_PATH, 0755)
+            warnMsg = "using '%s' as the output directory" % paths.PENEWORK_OUTPUT_PATH
             logger.log(CUSTOM_LOGGING.WARNING, warnMsg)
         except (OSError, IOError), ex:
             try:
@@ -121,7 +121,7 @@ def _createTargetDirs():
                 raise PocsuiteSystemException(errMsg)
 
             warnMsg = "unable to create regular output directory "
-            warnMsg += "'%s' (%s). " % (paths.POCSUITE_OUTPUT_PATH, getUnicode(ex))
+            warnMsg += "'%s' (%s). " % (paths.PENEWORK_OUTPUT_PATH, getUnicode(ex))
             warnMsg += "Using temporary directory '%s' instead" % getUnicode(tempDir)
             logger.log(CUSTOM_LOGGING.WARNING, warnMsg)
 
@@ -132,7 +132,7 @@ def _setRecordFiles():
     for (target, pocname, pocid, component, version, status, r_time, result) in kb.results:
         if type(status) != str:
             status = status[1]
-        outputPath = os.path.join(getUnicode(paths.POCSUITE_OUTPUT_PATH), normalizeUnicode(getUnicode(target)))
+        outputPath = os.path.join(getUnicode(paths.PENEWORK_OUTPUT_PATH), normalizeUnicode(getUnicode(target)))
 
         if not os.path.isdir(outputPath):
             try:
@@ -165,7 +165,7 @@ def _setRecordFiles():
                     errMsg = "you don't have enough permissions "
                 else:
                     errMsg = "something went wrong while trying "
-                errMsg += "to write to the output directory '%s' (%s)" % (paths.POCSUITE_OUTPUT_PATH, ex)
+                errMsg += "to write to the output directory '%s' (%s)" % (paths.PENEWORK_OUTPUT_PATH, ex)
 
                 raise PocsuiteMissingPrivileges(errMsg)
 
@@ -177,7 +177,7 @@ def _setRecordFiles():
                 errMsg = "you don't have enough permissions "
             else:
                 errMsg = "something went wrong while trying "
-            errMsg += "to write to the output directory '%s' (%s)" % (paths.POCSUITE_OUTPUT_PATH, ex)
+            errMsg += "to write to the output directory '%s' (%s)" % (paths.PENEWORK_OUTPUT_PATH, ex)
 
             raise PocsuiteMissingPrivileges(errMsg)
 

@@ -14,30 +14,30 @@ import random
 import Queue
 import urlparse
 import socket
-from penework.lib.core.data import logger
-from penework.lib.core.data import conf
-from penework.lib.core.data import kb
-from penework.lib.core.data import paths
-from penework.lib.core.datatype import AttribDict
-from penework.lib.core.settings import IS_WIN
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.enums import PROXY_TYPE
-from penework.lib.core.enums import HTTP_HEADER
-from penework.lib.core.settings import HTTP_DEFAULT_HEADER
-from penework.lib.core.common import getFileItems
-from penework.lib.core.common import safeExpandUser
-from penework.lib.core.common import getPublicTypeMembers
-from penework.lib.core.register import registerJsonPoc
-from penework.lib.core.register import registerPyPoc
-from penework.lib.core.exception import PocsuiteFilePathException
-from penework.lib.core.exception import PocsuiteSyntaxException
-from penework.lib.controller.check import pocViolation
-from penework.lib.controller.check import requiresCheck
-from penework.lib.controller.check import isOldVersionPoc
-from penework.lib.controller.setpoc import setPoc
-from penework.thirdparty.socks import socks
-from penework.thirdparty.oset.pyoset import oset
-from penework.thirdparty.colorama.initialise import init as coloramainit
+from lib.core.data import logger
+from lib.core.data import conf
+from lib.core.data import kb
+from lib.core.data import paths
+from lib.core.datatype import AttribDict
+from lib.core.settings import IS_WIN
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.enums import PROXY_TYPE
+from lib.core.enums import HTTP_HEADER
+from lib.core.settings import HTTP_DEFAULT_HEADER
+from lib.core.common import getFileItems
+from lib.core.common import safeExpandUser
+from lib.core.common import getPublicTypeMembers
+from lib.core.register import registerJsonPoc
+from lib.core.register import registerPyPoc
+from lib.core.exception import PocsuiteFilePathException
+from lib.core.exception import PocsuiteSyntaxException
+from lib.controller.check import pocViolation
+from lib.controller.check import requiresCheck
+from lib.controller.check import isOldVersionPoc
+from lib.controller.setpoc import setPoc
+from thirdparty.socks import socks
+from thirdparty.oset.pyoset import oset
+from thirdparty.colorama.initialise import init as coloramainit
 
 
 def initOptions(inputOptions=AttribDict()):
@@ -122,7 +122,7 @@ def init():
     if conf.pocFile:
         setPoc()
     if conf.vulKeyword:
-        conf.pocFile = '%s/%s' % (paths.POCSUITE_MODULES_PATH, conf.vulKeyword)
+        conf.pocFile = '%s/%s' % (paths.PENEWORK_MODULES_PATH, conf.vulKeyword)
         setPoc()
     requiresCheck()
     registerPocFromDict()

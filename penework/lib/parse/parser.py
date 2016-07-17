@@ -7,9 +7,9 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import os
-from penework.lib.core.data import defaults
-from penework.lib.core.settings import INDENT, USAGE, VERSION
-from penework.thirdparty.argparse import argparse
+from lib.core.data import defaults
+from lib.core.settings import INDENT, USAGE, VERSION
+from thirdparty.argparse import argparse
 
 
 def parseCmdOptions():

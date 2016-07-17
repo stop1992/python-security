@@ -6,9 +6,9 @@ Copyright (c) 2014-2016 penework developers (https://seebug.org)
 See the file 'docs/COPYING' for copying permission
 """
 
-from penework.lib.core.datatype import AttribDict
-from penework.lib.core.log import LOGGER
-from penework.lib.core.defaults import defaults
+from lib.core.datatype import AttribDict
+from lib.core.log import LOGGER
+from lib.core.defaults import defaults
 
 # logger
 logger = LOGGER

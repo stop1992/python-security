@@ -10,7 +10,7 @@ import ast
 import json
 import urllib
 try:
-    from penework.lib.request.basic import req as requests
+    from lib.request.basic import req as requests
 except:
     import requests
 import ConfigParser

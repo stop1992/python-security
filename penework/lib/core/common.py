@@ -16,16 +16,16 @@ import inspect
 import posixpath
 import marshal
 import unicodedata
-from penework.lib.core.data import conf
-from penework.lib.core.convert import stdoutencode
-from penework.lib.core.log import LOGGER_HANDLER
-from penework.lib.core.data import paths
-from penework.lib.core.exception import PocsuiteGenericException
-from penework.thirdparty.odict.odict import OrderedDict
-from penework.lib.core.settings import (BANNER, GIT_PAGE, ISSUES_PAGE, PLATFORM, PYVERSION, VERSION_STRING)
-from penework.lib.core.settings import UNICODE_ENCODING, INVALID_UNICODE_CHAR_FORMAT
-from penework.lib.core.exception import PocsuiteSystemException
-from penework.thirdparty.termcolor.termcolor import colored
+from lib.core.data import conf
+from lib.core.convert import stdoutencode
+from lib.core.log import LOGGER_HANDLER
+from lib.core.data import paths
+from lib.core.exception import PocsuiteGenericException
+from thirdparty.odict.odict import OrderedDict
+from lib.core.settings import (BANNER, GIT_PAGE, ISSUES_PAGE, PLATFORM, PYVERSION, VERSION_STRING)
+from lib.core.settings import UNICODE_ENCODING, INVALID_UNICODE_CHAR_FORMAT
+from lib.core.exception import PocsuiteSystemException
+from thirdparty.termcolor.termcolor import colored
 
 
 class StringImporter(object):
@@ -141,7 +141,7 @@ def unhandledExceptionMessage():
     errMsg += "penework version: %s\n" % VERSION_STRING[VERSION_STRING.find('/') + 1:]
     errMsg += "Python version: %s\n" % PYVERSION
     errMsg += "Operating system: %s\n" % PLATFORM
-    errMsg += "Command line: %s\n" % re.sub(r".+?\bpenework.py\b", "penework.py", " ".join(sys.argv))
+    errMsg += "Command line: %s\n" % re.sub(r".+?\bpy\b", "py", " ".join(sys.argv))
 
     return errMsg
 
@@ -247,19 +247,24 @@ def setPaths():
     Sets absolute paths for project directories and files
     """
 
-    paths.POCSUITE_DATA_PATH = os.path.join(paths.POCSUITE_ROOT_PATH, "data")
+    paths.PENEWORK_LIB_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "lib")
+    paths.PENEWORK_DATA_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "data")
+    paths.PENEWORK_PLUGINS_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "plugins")
+    paths.PENEWORK_API_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "api")
+    paths.PENEWORK_EXPLOIT_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "exploit")
+    paths.PENEWORK_THIRDPARTY_PATH = os.path.join(paths.PENEWORK_ROOT_PATH, "thirdparty")
 
-    paths.USER_AGENTS = os.path.join(paths.POCSUITE_DATA_PATH, "user-agents.txt")
-    paths.WEAK_PASS = os.path.join(paths.POCSUITE_DATA_PATH, "password-top100.txt")
-    paths.LARGE_WEAK_PASS = os.path.join(paths.POCSUITE_DATA_PATH, "password-top1000.txt")
+    paths.USER_AGENTS = os.path.join(paths.PENEWORK_DATA_PATH, "user-agents.txt")
+    paths.WEAK_PASS = os.path.join(paths.PENEWORK_DATA_PATH, "password-top100.txt")
+    paths.LARGE_WEAK_PASS = os.path.join(paths.PENEWORK_DATA_PATH, "password-top1000.txt")
 
     _ = os.path.join(os.path.expanduser("~"), ".penework")
-    paths.POCSUITE_OUTPUT_PATH = getUnicode(paths.get("POCSUITE_OUTPUT_PATH", os.path.join(_, "output")), encoding=sys.getfilesystemencoding())
+    paths.PENEWORK_OUTPUT_PATH = getUnicode(paths.get("PENEWORK_OUTPUT_PATH", os.path.join(_, "output")), encoding=sys.getfilesystemencoding())
 
-    paths.POCSUITE_MODULES_PATH = os.path.join(_, "modules")
-    paths.POCSUITE_TMP_PATH = os.path.join(paths.POCSUITE_MODULES_PATH, "tmp")
-    paths.POCSUITE_HOME_PATH = os.path.expanduser("~")
-    paths.POCSUITE_RC_PATH = paths.POCSUITE_HOME_PATH + "/.peneworkrc"
+    paths.PENEWORK_MODULES_PATH = os.path.join(_, "modules")
+    paths.PENEWORK_TMP_PATH = os.path.join(paths.PENEWORK_MODULES_PATH, "tmp")
+    paths.PENEWORK_HOME_PATH = os.path.expanduser("~")
+    paths.PENEWORK_RC_PATH = paths.PENEWORK_HOME_PATH + "/.peneworkrc"
 
 
 def getFileItems(filename, commentPrefix='#', unicode_=True, lowercase=False, unique=False):

@@ -7,28 +7,28 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import os
-from penework.lib.core.data import kb
-from penework.lib.core.data import conf
-from penework.lib.core.data import paths
-from penework.lib.core.common import banner
-from penework.lib.core.settings import IS_WIN
-from penework.lib.core.common import filepathParser
-from penework.lib.core.option import initializeKb
-from penework.lib.core.option import registerPocFromDict
-from penework.lib.core.option import setMultipleTarget
-from penework.lib.core.option import _setHTTPUserAgent
-from penework.lib.core.option import _setHTTPReferer
-from penework.lib.core.option import _setHTTPCookies
-from penework.lib.core.option import _setHTTPProxy
-from penework.lib.core.option import _setHTTPTimeout
-from penework.lib.core.settings import HTTP_DEFAULT_HEADER
-from penework.lib.controller.check import pocViolation
-from penework.lib.controller.setpoc import setPoc
-from penework.lib.controller.controller import start
-from penework.thirdparty.cmd2.cmd2 import Cmd
-from penework.thirdparty.oset.pyoset import oset
-from penework.thirdparty.prettytable.prettytable import PrettyTable
-from penework.thirdparty.colorama.initialise import init as coloramainit
+from lib.core.data import kb
+from lib.core.data import conf
+from lib.core.data import paths
+from lib.core.common import banner
+from lib.core.settings import IS_WIN
+from lib.core.common import filepathParser
+from lib.core.option import initializeKb
+from lib.core.option import registerPocFromDict
+from lib.core.option import setMultipleTarget
+from lib.core.option import _setHTTPUserAgent
+from lib.core.option import _setHTTPReferer
+from lib.core.option import _setHTTPCookies
+from lib.core.option import _setHTTPProxy
+from lib.core.option import _setHTTPTimeout
+from lib.core.settings import HTTP_DEFAULT_HEADER
+from lib.controller.check import pocViolation
+from lib.controller.setpoc import setPoc
+from lib.controller.controller import start
+from thirdparty.cmd2.cmd2 import Cmd
+from thirdparty.oset.pyoset import oset
+from thirdparty.prettytable.prettytable import PrettyTable
+from thirdparty.colorama.initialise import init as coloramainit
 
 try:
     import readline
@@ -46,9 +46,9 @@ def initializePoc(folders):
     # Usage: pcs-console.py modules/wordpress tests
     # 调用方式如上时可以将modules/wordpress 和 tests两个文件夹下的poc导入
     pocNumber = 0
-    if not os.path.isdir(paths.POCSUITE_MODULES_PATH):
-        os.makedirs(paths.POCSUITE_MODULES_PATH)
-    folders.append(paths.POCSUITE_MODULES_PATH)
+    if not os.path.isdir(paths.PENEWORK_MODULES_PATH):
+        os.makedirs(paths.PENEWORK_MODULES_PATH)
+    folders.append(paths.PENEWORK_MODULES_PATH)
     for folder in folders:
         files = os.listdir(folder)
         for file in files:
@@ -64,7 +64,7 @@ def avaliable():
 
     for k, v in kb.unloadedList.iteritems():
         path, name = filepathParser(v)
-        graph.add_row([k, name, os.path.relpath(path, paths.POCSUITE_ROOT_PATH)])
+        graph.add_row([k, name, os.path.relpath(path, paths.PENEWORK_ROOT_PATH)])
 
     print graph
     print

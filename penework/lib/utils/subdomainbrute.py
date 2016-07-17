@@ -12,10 +12,10 @@ import time
 import random
 
 
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.exception import PocsuiteThreadException
-from penework.lib.core.threads import runThreads
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.exception import PocsuiteThreadException
+from lib.core.threads import runThreads
 
 
 class SubBrute(object):

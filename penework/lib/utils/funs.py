@@ -14,10 +14,10 @@ import random
 from socket import gethostbyname
 from urlparse import urlsplit
 
-from penework.lib.core.data import logger
-from penework.lib.core.data import conf
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.api.request import req
+from lib.core.data import logger
+from lib.core.data import conf
+from lib.core.enums import CUSTOM_LOGGING
+from api.request import req
 
 
 def url2ip(url):

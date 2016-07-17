@@ -49,12 +49,12 @@ def modulePath():
 
 def pcsInit(PCS_OPTIONS=None):
     try:
-        paths.POCSUITE_ROOT_PATH = modulePath()
+        paths.PENEWORK_ROOT_PATH = modulePath()
         setPaths()
-        if not os.path.exists(paths.POCSUITE_HOME_PATH + '/.penework'):
-            os.mkdir(paths.POCSUITE_HOME_PATH + '/.penework')
-        if not os.path.exists(paths.POCSUITE_OUTPUT_PATH):
-            os.mkdir(paths.POCSUITE_OUTPUT_PATH)
+        if not os.path.exists(paths.PENEWORK_HOME_PATH + '/.penework'):
+            os.mkdir(paths.PENEWORK_HOME_PATH + '/.penework')
+        if not os.path.exists(paths.PENEWORK_OUTPUT_PATH):
+            os.mkdir(paths.PENEWORK_OUTPUT_PATH)
 
         argsDict = PCS_OPTIONS or parseCmdOptions()
 
@@ -74,7 +74,7 @@ def pcsInit(PCS_OPTIONS=None):
         dataToStdout("[*] starting at %s\n\n" % time.strftime("%X"))
 
         if argsDict['dork']:
-            z = ZoomEye(paths.POCSUITE_RC_PATH)
+            z = ZoomEye(paths.PENEWORK_RC_PATH)
             if z.newToken():
                 logger.log(CUSTOM_LOGGING.SUCCESS, 'ZoomEye API authorization success.')
                 z.resourceInfo()
@@ -93,7 +93,7 @@ def pcsInit(PCS_OPTIONS=None):
                 'Aavaliable ZoomEye search, web-search{}, host-search{}'.format(info['web-search'], info['host-search'])
             )
 
-            tmpIpFile = paths.POCSUITE_OUTPUT_PATH + '/zoomeye_%s.txt' % time.strftime('%Y_%m_%d_%H_%M_%S')
+            tmpIpFile = paths.PENEWORK_OUTPUT_PATH + '/zoomeye_%s.txt' % time.strftime('%Y_%m_%d_%H_%M_%S')
             with open(tmpIpFile, 'w') as fp:
                 search_types = argsDict.get('search_type', 'web')
                 if 'host' not in search_types and 'web' not in search_types:
@@ -117,12 +117,12 @@ def pcsInit(PCS_OPTIONS=None):
             sys.exit(logger.log(CUSTOM_LOGGING.ERROR, errMsg))
 
         if argsDict['vulKeyword']:
-            if not os.path.exists(paths.POCSUITE_MODULES_PATH):
-                os.mkdir(paths.POCSUITE_MODULES_PATH)
-            folderPath = '%s/%s' % (paths.POCSUITE_MODULES_PATH, argsDict['vulKeyword'])
+            if not os.path.exists(paths.PENEWORK_MODULES_PATH):
+                os.mkdir(paths.PENEWORK_MODULES_PATH)
+            folderPath = '%s/%s' % (paths.PENEWORK_MODULES_PATH, argsDict['vulKeyword'])
             if not os.path.exists(folderPath):
                 os.mkdir(folderPath)
-            s = Seebug(paths.POCSUITE_RC_PATH)
+            s = Seebug(paths.PENEWORK_RC_PATH)
             if (s.token or not s.static()) or not s.token:
                     logger.log(CUSTOM_LOGGING.ERROR, 'Seebug API authorization failed, Please input Seebug Token for use Seebug API，you can get it in [https://www.seebug.org/accounts/detail].')
                     s.write_conf()

@@ -9,12 +9,12 @@ See the file 'docs/COPYING' for copying permission
 import os
 import sys
 import json
-from penework.lib.core.data import kb
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.common import filepathParser
-from penework.lib.core.common import changeToPyImportType
-from penework.lib.core.common import StringImporter
+from lib.core.data import kb
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.common import filepathParser
+from lib.core.common import changeToPyImportType
+from lib.core.common import StringImporter
 
 
 def registerPoc(pocClass):

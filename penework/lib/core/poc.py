@@ -7,26 +7,26 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import types
-import penework.thirdparty.requests.exceptions as excpt
-from penework.thirdparty.requests.exceptions import HTTPError
-from penework.thirdparty.requests.exceptions import BaseHTTPError
-from penework.thirdparty.requests.exceptions import ConnectTimeout
-from penework.thirdparty.requests.exceptions import ConnectionError
-from penework.thirdparty.requests.exceptions import ChunkedEncodingError
-from penework.thirdparty.requests.exceptions import ContentDecodingError
-from penework.thirdparty.requests.exceptions import InvalidSchema
-from penework.thirdparty.requests.exceptions import InvalidURL
-from penework.thirdparty.requests.exceptions import ProxyError
-from penework.thirdparty.requests.exceptions import ReadTimeout
-from penework.thirdparty.requests.exceptions import TooManyRedirects
-from penework.lib.core.data import logger
-from penework.lib.core.enums import ERROR_TYPE_ID
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.enums import OUTPUT_STATUS
-from penework.lib.core.common import parseTargetUrl
-from penework.lib.core.data import kb
-from penework.lib.core.data import conf
-from penework.api.utils import strToDict
+import thirdparty.requests.exceptions as excpt
+from thirdparty.requests.exceptions import HTTPError
+from thirdparty.requests.exceptions import BaseHTTPError
+from thirdparty.requests.exceptions import ConnectTimeout
+from thirdparty.requests.exceptions import ConnectionError
+from thirdparty.requests.exceptions import ChunkedEncodingError
+from thirdparty.requests.exceptions import ContentDecodingError
+from thirdparty.requests.exceptions import InvalidSchema
+from thirdparty.requests.exceptions import InvalidURL
+from thirdparty.requests.exceptions import ProxyError
+from thirdparty.requests.exceptions import ReadTimeout
+from thirdparty.requests.exceptions import TooManyRedirects
+from lib.core.data import logger
+from lib.core.enums import ERROR_TYPE_ID
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.enums import OUTPUT_STATUS
+from lib.core.common import parseTargetUrl
+from lib.core.data import kb
+from lib.core.data import conf
+from api.utils import strToDict
 
 
 class POCBase(object):

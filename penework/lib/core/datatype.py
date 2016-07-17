@@ -9,7 +9,7 @@ See the file 'docs/COPYING' for copying permission
 import copy
 import types
 
-from penework.lib.core.exception import PocsuiteDataException
+from lib.core.exception import PocsuiteDataException
 
 
 class AttribDict(dict):

@@ -5,9 +5,9 @@
 Copyright (c) 2014-2016 penework developers (https://seebug.org)
 See the file 'docs/COPYING' for copying permission
 """
-from penework.thirdparty import requests
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
+from thirdparty import requests
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
 
 
 class Zoomeye(object):

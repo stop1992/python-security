@@ -5,4 +5,4 @@
 Copyright (c) 2014-2016 penework developers (https://seebug.org)
 See the file 'docs/COPYING' for copying permission
 """
-from penework.lib.utils.packet import IP, TCP, UDP, send, recv
+from lib.utils.packet import IP, TCP, UDP, send, recv

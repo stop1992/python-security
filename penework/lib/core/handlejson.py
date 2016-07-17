@@ -10,14 +10,14 @@ import re
 import json
 import time
 from string import atof
-from penework.lib.core.common import parseTargetUrl
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.data import kb
-from penework.lib.core.data import conf
-from penework.lib.core.data import resultJson
-from penework.lib.core.data import savedReq
-from penework.lib.request.basic import req
+from lib.core.common import parseTargetUrl
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.data import kb
+from lib.core.data import conf
+from lib.core.data import resultJson
+from lib.core.data import savedReq
+from lib.request.basic import req
 
 
 def initilizeJson(devilJson):

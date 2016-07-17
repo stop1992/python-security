@@ -11,13 +11,13 @@ import threading
 import traceback
 from thread import error as threadError
 
-from penework.lib.core.data import logger
-from penework.lib.core.data import kb
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.settings import PYVERSION
-from penework.lib.core.exception import PocsuiteConnectionException
-from penework.lib.core.exception import PocsuiteThreadException
-from penework.lib.core.exception import PocsuiteValueException
+from lib.core.data import logger
+from lib.core.data import kb
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.settings import PYVERSION
+from lib.core.exception import PocsuiteConnectionException
+from lib.core.exception import PocsuiteThreadException
+from lib.core.exception import PocsuiteValueException
 
 
 def runThreads(numThreads, threadFunction, forwardException=True, startThreadMsg=True):
@@ -83,7 +83,7 @@ def runThreads(numThreads, threadFunction, forwardException=True, startThreadMsg
         logger.log(CUSTOM_LOGGING.ERROR, "thread %s: %s" % (threading.currentThread().getName(), errMsg))
 
     except:
-        from penework.lib.core.common import unhandledExceptionMessage
+        from lib.core.common import unhandledExceptionMessage
 
         print
         kb.threadException = True

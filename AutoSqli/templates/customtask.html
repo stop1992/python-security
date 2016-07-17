@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AutoSqli-CustomTask</title>
+<link href="/static/css/zxmk.css" rel="stylesheet" type="text/css"/>
+<link rel="shortcut icon" href="static/images/favicon.ico">
+<script src="/static/js/core.js" type="text/javascript"></script>
+<script src="/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<style>
+
+.options_box{position: absolute;top:100px;left: 150px;border-width:1px;border-radius:4px;border-style: solid;border-color: black;width: 300px;font-size: 20px;color: black;background-color: #b8b8b8;padding: 20px 25px 20px 25px;}
+.item_title{float:left;clear: left;width: 120px;}
+.radio{float: left;margin-top: 1px; margin-left:10px;width: 20px;height: 20px;}
+.input_text{float: left; margin-bottom: 5px;}
+hr{float: left;clear: both;width: 100%;margin-top: 5px;border-color: black;}
+.item{float:left;}
+.button{float: left;clear: both;color:white;padding: 10px 20px 10px 20px;border-width: 3px;border-style: solid; border-color: white;border-radius: 4px;margin-left: 80px;margin-top: 40px;font-size: 20px;background-color: green;}
+</style>
+<script type="text/javascript">
+	function mouseover(){
+		var btn=document.getElementById("sub_button");
+		btn.style.backgroundColor="#cc6600";
+	}
+	function mousedown(){
+		var btn=document.getElementById("sub_button");
+		btn.style.backgroundColor="#e0e0e0";
+		btn.style.color="black"
+	}
+	function mouseout(){
+		var btn=document.getElementById("sub_button");
+		btn.style.backgroundColor="green";
+	}
+	function check_form(){
+		var url_text=document.getElementById("url_text");
+		if (url_text.value==""){
+			alert()
+			url_text.placeholder="please input URL.";
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+<div class="top-nav">
+  <div class="w1000 clearfix">
+    <a href="/">AutoSqli Tools</a>
+    <a href="quickbuild.html" style="font-size:15px;padding-left:200px;">Quickly Bulid</a>
+    <a href="customtask.html" style="font-size:15px;padding-left:60px;">Custom Task</a>
+    <a href="tasklist.html" style="font-size:15px;padding-left:60px;">Task List</a>
+    <a href="instructions.html" style="font-size:15px;padding-left:60px;">Instructions</a>
+  </div>
+</div>
+<p>{{result|safe}}</p>
+<div class="options_box">
+	<form action="/customtask.html" method="post" enctype="application/json" onsubmit="return check_form()">
+		<p class="item_title">URL:</p>
+		<textarea class="input_text" rows="5" name="url" id="url_text"></textarea>
+		<hr>
+
+		<p class="item_title">getUsers:</p>
+		<input class="radio" type="radio" name="getUsers" value="True"/>
+		<p class="item" style="color:green;" for="radio1">True</p>
+		<input class="radio" type="radio" name="getUsers" checked="checked" value="False" />
+		<p class="item" style="color:red;" for="radio2">False</p>
+		<hr>
+
+		<p class="item_title">isDba:</p>
+		<input class="radio" type="radio" name="isDba" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio" type="radio" name="isDba" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<p class="item_title">getTables:</p>
+		<input class="radio" type="radio" name="getTables" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio"  type="radio" name="getTables" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<p class="item_title">getDbs:</p>
+		<input class="radio" type="radio" name="getDbs" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio" type="radio" name="getDbs" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<p class="item_title">getColumns:</p>
+		<input class="radio" type="radio" name="getColumns" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio" type="radio" name="getColumns" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<p class="item_title">dumpTable:</p>
+		<input class="radio" type="radio" name="dumpTable" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio" type="radio" name="dumpTable" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<p class="item_title">dumpAll:</p>
+		<input class="radio" type="radio" name="dumpAll" value="True"/>
+		<p class="item" style="color:green;">True</p>
+		<input class="radio" type="radio" name="dumpAll" checked="checked" value="False"/>
+		<p class="item" style="color:red;">False</p>
+		<hr>
+
+		<input class="button" id="sub_button" type="submit" value="Start Task"  onmouseout="mouseout()" onmouseover="mouseover()" onmousedown="mousedown()" />
+	</form>
+</div>
+</body>
+</html>
+
+

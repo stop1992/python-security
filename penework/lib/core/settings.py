@@ -11,12 +11,13 @@ import subprocess
 import time
 import sys
 
-from penework.lib.core.revision import getRevisionNumber
-from penework import __version__
+from lib.core.revision import getRevisionNumber
+# from penework import __version__
+__version__ = '0.1.1'
 
 VERSION = __version__
 REVISION = getRevisionNumber()
-SITE = "http://penework.org"
+SITE = "http://org"
 VERSION_STRING = "penework/%s%s" % (VERSION, "-%s" % REVISION if REVISION else "-nongit-%s" % time.strftime("%Y%m%d", time.gmtime(os.path.getctime(__file__))))
 
 IS_WIN = subprocess.mswindows
@@ -32,14 +33,28 @@ LEGAL_DISCLAIMER = "Usage of penework for attacking targets without prior mutual
 
 
 BANNER = """\033[01;33m
-                              ,--. ,--.
- ,---. ,---. ,---.,---.,--.,--`--,-'  '-.,---.  \033[01;37m{\033[01;%dm%s\033[01;37m}\033[01;33m
-| .-. | .-. | .--(  .-'|  ||  ,--'-.  .-| .-. :
-| '-' ' '-' \ `--.-'  `'  ''  |  | |  | \   --.
-|  |-' `---' `---`----' `----'`--' `--'  `----'
-`--'                                            \033[0m\033[4;37m%s\033[0m
+
+                                           _
+                                          | |
+ ____   ____ ____   ____ _ _ _  ___   ____| |  _
+|  _ \ / _  )  _ \ / _  ) | | |/ _ \ / ___) | / )\033[01;37m{\033[01;%dm%s\033[01;37m}\033[01;33m
+| | | ( (/ /| | | ( (/ /| | | | |_| | |   | |< (
+| ||_/ \____)_| |_|\____)\____|\___/|_|   |_| \_)
+|_|                                               \033[0m\033[4;37m%s\033[0m
 
 """ % ((31 + hash(REVISION) % 6) if REVISION else 30, VERSION_STRING.split('/')[-1], SITE)
+
+
+"""
+                                           _
+                                          | |
+ ____   ____ ____   ____ _ _ _  ___   ____| |  _
+|  _ \ / _  )  _ \ / _  ) | | |/ _ \ / ___) | / )\033[01;37m{\033[01;%dm%s\033[01;37m}\033[01;33m
+| | | ( (/ /| | | ( (/ /| | | | |_| | |   | |< (
+| ||_/ \____)_| |_|\____)\____|\___/|_|   |_| \_)
+|_|                                               \033[0m\033[4;37m%s\033[0m
+
+"""
 
 # Encoding used for Unicode data
 UNICODE_ENCODING = "utf-8"
@@ -53,12 +68,12 @@ INDENT = " " * 2
 POC_ATTRS = ("vulID", "version", "author", "vulDate", "name", "appVersion", "desc", "createDate", "updateDate", "references", "appPowerLink", "vulType", "appName")
 
 POC_IMPORTDICT = {
-    "from penework.net import": "from penework.lib.request.basic import",
-    "from penework.poc import": "from penework.lib.core.poc import",
-    "from penework.utils import register": "from penework.lib.core.register import registerPoc as register",
+    "from net import": "from lib.request.basic import",
+    "from poc import": "from lib.core.poc import",
+    "from utils import register": "from lib.core.register import registerPoc as register",
 }
 
-POC_REGISTER_STRING = "\nfrom penework.api.poc import register\nregister({})"
+POC_REGISTER_STRING = "\nfrom api.poc import register\nregister({})"
 POC_REGISTER_REGEX = "register\(.*\)"
 POC_CLASSNAME_REGEX = "class\s+(.*?)\(POCBase\)"
 POC_REQUIRES_REGEX = "install_requires\s*?=\s*?\[(.*?)\]"

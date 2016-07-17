@@ -9,16 +9,16 @@ See the file 'docs/COPYING' for copying permission
 import re
 import os
 import glob
-from penework.lib.core.data import kb
-from penework.lib.core.data import conf
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.common import multipleReplace
-from penework.lib.core.common import readFile
-from penework.lib.core.settings import POC_IMPORTDICT
-from penework.lib.core.settings import POC_REGISTER_REGEX
-from penework.lib.core.settings import POC_CLASSNAME_REGEX
-from penework.lib.core.settings import POC_REGISTER_STRING
+from lib.core.data import kb
+from lib.core.data import conf
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.common import multipleReplace
+from lib.core.common import readFile
+from lib.core.settings import POC_IMPORTDICT
+from lib.core.settings import POC_REGISTER_REGEX
+from lib.core.settings import POC_CLASSNAME_REGEX
+from lib.core.settings import POC_REGISTER_STRING
 
 
 def setPoc():

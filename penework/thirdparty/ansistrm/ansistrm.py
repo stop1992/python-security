@@ -5,7 +5,7 @@ import logging
 import os
 import re
 
-from penework.lib.core.convert import stdoutencode
+from lib.core.convert import stdoutencode
 
 
 class ColorizingStreamHandler(logging.StreamHandler):

@@ -7,7 +7,7 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import sys
-from penework.lib.core.settings import IS_WIN, UNICODE_ENCODING
+from lib.core.settings import IS_WIN, UNICODE_ENCODING
 
 
 def singleTimeWarnMessage(message):  # Cross-linked function

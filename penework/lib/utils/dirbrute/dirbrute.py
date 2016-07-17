@@ -12,10 +12,10 @@ import time
 import requests
 
 
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.exception import PocsuiteThreadException
-from penework.thirdparty.termcolor.termcolor import cprint
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.exception import PocsuiteThreadException
+from thirdparty.termcolor.termcolor import cprint
 
 
 class DirBrute(object):

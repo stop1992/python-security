@@ -9,7 +9,7 @@ See the file 'docs/COPYING' for copying permission
 import logging
 import sys
 
-from penework.lib.core.enums import CUSTOM_LOGGING
+from lib.core.enums import CUSTOM_LOGGING
 
 logging.addLevelName(CUSTOM_LOGGING.SYSINFO, "*")
 logging.addLevelName(CUSTOM_LOGGING.SUCCESS, "+")
@@ -20,7 +20,7 @@ LOGGER = logging.getLogger("peneworkLog")
 
 LOGGER_HANDLER = None
 try:
-    from penework.thirdparty.ansistrm.ansistrm import ColorizingStreamHandler
+    from thirdparty.ansistrm.ansistrm import ColorizingStreamHandler
 
     disableColor = False
 

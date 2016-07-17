@@ -6,4 +6,4 @@ Copyright (c) 2014-2016 penework developers (https://seebug.org)
 See the file 'docs/COPYING' for copying permission
 """
 
-from penework.lib.request.basic import req
+from lib.request.basic import req

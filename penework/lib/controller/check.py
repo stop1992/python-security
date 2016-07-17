@@ -7,13 +7,13 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import re
-from penework.lib.core.data import kb
-from penework.lib.core.data import conf
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
-from penework.lib.core.settings import POC_ATTRS
-from penework.lib.core.settings import POC_REQUIRES_REGEX
-from penework.lib.core.settings import OLD_VERSION_CHARACTER
+from lib.core.data import kb
+from lib.core.data import conf
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.settings import POC_ATTRS
+from lib.core.settings import POC_REQUIRES_REGEX
+from lib.core.settings import OLD_VERSION_CHARACTER
 
 
 def requiresCheck():

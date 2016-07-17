@@ -4,7 +4,7 @@
 import sys
 sys.path.append('../')
 import os
-from penework.thirdparty.termcolor.termcolor import cprint
+from thirdparty.termcolor.termcolor import cprint
 
 
 if __name__ == '__main__':

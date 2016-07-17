@@ -7,8 +7,8 @@ See the file 'docs/COPYING' for copying permission
 """
 
 import functools
-from penework.lib.core.data import logger
-from penework.lib.core.enums import CUSTOM_LOGGING
+from lib.core.data import logger
+from lib.core.enums import CUSTOM_LOGGING
 
 
 def require_header(field):
