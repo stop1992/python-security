@@ -433,3 +433,56 @@ def reIndent(s, numSpace):
     leadingSpace = numSpace * ' '
     lines = [leadingSpace + line for line in s.splitlines()]
     return '\n'.join(lines)
+
+
+def findPageForms(content, url, raise_=False, addToTargets=False):
+    """
+    Parses given page content for possible forms
+    """
+
+    class _(StringIO):
+        def __init__(self, content, url):
+            StringIO.__init__(self, unicodeencode(content, kb.pageEncoding) if isinstance(content, unicode) else content)
+            self._url = url
+        def geturl(self):
+            return self._url
+
+    if not content:
+        errMsg = "can't parse forms as the page content appears to be blank"
+        if raise_:
+            raise SqlmapGenericException(errMsg)
+        else:
+            logger.debug(errMsg)
+
+    forms = None
+    retVal = set()
+    response = _(content, url)
+
+    try:
+        forms = ParseResponse(response, backwards_compat=False)
+    except (UnicodeError, ValueError):
+        pass
+    except ParseError:
+        if "<html" in (content or ""):
+            warnMsg = "badly formed HTML at the given URL ('%s'). Going to filter it" % url
+            logger.warning(warnMsg)
+            filtered = _("".join(re.findall(FORM_SEARCH_REGEX, content)), url)
+            try:
+                forms = ParseResponse(filtered, backwards_compat=False)
+            except ParseError:
+                errMsg = "no success"
+                if raise_:
+                    raise SqlmapGenericException(errMsg)
+                else:
+                    logger.debug(errMsg)
+
+    if forms:
+        for form in forms:
+            try:
+                for control in form.controls:
+                    if hasattr(control, "items") and not any((control.disabled, control.readonly)):
+                        # if control has selectable items select first non-disabled
+                        for item in control.items:
+                            if not item.disabled:
+                                if not item.selected:
+

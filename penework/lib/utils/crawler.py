@@ -29,8 +29,11 @@ def crawler(target):
                 if url not in visited:
                     out_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
                     print "[{out_time}] crawling {url}".format(out_time=out_time, url=url)
+
                     response = requests.get(url)
                     visited.add(url)
+                    # print visited
+                    # raw_input('wait...')
 
             except Exception, ex:
                 print ex
@@ -39,8 +42,8 @@ def crawler(target):
             soup = BeautifulSoup(response.text, 'lxml')
             for a in soup.find_all('a'):
                 href = a.get('href')
-                # if href and target in href:
-                link.append(href)
+                if href and target in href:
+                    link.append(href)
 
             for i in link:
                 links.append(i)
