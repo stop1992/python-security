@@ -9,7 +9,7 @@ See the file 'docs/COPYING' for copying permission
 import copy
 import types
 
-from lib.core.exception import PocsuiteDataException
+from lib.core.exception import PeneworkDataException
 
 
 class AttribDict(dict):
@@ -43,7 +43,7 @@ class AttribDict(dict):
         try:
             return self.__getitem__(item)
         except KeyError:
-            raise PocsuiteDataException("unable to access item '%s'" % item)
+            raise PeneworkDataException("unable to access item '%s'" % item)
 
     def __setattr__(self, item, value):
         """

@@ -7,45 +7,45 @@ See the file 'docs/COPYING' for copying permission
 """
 
 
-class PocsuiteBaseException(Exception):
+class PeneworkBaseException(Exception):
     pass
 
 
-class PocsuiteUserQuitException(PocsuiteBaseException):
+class PeneworkUserQuitException(PeneworkBaseException):
     pass
 
 
-class PocsuiteDataException(PocsuiteBaseException):
+class PeneworkDataException(PeneworkBaseException):
     pass
 
 
-class PocsuiteGenericException(PocsuiteBaseException):
+class PeneworkGenericException(PeneworkBaseException):
     pass
 
 
-class PocsuiteSystemException(PocsuiteBaseException):
+class PeneworkSystemException(PeneworkBaseException):
     pass
 
 
-class PocsuiteFilePathException(PocsuiteBaseException):
+class PeneworkFilePathException(PeneworkBaseException):
     pass
 
 
-class PocsuiteConnectionException(PocsuiteBaseException):
+class PeneworkConnectionException(PeneworkBaseException):
     pass
 
 
-class PocsuiteThreadException(PocsuiteBaseException):
+class PeneworkThreadException(PeneworkBaseException):
     pass
 
 
-class PocsuiteValueException(PocsuiteBaseException):
+class PeneworkValueException(PeneworkBaseException):
     pass
 
 
-class PocsuiteMissingPrivileges(PocsuiteBaseException):
+class PeneworkMissingPrivileges(PeneworkBaseException):
     pass
 
 
-class PocsuiteSyntaxException(PocsuiteBaseException):
+class PeneworkSyntaxException(PeneworkBaseException):
     pass

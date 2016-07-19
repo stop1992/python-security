@@ -61,3 +61,15 @@ class ERROR_TYPE_ID:
     CONNECTTIMEOUT = 3.2
     TOOMANYREDIRECTS = 3.3
     OTHER = 4
+
+class HTTPMETHOD:
+    GET = "GET"
+    POST = "POST"
+    HEAD = "HEAD"
+    PUT = "PUT"
+    DELETE = "DELETE"
+    TRACE = "TRACE"
+    OPTIONS = "OPTIONS"
+    CONNECT = "CONNECT"
+    PATCH = "PATCH"
+

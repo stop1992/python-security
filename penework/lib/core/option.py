@@ -29,8 +29,8 @@ from lib.core.common import safeExpandUser
 from lib.core.common import getPublicTypeMembers
 from lib.core.register import registerJsonPoc
 from lib.core.register import registerPyPoc
-from lib.core.exception import PocsuiteFilePathException
-from lib.core.exception import PocsuiteSyntaxException
+from lib.core.exception import PeneworkFilePathException
+from lib.core.exception import PeneworkSyntaxException
 from lib.controller.check import pocViolation
 from lib.controller.check import requiresCheck
 from lib.controller.check import isOldVersionPoc
@@ -206,7 +206,7 @@ def _setHTTPExtraHeaders():
                     conf.httpHeaders[header] = value
             else:
                 errMsg = "invalid header value: %s. Valid header format is 'name:value'" % repr(headerValue).lstrip('u')
-                raise PocsuiteSyntaxException(errMsg)
+                raise PeneworkSyntaxException(errMsg)
 
 
 def setMultipleTarget():
@@ -240,7 +240,7 @@ def setMultipleTarget():
 
     if not os.path.isfile(conf.urlFile):
         errMsg = "the specified file does not exist"
-        raise PocsuiteFilePathException(errMsg)
+        raise PeneworkFilePathException(errMsg)
 
     for line in getFileItems(conf.urlFile):
         for pocname, poc in kb.registeredPocs.items():
@@ -265,7 +265,7 @@ def _setHTTPProxy():
         _ = urlparse.urlsplit(conf.proxy)
     except Exception, ex:
         errMsg = "invalid proxy address '%s' ('%s')" % (conf.proxy, ex)
-        raise PocsuiteSyntaxException(errMsg)
+        raise PeneworkSyntaxException(errMsg)
 
     hostnamePort = _.netloc.split(":")
     scheme = _.scheme.upper()
@@ -282,14 +282,14 @@ def _setHTTPProxy():
 
     if not all((scheme, hasattr(PROXY_TYPE, scheme), hostname, port)):
         errMsg = "proxy value must be in format '(%s)://address:port'" % "|".join(_[0].lower() for _ in getPublicTypeMembers(PROXY_TYPE))
-        raise PocsuiteSyntaxException(errMsg)
+        raise PeneworkSyntaxException(errMsg)
 
     if conf.proxyCred:
         _ = re.search("^(.*?):(.*?)$", conf.proxyCred)
         if not _:
             errMsg = "Proxy authentication credentials "
             errMsg += "value must be in format username:password"
-            raise PocsuiteSyntaxException(errMsg)
+            raise PeneworkSyntaxException(errMsg)
         else:
             username = _.group(1)
             password = _.group(2)

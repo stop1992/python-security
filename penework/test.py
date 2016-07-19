@@ -3,6 +3,7 @@
 import os
 import sys
 import time
+import urlparse
 
 
 from lib.utils.crawler import crawler
@@ -19,9 +20,12 @@ def main():
     setEnv()
 
     # site = 'http://www.baidu.com'
-    site = 'http://bbs.browser.qq.com'
+    site = 'http://bbs.browser.qq.com/'
     conf.crawlDepth = 10
-    # print paths.USER_AGENTS
+    conf.fomrs = None
+    conf.numThreads = 5
+    # conf.scope = urlparse.urlparse(site).netloc
+    conf.scope = site
     crawler(site)
 
 
@@ -29,6 +33,3 @@ if __name__ == '__main__':
     os.system('clear')
 
     main()
-
-
-

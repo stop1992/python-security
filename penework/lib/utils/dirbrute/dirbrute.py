@@ -14,7 +14,7 @@ import requests
 
 from lib.core.data import logger
 from lib.core.enums import CUSTOM_LOGGING
-from lib.core.exception import PocsuiteThreadException
+from lib.core.exception import PeneworkThreadException
 from thirdparty.termcolor.termcolor import cprint
 
 
@@ -91,7 +91,7 @@ class DirBrute(object):
                     pass
 
             except KeyboardInterrupt:
-                raise PocsuiteThreadException("user aborted (Ctrl+C was pressed multiple times)")
+                raise PeneworkThreadException("user aborted (Ctrl+C was pressed multiple times)")
 
 
 def main():

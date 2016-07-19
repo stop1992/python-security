@@ -16,16 +16,32 @@ import inspect
 import posixpath
 import marshal
 import unicodedata
+import urlparse
+from StringIO import StringIO
+from lib.core.convert import base64pickle
+from lib.core.convert import base64unpickle
+from lib.core.convert import hexdecode
+from lib.core.convert import htmlunescape
+from lib.core.convert import stdoutencode
+from lib.core.convert import unicodeencode
+from lib.core.convert import utf8encode
 from lib.core.data import conf
 from lib.core.convert import stdoutencode
 from lib.core.log import LOGGER_HANDLER
+from lib.core.enums import CUSTOM_LOGGING
+from lib.core.enums import HTTPMETHOD
 from lib.core.data import paths
-from lib.core.exception import PocsuiteGenericException
+from lib.core.data import kb
+from lib.core.data import logger
+from lib.core.exception import PeneworkGenericException
 from thirdparty.odict.odict import OrderedDict
 from lib.core.settings import (BANNER, GIT_PAGE, ISSUES_PAGE, PLATFORM, PYVERSION, VERSION_STRING)
+from lib.core.settings import FORM_SEARCH_REGEX
 from lib.core.settings import UNICODE_ENCODING, INVALID_UNICODE_CHAR_FORMAT
-from lib.core.exception import PocsuiteSystemException
+from lib.core.exception import PeneworkSystemException
 from thirdparty.termcolor.termcolor import colored
+from thirdparty.clientform.clientform import ParseResponse
+from thirdparty.clientform.clientform import ParseError
 
 
 class StringImporter(object):
@@ -228,7 +244,7 @@ def readFile(filename):
     except IOError, ex:
         errMsg = "something went wrong while trying to read "
         errMsg += "the input file ('%s')" % ex
-        raise PocsuiteGenericException(errMsg)
+        raise PeneworkGenericException(errMsg)
     return retVal
 
 
@@ -239,7 +255,7 @@ def writeFile(filename, data):
     except IOError, ex:
         errMsg = "something went wrong while trying to write "
         errMsg += "to the output file ('%s')" % ex
-        raise PocsuiteGenericException(errMsg)
+        raise PeneworkGenericException(errMsg)
 
 
 def setPaths():
@@ -307,7 +323,7 @@ def getFileItems(filename, commentPrefix='#', unicode_=True, lowercase=False, un
     except (IOError, OSError, MemoryError), ex:
         errMsg = "something went wrong while trying "
         errMsg += "to read the content of file '%s' ('%s')" % (filename, ex)
-        raise PocsuiteSystemException(errMsg)
+        raise PeneworkSystemException(errMsg)
 
     return retVal if not unique else retVal.keys()
 
@@ -330,7 +346,7 @@ def checkFile(filename):
             valid = False
 
     if not valid:
-        raise PocsuiteSystemException("unable to read file '%s'" % filename)
+        raise PeneworkSystemException("unable to read file '%s'" % filename)
 
 
 def choosePocType(filepath):
@@ -435,6 +451,8 @@ def reIndent(s, numSpace):
     return '\n'.join(lines)
 
 
+
+
 def findPageForms(content, url, raise_=False, addToTargets=False):
     """
     Parses given page content for possible forms
@@ -450,9 +468,9 @@ def findPageForms(content, url, raise_=False, addToTargets=False):
     if not content:
         errMsg = "can't parse forms as the page content appears to be blank"
         if raise_:
-            raise SqlmapGenericException(errMsg)
+            raise PeneworkGenericException(errMsg)
         else:
-            logger.debug(errMsg)
+            logger.log(CUSTOM_LOGGING.SYSINFO, errMsg)
 
     forms = None
     retVal = set()
@@ -465,16 +483,16 @@ def findPageForms(content, url, raise_=False, addToTargets=False):
     except ParseError:
         if "<html" in (content or ""):
             warnMsg = "badly formed HTML at the given URL ('%s'). Going to filter it" % url
-            logger.warning(warnMsg)
+            logger.log(CUSTOM_LOGGING.WARN, warnMsg)
             filtered = _("".join(re.findall(FORM_SEARCH_REGEX, content)), url)
             try:
                 forms = ParseResponse(filtered, backwards_compat=False)
             except ParseError:
                 errMsg = "no success"
                 if raise_:
-                    raise SqlmapGenericException(errMsg)
+                    raise PeneworkGenericException(errMsg)
                 else:
-                    logger.debug(errMsg)
+                    logger.log(CUSTOM_LOGGING.SYSINFO,errMsg)
 
     if forms:
         for form in forms:
@@ -485,4 +503,102 @@ def findPageForms(content, url, raise_=False, addToTargets=False):
                         for item in control.items:
                             if not item.disabled:
                                 if not item.selected:
+                                    item.selected = True
+                                break
 
+                request = form.click()
+            except (ValueError, TypeError), ex:
+                errMsg = "there has been a problem while "
+                errMsg += "processing page forms ('%s')" % getSafeExString(ex)
+                if raise_:
+                    raise PeneworkGenericException(errMsg)
+                else:
+                    logger.log(CUSTOM_LOGGING.SYSINFO, errMsg)
+            else:
+                # url = urldecode(request.get_full_url(), kb.pageEncoding)
+                url = request.get_full_url()
+                method = request.get_method()
+                data = request.get_data() if request.has_data() else None
+                # data = urldecode(data, kb.pageEncoding, plusspace=False)
+
+                if not data and method and method.upper() == HTTPMETHOD.POST:
+                    debugMsg = "invalid POST form with blank data detected"
+                    logger.log(CUSTOM_LOGGING.SYSINFO, debugMsg)
+                    continue
+
+                # flag to know if we are dealing with the same target host
+                _ = reduce(lambda x, y: x == y, map(lambda x: urlparse.urlparse(x).netloc.split(':')[0], (response.geturl(), url)))
+
+                if conf.scope:
+                    if not re.search(conf.scope, url, re.I):
+                        continue
+                elif not _:
+                    continue
+                else:
+                    target = (url, method, data, conf.cookie, None)
+                    retVal.add(target)
+    else:
+        errMsg = "there were no forms found at the given target URL"
+        if raise_:
+            raise PeneworkGenericException(errMsg)
+        else:
+            logger.log(CUSTOM_LOGGING.SYSINFO, errMsg)
+
+    if addToTargets and retVal:
+        for target in retVal:
+            kb.targets.add(target)
+
+    return retVal
+
+
+def getUnicode(value, encoding=None, noneToNull=False):
+    """
+    Return the unicode representation of the supplied value:
+
+    >>> getUnicode(u'test')
+    u'test'
+    >>> getUnicode('test')
+    u'test'
+    >>> getUnicode(1)
+    u'1'
+    """
+
+    if noneToNull and value is None:
+        return None
+
+    if isListLike(value):
+        value = list(getUnicode(_, encoding, noneToNull) for _ in value)
+        return value
+
+    if isinstance(value, unicode):
+        return value
+    elif isinstance(value, basestring):
+        while True:
+            try:
+                return unicode(value, encoding or (kb.get("pageEncoding") if kb.get("originalPage") else None) or UNICODE_ENCODING)
+            except UnicodeDecodeError, ex:
+                try:
+                    return unicode(value, UNICODE_ENCODING)
+                except:
+                    value = value[:ex.start] + "".join(INVALID_UNICODE_CHAR_FORMAT % ord(_) for _ in value[ex.start:ex.end]) + value[ex.end:]
+    else:
+        try:
+            return unicode(value)
+        except UnicodeDecodeError:
+            return unicode(str(value), errors="ignore")  # encoding ignored for non-basestring instances
+
+
+def getSafeExString(ex, encoding=None):
+    """
+    Safe way how to get the proper exception represtation as a string
+    (Note: errors to be avoided: 1) "%s" % Exception(u'\u0161') and 2) "%s" % str(Exception(u'\u0161'))
+    """
+
+    retVal = ex
+
+    if getattr(ex, "message", None):
+        retVal = ex.message
+    elif getattr(ex, "msg", None):
+        retVal = ex.msg
+
+    return getUnicode(retVal, encoding=encoding)

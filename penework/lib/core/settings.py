@@ -10,8 +10,11 @@ import os
 import subprocess
 import time
 import sys
+import types
 
 from lib.core.revision import getRevisionNumber
+from lib.core.datatype import AttribDict
+
 # from penework import __version__
 __version__ = '0.1.1'
 
@@ -25,9 +28,9 @@ IS_WIN = subprocess.mswindows
 PLATFORM = os.name
 PYVERSION = sys.version.split()[0]
 
-ISSUES_PAGE = "https://github.com/knownsec/Pocsuite/issues"
-GIT_REPOSITORY = "git@github.com:knownsec/Pocsuite.git"
-GIT_PAGE = "https://github.com/knownsec/Pocsuite"
+ISSUES_PAGE = "https://github.com/knownsec/Penework/issues"
+GIT_REPOSITORY = "git@github.com:knownsec/Penework.git"
+GIT_PAGE = "https://github.com/knownsec/Penework"
 
 LEGAL_DISCLAIMER = "Usage of penework for attacking targets without prior mutual consent is illegal."
 
@@ -58,8 +61,6 @@ BANNER = """\033[01;33m
 
 # Encoding used for Unicode data
 UNICODE_ENCODING = "utf-8"
-# Format used for representing invalid unicode characters
-INVALID_UNICODE_CHAR_FORMAT = r"\?%02x"
 
 USAGE = "penework [options]"
 
@@ -154,3 +155,14 @@ REPORT_HTMLBASE = """\
         </body>
     </html>
     """
+
+
+# Regular expression used for extracting form tags
+FORM_SEARCH_REGEX = r"(?si)<form(?!.+<form).+?</form>"
+
+# Format used for representing invalid unicode characters
+INVALID_UNICODE_CHAR_FORMAT = r"\x%02x"
+
+
+PICKLE_REDUCE_WHITELIST = (types.BooleanType, types.DictType, types.FloatType, types.IntType, types.ListType, types.LongType, types.NoneType, types.StringType, types.TupleType, types.UnicodeType, types.XRangeType, type(AttribDict()), type(set()))
+

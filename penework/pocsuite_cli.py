@@ -16,7 +16,7 @@ from .lib.utils import versioncheck
 from .lib.core.common import unhandledExceptionMessage
 from .lib.core.enums import CUSTOM_LOGGING
 from .lib.core.common import banner
-from .lib.core.exception import PocsuiteUserQuitException
+from .lib.core.exception import PeneworkUserQuitException
 from .lib.core.common import dataToStdout
 from .lib.core.common import setPaths
 from .lib.core.settings import LEGAL_DISCLAIMER
@@ -140,7 +140,7 @@ def pcsInit(PCS_OPTIONS=None):
         init()
         start()
 
-    except PocsuiteUserQuitException:
+    except PeneworkUserQuitException:
         errMsg = "user quit"
         logger.log(CUSTOM_LOGGING.ERROR, errMsg)
 

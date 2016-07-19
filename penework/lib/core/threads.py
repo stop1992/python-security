@@ -15,9 +15,9 @@ from lib.core.data import logger
 from lib.core.data import kb
 from lib.core.enums import CUSTOM_LOGGING
 from lib.core.settings import PYVERSION
-from lib.core.exception import PocsuiteConnectionException
-from lib.core.exception import PocsuiteThreadException
-from lib.core.exception import PocsuiteValueException
+from lib.core.exception import PeneworkConnectionException
+from lib.core.exception import PeneworkThreadException
+from lib.core.exception import PeneworkValueException
 
 
 def runThreads(numThreads, threadFunction, forwardException=True, startThreadMsg=True):
@@ -72,12 +72,12 @@ def runThreads(numThreads, threadFunction, forwardException=True, startThreadMsg
                 pass
 
         except KeyboardInterrupt:
-            raise PocsuiteThreadException("user aborted (Ctrl+C was pressed multiple times)")
+            raise PeneworkThreadException("user aborted (Ctrl+C was pressed multiple times)")
 
         if forwardException:
             raise
 
-    except (PocsuiteConnectionException, PocsuiteValueException), errMsg:
+    except (PeneworkConnectionException, PeneworkValueException), errMsg:
         print
         kb.threadException = True
         logger.log(CUSTOM_LOGGING.ERROR, "thread %s: %s" % (threading.currentThread().getName(), errMsg))

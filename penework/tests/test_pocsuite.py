@@ -18,7 +18,7 @@ from lib.core.data import paths
 from nose.tools import assert_true
 
 
-class TestPocsuiteBase(object):
+class TestPeneworkBase(object):
 
     def test_penework_setpath(self):
         paths.PENEWORK_ROOT_PATH = modulePath()

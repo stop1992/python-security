@@ -14,8 +14,8 @@ from textwrap import dedent
 from lib.core.settings import REPORT_HTMLBASE
 from lib.core.settings import REPORT_TABLEBASE
 from lib.core.data import paths
-from lib.core.exception import PocsuiteSystemException
-from lib.core.exception import PocsuiteMissingPrivileges
+from lib.core.exception import PeneworkSystemException
+from lib.core.exception import PeneworkMissingPrivileges
 from lib.core.common import getUnicode
 from lib.core.common import reIndent
 from lib.core.common import normalizeUnicode
@@ -118,7 +118,7 @@ def _createTargetDirs():
                 errMsg += "Please make sure that your disk is not full and "
                 errMsg += "that you have sufficient write permissions to "
                 errMsg += "create temporary files and/or directories"
-                raise PocsuiteSystemException(errMsg)
+                raise PeneworkSystemException(errMsg)
 
             warnMsg = "unable to create regular output directory "
             warnMsg += "'%s' (%s). " % (paths.PENEWORK_OUTPUT_PATH, getUnicode(ex))
@@ -145,7 +145,7 @@ def _setRecordFiles():
                     errMsg += "Please make sure that your disk is not full and "
                     errMsg += "that you have sufficient write permissions to "
                     errMsg += "create temporary files and/or directories"
-                    raise PocsuiteSystemException(errMsg)
+                    raise PeneworkSystemException(errMsg)
 
                 warnMsg = "unable to create output directory "
                 warnMsg += "'%s' (%s). " % (outputPath, getUnicode(ex))
@@ -167,7 +167,7 @@ def _setRecordFiles():
                     errMsg = "something went wrong while trying "
                 errMsg += "to write to the output directory '%s' (%s)" % (paths.PENEWORK_OUTPUT_PATH, ex)
 
-                raise PocsuiteMissingPrivileges(errMsg)
+                raise PeneworkMissingPrivileges(errMsg)
 
         try:
             with open(recordFile, "a+") as f:
@@ -179,7 +179,7 @@ def _setRecordFiles():
                 errMsg = "something went wrong while trying "
             errMsg += "to write to the output directory '%s' (%s)" % (paths.PENEWORK_OUTPUT_PATH, ex)
 
-            raise PocsuiteMissingPrivileges(errMsg)
+            raise PeneworkMissingPrivileges(errMsg)
 
 
 def _setReport():
