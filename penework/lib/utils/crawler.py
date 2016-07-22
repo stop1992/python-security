@@ -7,46 +7,63 @@ import urlparse
 import time
 import re
 from threading import Lock
+import sys
+import traceback
 
 from lib.core.data import logger
 from lib.core.data import conf
 from lib.core.data import kb
+from lib.core.data import paths
 from lib.core.enums import CUSTOM_LOGGING
+# from lib.core.enums import HTTPMETHOD
+from lib.core.enums import HTTP_HEADER
 from lib.core.common import findPageForms
 from lib.core.threads import runThreads
 from lib.utils.userAgents import randomUserAgents
 from thirdparty import requests
 
+countVisitedUrls = 0
 
 def crawler(target):
 
     visited = set()
-    # in_queue = Queue()
     visitQueue = Queue()
     visitQueue.put(target)
-    currentDepth = 0
-    fp = open('/home/xinali/python/penework/visited.txt', 'w')
+    fp = open(paths.PENEWORK_ROOT_PATH + '/visited.txt', 'w')
     lock = Lock()
+    headers = dict()
 
+    currentDepth = 0
 
     def crawlerThread():
+        global countVisitedUrls
 
         while visitQueue.qsize() > 0:
             url = visitQueue.get()
+
+            headers[HTTP_HEADER.USER_AGENT] = randomUserAgents()
             try:
                 if url not in visited:
-                    response = requests.get(url, timeout=10)
-                    logger.log(CUSTOM_LOGGING.SYSINFO, 'crawled ' + url)
+                    response = requests.get(url, timeout=10, headers=headers)
+                    crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
+                    logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
                     content = response.text
+
                     kb.pageEncoding = response.encoding
+                    conf.cookie = str(response.cookies.get_dict())
+
                     lock.acquire()
                     visited.add(url)
                     fp.write(url + '\n')
+                    countVisitedUrls += 1
                     lock.release()
+                else:
+                    continue
             except Exception, ex:
-                # print ex
+                # logger.log(CUSTOM_LOGGING.ERROR, ex.message + ex.args)
+                logger.log(CUSTOM_LOGGING.ERROR, ex)
+                print traceback.print_exc()
                 continue
-                # sys.exit(logger.log(CUSTOM_LOGGING.ERROR, 'get reponse error')
 
             if isinstance(content, unicode):
                 try:
@@ -62,32 +79,39 @@ def crawler(target):
                     for tag in tags:
                         href = tag.get("href") if hasattr(tag, "get") else tag.group("href")
 
-                        if href:
-                            href = urlparse.urljoin(conf.scope, href)
-                            links.put(href)
+                        if href and 'javascript:' not in href:
+                            href = urlparse.urljoin(conf.domain, href)
+                            # print href
+                            # print conf.domain
+                            if conf.domain in href:
+                                links.put(href)
 
                 except Exception, ex:  # for non-HTML files
-                    print ex
+                    logger.log(CUSTOM_LOGGING.ERROR, ex)
                     continue
                 finally:
-                    # if conf.forms:
-                    current = url
-                    forms = findPageForms(content, current, False, True)
+                    forms = findPageForms(content, url, False)
                     for form in forms:
-                        logger.log(CUSTOM_LOGGING.WARN, 'form: ' + form)
+                        formMsg = '%s has form, url: %s method: %s data: %s' % (url, form[0], form[1], form[2])
+                        logger.log(CUSTOM_LOGGING.WARNING, formMsg)
+                        lock.acquire()
+                        fp.write(formMsg + '\n')
+                        lock.release()
 
 
     while conf.crawlDepth >= currentDepth:
 
         links = Queue()
-        runThreads(conf.numThreads, crawlerThread)
+        # runThreads(conf.numThreads, crawlerThread)
+        crawlerThread()
+
         while links.qsize() > 0:
             j = links.get()
             if j not in visited:
                visitQueue.put(j)
 
-        print 'currentdepth:', currentDepth
-        print 'qsize:', visitQueue.qsize()
+        # print 'currentdepth:', currentDepth
+        # print 'qsize:', visitQueue.qsize()
 
         currentDepth += 1
     fp.close()

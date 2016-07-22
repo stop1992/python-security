@@ -33,6 +33,8 @@ from lib.core.enums import HTTPMETHOD
 from lib.core.data import paths
 from lib.core.data import kb
 from lib.core.data import logger
+from lib.core.data import paths
+# from lib.core.data import formData
 from lib.core.exception import PeneworkGenericException
 from thirdparty.odict.odict import OrderedDict
 from lib.core.settings import (BANNER, GIT_PAGE, ISSUES_PAGE, PLATFORM, PYVERSION, VERSION_STRING)
@@ -453,7 +455,7 @@ def reIndent(s, numSpace):
 
 
 
-def findPageForms(content, url, raise_=False, addToTargets=False):
+def findPageForms(content, url, raise_=False):
     """
     Parses given page content for possible forms
     """
@@ -515,11 +517,9 @@ def findPageForms(content, url, raise_=False, addToTargets=False):
                 else:
                     logger.log(CUSTOM_LOGGING.SYSINFO, errMsg)
             else:
-                # url = urldecode(request.get_full_url(), kb.pageEncoding)
                 url = request.get_full_url()
                 method = request.get_method()
                 data = request.get_data() if request.has_data() else None
-                # data = urldecode(data, kb.pageEncoding, plusspace=False)
 
                 if not data and method and method.upper() == HTTPMETHOD.POST:
                     debugMsg = "invalid POST form with blank data detected"
@@ -535,18 +535,14 @@ def findPageForms(content, url, raise_=False, addToTargets=False):
                 elif not _:
                     continue
                 else:
-                    target = (url, method, data, conf.cookie, None)
-                    retVal.add(target)
+                    formData = (url, method, data, conf.cookie)
+                    retVal.add(formData)
     else:
         errMsg = "there were no forms found at the given target URL"
         if raise_:
             raise PeneworkGenericException(errMsg)
         else:
             logger.log(CUSTOM_LOGGING.SYSINFO, errMsg)
-
-    if addToTargets and retVal:
-        for target in retVal:
-            kb.targets.add(target)
 
     return retVal
 
