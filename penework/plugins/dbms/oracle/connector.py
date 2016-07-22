@@ -55,7 +55,7 @@ class Connector(GenericConnector):
         try:
             return self.cursor.fetchall()
         except cx_Oracle.InterfaceError, msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg)
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg)
             return None
 
     def execute(self, query):
@@ -65,7 +65,7 @@ class Connector(GenericConnector):
             self.cursor.execute(utf8encode(query))
             retVal = True
         except cx_Oracle.DatabaseError, msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg)
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg)
 
         self.connector.commit()
 

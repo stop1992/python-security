@@ -61,7 +61,7 @@ class Connector(GenericConnector):
         try:
             return self.cursor.fetchall()
         except Exception, msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
             return None
 
     def execute(self, query):
@@ -71,7 +71,7 @@ class Connector(GenericConnector):
             self.cursor.execute(query)
             retVal = True
         except Exception, msg: #todo fix with specific error
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
 
         self.connector.commit()
 

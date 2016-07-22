@@ -46,7 +46,7 @@ class Connector(GenericConnector):
         try:
             return self.cursor.fetchall()
         except pymysql.ProgrammingError, msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
             return None
 
     def execute(self, query):
@@ -56,7 +56,7 @@ class Connector(GenericConnector):
             self.cursor.execute(query)
             retVal = True
         except (pymysql.OperationalError, pymysql.ProgrammingError), msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
         except pymysql.InternalError, msg:
             raise SqlmapConnectionException(msg[1])
 

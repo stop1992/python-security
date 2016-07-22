@@ -17,33 +17,18 @@ from lib.core.common import findPageForms
 from setEnvironment import setEnv
 
 
-def test():
-
-
-    url = 'https://passport.csdn.net/account/login?ref=toolbar'
-    response = requests.get(url)
-    content = response.text
-    kb.pageEncoding = response.encoding
-    # conf.scope = 'https://passport.csdn.net'
-    conf.scope = None
-    conf.cookie = 'test=testa'
-    # pdb.set_trace()
-    forms = findPageForms(content, url, False, True)
-    for form in forms:
-        print form[0]
-        print form[1]
-        print form[2]
-
-
 def main():
 
     setEnv()
-    site = 'http://bbs.browser.qq.com/'
+    # site = 'http://bbs.browser.qq.com/'
+    # site = 'http://www.jlu.edu.cn/'
+    site = 'http://www.dhu.edu.cn/'
     conf.crawlDepth = 10
     conf.numThreads = 5
     conf.scope = None
     # conf.domain = 'bbs.browser.qq.com'
     conf.domain = site
+    # pdb.set_trace()
     crawler(site)
 
 

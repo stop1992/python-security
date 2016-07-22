@@ -52,14 +52,14 @@ class Connector(GenericConnector):
         try:
             return self.cursor.fetchall()
         except pyodbc.ProgrammingError, msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
             return None
 
     def execute(self, query):
         try:
             self.cursor.execute(query)
         except (pyodbc.OperationalError, pyodbc.ProgrammingError), msg:
-            logger.log(logging.WARN if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
+            logger.log(logging.WARNING if conf.dbmsHandler else logging.DEBUG, "(remote) %s" % msg[1])
         except pyodbc.Error, msg:
             raise SqlmapConnectionException(msg[1])
 

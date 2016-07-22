@@ -15,7 +15,6 @@ from lib.core.data import conf
 from lib.core.data import kb
 from lib.core.data import paths
 from lib.core.enums import CUSTOM_LOGGING
-# from lib.core.enums import HTTPMETHOD
 from lib.core.enums import HTTP_HEADER
 from lib.core.common import findPageForms
 from lib.core.threads import runThreads
@@ -23,6 +22,20 @@ from lib.utils.userAgents import randomUserAgents
 from thirdparty import requests
 
 countVisitedUrls = 0
+
+
+def _makeUrlHash(url):
+
+    urlParse = urlparse.urlparse(url)
+    urlSchemePath = urlparse.urljoin(urlParse.scheme, urlParse.netloc + urlParse.path)
+    urlQueryKeys = (urlparse.parse_qs(urlParse.query)).keys()
+    # combine urlSchemaPath and urlQueryKeys as urlHashData
+    urlQueryKeys.append(urlSchemePath)
+    urlQueryKeys.sort()
+    hashData = hash(str(urlQueryKeys))
+
+    return hashData
+
 
 def crawler(target):
 
@@ -51,16 +64,16 @@ def crawler(target):
 
                     kb.pageEncoding = response.encoding
                     conf.cookie = str(response.cookies.get_dict())
+                    hashData = _makeUrlHash(url)
 
                     lock.acquire()
-                    visited.add(url)
+                    visited.add(hashData)
                     fp.write(url + '\n')
                     countVisitedUrls += 1
                     lock.release()
                 else:
                     continue
             except Exception, ex:
-                # logger.log(CUSTOM_LOGGING.ERROR, ex.message + ex.args)
                 logger.log(CUSTOM_LOGGING.ERROR, ex)
                 print traceback.print_exc()
                 continue
@@ -81,8 +94,6 @@ def crawler(target):
 
                         if href and 'javascript:' not in href:
                             href = urlparse.urljoin(conf.domain, href)
-                            # print href
-                            # print conf.domain
                             if conf.domain in href:
                                 links.put(href)
 
@@ -106,21 +117,10 @@ def crawler(target):
         crawlerThread()
 
         while links.qsize() > 0:
-            j = links.get()
-            if j not in visited:
-               visitQueue.put(j)
-
-        # print 'currentdepth:', currentDepth
-        # print 'qsize:', visitQueue.qsize()
+            tmp_url = links.get()
+            hashData = _makeUrlHash(tmp_url)
+            if hashData not in visited:
+               visitQueue.put(tmp_url)
 
         currentDepth += 1
     fp.close()
-
-
-        # for i in xrange(conf.crawlDepth):
-
-            # if conf.numThreads:
-                # runThreads(numThreads, crawlThread, threadChoice=(i>0))
-            # else:
-                # logger.log(CUSTOM_LOGGING.ERROR, 'the num of threads is not defined')
-                # raise PeneworkGenericException('the num of threads is not defined')

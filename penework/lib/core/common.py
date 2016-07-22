@@ -485,7 +485,7 @@ def findPageForms(content, url, raise_=False):
     except ParseError:
         if "<html" in (content or ""):
             warnMsg = "badly formed HTML at the given URL ('%s'). Going to filter it" % url
-            logger.log(CUSTOM_LOGGING.WARN, warnMsg)
+            logger.log(CUSTOM_LOGGING.WARNING, warnMsg)
             filtered = _("".join(re.findall(FORM_SEARCH_REGEX, content)), url)
             try:
                 forms = ParseResponse(filtered, backwards_compat=False)
