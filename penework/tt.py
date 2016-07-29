@@ -31,11 +31,6 @@ def main():
         countVisitedUrls += 1
 
 
-
-
-    # for i in xrange(10):
-        # test()
-
 if __name__ == '__main__':
     os.system('clear')
 

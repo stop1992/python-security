@@ -12,8 +12,6 @@ import requests
 import sys
 import random
 import string
-from PIL import Image
-import pytesseract
 
 from multiprocessing import Queue
 from multiprocessing import Pool
@@ -32,4 +30,19 @@ import urllib2
 import sys
 
 
+class T(object):
 
+        host = 'test'
+    # def __init__(self):
+
+
+def main():
+    t = T()
+    print t.host
+
+
+if __name__ == '__main__':
+    os.system('clear')
+
+
+    main()
