@@ -529,10 +529,10 @@ def findPageForms(content, url, raise_=False):
                 # flag to know if we are dealing with the same target host
                 _ = reduce(lambda x, y: x == y, map(lambda x: urlparse.urlparse(x).netloc.split(':')[0], (response.geturl(), url)))
 
-                if conf.scope:
-                    if not re.search(conf.scope, url, re.I):
-                        continue
-                elif not _:
+                # if conf.scope:
+                    # if not re.search(conf.scope, url, re.I):
+                        # continue
+                if not _:
                     continue
                 else:
                     formData = (url, method, data, conf.cookie)

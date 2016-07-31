@@ -9,6 +9,8 @@ import re
 from threading import Lock
 import sys
 import traceback
+import pudb
+import pdb
 
 from lib.core.data import logger
 from lib.core.data import conf
@@ -37,7 +39,7 @@ def _makeUrlHash(url):
     return hashData
 
 
-def crawler(target):
+def crawl(target):
 
     visited = set()
     visitQueue = Queue()
@@ -66,11 +68,16 @@ def crawler(target):
                     conf.cookie = str(response.cookies.get_dict())
                     hashData = _makeUrlHash(url)
 
-                    lock.acquire()
-                    visited.add(hashData)
-                    fp.write(url + '\n')
-                    countVisitedUrls += 1
-                    lock.release()
+                    try:
+                        lock.acquire()
+                        visited.add(hashData)
+                        fp.write(url + '\n')
+                        countVisitedUrls += 1
+                        lock.release()
+                    except Exception, ex:
+                        logger.log(CUSTOM_LOGGING.ERROR, ex)
+                        if lock.locked()
+                            lock.release()
                 else:
                     continue
             except Exception, ex:
@@ -93,8 +100,8 @@ def crawler(target):
                         href = tag.get("href") if hasattr(tag, "get") else tag.group("href")
 
                         if href and 'javascript:' not in href:
-                            href = urlparse.urljoin(conf.domain, href)
-                            if conf.domain in href:
+                            href = urlparse.urljoin(conf.CRAWL_SITE, href)
+                            if conf.CRAWL_SITE in href:
                                 links.put(href)
 
                 except Exception, ex:  # for non-HTML files
@@ -110,7 +117,7 @@ def crawler(target):
                         lock.release()
 
 
-    while conf.crawlDepth >= currentDepth:
+    while conf.CRAWL_DEPTH >= currentDepth:
 
         links = Queue()
         # runThreads(conf.numThreads, crawlerThread)
