@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# encoding: utf-8
 #encoding:utf-8
 
 from Queue import Queue
@@ -36,7 +37,7 @@ from lib.utils.hashUrl import hashUrl
 # copy_reg.pickle(types.MethodType, _pickle_method)
 
 
-def crawl(url, currentDepth):
+def crawl(url, currentDepth, countUrls):
 
     redisCon = Redis(host=conf.REDIS_HOST,
                       port=conf.REDIS_PORT,
@@ -47,8 +48,8 @@ def crawl(url, currentDepth):
     try:
         response = requests.get(url, timeout=10, headers=headers)
         # crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
-        crawlMsg = 'crawled %s depth: %d ' % (url, currentDepth)
-        logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
+        # crawlMsg = 'crawled %s depth: %d ' % (url, currentDepth)
+        # logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
         content = response.text
 
         kb.pageEncoding = response.encoding
@@ -76,12 +77,10 @@ def crawl(url, currentDepth):
                 href = tag.get("href") if hasattr(tag, "get") else tag.group("href")
 
                 if href and 'javascript:' not in href:
-                    # href = urlparse.urljoin(conf.domain, href)
                     href = urlparse.urljoin(conf.CRAWL_SITE, href)
-                    # hashData = hashUrl(href)
-                    if conf.CRAWL_SITE in href :
-                        redisCon.lpush('tmp_visit', href)
-                        # links.put(href)
+                    if conf.CRAWL_SITE in href:
+                        redisCon.lpush('tmpVisit', href)
+                        # logger.log(CUSTOM_LOGGING.ERROR, href)
 
         except Exception, ex:  # for non-HTML files
             logger.log(CUSTOM_LOGGING.ERROR, ex)

@@ -48,8 +48,9 @@ def main():
 
     setEnv()
     getConfig()
+    testCrawlerDist()
     # testHashurl()
-    testCrawler()
+    # testCrawler()
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 # encoding: utf-8
+# encoding: utf-8
 
 import os
 from ConfigParser import ConfigParser
@@ -32,8 +33,7 @@ def getConfig():
         conf.REDIS_PASSWD = config.get(crawl_section, 'REDIS_PASSWD')
         conf.CRAWL_SITE = config.get(crawl_section, 'CRAWL_SITE')
         conf.CRAWL_DEPTH = config.get(crawl_section, 'CRAWL_DEPTH')
+        conf.STORE_FILENAME = config.get(crawl_section, 'STORE_FILENAME')
 
     except Exception, ex:
         logger.log(CUSTOM_LOGGING.ERROR, 'get config error: ' + ex.message)
-
-

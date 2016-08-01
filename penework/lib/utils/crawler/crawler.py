@@ -11,6 +11,7 @@ import sys
 import traceback
 import pudb
 import pdb
+import codecs
 
 from lib.core.data import logger
 from lib.core.data import conf
@@ -44,7 +45,7 @@ def crawl(target):
     visited = set()
     visitQueue = Queue()
     visitQueue.put(target)
-    fp = open(paths.PENEWORK_ROOT_PATH + '/visited.txt', 'w')
+    fp = codecs.open(paths.PENEWORK_ROOT_PATH+'/'+conf.STORE_FILENAME, 'w', 'utf-8')
     lock = Lock()
     headers = dict()
 
@@ -55,31 +56,29 @@ def crawl(target):
 
         while visitQueue.qsize() > 0:
             url = visitQueue.get()
-
             headers[HTTP_HEADER.USER_AGENT] = randomUserAgents()
             try:
-                if url not in visited:
-                    response = requests.get(url, timeout=10, headers=headers)
-                    crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
-                    logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
-                    content = response.text
+                response = requests.get(url, timeout=10, headers=headers)
+                crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
+                logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
+                content = response.text
 
-                    kb.pageEncoding = response.encoding
-                    conf.cookie = str(response.cookies.get_dict())
-                    hashData = _makeUrlHash(url)
+                kb.pageEncoding = response.encoding
+                conf.cookie = str(response.cookies.get_dict())
+                hashData = _makeUrlHash(url)
 
-                    try:
-                        lock.acquire()
-                        visited.add(hashData)
-                        fp.write(url + '\n')
-                        countVisitedUrls += 1
+                try:
+                    lock.acquire()
+                    visited.add(hashData)
+                    countVisitedUrls += 1
+                    fp.write(url + '\n')
+                    lock.release()
+                except Exception, ex:
+                    logger.log(CUSTOM_LOGGING.ERROR, ex)
+                    if lock.locked():
                         lock.release()
-                    except Exception, ex:
-                        logger.log(CUSTOM_LOGGING.ERROR, ex)
-                        if lock.locked()
-                            lock.release()
-                else:
                     continue
+
             except Exception, ex:
                 logger.log(CUSTOM_LOGGING.ERROR, ex)
                 print traceback.print_exc()
