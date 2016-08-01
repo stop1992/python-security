@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 # encoding: utf-8
+# encoding: utf-8
 
 from redis import Redis
 from rq import Queue
 import pudb
+import re
 
 
 from lib.core.data import conf
@@ -19,38 +21,33 @@ class Master(object):
 
     def __init__(self):
         self.redisCon = Redis(host=conf.REDIS_HOST,
-                          port=conf.REDIS_PORT,
-                          password=conf.REDIS_PASSWD)
+                              port=conf.REDIS_PORT,
+                              password=conf.REDIS_PASSWD)
         self.jobQueue = Queue(connection=self.redisCon)
-        map(lambda key: self.redisCon.delete(key), [key for key in self.redisCon.keys() if 'visit' in key or 'rq:' in key])
+        map(lambda key: self.redisCon.delete(key), [key for key in self.redisCon.keys() if re.search('visit|rq:', key, re.I)])
         self.redisCon.lpush('visit', conf.CRAWL_SITE)
 
 
     def start(self):
 
-        currentDepth = 0
+        countDepth = 0
         countUrls = 0
 
-        while currentDepth <= conf.CRAWL_DEPTH:
+        while countDepth <= int(conf.CRAWL_DEPTH):
 
             while True:
                 # wait for 10 minites
                 # print 'len visite:', self.redisCon.llen('visit')
                 # print 'len visited:', self.redisCon.scard('visited')
                 url = self.redisCon.lpop('visit')
-                # if listData:
-                    # url = listData[1]
                 if url:
                     countUrls += 1
-                    # if countUrls > 5000:
-                    pudb.set_trace()
-                    print 'currentDepth:', currentDepth
-                    self.jobQueue.enqueue_call(crawl, args=(url, currentDepth, countUrls))
+                    print 'countDepth:', countDepth, 'countUrls:', countUrls
+                    self.jobQueue.enqueue_call(crawl, args=(url, countDepth, countUrls))
                 else:
-                    # failedQueue = self.redisCon.llen('rq:failed'
                     break
 
-            while self.redisCon.llen('tmpVisit') >0:
+            while True:
                 # wait 30 seconds, if timeout, jobqueue is empty(except failed job)
                 keyUrl = self.redisCon.blpop('tmpVisit', timeout=30)
                 if keyUrl:
@@ -58,7 +55,7 @@ class Master(object):
                     hashData = hashUrl(url)
                     if not self.redisCon.sismember('visited', hashData):
                         self.redisCon.lpush('visit', url)
+                else:
+                    break
 
-            currentDepth += 1
-
-
+            countDepth += 1

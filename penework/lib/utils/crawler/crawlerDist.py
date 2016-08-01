@@ -48,7 +48,6 @@ def crawl(url, currentDepth, countUrls):
     try:
         response = requests.get(url, timeout=10, headers=headers)
         # crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
-        # crawlMsg = 'crawled %s depth: %d ' % (url, currentDepth)
         # logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
         content = response.text
 
@@ -56,6 +55,7 @@ def crawl(url, currentDepth, countUrls):
         conf.cookie = str(response.cookies.get_dict())
         hashData = hashUrl(url)
         redisCon.sadd('visited', hashData)
+        redisCon.lpush('visitedList', url)
 
     except Exception, ex:
         logger.log(CUSTOM_LOGGING.ERROR, ex)

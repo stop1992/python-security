@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
+# encoding: utf-8
 
 import os
 import pudb
@@ -7,6 +8,7 @@ import pdb
 import pickle
 import sys
 import codecs
+from redis import Redis
 
 
 from lib.core.data import conf
@@ -38,10 +40,30 @@ def testCrawler():
 
 def testCrawlerDist():
     master = Master()
-    # pudb.set_trace()
-    logger.log(CUSTOM_LOGGING.SYSINFO, 'starting rq server...')
-    master.start()
-    logger.log(CUSTOM_LOGGING.SYSINFO, 'start rq server successfully...')
+    redisCon = Redis(host=conf.REDIS_HOST,
+                     port=conf.REDIS_PORT,
+                     password=conf.REDIS_PASSWD)
+
+    try:
+        logger.log(CUSTOM_LOGGING.SYSINFO, 'starting rq server...')
+        master.start()
+    except KeyboardInterrupt, ke:
+        totalJob = len(redisCon.keys('rq:job:*'))
+        failedJob = len(redisCon.keys('rq:fail*'))
+        finishedJob = redisCon.scard('visited')
+        leftJob = redisCon.llen('visit')
+        # leftJob = totalJob - failedJob
+        keMsg = """
+you input KeyboardInterrupt(Ctrl+C was pressed), so quit,
+finished: %d
+left: %d
+                """ % (finishedJob, leftJob)
+        logger.log(CUSTOM_LOGGING.WARNING, keMsg)
+
+    except Exception, ex:
+        logger.log(CUSTOM_LOGGING.ERROR, ex)
+
+    logger.log(CUSTOM_LOGGING.SYSINFO, 'rq server finished successfully...')
 
 
 def main():

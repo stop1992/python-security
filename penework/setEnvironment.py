@@ -34,6 +34,9 @@ def getConfig():
         conf.CRAWL_SITE = config.get(crawl_section, 'CRAWL_SITE')
         conf.CRAWL_DEPTH = config.get(crawl_section, 'CRAWL_DEPTH')
         conf.STORE_FILENAME = config.get(crawl_section, 'STORE_FILENAME')
+        # conf.REDIS_CONNECTION = Redis(host=conf.REDIS_HOST,
+                                      # port=conf.REDIS_PORT,
+                                      # password=conf.REDIS_PASSWD)
 
     except Exception, ex:
         logger.log(CUSTOM_LOGGING.ERROR, 'get config error: ' + ex.message)

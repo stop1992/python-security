@@ -30,7 +30,6 @@ def testHashurl():
     print 'write successfully....'
 
 
-
 def testCrawler():
 
     crawl(conf.CRAWL_SITE)
@@ -49,7 +48,7 @@ def main():
     setEnv()
     getConfig()
     # testHashurl()
-    testCrawler()
+    # testCrawler()
 
 
 if __name__ == '__main__':
