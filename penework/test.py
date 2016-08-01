@@ -24,7 +24,7 @@ def testHashurl():
     wfp = codecs.open('check.txt', 'w', 'utf-8')
     for url in fp:
         url = url.strip()
-        msg = url + ' ' + hashUrl(url)
+        msg = url + ' ' + str(hashUrl(url))
         wfp.write(msg + '\n')
     wfp.close()
     print 'write successfully....'
@@ -47,7 +47,7 @@ def main():
 
     setEnv()
     getConfig()
-    # testHashurl()
+    testHashurl()
     # testCrawler()
 
 

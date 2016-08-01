@@ -25,7 +25,9 @@ class Master(object):
                               password=conf.REDIS_PASSWD)
         self.jobQueue = Queue(connection=self.redisCon)
         map(lambda key: self.redisCon.delete(key), [key for key in self.redisCon.keys() if re.search('visit|rq:', key, re.I)])
+        hashData = hashUrl(conf.CRAWL_SITE)
         self.redisCon.lpush('visit', conf.CRAWL_SITE)
+        self.redisCon.sadd('visitSet', hashData)
 
 
     def start(self):
@@ -45,6 +47,7 @@ class Master(object):
                     print 'countDepth:', countDepth, 'countUrls:', countUrls
                     self.jobQueue.enqueue_call(crawl, args=(url, countDepth, countUrls))
                 else:
+                    self.redisCon.delete('visitSet')
                     break
 
             while True:
@@ -53,8 +56,10 @@ class Master(object):
                 if keyUrl:
                     url = keyUrl[1]
                     hashData = hashUrl(url)
-                    if not self.redisCon.sismember('visited', hashData):
+                    if not self.redisCon.sismember('visited', hashData) and \
+                            not self.redisCon.sismember('visitSet', hashData):
                         self.redisCon.lpush('visit', url)
+                        self.redisCon.sadd('visitSet', hashData)
                 else:
                     break
 

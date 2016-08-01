@@ -42,10 +42,13 @@ def crawl(url, currentDepth, countUrls):
     redisCon = Redis(host=conf.REDIS_HOST,
                       port=conf.REDIS_PORT,
                       password=conf.REDIS_PASSWD)
+    # if redisCon.sismember('visited', url):
+        # return
 
-    headers = dict()
-    headers[HTTP_HEADER.USER_AGENT] = randomUserAgents()
     try:
+        headers = dict()
+        headers[HTTP_HEADER.USER_AGENT] = randomUserAgents()
+
         response = requests.get(url, timeout=10, headers=headers)
         # crawlMsg = 'crawled %s depth: %d count: %d' % (url, currentDepth, countVisitedUrls)
         # logger.log(CUSTOM_LOGGING.SYSINFO, crawlMsg)
