@@ -22,7 +22,7 @@ from lib.core.common import findPageForms
 from lib.core.threads import runThreads
 from lib.utils.userAgents import randomUserAgents
 from thirdparty import requests
-from lib.utils.hashUrl import hashUrl
+from lib.utils.urlOperate import hashUrl
 
 
 # import copy_reg

@@ -14,7 +14,7 @@ from lib.core.data import logger
 from lib.core.enums import CUSTOM_LOGGING
 from lib.utils.crawler.crawlerDist import crawl
 # from lib.utils.crawler.crawler import test
-from lib.utils.hashUrl import hashUrl
+from lib.utils.urlOperate import hashUrl
 
 
 class Master(object):

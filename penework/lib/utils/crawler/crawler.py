@@ -21,7 +21,7 @@ from lib.core.enums import CUSTOM_LOGGING
 from lib.core.enums import HTTP_HEADER
 from lib.core.common import findPageForms
 from lib.core.threads import runThreads
-from lib.utils.hashUrl import hashUrl
+from lib.utils.urlOperate import hashUrl
 from lib.utils.userAgents import randomUserAgents
 from thirdparty import requests
 
